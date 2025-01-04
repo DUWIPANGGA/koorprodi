@@ -12,6 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
 
     @livewireStyles
     <style>
@@ -212,6 +213,8 @@
     </div>
     </div>
     @livewireScripts
+    <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+
 @yield('scripts')
 </body>
 

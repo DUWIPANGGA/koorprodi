@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IPK;
+use App\Http\Controllers\Article;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -61,7 +62,14 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
 })->name('logout');
-
+Route::get('admin/dashboard', [Article::class, 'main'])->name('article.main');
+Route::post('admin/article/new', [Article::class, 'create'])->name('article.create');
+Route::get('admin/article/new', [Article::class, 'create'])->name('article.create');
+Route::delete('admin/article/{id}', [Article::class, 'destroy'])->name('article.destroy');
+Route::get('admin/article/{id}', [Article::class, 'show'])->name('article.show');
+Route::put('admin/article/{id}', [Article::class, 'update'])->name('article.update');
+Route::post('admin/article/save', [Article::class, 'store'])->name('article.insert');
+Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
 
 
 
