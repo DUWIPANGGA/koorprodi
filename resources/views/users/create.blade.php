@@ -8,33 +8,70 @@
         <label style="display: block; margin-bottom: 10px;">NIM:</label>
         <input type="text" name="nim" value="{{ old('nim') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Nama:</label>
         <input type="text" name="name" value="{{ old('name') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Prodi:</label>
         <input type="text" name="prodi" value="{{ old('prodi') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Alamat:</label>
         <textarea name="alamat" required
             style="width: 100%; height: 100px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">{{ old('alamat') }}</textarea>
+        
+        <label style="display: block; margin-bottom: 10px;">Asal Sekolah:</label>
+        <input type="text" name="asal_sekolah" value="{{ old('asal_sekolah') }}"
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <label style="display: block; margin-bottom: 10px;">Hobi:</label>
+        <input type="text" name="hobi" value="{{ old('hobi') }}"
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <label style="display: block; margin-bottom: 10px;">Bakat:</label>
+        <input type="text" name="bakat" value="{{ old('bakat') }}"
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <label style="display: block; margin-bottom: 10px;">Kelas:</label>
+        <input type="text" name="kelas" value="{{ old('kelas') }}"
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Angkatan:</label>
         <input type="number" name="angkatan" value="{{ old('angkatan') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <label style="display: block; margin-bottom: 10px;">Gender:</label>
+        <select name="gender" required
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <option value="P" {{ old('gender') == 'P' ? 'selected' : '' }}>Perempuan</option>
+            <option value="L" {{ old('gender') == 'L' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="none" {{ old('gender') == 'none' ? 'selected' : '' }}>Tidak Menentukan</option>
+        </select>
+        
         <label style="display: block; margin-bottom: 10px;">Phone:</label>
         <input type="text" name="phone" value="{{ old('phone') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <label style="display: block; margin-bottom: 10px;">Phone Wali:</label>
+        <input type="text" name="phone_wali" value="{{ old('phone_wali') }}"
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Email:</label>
         <input type="email" name="email" value="{{ old('email') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Password:</label>
         <input type="password" name="password" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        
         <label style="display: block; margin-bottom: 10px;">Role:</label>
         <select name="role" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
             <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
         </select>
+        
         <button type="submit"
             style="width: 100%; height: 40px; background-color: #4CAF50; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Simpan</button>
     </form>

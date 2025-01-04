@@ -61,10 +61,10 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{{ route('PanduanPkm') }}" class="dropdown-item">PanduanPkm</a>
+                                {{-- <a href="{{ route('PanduanPkm') }}" class="dropdown-item">PanduanPkm</a>
                                 <a href="{{ route('AlurSistemPkm') }}" class="dropdown-item">Alur sistem</a>
                                 <a href="{{ route('Kontak') }}" class="dropdown-item">contact</a>
-                                <a href="{{ route('Tentang') }}" class="dropdown-item">about</a>
+                                <a href="{{ route('Tentang') }}" class="dropdown-item">about</a> --}}
                             </div>
                         </div>
                         {{-- <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
@@ -340,15 +340,15 @@ Contoh: Produk fashion, makanan inovatif, atau aplikasi digital.<br>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">App</h4>
-                            <a href="{{ route('Tentang') }}"><i class="fas fa-angle-right me-2"></i> Tentang</a>
+                            {{-- <a href="{{ route('Tentang') }}"><i class="fas fa-angle-right me-2"></i> Tentang</a>
                             <a href="{{ url('/AlurSistemPkm') }}"><i class="fas fa-angle-right me-2"></i> PKM</a>
-                            <a href="{{ url('/PedomanPkm') }}"><i class="fas fa-angle-right me-2"></i> Pedoman</a>
+                            <a href="{{ url('/PedomanPkm') }}"><i class="fas fa-angle-right me-2"></i> Pedoman</a> --}}
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">Support</h4>
-                            <a href="{{ route('Kontak') }}"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                            {{-- <a href="{{ route('Kontak') }}"><i class="fas fa-angle-right me-2"></i> Contact</a> --}}
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">

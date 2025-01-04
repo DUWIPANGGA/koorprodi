@@ -1,146 +1,201 @@
 @extends('layouts.dashboard')
 
 @section('title', 'Dashboard PKM')
+@section('styles')
+    <style>
+        .vertical-hr {
+            border-left: 2px solid #ccc;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+        }
+
+        .container-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .container-card i {
+            font-size: 100px;
+            color: #4CAF50; /* Aksen hijau untuk ikon */
+        }
+
+        .container-card .fw-bold {
+            color: #333;
+        }
+
+        .container-card .fs-5 {
+            color: #555;
+        }
+
+        .icon-list ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-list ul li a {
+            color: #031927; /* Warna biru gelap */
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .icon-list ul li a:hover {
+            color: #4CAF50; /* Aksen hijau pada hover */
+        }
+
+        /* Warna dan desain untuk grafik */
+        #ipkChart {
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+@endsection
 
 @section('content')
-    <section class="mt-4">
-        <!-- Progress Bar -->
-        <div class="mb-4">
-            <h4>Pengajuan Proposal</h4>
-            <div class="progress" style="height: 20px;">
-                <div class="progress-bar bg-success" style="width: {{ $persentase_selain_menunggu }}%;">
-                    {{ $persentase_selain_menunggu }}%</div>
-            </div>
-        </div>
-
-        <!-- Status Cards -->
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card bg-danger text-white text-center">
-                    <div class="card-body">
-                        <h2>{{ $total_pengajuan_baru }}</h2>
-                        <p>Pengajuan Baru</p>
-                    </div>
+    <div class="main-content d-flex gap-3 flex-wrap">
+        <div class="container-card card d-flex flex-row" style="width:100%; height:30vh;overflow:hidden">
+            <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
+                style="width: 100; height: 100%; object-fit: cover; margin-right: -1%;margin-top:-1%;margin-bottom:-10%;margin-left:-1%">
+            <div class="container" style="text-align: left;">
+                <h5 class="fw-bold fs-5">Selamat Datang Kembali! {{ Auth::user()->name }}</h5>
+                <p>Silakan jelajahi fitur-fitur yang tersedia untuk memantau kemajuan Anda.</p>
+                <div class="icon-list">
+                    <ul class="list-group d-flex flex-row border-0">
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-user-edit"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-sync"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-chart-line"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-book"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-cog"></i></a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card bg-warning text-white text-center">
-                    <div class="card-body">
-                        <h2>{{ $total_pengajuan_lolos }}</h2>
-                        <p>Proposal lolos Seleksi</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-success text-white text-center">
-                    <div class="card-body">
-                        <h2>{{ $total_pengajuan_didanai }}</h2>
-                        <p>Proposal yang Didanai</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-
-                    <div class="card-body">
-                        <canvas id="studentChart" width="400" height="400"
-                            style="border: 1px solid #ddd; border-radius: 10px;"></canvas>
-                    </div>
-            </div>
-            <div class="col-md-6">
-
-                    <div class="card-body">
-                        <canvas id="pkmChart" width="400" height="400"
-                            style="border: 1px solid #ddd; border-radius: 10px;"></canvas>
-                    </div>
+            <div style="border-left: 2px solid #000; height: 100px; margin-left: 20px;"></div>
+            <div class="container" style="text-align: left;">
+                <h2 class="h5">IPS</h2>
+                <p class="fs-3 fw-bold">3.65</p>
+                <h2 class="h5">IPK</h2>
+                <p class="fs-3 fw-bold">3.7</p>
             </div>
             
+            <div class="container">
+                <canvas id="ipkChart" width="400" height="160"></canvas>
+            </div>
         </div>
+<!-- IPK Input -->
+<div class="container-card card d-flex flex-row align-items-center justify-content-between" style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+        <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
+    </div>
+    <div class="container ms-3" style="text-align: left;">
+        <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
+        <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
+        <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
+    </div>
+</div>
 
-        <script>
-            const prodiData = @json($prodiCounts);
-            const labels = Object.keys(prodiData);
-            const values = Object.values(prodiData);
+<!-- Informasi Semester -->
+<div class="container-card card d-flex flex-row align-items-center justify-content-between" style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div style="background-color: #007bff; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+        <i class="fas fa-calendar-alt" style="font-size: 50px; color: white;"></i>
+    </div>
+    <div class="container ms-3" style="text-align: left;">
+        <h5 class="fw-bold fs-5" style="color: #007bff;">Informasi Semester</h5>
+        <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester {{ Auth::user()->semester }}</strong>.</p>
+        <p class="fs-7" style="color: #555;">Pastikan Anda mengikuti setiap pengumuman semester ini.</p>
+    </div>
+</div>
 
-            const studentCtx = document.getElementById('studentChart').getContext('2d');
+<!-- Informasi KIPK -->
+<div class="container-card card d-flex flex-row align-items-center justify-content-between" style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div style="background-color: #ff5733; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+        <i class="fas fa-hand-holding-heart" style="font-size: 50px; color: white;"></i>
+    </div>
+    <div class="container ms-3" style="text-align: left;">
+        <h5 class="fw-bold fs-5" style="color: #ff5733;">Informasi KIPK</h5>
+        <p class="fs-6" style="color: #333;">Anda terdaftar sebagai penerima KIPK semester ini!</p>
+        <p class="fs-7" style="color: #555;">Pastikan Anda memenuhi semua persyaratan dan mengikuti prosedur untuk bantuan ini.</p>
+    </div>
+</div>
 
-            new Chart(studentCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: values,
-                        backgroundColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0', '#795548',
-                            '#3f51b5', '#009688'
-                        ],
-                        borderColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0', '#795548',
-                            '#3f51b5', '#009688'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Total Partisipasi Mahasiswa Per Prodi'
-                        }
-                    }
-                }
-            });
-            const pkmData = @json($pkmCounts);
-        const label_pkm = Object.keys(pkmData); 
-        const value_pkm = Object.values(pkmData);
-        const ctx = document.getElementById('pkmChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: label_pkm,
-                datasets: [{
-                    label: 'Jumlah PKM',
-                    data: value_pkm,
-                    backgroundColor: [
-                        '#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0',
-                        '#795548', '#3f51b5', '#009688'
-                    ],
-                    borderColor: [
-                        '#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0',
-                        '#795548', '#3f51b5', '#009688'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Distribusi Jenis PKM'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        </script>
-    </section>
+    </div>
 @endsection
 
 @section('scripts')
-    <!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
+<script>
+    // Data IPK Mahasiswa
+    const dataMahasiswa = {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8'], // Label semester (harus sesuai panjang dengan data)
+        datasets: [{
+            label: 'IPK',
+            data: [3.5, 3.8, 3.2, 3.9, 3.6], // Nilai IPK
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Warna fill area
+            borderColor: 'rgba(75, 192, 192, 1)', // Warna garis
+            borderWidth: 1.5,
+            tension: 0.4, // Kurva garis
+            fill: true, // Isi area di bawah garis
+            pointRadius: 5, // Ukuran titik
+            pointBackgroundColor: 'rgba(75, 192, 192, 1)' // Warna titik
+        }]
+    };
 
+    // Konfigurasi Grafik
+    const config = {
+        type: 'line', // Jenis grafik
+        data: dataMahasiswa,
+        options: {
+            responsive: true,
+            plugins: {
+                datalabels: {
+                    align: 'top',
+                    color: 'grey',
+                    font: {
+                        weight: 'bold',
+                        size: 10 // Ukuran font
+                    },
+                    formatter: (value) => {
+                        return value.toFixed(2); // Menampilkan nilai data (2 angka desimal)
+                    }
+                },
+                legend: {
+                    display: false,
+                },
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 4, // Skala maksimal (IPK maksimal)
+                    grid: {
+                        display: false // Menampilkan grid pada sumbu Y
+                    },
+                    ticks: {
+                        display: false
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false // Menghilangkan grid pada sumbu X
+                    },
+                    ticks: {
+                        stepSize: 1 // Jarak antar nilai label
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels] // Tambahkan datalabels ke array plugin
+    };
 
+    // Inisialisasi Chart
+    const ctx = document.getElementById('ipkChart').getContext('2d');
+    const ipkChart = new Chart(ctx, config);
+</script>
 @endsection

@@ -26,12 +26,10 @@ class LoginController extends Controller
             $role = Auth::user()->role;
 // dd($role);
             switch ($role) {
-                case 'admin':
+                case 'super_admin':
                     return redirect()->route('admin.dashboard'); // Admin
-                case 'mahasiswa':
-                    return redirect()->route('upload-pkm'); // Mahasiswa
-                case 'dosen_pembimbing':
-                    return redirect()->route('dosen.dashboard'); // Dosen Pembimbing
+                case 'user':
+                    return redirect()->route('dashboard'); 
                 case 'reviewer':
                     return redirect()->route('reviewer.dashboard'); // Reviewer
                 default:
