@@ -90,14 +90,14 @@
 
 <body>
 
-    <div class="hero_area">
+    {{-- <div class="hero_area">
         <a href="{{ route('dashboard') }}" class="btn btn-primary btn-floating" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
     <i class="fas fa-home"></i>
 </a>
         <h1>{{ $article->judul }}</h1>
-    </div>
+    </div> --}}
 
-    <div class="container-custom">
+    {{-- <div class="container-custom">
         <section id="article-main">
             <h1>{{ $article->judul }}</h1>
             <div id="content-article">
@@ -122,7 +122,7 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

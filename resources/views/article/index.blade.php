@@ -1,5 +1,5 @@
 <!-- Input Content -->
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title', 'Create a Post')
 
