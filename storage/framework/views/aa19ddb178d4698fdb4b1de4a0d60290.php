@@ -48,8 +48,11 @@
             padding: 20px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
+            overflow-y: scroll;
         }
-
+        .sidebar::-webkit-scrollbar {
+    display: none;
+}
         .sidebar img {
             width: 70px;
             height: 70px;
@@ -153,6 +156,48 @@
         .param-button:hover {
             background: linear-gradient(to right, #4CAF50, #3e8e41); /* Aksen hijau pada hover */
         }
+        .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 10px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -184,6 +229,12 @@
                 sidebar.style.display = "none";
             }
         }
+        document.querySelector('.dropdown-toggle').addEventListener('click', function(e) {
+    e.preventDefault();
+    const dropdownMenu = this.nextElementSibling;
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+
     </script>
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
 
@@ -196,10 +247,21 @@
             <h5 style="text-align: center; font-size: 18px;"><?php echo e(Auth::user()->name); ?></h5>
             <div class="menu">
                 <a href="<?php echo e(route('dashboard')); ?>" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="<?php echo e(route('Rekap.index')); ?>"><i class="fas fa-chart-line"></i> Charts</a>
-                <a href="<?php echo e(route('users.edit',Auth::user()->id)); ?>"><i class="fas fa-cog"></i> Settings</a>
+                <a href="<?php echo e(route('Rekap.index')); ?>"><i class="fas fa-chart-line"></i> Data IPK</a>
+                <a href="<?php echo e(route('pengaduan.index')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <a href="<?php echo e(route('article.main')); ?>"><i class="fas fa-newspaper"></i> Artikel</a>
                 <a href="<?php echo e(route('rekap')); ?>"><i class="fas fa-sliders-h"></i> Rekap</a>
                 <a href="<?php echo e(route('users.index')); ?>"><i class="fas fa-user"></i> User</a>
+                <a href="<?php echo e(route('acara.index')); ?>"><i class="fas fa-calendar"></i>Acara</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-graduation-cap"></i> Mahasiswa</a>
+                    <div class="dropdown-menu">
+                        <a href="">Daftar Mahasiswa</a>
+                        <a href=" ">Tambah Mahasiswa</a>
+                        <a href=" ">Statistik Mahasiswa</a>
+                    </div>
+                </div>
+                <a href="<?php echo e(route('users.edit',Auth::user()->id)); ?>"><i class="fas fa-cog"></i> Settings</a>
                 <a href="<?php echo e(route('logout')); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>

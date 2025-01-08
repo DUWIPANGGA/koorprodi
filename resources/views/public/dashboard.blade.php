@@ -63,8 +63,8 @@
 
 @section('content')
     <div class="main-content d-flex gap-3 flex-wrap">
-        <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-        </div>
+        {{-- <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
+        </div> --}}
         <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden">
             {{-- <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
                 style="width: 100; height: 100%; object-fit: cover; margin-right: -1%;margin-top:-1%;margin-bottom:-10%;margin-left:-1%"> --}}

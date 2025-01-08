@@ -63,8 +63,7 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="main-content d-flex gap-3 flex-wrap">
-        <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-        </div>
+        
         <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden">
             
             <div class="container" style="text-align: left;">

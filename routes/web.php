@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PkmProcessController;
 
 /*
@@ -39,7 +41,8 @@ Route::post('/registrasi', [AuthController::class, 'store']);
 | Route untuk Dashboard (Setelah Login)
 |--------------------------------------------------------------------------
 */
-
+Route::resource('pengaduan', PengaduanController::class);
+Route::resource('acara', AcaraController::class);
 Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
 Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
 Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
