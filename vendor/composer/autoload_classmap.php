@@ -6,9 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\Article' => $baseDir . '/app/Http/Controllers/Article.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
+    'App\\Http\\Controllers\\IPK' => $baseDir . '/app/Http/Controllers/IPK.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Middleware\\AdminAuth' => $baseDir . '/app/Http/Middleware/AdminAuth.php',
@@ -17,8 +19,10 @@ return array(
     'App\\Http\\Middleware\\RoleMiddleware' => $baseDir . '/app/Http/Middleware/RoleMiddleware.php',
     'App\\Http\\Middleware\\admin' => $baseDir . '/app/Http/Middleware/admin.php',
     'App\\Http\\Middleware\\reviewer' => $baseDir . '/app/Http/Middleware/reviewer.php',
+    'App\\Livewire\\UserTable' => $baseDir . '/app/Livewire/UserTable.php',
     'App\\Models\\Rekap' => $baseDir . '/app/Models/Rekap.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\article' => $baseDir . '/app/Models/article.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',

@@ -10,14 +10,19 @@
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
         
         <label style="display: block; margin-bottom: 10px;">IPK:</label>
-        <input type="number" name="IPK" value="{{ old('IPK') }}" required
-            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        {{-- <input type="number" name="IPK" value="{{ old('IPK') }}" required
+            style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> --}}
         
         <label style="display: block; margin-bottom: 10px;">Dokumen:</label>
         <input type="file" name="dokumen" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
         
-        <label style="display: block; margin-bottom: 10px;">Semester:</label>
+        <select name="semester" style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    <option value="">Pilih Semester</option>
+    @for ($i = 1; $i <= 8; $i++)
+        <option value="{{ $i }}">{{ $i }}</option>
+    @endfor
+</select>
         <input type="number" name="semester" value="{{ old('semester') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
         

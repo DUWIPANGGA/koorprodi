@@ -26,10 +26,10 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>User ID</th>
-                    <th>IPS</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
                     <th>IPK</th>
-                    <th>Dokumen</th>
+                    <th>status</th>
                     <th>Semester</th>
                     <th>Aksi</th>
                 </tr>
@@ -40,13 +40,14 @@
                     @foreach ($rekaps as $rekap)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $rekap->user_id }}</td>
-                            <td>{{ $rekap->ips }}</td>
-                            <td>{{ $rekap->ipk }}</td>
-                            <td>{{ $rekap->dokumen }}</td>
-                            <td>{{ $rekap->semester }}</td>
+                            <td>{{ $rekap->NIM }}</td>
+                            <td>{{ $rekap->name }}</td>
+                            <td>{{ $rekap->IPK }}</td>
+<td>
+    <span class="{{ $rekap->validated == 0 ? 'badge bg-danger' : 'badge bg-success' }}">{{ $rekap->validated == 0 ? 'belum di validasi' : 'sudah di validasi' }}</span>
+</td>                            <td>{{ $rekap->semester }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('rekaps.edit', $rekap->id) }}">Edit</a>
+                                <a class="btn btn-primary" href="{{ route('Rekap.edit', $rekap->id) }}">Cek</a>
                                 <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="post"
                                     style="display: inline-block">
                                     @csrf

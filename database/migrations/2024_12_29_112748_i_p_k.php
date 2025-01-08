@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('rekap', function (Blueprint $table) {
             $table->id();
-            $table->integer('IPS');
             $table->integer('IPK');
             $table->string('dokumen');
             $table->integer('semester');
-            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->boolean('validated')->default(0);
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -12,7 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logopolindra.png ') }}">
+        <link rel="icon" type="image/png" sizes="20x20" href="{{ asset('logopolindra.png ') }}">
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -43,9 +43,9 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 10vh">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><img src="logopolindra.png " alt=""></i>INNOVANA</h1>
+                    <h1 class="m-0"><img src="logopolindra.png " alt=""></i>FORMADIKSI</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

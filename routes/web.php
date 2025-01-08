@@ -41,6 +41,7 @@ Route::post('/registrasi', [AuthController::class, 'store']);
 */
 
 Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
+Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
 Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');

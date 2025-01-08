@@ -1,12 +1,12 @@
 <!-- Input Content -->
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title', 'Create a Post')
 
 @section('content')
     <div class="container-fluid h-100 ">
         <div class="row">
-            @include('admin.sidebar')
+            {{-- @include('admin.sidebar') --}}
 
             <div class="col" style="overflow-x: auto; height:92vh;padding-bottom: 5rem;">
                 <div class="container h-100 w-100" style=" height:100px;padding-bottom: 5rem;">

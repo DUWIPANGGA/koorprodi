@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rekap;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -44,7 +45,8 @@ class UserController extends Controller
     }
 
     public function show(User $user)
-    {
+    {   
+        $rekap=Rekap::where('user_id',$user->id)->get();
         return view('users.show', compact('user'));
     }
 
@@ -111,7 +113,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Failed to update user: ' . $e->getMessage());
         }
 
-        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
+        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');  
     }
 
     public function destroy(User $user)
@@ -141,24 +143,24 @@ class UserController extends Controller
 
             User::updateOrCreate(
                 [
-                    'nim' => $userData['NIM:'],
-                    'email' => $userData['Email:']
+                    'nim' => (string) $userData['NIM:'],
+                    'email' => (string) $userData['Email:']
                 ],
                 [
-                    'name' => $userData['Nama:'],
-                    'password' => bcrypt('FORMADIKSI'.$userData['NIM:']),
-                    'prodi' => $userData['Prodi:'],
-                    'hobi' => $userData['Hobi:'],
-                    'bakat' => $userData['Bakat:'],
-                    'gender' => $userData['Gender:'],
-                    'phone' => $userData['Nomor WA (pribadi):'],
-                    'phone_wali' => $userData['kontak WA orang tua atau wali:'],
-                    'kelas' => $userData['Kelas (Contoh: RPL 1 C):'],
-                    'asal_sekolah' => $userData['Asal sekolah:'],
-                    'alamat' => $userData['Alamat(lengkap):'],
+                    'name' => (string) $userData['Nama:'],
+                    'password' => bcrypt('FORMADIKSI' . (string) $userData['NIM:']),
+                    'prodi' => (string) $userData['Prodi:'],
+                    'hobi' => (string) $userData['Hobi:'],
+                    'bakat' => (string) $userData['Bakat:'],
+                    'gender' => (string) $userData['Gender:'],
+                    'phone' => (string) $userData['Nomor WA (pribadi):'],
+                    'phone_wali' => (string) $userData['kontak WA orang tua atau wali:'],
+                    'kelas' => (string) $userData['Kelas (Contoh: RPL 1 C):'],
+                    'asal_sekolah' => (string) $userData['Asal sekolah:'],
+                    'alamat' => (string) $userData['Alamat(lengkap):'],
                 ]
-            );
-            
+            ); 
         }
+        return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
     }
 }

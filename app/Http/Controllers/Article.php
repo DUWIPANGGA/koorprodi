@@ -48,7 +48,8 @@ class Article extends Controller
             'content' => 'required',
             'picture_article' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Maksimal 2MB
         ]);
-        $path = $request->file('picture_article')->store('uploads', 'public');
+        $path = $request->file('picture_article')->store('uploads/article', 'public');
+// dd($path);
         $result = ModelsArticle::create([
             'judul' => $request->title,
             'user_id' => Auth::user()->id,

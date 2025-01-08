@@ -532,9 +532,11 @@ class ComposerStaticInit8c804e4a8c3c1ea0e6dd61980c279cdd
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\Article' => __DIR__ . '/../..' . '/app/Http/Controllers/Article.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\IPK' => __DIR__ . '/../..' . '/app/Http/Controllers/IPK.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Middleware\\AdminAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuth.php',
@@ -543,8 +545,10 @@ class ComposerStaticInit8c804e4a8c3c1ea0e6dd61980c279cdd
         'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
         'App\\Http\\Middleware\\admin' => __DIR__ . '/../..' . '/app/Http/Middleware/admin.php',
         'App\\Http\\Middleware\\reviewer' => __DIR__ . '/../..' . '/app/Http/Middleware/reviewer.php',
+        'App\\Livewire\\UserTable' => __DIR__ . '/../..' . '/app/Livewire/UserTable.php',
         'App\\Models\\Rekap' => __DIR__ . '/../..' . '/app/Models/Rekap.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\article' => __DIR__ . '/../..' . '/app/Models/article.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',

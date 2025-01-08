@@ -13,11 +13,11 @@ class Rekap extends Model
     protected $table = 'rekap';
 
     protected $fillable = [
-        'IPS',
         'IPK',
         'dokumen',
         'semester',
         'user_id',
+        'validated'
     ];
     public function user()
     {

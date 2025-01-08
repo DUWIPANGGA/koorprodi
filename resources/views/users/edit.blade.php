@@ -85,7 +85,7 @@
                         <div>
                             <div class="form-card">
                                 <div class="d-flex items-center mb-6 flex-row">
-                                    <img src="{{ $user->foto_profil ?? asset($user->foto_profil) | asset('LogoOrang.jpg') }}"
+                                    <img src="{{Auth::user()->foto_profil ?? asset(Auth::user()->foto_profil) | asset('LogoOrang.jpg')}}"
                                         alt="Foto Profil"
                                         style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid black;margin-right:5%">
 

@@ -64,7 +64,7 @@
 @section('content')
     <div class="main-content d-flex gap-3 flex-wrap">
         <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-            </div>
+        </div>
         <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden">
             {{-- <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
                 style="width: 100; height: 100%; object-fit: cover; margin-right: -1%;margin-top:-1%;margin-bottom:-10%;margin-left:-1%"> --}}
@@ -87,30 +87,32 @@
                 </div>
             </div>
             <div style="text-align: center;">
-                <img src="{{Auth::user()->foto_profil ?? asset(Auth::user()->foto_profil) | asset('LogoOrang.jpg')}}" alt="Logo"
+                <img src="{{ Auth::user()->foto_profil ?? asset(Auth::user()->foto_profil) | asset('LogoOrang.jpg') }}"
+                    alt="Logo"
                     style=" height: 90%;aspect-ratio:1/1; border-radius: 50%; object-fit:cover; border: #000 1px solid">
             </div>
         </div>
         <!-- IPK Input -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div class="container">
-                <canvas id="ipkChart" width="400" height="250"></canvas>
-            </div>
-        </div>
+     style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div class="container" style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;">
+        <canvas id="ipkChart" style="width: 100%; height: 100%;"></canvas> <!-- Canvas menyesuaikan penuh -->
+    </div>
+</div>
+
 
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
             style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="container" style="text-align: left;">
-                <h2 class="h5">IPS</h2>
-                <p class="fs-3 fw-bold">3.65</p>
+                <h2 class="h5">SEMESTER</h2>
+                <p class="fs-3 fw-bold">{{ $ipkNew->semester }}</p>
                 <h2 class="h5">IPK</h2>
-                <p class="fs-3 fw-bold">3.7</p>
+                <p class="fs-3 fw-bold">{{ $ipkNew->IPK }}</p>
             </div>
         </div>
 
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div
                 style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
                 <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
@@ -124,22 +126,22 @@
 
         <!-- Informasi Semester -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div
                 style="background-color: #007bff; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
                 <i class="fas fa-calendar-alt" style="font-size: 50px; color: white;"></i>
             </div>
             <div class="container ms-3" style="text-align: left;">
                 <h5 class="fw-bold fs-5" style="color: #007bff;">Informasi Semester</h5>
-                <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester
-                        {{ Auth::user()->semester }}</strong>.</p>
+                <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester 
+                        {{ $semester }}</strong>.</p>
                 <p class="fs-7" style="color: #555;">Pastikan Anda mengikuti setiap pengumuman semester ini.</p>
             </div>
         </div>
 
         <!-- Informasi KIPK -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40%; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div
                 style="background-color: #ff5733; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
                 <i class="fas fa-hand-holding-heart" style="font-size: 50px; color: white;"></i>
@@ -161,11 +163,13 @@
 
     <script>
         // Data IPK Mahasiswa
+        var ipkArray = @json($ipkArray);
+        console.log(ipkArray);
         const dataMahasiswa = {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8'], // Label semester (harus sesuai panjang dengan data)
             datasets: [{
                 label: 'IPK',
-                data: [3.5, 3.8, 3.2, 3.9, 3.6], // Nilai IPK
+                data: ipkArray,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)', // Warna fill area
                 borderColor: 'rgba(75, 192, 192, 1)', // Warna garis
                 borderWidth: 1.5,
@@ -182,6 +186,7 @@
             data: dataMahasiswa,
             options: {
                 responsive: true,
+                
                 plugins: {
                     datalabels: {
                         align: 'top',
@@ -201,7 +206,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 4, // Skala maksimal (IPK maksimal)
+                        max: 5, // Skala maksimal (IPK maksimal)
                         grid: {
                             display: false // Menampilkan grid pada sumbu Y
                         },
