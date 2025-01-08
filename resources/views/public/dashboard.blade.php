@@ -63,11 +63,11 @@
 
 @section('content')
     <div class="main-content d-flex gap-3 flex-wrap">
-        {{-- <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-        </div> --}}
-        <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden; background-color: rgba(255, 255, 255, 0);">
-            <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
-                style="height: 90%;aspect-ratio:1/1; border-radius: 50%; object-fit:cover; border: #000 1px solid">
+        <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
+        </div>
+        <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden">
+            {{-- <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
+                style="width: 100; height: 100%; object-fit: cover; margin-right: -1%;margin-top:-1%;margin-bottom:-10%;margin-left:-1%"> --}}
             <div class="container" style="text-align: left;">
                 <h5 class="fw-bold fs-5 text-center">Selamat Datang Kembali! {{ Auth::user()->name }}</h5>
                 <p class="text-center">Silakan jelajahi fitur-fitur yang tersedia untuk memantau kemajuan Anda.</p>

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rekap', function (Blueprint $table) {
+        Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
-            $table->integer('IPK');
-            $table->string('dokumen');
-            $table->integer('semester');
-            $table->boolean('validated')->default(0);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('cerita');
+            $table->boolean('validasi');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rekap');
+        Schema::dropIfExists('pengaduan');
     }
 };

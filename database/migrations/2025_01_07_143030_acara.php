@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('acara', function (Blueprint $table) {
             $table->id();
-            $table->integer('IPK');
-            $table->string('dokumen');
-            $table->integer('semester');
-            $table->boolean('validated');
+            $table->string('nama_acara');
+            $table->date('tanggal');
+            $table->integer('lama_acara');
+            $table->boolean('start');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('acara');
+
     }
 };
