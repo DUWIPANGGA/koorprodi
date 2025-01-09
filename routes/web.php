@@ -15,6 +15,26 @@ use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PkmProcessController;
+use App\Http\Controllers\aspirasiController;
+
+/*
+|--------------------------------------------------------------------------
+| Route buat guest (Home, About Us, Rumah Aspirasi)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/rumahaspirasi', [aspirasiController::class, 'index'])->name('rumahaspirasi');
+
+Route::post('/rumahaspirasi', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 
 /*
 |--------------------------------------------------------------------------
