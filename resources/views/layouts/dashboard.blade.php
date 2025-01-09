@@ -19,7 +19,7 @@
         body {
             margin: 0;
             background-color: #F4F4F4;
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
             height: 100vh;
         }
 
@@ -72,7 +72,7 @@
 
         .menu a {
             display: block;
-            color: #313131;
+            color: #080907;
             padding: 10px 15px;
             margin-bottom: 10px;
             text-decoration: none;
@@ -83,7 +83,7 @@
 
         .menu a:hover {
             color: #fff;
-            background-color: #4CAF50; /* Aksen hijau untuk hover */
+            background-color: #98aeb0; /* Aksen hijau untuk hover */
         }
 
         .menu a i {
@@ -139,7 +139,7 @@
         }
 
         .param-button {
-            background: linear-gradient(to right, #555, #666);
+            background: linear-gradient(to right, #849878, #adc0bb);
             color: #fff;
             padding: 10px;
             border: none;
@@ -149,11 +149,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: background 0.3s, transform 0.3s;
+            transition: color 2s, background-color 2s;
         }
 
         .param-button:hover {
-            background: linear-gradient(to right, #4CAF50, #3e8e41); /* Aksen hijau pada hover */
+            background: linear-gradient(to right, #adc0bb, #98aeb0); /* Aksen hijau pada hover */
         }
         .menu {
     display: flex;
@@ -164,7 +164,7 @@
 .menu a {
     text-decoration: none;
     padding: 10px;
-    color: #333;
+    color: #080907;
     display: flex;
     align-items: center;
 }
@@ -187,11 +187,12 @@
 .dropdown-menu a {
     padding: 10px 20px;
     display: block;
-    color: #333;
+    color: #080907;
 }
 
 .dropdown-menu a:hover {
-    background-color: #ddd;
+    color: #black;
+    background-color: #98aeb0;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -242,7 +243,8 @@
     <div class="dashboard">
         <div class="sidebar col-md-2 bg-white vh-90" id="sidebar" style="width: 200px;">
             
-            <h5 style="text-align: center; font-size: 18px;">{{ Auth::user()->name }}</h5>
+            <h5 style="text-align: center; font-size: 18px; color: #080907;">{{ Auth::user()->name }}</h5>
+            {{-- <h5 style="text-align: center; font-size: 18px; color: blue;">FORMADIKSI</h5> --}}
             <div class="menu">
                 <a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i> Home</a>
                 <a href="{{ route('Rekap.index') }}"><i class="fas fa-chart-line"></i> Data IPK</a>

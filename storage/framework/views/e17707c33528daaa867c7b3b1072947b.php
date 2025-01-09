@@ -83,10 +83,9 @@
                         <div>
                             <div class="form-card">
                                 <div class="d-flex items-center mb-6 flex-row">
-                                    <img src="<?php echo e(Auth::user()->foto_profil ?? asset(Auth::user()->foto_profil) | asset('LogoOrang.jpg')); ?>"
+                                    <img src="<?php echo e(Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg')); ?>"
                                         alt="Foto Profil"
-                                        style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid black;margin-right:5%">
-
+                                        style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid black; margin-right:5%;">
                                     <div class="ml-4">
                                         <p class="text-lg font-semibold">Nama: <?php echo e($user->name); ?></p>
                                         <p class="text-sm">Prodi: <?php echo e($user->prodi); ?></p>
@@ -157,8 +156,10 @@
 
                     <!-- Submit Button -->
                     <div class="mt-6">
-<button type="submit" class="btn-submit py-3 px-6 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold transition duration-200">Update Profile</button>
-</div>
+                        <button type="submit"
+                            class="btn-submit py-3 px-6 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold transition duration-200">Update
+                            Profile</button>
+                    </div>
                 </form>
             </div>
         </div>
