@@ -61,8 +61,7 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="main-content d-flex gap-3 flex-wrap">
-        <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-        </div>
+        
         <div class="container-card card d-flex flex-row" style="width:100%; height:22vh;overflow:hidden">
             <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="Foto Profil"
                 style="height: 90%;aspect-ratio:1/1; border-radius: 50%; object-fit:cover; border: #000 1px solid">
@@ -150,6 +149,24 @@
                 <p class="fs-7" style="color: #555;">Pastikan Anda memenuhi semua persyaratan dan mengikuti prosedur untuk
                     bantuan ini.</p>
             </div>
+        </div>
+        <div class="row">
+            <h3>Baca Juga</h3>
+            <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-img-top"
+                            style="background-image: url('<?php echo e(asset('storage/' . $recommendedArticle->picture_article)); ?>'); background-size: cover; background-position: center; height: 200px; filter: brightness(50%);">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #333;"><?php echo e($recommendedArticle->title); ?></h5>
+                            <p class="card-text" style="color: #333;"><?php echo Str::limit($recommendedArticle->content, 100); ?></p>
+                            <a href="<?php echo e(route('article.show.detail', $recommendedArticle->id)); ?>" class="btn btn-primary">Baca
+                                Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
     </div>

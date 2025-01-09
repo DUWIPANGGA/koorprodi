@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rekap;
+use App\Models\article as ModelsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,7 @@ class DashboardController extends Controller
     ->whereBetween('semester', [1, 8])
     ->orderBy('semester', 'asc')
     ->get();
+    $recommendedArticles = ModelsArticle::latest()->take(8)->get();
     $ipkArray = array_fill(0, 8, 0);
     $ipkNew = $rekaps[count($rekaps)-1];
     $semester = $this->getSemester($user->angkatan);
@@ -39,6 +41,6 @@ class DashboardController extends Controller
     }
     
     // dd($ipkArray);
-        return view('public.dashboard', compact('user','rekaps','ipkArray','ipkNew','semester'));
+        return view('public.dashboard', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
     }
 }

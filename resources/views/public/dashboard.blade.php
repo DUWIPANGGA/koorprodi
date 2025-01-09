@@ -153,6 +153,24 @@
                     bantuan ini.</p>
             </div>
         </div>
+        <div class="row">
+            <h3>Baca Juga</h3>
+            @foreach ($recommendedArticles as $recommendedArticle)
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-img-top"
+                            style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}'); background-size: cover; background-position: center; height: 200px; filter: brightness(50%);">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #333;">{{ $recommendedArticle->title }}</h5>
+                            <p class="card-text" style="color: #333;">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
+                            <a href="{{ route('article.show.detail', $recommendedArticle->id) }}" class="btn btn-primary">Baca
+                                Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
     </div>
 @endsection

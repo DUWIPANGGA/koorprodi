@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INNOVANA - <?php echo $__env->yieldContent('title'); ?></title>
+    <title>FORMADIKSI - <?php echo $__env->yieldContent('title'); ?></title>
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('logopolindra.png ')); ?>">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
 
@@ -92,6 +95,8 @@
         }
 
         .content-wrapper {
+            /* min-height: 100vh    ; */
+            overflow-x: hidden;
             flex: 1;
             padding: 20px;
             background-color: #F4F4F4; /* Warna abu-abu lembut */
@@ -151,6 +156,7 @@
             align-items: center;
             gap: 10px;
             transition: color 2s, background-color 2s;
+            display: none;
         }
 
         .param-button:hover {
@@ -190,18 +196,22 @@
     display: block;
     color: #080907;
 }
-
 .dropdown-menu a:hover {
     color: #black;
     background-color: #98aeb0;
 }
-
+body {
+        font-family: 'Poppins', sans-serif;
+    }
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
+            .param-button {
+                display: block;
+            }
             .dashboard {
                 flex-direction: column;
             }
@@ -244,8 +254,12 @@
 <body>
     <div class="dashboard">
         <div class="sidebar col-md-2 bg-white vh-90" id="sidebar" style="width: 200px;">
+            <div class="row">
+                <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="Foto Profil"
+                style="height: 3rem;width:3rem; border-radius: 50%; object-fit:cover; border: #000 1px solid">
             
-            <h5 style="text-align: center; font-size: 18px; color: #080907;"><?php echo e(Auth::user()->name); ?></h5>
+                <h5 style="text-align: center; font-size: 18px; color: #080907;">FORMADIKSI</h5>
+            </div>
             
             <div class="menu">
                 <a href="<?php echo e(route('dashboard')); ?>" class="active"><i class="fas fa-home"></i> Home</a>
@@ -275,11 +289,12 @@
     <div class="content-wrapper">
         <?php echo $__env->yieldContent('content'); ?>
     </div>
+
     </div>
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
 
     <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-
+    
 <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
