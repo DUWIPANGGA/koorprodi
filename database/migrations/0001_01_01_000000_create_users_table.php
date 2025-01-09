@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['admin', 'user', 'super_admin'])->default('user');
+            $table->enum('role', ['bph','admin', 'user', 'super_admin','koordinator RPL','koordinator TI', 'koordinator SIKC','koordinator KP','koordinator TM','koordinator PM','koordinator TP','koordinator TRIK','KOMINFO'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });

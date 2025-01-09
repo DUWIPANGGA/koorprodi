@@ -48,7 +48,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // Middleware bawaan Laravel
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'reviewer' => \App\Http\Middleware\reviewer::class,
         'admin' => \App\Http\Middleware\admin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -56,7 +55,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'role' => \App\Http\Middleware\RoleMiddleware::class,
 
         // Middleware custom
     ];

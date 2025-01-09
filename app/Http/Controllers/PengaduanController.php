@@ -22,13 +22,12 @@ class PengaduanController extends Controller
     {
         $request->validate([
             'cerita' => 'required|string',
-            'validasi' => 'required|boolean',
         ]);
 
         Pengaduan::create([
             'user_id' => Auth::user()->id,
             'cerita' => $request->cerita,
-            'validasi' => $request->validasi,
+            'validasi' => 0,
         ]);
 
         return redirect()->route('pengaduan.index')->with('success', 'Pengaduan berhasil dibuat.');

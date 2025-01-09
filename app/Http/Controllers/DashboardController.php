@@ -31,13 +31,14 @@ class DashboardController extends Controller
     ->orderBy('semester', 'asc')
     ->get();
     $ipkArray = array_fill(0, 8, 0);
-    $ipkNew = $rekaps[count($rekaps)-1];
-    $semester = $this->getSemester($user->angkatan);
+$ipkNew = count($rekaps) > 0 ? $rekaps[count($rekaps)-1] : null; 
+   // dd($ipkNew);
+    $semester = $user->angkatan > 0 ? $this->getSemester($user->angkatan) : 1;
     // dd($semester);
+    
     foreach ($rekaps as $rekap) {
         $ipkArray[$rekap->semester - 1] = $rekap->IPK; 
     }
-    
     // dd($ipkArray);
         return view('public.dashboard', compact('user','rekaps','ipkArray','ipkNew','semester'));
     }

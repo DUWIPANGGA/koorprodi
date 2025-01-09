@@ -75,20 +75,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0 mt-5">
-                {{-- <a href="" class="nav-item nav-link active">Home</a>
-                    <a href="" class="nav-item nav-link">About</a>
-                    <a href="" class="nav-item nav-link">Services</a>
-                    <a href="" class="nav-item nav-link">Packages</a>
-                    <a href="" class="nav-item nav-link">Blog</a> --}}
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="{{ route('PanduanPkm') }}" class="dropdown-item">PanduanPkm</a>
-                        <a href="{{ route('AlurSistemPkm') }}" class="dropdown-item">Alur sistem</a>
-                        <a href="{{ route('Kontak') }}" class="dropdown-item">contact</a>
-                        <a href="{{ route('Tentang') }}" class="dropdown-item">about</a>
-                    </div>
-                </div>
                 @if (Route::has('login'))
                     <div class="nav-item center ">
                         @auth

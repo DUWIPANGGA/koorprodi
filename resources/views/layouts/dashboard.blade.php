@@ -72,7 +72,7 @@
 
         .menu a {
             display: block;
-            color: #313131;
+            color: #080907;
             padding: 10px 15px;
             margin-bottom: 10px;
             text-decoration: none;
@@ -83,7 +83,7 @@
 
         .menu a:hover {
             color: #fff;
-            background-color: #4CAF50; /* Aksen hijau untuk hover */
+            background-color: #849878; /* Aksen hijau untuk hover */
         }
 
         .menu a i {
@@ -245,10 +245,15 @@
             <h5 style="text-align: center; font-size: 18px;">{{ Auth::user()->name }}</h5>
             <div class="menu">
                 <a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="{{ route('Rekap.index') }}"><i class="fas fa-chart-line"></i> Data IPK</a>
-                <a href="{{ route('pengaduan.index') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
-                <a href="{{ route('article.main') }}"><i class="fas fa-newspaper"></i> Artikel</a>
+                
                 <a href="{{route('rekap')  }}"><i class="fas fa-sliders-h"></i> Rekap</a>
+                @if (Auth::user()->role == 'user')
+                <a href="{{ route('pengaduan') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                @endif
+                @if (Auth::user()->role == 'admin')
+                <a href="{{ route('pengaduan.index') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <a href="{{ route('Rekap.index') }}"><i class="fas fa-chart-line"></i> Data IPK</a>
+                <a href="{{ route('article.main') }}"><i class="fas fa-newspaper"></i> Artikel</a>
                 <a href="{{ route('users.index') }}"><i class="fas fa-user"></i> User</a>
                 <a href="{{ route('acara.index') }}"><i class="fas fa-calendar"></i>Acara</a>
                 <div class="dropdown">
@@ -259,7 +264,8 @@
                         <a href=" ">Statistik Mahasiswa</a>
                     </div>
                 </div>
-                <a href="{{ route('users.edit',Auth::user()->id) }}"><i class="fas fa-cog"></i> Settings</a>
+                @endif
+                <a href="{{ route('profile.edit',Auth::user()->id) }}"><i class="fas fa-cog"></i> Settings</a>
                 <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>

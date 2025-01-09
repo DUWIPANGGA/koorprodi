@@ -73,7 +73,7 @@
 
         .menu a {
             display: block;
-            color: #313131;
+            color: #080907;
             padding: 10px 15px;
             margin-bottom: 10px;
             text-decoration: none;
@@ -84,7 +84,7 @@
 
         .menu a:hover {
             color: #fff;
-            background-color: #4CAF50; /* Aksen hijau untuk hover */
+            background-color: #849878; /* Aksen hijau untuk hover */
         }
 
         .menu a i {
@@ -247,10 +247,15 @@
             <h5 style="text-align: center; font-size: 18px;"><?php echo e(Auth::user()->name); ?></h5>
             <div class="menu">
                 <a href="<?php echo e(route('dashboard')); ?>" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="<?php echo e(route('Rekap.index')); ?>"><i class="fas fa-chart-line"></i> Data IPK</a>
-                <a href="<?php echo e(route('pengaduan.index')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
-                <a href="<?php echo e(route('article.main')); ?>"><i class="fas fa-newspaper"></i> Artikel</a>
+                
                 <a href="<?php echo e(route('rekap')); ?>"><i class="fas fa-sliders-h"></i> Rekap</a>
+                <?php if(Auth::user()->role == 'user'): ?>
+                <a href="<?php echo e(route('pengaduan')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <?php endif; ?>
+                <?php if(Auth::user()->role == 'admin'): ?>
+                <a href="<?php echo e(route('pengaduan.index')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <a href="<?php echo e(route('Rekap.index')); ?>"><i class="fas fa-chart-line"></i> Data IPK</a>
+                <a href="<?php echo e(route('article.main')); ?>"><i class="fas fa-newspaper"></i> Artikel</a>
                 <a href="<?php echo e(route('users.index')); ?>"><i class="fas fa-user"></i> User</a>
                 <a href="<?php echo e(route('acara.index')); ?>"><i class="fas fa-calendar"></i>Acara</a>
                 <div class="dropdown">
@@ -261,7 +266,8 @@
                         <a href=" ">Statistik Mahasiswa</a>
                     </div>
                 </div>
-                <a href="<?php echo e(route('users.edit',Auth::user()->id)); ?>"><i class="fas fa-cog"></i> Settings</a>
+                <?php endif; ?>
+                <a href="<?php echo e(route('profile.edit',Auth::user()->id)); ?>"><i class="fas fa-cog"></i> Settings</a>
                 <a href="<?php echo e(route('logout')); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>

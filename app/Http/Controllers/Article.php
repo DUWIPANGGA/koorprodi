@@ -49,7 +49,6 @@ class Article extends Controller
             'picture_article' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Maksimal 2MB
         ]);
         $path = $request->file('picture_article')->store('uploads/article', 'public');
-// dd($path);
         $result = ModelsArticle::create([
             'judul' => $request->title,
             'user_id' => Auth::user()->id,
@@ -108,7 +107,7 @@ class Article extends Controller
         }
         if ($request->hasFile('picture_article')) {
             Storage::delete('uploads/' . $article->picture_article);
-            $path = $request->file('picture_article')->store('articles', 'public');
+            $path = $request->file('picture_article')->store('uploads', 'public');
             $article->picture_article = $path;
         }
         $article->save();

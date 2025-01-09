@@ -45,7 +45,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 10vh">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><img src="logopolindra.png " alt=""></i>FORMADIKSI</h1>
+                    <h4 class="m-0"><img src="logopolindra.png " alt="" style="height: 20px;width:20px;"></i>FORMADIKSI</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

@@ -22,7 +22,6 @@
         .container-card i {
             font-size: 100px;
             color: #4CAF50;
-            /* Aksen hijau untuk ikon */
         }
 
         .container-card .fw-bold {
@@ -41,16 +40,15 @@
         }
 
         .icon-list ul li a {
-            color: #031927;
+            color: #080907;
             /* Warna biru gelap */
             font-size: 20px;
             text-decoration: none;
         }
 
-        .icon-list ul li a:hover {
-            color: #4CAF50;
-            /* Aksen hijau pada hover */
-        }
+        /* .icon-list ul li:hover {
+            color: #98aeb0;
+        } */
 
         /* Warna dan desain untuk grafik */
         #ipkChart {
