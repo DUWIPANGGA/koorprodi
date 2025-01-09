@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORMADIKSI - @yield('title')</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logopolindra.png ') }}">
+    <title>FORMADIKSI - <?php echo $__env->yieldContent('title'); ?></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('logopolindra.png ')); ?>">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -17,7 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
 
-    @livewireStyles
+    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
+
     <style>
         body {
             margin: 0;
@@ -76,7 +77,6 @@
         .menu a {
             display: block;
             color: #080907;
-            color: #080907;
             padding: 10px 15px;
             margin-bottom: 10px;
             text-decoration: none;
@@ -87,7 +87,11 @@
 
         .menu a:hover {
             color: #fff;
+<<<<<<< HEAD:storage/framework/views/aa19ddb178d4698fdb4b1de4a0d60290.php
             background-color: #849878; /* Aksen hijau untuk hover */
+=======
+            background-color: #98aeb0; /* Aksen hijau untuk hover */
+>>>>>>> 6253f4470bd06e21b67d3528d09a659b51aa3cfc:storage/framework/views/8ea5e849d2097a01374501b76290f594.php
         }
 
         .menu a i {
@@ -247,32 +251,33 @@ body {
 });
 
     </script>
-    @livewireStyles
+    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
+
 </head>
 
 <body>
     <div class="dashboard">
         <div class="sidebar col-md-2 bg-white vh-90" id="sidebar" style="width: 200px;">
             <div class="row">
-                <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
+                <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="Foto Profil"
                 style="height: 3rem;width:3rem; border-radius: 50%; object-fit:cover; border: #000 1px solid">
             
                 <h5 style="text-align: center; font-size: 18px; color: #080907;">FORMADIKSI</h5>
             </div>
-            {{-- <h5 style="text-align: center; font-size: 18px; color: blue;">FORMADIKSI</h5> --}}
+            
             <div class="menu">
-                <a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="<?php echo e(route('dashboard')); ?>" class="active"><i class="fas fa-home"></i> Home</a>
                 
-                <a href="{{route('rekap')  }}"><i class="fas fa-sliders-h"></i> Rekap</a>
-                @if (Auth::user()->role == 'user')
-                <a href="{{ route('pengaduan') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
-                @endif
-                @if (Auth::user()->role == 'admin')
-                <a href="{{ route('pengaduan.index') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
-                <a href="{{ route('Rekap.index') }}"><i class="fas fa-chart-line"></i> Data IPK</a>
-                <a href="{{ route('article.main') }}"><i class="fas fa-newspaper"></i> Artikel</a>
-                <a href="{{ route('users.index') }}"><i class="fas fa-user"></i> User</a>
-                <a href="{{ route('acara.index') }}"><i class="fas fa-calendar"></i>Acara</a>
+                <a href="<?php echo e(route('rekap')); ?>"><i class="fas fa-sliders-h"></i> Rekap</a>
+                <?php if(Auth::user()->role == 'user'): ?>
+                <a href="<?php echo e(route('pengaduan')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <?php endif; ?>
+                <?php if(Auth::user()->role == 'admin'): ?>
+                <a href="<?php echo e(route('pengaduan.index')); ?>"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <a href="<?php echo e(route('Rekap.index')); ?>"><i class="fas fa-chart-line"></i> Data IPK</a>
+                <a href="<?php echo e(route('article.main')); ?>"><i class="fas fa-newspaper"></i> Artikel</a>
+                <a href="<?php echo e(route('users.index')); ?>"><i class="fas fa-user"></i> User</a>
+                <a href="<?php echo e(route('acara.index')); ?>"><i class="fas fa-calendar"></i>Acara</a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle"><i class="fas fa-graduation-cap"></i> Mahasiswa</a>
                     <div class="dropdown-menu">
@@ -281,9 +286,9 @@ body {
                         <a href=" ">Statistik Mahasiswa</a>
                     </div>
                 </div>
-                @endif
-                <a href="{{ route('profile.edit',Auth::user()->id) }}"><i class="fas fa-cog"></i> Settings</a>
-                <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <?php endif; ?>
+                <a href="<?php echo e(route('profile.edit',Auth::user()->id)); ?>"><i class="fas fa-cog"></i> Settings</a>
+                <a href="<?php echo e(route('logout')); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <button onclick="toggleSidebar()" class="param-button"
@@ -292,14 +297,16 @@ body {
         </button>
 
     <div class="content-wrapper">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 
     </div>
-    @livewireScripts
+    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
+
     <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
 </html>
+<?php /**PATH C:\Users\MyBook Hype AMD\Documents\Forma\koorprodi\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>
