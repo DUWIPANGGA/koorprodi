@@ -747,7 +747,7 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-lg-12">
           <div class="copyright-text">
             <p>Copyright © 2024 FORMADIKSI POLINDRA. All Rights Reserved. 
-          <br>Design: <a href="https://api.whatsapp.com/send?phone=6285956404789" target="_blank" title="css templates">KOORPRODI-Duwipangga</a></p>
+          <br>Design: <a href="https://linktr.ee/duwipangga" target="_blank" title="connect with me">KOORPRODI-Duwipangga</a></p>
           </div>
         </div>
       </div>

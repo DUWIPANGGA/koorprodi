@@ -18,7 +18,7 @@ class Article extends Controller
         return view('article.show', compact('articles'));
     }
     public function main()
-    {   
+    {
         $articles = ModelsArticle::all();
         return view('article.index', compact('articles'));
     }
@@ -27,16 +27,17 @@ class Article extends Controller
         $article = ModelsArticle::find($id);
         $recommendedArticles = ModelsArticle::latest()->take(8)->get();
 
-        return view('article.show', compact('article','recommendedArticles'));
+        return view('article.show', compact('article', 'recommendedArticles'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('article.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +59,7 @@ class Article extends Controller
         if ($result) {
             $article = ModelsArticle::find($result)->first();
             // dd($article);
-            return redirect()->route('article.show',$article->id)->with('success', 'berhasil menyimpan ke database');
+            return redirect()->route('article.show', $article->id)->with('success', 'berhasil menyimpan ke database');
         } else {
             return redirect()->route('article.insert')->with('error', 'gagal menyimpan ke database');
         }
@@ -74,7 +75,7 @@ class Article extends Controller
 
         if (isset($article)) {
             return view('article.edit', compact('article', 'recommendedArticles'));
-        } else {    
+        } else {
             $articles = ModelsArticle::all();
             return view('article.index', compact('articles', 'recommendedArticles'));
         }

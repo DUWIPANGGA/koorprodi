@@ -46,12 +46,13 @@
 
         /* Sidebar Styling */
 .sidebar {
-    width: 240px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
     padding: 20px;
     background-color: #adc0bb; /* Secondary color */
     color: #080907; /* Text color */
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
     overflow-y: auto;
 }
 
@@ -144,7 +145,9 @@
             background-color: #F4F4F4; /* Warna abu-abu lembut */
             overflow-y: auto;
         }
-
+.hidden{
+    display: none;
+}
         .container-card {
             background: #fff;
             padding: 15px;
@@ -273,29 +276,15 @@ body {
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar");
-            if (sidebar.style.display === "none") {
-                sidebar.style.display = "block";
-            } else {
-                sidebar.style.display = "none";
-            }
-        }
-        document.querySelector('.dropdown-toggle').addEventListener('click', function(e) {
-    e.preventDefault();
-    const dropdownMenu = this.nextElementSibling;
-    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-});
-
-    </script>
+    
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
 
 </head>
 
 <body>
     <div class="dashboard">
-        <div class="sidebar col-md-2 bg-white vh-100 d-flex flex-column align-items-start p-3" id="sidebar" style="width: 200px;">
+        <div class="sidebar col-md-2 bg-white vh-100 align-items-start p-3" id="sidebar_">
+
             <!-- Header Logo dan Nama -->
             <div class="d-flex align-items-center justify-content-center text-center mb-4">
                 <div class="me-2">
@@ -327,14 +316,8 @@ body {
                 <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link <?php echo e(request()->routeIs('Rekap.index') ? 'active' : ''); ?>">
                     <i class="fas fa-chart-line me-2"></i> Data IPK
                 </a>
-                <a href="<?php echo e(route('article.main')); ?>" class="nav-link <?php echo e(request()->routeIs('article.main') ? 'active' : ''); ?>">
-                    <i class="fas fa-newspaper me-2"></i> Artikel
-                </a>
                 <a href="<?php echo e(route('users.index')); ?>" class="nav-link <?php echo e(request()->routeIs('users.index') ? 'active' : ''); ?>">
                     <i class="fas fa-user me-2"></i> User
-                </a>
-                <a href="<?php echo e(route('acara.index')); ?>" class="nav-link <?php echo e(request()->routeIs('acara.index') ? 'active' : ''); ?>">
-                    <i class="fas fa-calendar me-2"></i> Acara
                 </a>
                 <div class="dropdown">
                     <a class="nav-link" href="<?php echo e(route('mahasiswa.index')); ?>" aria-expanded="false">
@@ -343,10 +326,14 @@ body {
                 </div>
                 <?php endif; ?>
                 <?php if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
-                
-                
                 <a href="<?php echo e(route('aspirasi.index')); ?>" class="nav-link <?php echo e(request()->routeIs('aspirasi.index') ? 'active' : ''); ?>">
                     <i class="fa fa-envelope"></i> Aspirasi
+                </a>
+                <a href="<?php echo e(route('article.main')); ?>" class="nav-link <?php echo e(request()->routeIs('article.main') ? 'active' : ''); ?>">
+                    <i class="fas fa-newspaper me-2"></i> Artikel
+                </a>
+                <a href="<?php echo e(route('acara.index')); ?>" class="nav-link <?php echo e(request()->routeIs('acara.index') ? 'active' : ''); ?>">
+                    <i class="fas fa-calendar me-2"></i> Acara
                 </a>
                 <?php endif; ?>
                 
@@ -375,7 +362,22 @@ body {
     <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-    
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar_");
+            
+            console.log(sidebar);
+            if (sidebar.style.display == "none") {
+                console.log('on');
+                
+                sidebar.style.display = "block";
+            } else {
+                console.log('off');
+                sidebar.style.display = "none";
+            }
+        }
+
+    </script>
 <?php echo $__env->yieldContent('scripts'); ?>
 <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>

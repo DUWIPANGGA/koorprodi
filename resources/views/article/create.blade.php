@@ -1,7 +1,7 @@
-<!-- Input Content -->
-@extends('layouts.dashboard')
 
 @section('title', 'Create a Post')
+@extends('layouts.dashboard')
+
 @section('content')
     <div class="container-fluid h-100 ">
         <div class="row">

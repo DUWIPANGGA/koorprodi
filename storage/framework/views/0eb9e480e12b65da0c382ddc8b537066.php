@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'List Aspirasi'); ?>
 
 <?php $__env->startSection('content'); ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>List Aspirasi</h1>
         </div>
@@ -11,43 +11,45 @@
         <?php endif; ?>
 
         <div class="card p-4" style="border-radius: 10px; background-color: #fff;">
-            <table class="table table-striped">
-                <thead class="thead-light">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Isi Aspirasi</th>
-                        <th>Tanggal</th>
-                        <th>Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $__empty_1 = true; $__currentLoopData = $aspirasi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-light">
                         <tr>
-                            <td><?php echo e($loop->iteration); ?></td>
-                            <td><?php echo e($item->nama); ?></td>
-                            <td><?php echo e(Str::limit($item->isi, 50)); ?></td>
-                            <td><?php echo e($item->created_at->format('d M Y H:i')); ?></td>
-                            <td>
-                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal<?php echo e($item->id); ?>">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <form action="<?php echo e(route('aspirasi.destroy', $item->id)); ?>" method="POST" class="d-inline">
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo method_field('DELETE'); ?>
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus aspirasi ini?')">
-                                        <i class="fas fa-trash"></i>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Isi Aspirasi</th>
+                            <th>Tanggal</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $__empty_1 = true; $__currentLoopData = $aspirasi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <tr>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td><?php echo e($item->nama); ?></td>
+                                <td><?php echo e(Str::limit($item->isi, 50)); ?></td>
+                                <td><?php echo e($item->created_at->format('d M Y H:i')); ?></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal<?php echo e($item->id); ?>">
+                                        <i class="fas fa-eye"></i>
                                     </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                        <tr>
-                            <td colspan="5" class="text-center">Belum ada aspirasi</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                                    <form action="<?php echo e(route('aspirasi.destroy', $item->id)); ?>" method="POST" class="d-inline">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus aspirasi ini?')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <tr>
+                                <td colspan="5" class="text-center">Belum ada aspirasi</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
             <div class="d-flex justify-content-center">
                 <?php echo e($aspirasi->links('pagination::bootstrap-4')); ?>
 
@@ -55,7 +57,7 @@
         </div>
     </div>
 
-    <!-- Detail Aspirasi -->
+    <!-- Detail Aspirasi Modal -->
     <?php $__currentLoopData = $aspirasi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="modal fade" id="detailModal<?php echo e($item->id); ?>" tabindex="-1" aria-labelledby="detailModalLabel<?php echo e($item->id); ?>" aria-hidden="true">
             <div class="modal-dialog">
@@ -90,7 +92,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // DOM
     document.addEventListener('DOMContentLoaded', () => {
         // modal
         const modals = document.querySelectorAll('.modal');
@@ -110,4 +111,5 @@
     });
 </script>
 <?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/aspirasi/index.blade.php ENDPATH**/ ?>

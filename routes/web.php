@@ -20,17 +20,6 @@ use App\Http\Controllers\aspirasiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\mahasiswa;
 
-/*
-|--------------------------------------------------------------------------
-| Route buat guest (Home, About Us, Rumah Aspirasi)
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware(['auth', 'kominfo'])->group(function () {
-    Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
-    Route::resource('aspirasi', aspirasiController::class);
-    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
-});
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 
 
@@ -92,20 +81,32 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
-    Route::resource('acara', AcaraController::class);
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
     Route::resource('Rekap', IPK::class);
-    Route::get('admin/dashboard', [Article::class, 'main'])->name('article.main');
-    Route::post('admin/article/new', [Article::class, 'create'])->name('article.create');
-    Route::get('admin/article/new', [Article::class, 'create'])->name('article.create');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Route buat guest (Home, About Us, Rumah Aspirasi)
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'kominfo'])->group(function () {
+    Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
+    Route::resource('acara', AcaraController::class);
+    Route::resource('aspirasi', aspirasiController::class);
+    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+    Route::get('admin/article/create', [Article::class, 'create'])->name('article.create');
+    
+    Route::get('admin/article', [Article::class, 'main'])->name('article.main');
     Route::delete('admin/article/{id}', [Article::class, 'destroy'])->name('article.destroy');
+    Route::post('admin/article/new', [Article::class, 'store'])->name('article.store');
     Route::put('admin/article/{id}', [Article::class, 'update'])->name('article.update');
     Route::post('admin/article/save', [Article::class, 'store'])->name('article.insert');
     Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
 });
-
-
 
 /*
 |--------------------------------------------------------------------------
