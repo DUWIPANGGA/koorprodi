@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PkmProcessController;
 use App\Http\Controllers\aspirasiController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\mahasiswa;
 
 /*
@@ -25,8 +26,11 @@ use App\Http\Controllers\mahasiswa;
 |--------------------------------------------------------------------------
 */
 
-Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
-
+Route::middleware(['auth', 'kominfo'])->group(function () {
+    Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
+    Route::resource('aspirasi', aspirasiController::class);
+    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+});
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 
 
@@ -38,7 +42,7 @@ Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kiri
 
 Route::get('/', function () {
     $recommendedArticles = ModelsArticle::latest()->take(8)->get();
-    return view('index',compact('recommendedArticles'));
+    return view('index', compact('recommendedArticles'));
 });
 
 // Form Login
@@ -53,13 +57,18 @@ Route::post('/registrasi', [AuthController::class, 'store']);
 
 /*
 |--------------------------------------------------------------------------
-| Route untuk Dashboard (Setelah Login)
+| Route untuk uji coba halaman
 |--------------------------------------------------------------------------
 */
 Route::get('/try', function () {
     return view('Tentang');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Route untuk user
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth'])->group(function () {
     Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
@@ -68,12 +77,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user-edit', [UserController::class, 'edit'])->name('profile.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
     Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
-    
-    
-    
-    
 });
-Route::middleware(['auth','admin'])->group(function () {
+
+/*
+|--------------------------------------------------------------------------
+| Route untuk admin, super admin, koorprodi
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
     Route::resource('users', UserController::class);
     Route::resource('pengaduan', PengaduanController::class);
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
@@ -81,8 +93,6 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::resource('acara', AcaraController::class);
-    Route::resource('aspirasi', aspirasiController::class);
-    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
     Route::resource('Rekap', IPK::class);
@@ -97,6 +107,11 @@ Route::middleware(['auth','admin'])->group(function () {
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Route untuk logout
+|--------------------------------------------------------------------------
+*/
 Route::get('/logout', function () {
     return redirect('/login');
 })->name('logout');

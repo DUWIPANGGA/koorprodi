@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class admin
+class kominfo
 {
     /**
      * Handle an incoming request.
@@ -24,6 +24,12 @@ class admin
         elseif (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
         }
-        return redirect()->route('dashboard');
+        elseif (Auth::check() && Auth::user()->role == 'KOMINFO') {
+            return $next($request);
         }
+        else{
+            // return $next($request);
+            return redirect()->route('login');
+        }
+    }
 }

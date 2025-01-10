@@ -47,8 +47,8 @@
         }
 
         /* .icon-list ul li:hover {
-                color: #98aeb0;
-            } */
+                            color: #98aeb0;
+                        } */
 
         /* Warna dan desain untuk grafik */
         #ipkChart {
@@ -100,34 +100,56 @@
         </div>
 
 
-        <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div class="container" style="text-align: left;">
-                <h2 class="h5">SEMESTER</h2>
-                <p class="fs-3 fw-bold">{{ $ipkNew->semester ?? 1 }}</p>
-                <h2 class="h5">IPK</h2>
-                <p class="fs-3 fw-bold">{{ $ipkNew->IPK ?? 0 }}</p>
+        <div class="container-card card d-flex flex-row align-items-start justify-content-between"
+     style="width: 100%; max-width: 400px; height: auto; padding: 20px; background-color: #ffffff; 
+            border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
+    <div class="container" style="text-align: left;">
+        <!-- SEMESTER -->
+        <div class="d-flex align-items-center mb-4">
+            <div style="background-color: #007bff; width: 50px; height: 50px; border-radius: 50%; display: flex; 
+                        justify-content: center; align-items: center; margin-right: 15px;">
+                <i class="fas fa-calendar-alt" style="font-size: 24px; color: white;"></i>
+            </div>
+            <div>
+                <h2 class="h5" style="color: #007bff; margin-bottom: 5px;">SEMESTER</h2>
+                <p class="fs-3 fw-bold" style="color: #333; margin: 0;">{{ $ipkNew->semester ?? 1 }}</p>
             </div>
         </div>
-
- <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-    style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <div
-        style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-        <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
-    </div>
-    <div class="container ms-3" style="text-align: left;">
-        @if (Auth::user()->pelaporan_ipk == 1)
-            <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
-            <p class="fs-6" style="color: #333;">Anda sudah melakukan pelaporan IPK di semester ini!</p>
-            <p class="fs-7" style="color: #555;">Terima kasih telah memperbarui data semester ini.</p>
-        @elseif (Auth::user()->pelaporan_ipk == 0)
-            <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
-            <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
-            <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
-        @endif
+        
+        <!-- IPK -->
+        <div class="d-flex align-items-center">
+            <div style="background-color: #28a745; width: 50px; height: 50px; border-radius: 50%; display: flex; 
+                        justify-content: center; align-items: center; margin-right: 15px;">
+                <i class="fas fa-graduation-cap" style="font-size: 24px; color: white;"></i>
+            </div>
+            <div>
+                <h2 class="h5" style="color: #28a745; margin-bottom: 5px;">IPK</h2>
+                <p class="fs-3 fw-bold" style="color: #333; margin: 0;">{{ $ipkNew->IPK ?? 0 }}</p>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
+        <div class="container-card card d-flex flex-row align-items-center justify-content-between"
+            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div
+                style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
+            </div>
+            <div class="container ms-3" style="text-align: left;">
+                @if (Auth::user()->pelaporan_ipk == 1)
+                    <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
+                    <p class="fs-6" style="color: #333;">Anda sudah melakukan pelaporan IPK di semester ini!</p>
+                    <p class="fs-7" style="color: #555;">Terima kasih telah memperbarui data semester ini.</p>
+                @elseif (Auth::user()->pelaporan_ipk == 0)
+                    <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
+                    <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
+                    <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
+                @endif
+            </div>
+        </div>
 
         <!-- Informasi Semester -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
@@ -143,7 +165,29 @@
                 <p class="fs-7" style="color: #555;">Pastikan Anda mengikuti setiap pengumuman semester ini.</p>
             </div>
         </div>
+@if (Auth::user()->role == 'super_admin')
 
+        <!-- Container Card -->
+        <div class="container-card card d-flex flex-column align-items-center justify-content-between"
+            style="width: 30%; height: 40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; 
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+            <!-- Description -->
+            <div
+                style="background-color: #4CAF50; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; width: 100px; height: 100px;">
+                <i class="fas fa-file-alt" style="font-size: 50px; color: white;"></i>
+            </div>
+            <div>
+                <h5 style="color: #333;">Event Rekap</h5>
+                <p style="color: #555; font-size: 14px; margin: 10px 0;">Klik tombol di bawah untuk membuka form rekap
+                    event.</p>
+            </div>
+
+            <!-- Button -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                Click for option
+            </button>
+        </div>
+        @endif
         <div class="row g-4" style="width: 100vw;">
             {{-- <h3 class="mb-4">Baca Juga</h3> --}}
             @foreach ($recommendedArticles as $recommendedArticle)
@@ -167,8 +211,36 @@
                 </div>
             @endforeach
         </div>
+        @if (Auth::user()->role == 'super_admin')
 
-
+        <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">EVENT REKAP IPK</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="statusForm" method="POST" action="{{ route('rekap.event') }}">
+                            <!-- CSRF Token -->
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="alert alert-warning" role="alert">
+                                <i class="fas fa-exclamation-triangle"></i> Peringatan: Mohon berhati-hati, karena dapat
+                                berpengaruh besar terhadap data perekapan.
+                            </div>
+                            <!-- Buttons for Status -->
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-danger w-48 send-status" data-status="0"
+                                    name="status" value="0">Buka rekap</button>
+                                <button type="submit" class="btn btn-success w-48 send-status" data-status="1"
+                                    name="status" value="1">Tutup rekap</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 
@@ -245,5 +317,26 @@
         // Inisialisasi Chart
         const ctx = document.getElementById('ipkChart').getContext('2d');
         const ipkChart = new Chart(ctx, config);
+
+        const modal = document.getElementById('modal');
+        const openModal = document.getElementById('openModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // Open modal
+        openModal.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
     </script>
 @endsection

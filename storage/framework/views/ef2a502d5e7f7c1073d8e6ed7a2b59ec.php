@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +64,7 @@ https://templatemo.com/tm-570-chain-app-dev
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="<?php echo e(route('rumahaspirasi')); ?>">Rumah Aspirasi</a></li>
+              <li class="scroll-to-section"><a href="#rumahaspirasi">Rumah Aspirasi</a></li>
               <li class="scroll-to-section"><a href="#artikel">Artikel</a></li>
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
             </ul>        
@@ -242,20 +241,7 @@ https://templatemo.com/tm-570-chain-app-dev
 
     <div class="container" id="artikel">
       <div class="row">
-        <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-        <div class="col-lg-3">
-          <div class="service-item first-service">
-            <div class="icon"></div>
-            <h4><?php echo e($recommendedArticle->title); ?></h4>
-            <p><?php echo Str::limit($recommendedArticle->content, 100); ?></p>
-            <div class="text-button">
-              <a href="<?php echo e(route('article.show.detail', $recommendedArticle->id)); ?>">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-                
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
       </div>
     </div>
   </div>
@@ -308,6 +294,98 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-lg-6">
           <div class="right-image">
             <img src="assets/images/about-right-dec.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rumahaspirasi" class="rumah-aspirasi section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4>Rumah <em>Aspirasi</em></h4>
+            <?php if(session('status')): ?>
+            <div class="alert alert-success" role="alert">
+              <?php echo e(session('status')); ?>
+
+            </div>
+            <?php elseif(session('error')): ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo e(session('error')); ?>
+
+            </div>
+            <?php endif; ?>
+            <p>
+              Punya pendapat atau saran tentang formadiksi? sampaikan saja lewat form dibawah ini!
+            </p>
+          </div>
+          <div>
+            <form method="POST" action="<?php echo e(route('rumahaspirasi.kirim')); ?>" class="w-full">
+            <?php echo csrf_field(); ?>
+            <div class="mb-2">
+              <p class="rumah-aspirasi-label">Nama</p>
+              <input type="text" name="nama" id="nama" placeholder="Nama kamu" 
+                  class="form-control <?php $__errorArgs = ['nama'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                  maxlength="100"
+                  onkeyup="document.getElementById('charCount1').innerHTML = this.value.length + '/100'">
+              <div class="form-feedback-wrapper">
+                  <?php $__errorArgs = ['nama'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                      <p class="text-danger"><?php echo e($message); ?></p>
+                  <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                  <p class="p-coy"><span id="charCount1">0/100</span> karakter</p>
+              </div>
+            </div>
+            
+            <div class="mb-2">
+                <p class="rumah-aspirasi-label">Aspirasi</p>
+                <textarea name="isi" id="isi" placeholder="Masukan aspirasi kamu" rows="4"
+                    class="form-control <?php $__errorArgs = ['isi'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                    maxlength="1000"
+                    onkeyup="document.getElementById('charCount2').innerHTML = this.value.length + '/1000'"></textarea>
+                <div class="form-feedback-wrapper">
+                  <?php $__errorArgs = ['isi'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                      <p class="text-danger"><?php echo e($message); ?></p>
+                  <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                  <p class="p-coy"><span id="charCount2">0/1000</span> karakter</p>
+              </div>
+            </div>
+
+            <div class="mb-4">
+                <button type="submit" class="rumah-aspirasi button"><i class="fa fa-paper-plane"></i>
+                    Kirim!
+                </button>
+            </div>
+        </form>
           </div>
         </div>
       </div>

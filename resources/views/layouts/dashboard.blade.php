@@ -335,18 +335,20 @@ body {
                     <i class="fas fa-calendar me-2"></i> Acara
                 </a>
                 <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ route('mahasiswa.index') }}" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="{{ route('mahasiswa.index')}}" aria-expanded="false">
                         <i class="fas fa-graduation-cap me-2"></i> Mahasiswa
                     </a>
                 </div>
+                @endif
+                @if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
                 {{-- kominfo, disini bang tambahin rolenya. Gangerti wkwkwk --}}
                 {{-- @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin') --}}
                 <a href="{{ route('aspirasi.index') }}" class="nav-link {{ request()->routeIs('aspirasi.index') ? 'active' : '' }}">
                     <i class="fa fa-envelope"></i> Aspirasi
                 </a>
+                @endif
                 {{-- @endif --}}
                 {{--  --}}
-                @endif
                 <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
                     <i class="fas fa-cog me-2"></i> Settings
                 </a>
@@ -368,7 +370,8 @@ body {
     </div>
     @livewireScripts
     <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
     
 @yield('scripts')
 @stack('scripts')
