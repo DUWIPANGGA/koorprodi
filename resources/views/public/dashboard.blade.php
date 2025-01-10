@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Dashboard PKM')
+@section('title', 'Dashboard')
 @section('styles')
     <style>
         .vertical-hr {
@@ -47,8 +47,8 @@
         }
 
         /* .icon-list ul li:hover {
-            color: #98aeb0;
-        } */
+                color: #98aeb0;
+            } */
 
         /* Warna dan desain untuk grafik */
         #ipkChart {
@@ -92,35 +92,42 @@
         </div>
         <!-- IPK Input -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-    style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <div class="container" style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;">
-        <canvas id="ipkChart" style="width: 100%; height: 100%;"></canvas> <!-- Canvas menyesuaikan penuh -->
-    </div>
-</div>
+            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div class="container"
+                style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;">
+                <canvas id="ipkChart" style="width: 100%; height: 100%;"></canvas> <!-- Canvas menyesuaikan penuh -->
+            </div>
+        </div>
 
 
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
             style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="container" style="text-align: left;">
                 <h2 class="h5">SEMESTER</h2>
-                <p class="fs-3 fw-bold">{{ $ipkNew->semester }}</p>
+                <p class="fs-3 fw-bold">{{ $ipkNew->semester ?? 1 }}</p>
                 <h2 class="h5">IPK</h2>
-                <p class="fs-3 fw-bold">{{ $ipkNew->IPK }}</p>
+                <p class="fs-3 fw-bold">{{ $ipkNew->IPK ?? 0 }}</p>
             </div>
         </div>
 
-        <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div
-                style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
-            </div>
-            <div class="container ms-3" style="text-align: left;">
-                <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
-                <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
-                <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
-            </div>
-        </div>
+ <div class="container-card card d-flex flex-row align-items-center justify-content-between"
+    style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div
+        style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+        <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
+    </div>
+    <div class="container ms-3" style="text-align: left;">
+        @if (Auth::user()->pelaporan_ipk == 1)
+            <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
+            <p class="fs-6" style="color: #333;">Anda sudah melakukan pelaporan IPK di semester ini!</p>
+            <p class="fs-7" style="color: #555;">Terima kasih telah memperbarui data semester ini.</p>
+        @elseif (Auth::user()->pelaporan_ipk == 0)
+            <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
+            <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
+            <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
+        @endif
+    </div>
+</div>
 
         <!-- Informasi Semester -->
         <div class="container-card card d-flex flex-row align-items-center justify-content-between"
@@ -131,44 +138,36 @@
             </div>
             <div class="container ms-3" style="text-align: left;">
                 <h5 class="fw-bold fs-5" style="color: #007bff;">Informasi Semester</h5>
-                <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester 
+                <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester
                         {{ $semester }}</strong>.</p>
                 <p class="fs-7" style="color: #555;">Pastikan Anda mengikuti setiap pengumuman semester ini.</p>
             </div>
         </div>
 
-        <!-- Informasi KIPK -->
-        <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width:30%; height:40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div
-                style="background-color: #ff5733; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-hand-holding-heart" style="font-size: 50px; color: white;"></i>
-            </div>
-            <div class="container ms-3" style="text-align: left;">
-                <h5 class="fw-bold fs-5" style="color: #ff5733;">Informasi KIPK</h5>
-                <p class="fs-6" style="color: #333;">Anda terdaftar sebagai penerima KIPK semester ini!</p>
-                <p class="fs-7" style="color: #555;">Pastikan Anda memenuhi semua persyaratan dan mengikuti prosedur untuk
-                    bantuan ini.</p>
-            </div>
-        </div>
-        <div class="row">
-            <h3>Baca Juga</h3>
+        <div class="row g-4" style="width: 100vw;">
+            {{-- <h3 class="mb-4">Baca Juga</h3> --}}
             @foreach ($recommendedArticles as $recommendedArticle)
-                <div class="col-md-3 mb-4">
-                    <div class="card">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 shadow-sm">
                         <div class="card-img-top"
-                            style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}'); background-size: cover; background-position: center; height: 200px; filter: brightness(50%);">
+                            style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}'); 
+                                    background-size: cover; 
+                                    background-position: center; 
+                                    height: 200px; 
+                                    filter: brightness(50%);
+                                    border-radius: 0.375rem 0.375rem 0 0;">
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: #333;">{{ $recommendedArticle->title }}</h5>
-                            <p class="card-text" style="color: #333;">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
-                            <a href="{{ route('article.show.detail', $recommendedArticle->id) }}" class="btn btn-primary">Baca
-                                Selengkapnya</a>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-dark">{{ $recommendedArticle->title }}</h5>
+                            <p class="card-text text-muted">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
+                            <a href="{{ route('article.show.detail', $recommendedArticle->id) }}"
+                                class="btn btn-primary mt-auto">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+
 
     </div>
 @endsection
@@ -202,7 +201,7 @@
             data: dataMahasiswa,
             options: {
                 responsive: true,
-                
+
                 plugins: {
                     datalabels: {
                         align: 'top',

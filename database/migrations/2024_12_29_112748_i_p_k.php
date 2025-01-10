@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('IPK');
             $table->string('dokumen');
             $table->integer('semester');
+            $table->string('kesulitan');
             $table->boolean('validated')->default(0);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();

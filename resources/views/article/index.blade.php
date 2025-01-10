@@ -1,29 +1,32 @@
-<!-- Input Content -->
 @extends('layouts.dashboard')
 
 @section('title', 'Create a Post')
 
 @section('content')
-    <div class="container-fluid h-100 ">
+    <div class="container-fluid h-100">
         <div class="row">
-            {{-- @include('admin.sidebar') --}}
+            <div class="col" style="overflow-x: auto; height: 92vh; padding-bottom: 5rem;">
+                <div class="container h-100 w-100" style="padding-bottom: 5rem;">
+                    <!-- Title Section -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h1>Data Artikel</h1>
+                        <a href="{{ route('article.create') }}" class="btn btn-primary btn-sm">Buat Artikel Baru</a>
+                    </div>
 
-            <div class="col" style="overflow-x: auto; height:92vh;padding-bottom: 5rem;">
-                <div class="container h-100 w-100" style=" height:100px;padding-bottom: 5rem;">
-                        <h1>List of Articles</h1>
-                    
-                        @if (session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
-                        @endif
-                    
+                    @if (session('success'))
+                        <div class="alert alert-success mb-4">{{ session('success') }}</div>
+                    @endif
+
+                    <!-- Table Container -->
+                    <div class="card p-4" style="border-radius: 10px; background-color: #fff;">
                         <table class="table table-striped">
-                            <thead>
+                            <thead class="thead-light">
                                 <tr>
-                                    <th>NO</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Picture</th>
-                                    <th>Actions</th>
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Konten</th>
+                                    <th>Gambar</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +34,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $article->judul }}</td>
-                                        <td>{{ Str::limit(strip_tags($article->content, 50)) }}</td>
+                                        <td>{{ Str::limit(strip_tags($article->content), 50) }}</td>
                                         <td>
                                             @if ($article->picture_article)
                                                 <img src="{{ asset('storage/' . $article->picture_article) }}" alt="Picture" style="width: 100px;">
@@ -44,18 +47,18 @@
                                             <form action="{{ route('article.destroy', $article->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-center">No articles found</td>
+                                        <td colspan="5" class="text-center">Tidak ada artikel ditemukan</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
-                    {{-- @endsection --}}
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <!-- Form Pencarian -->
 <div class="mb-3">
     <input type="text" wire:model="search" class="form-control" placeholder="Cari pengguna berdasarkan nama atau email...">
-    <button wire:click="UserTable" class="btn btn-primary">
+    <button wire:click="UserTable" class="btn btn-primary mt-2">
         Cari
     </button>
 </div>

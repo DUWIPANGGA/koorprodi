@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Rekap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,50 +32,55 @@ class IPK extends Controller
     }
 
     public function store(Request $request)
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-    $request->validate([
-        'IPK' => 'required',
-        'dokumen' => 'required|mimes:pdf',
-        'semester' => 'required',
+        $request->validate([
+            'IPK' => 'required',
+            'dokumen' => 'required|mimes:pdf',
+            'semester' => 'required',
+        ]);
+        // Cek apakah data rekap untuk user sudah ada
+        $existingRekap = Rekap::where('user_id', $user->id)->where('semester', $request->semester)->first();
+        if ($existingRekap) {
+            return redirect()->back()->with('error', 'Rekap untuk semester ini sudah ada.');
+        }
+
+        // Nama dokumen
+        $documentName = $user->nim . '-IPK-semester-' . $request->semester . '.' . $request->dokumen->extension();
+        $path = storage_path('app/public/angkatan-' . $user->angkatan);
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0755, true);
+        }
+        // Cek apakah file sudah ada
+        if (file_exists($path . '/' . $documentName)) {
+            return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
+        }
+
+        // Simpan file
+        if ($request->dokumen->storeAs('angkatan-' . $user->angkatan, $documentName, 'public')) {
+            $storedPath = 'storage/angkatan-' . $user->angkatan . '/' . $documentName;
+            Rekap::create([
+                'user_id' => $user->id,
+                'IPK' => $request->IPK,
+                'dokumen' => $storedPath,
+                'semester' => $request->semester,
+            ]);
+            $user = User::find(Auth::user()->id);
+
+if ($user) {
+    $user->update([
+        'pelaporan_ipk' => 1
     ]);
-
-    // Cek apakah data rekap untuk user sudah ada
-    $existingRekap = Rekap::where('user_id', $user->id)->where('semester', $request->semester)->first();
-    if ($existingRekap) {
-        return redirect()->back()->with('error', 'Rekap untuk semester ini sudah ada.');
-    }
-
-    // Nama dokumen
-    $documentName = $user->nim . '-IPK-semester-' . $request->semester . '.' . $request->dokumen->extension();
-    $path = storage_path('app/public/angkatan-' . $user->angkatan);
-
-    if (!File::exists($path)) {
-        File::makeDirectory($path, 0755, true);
-    }
-
-    // Cek apakah file sudah ada
-    if (file_exists($path . '/' . $documentName)) {
-        return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
-    }
-
-    // Simpan file
-    $request->dokumen->storeAs('public/angkatan-' . $user->angkatan, $documentName);
-
-    // Path untuk disimpan di database (relatif ke public)
-    $storedPath = 'storage/angkatan-' . $user->angkatan . '/' . $documentName;
-
-    // Simpan data ke database
-    Rekap::create([
-        'user_id' => $user->id,
-        'IPK' => $request->IPK,
-        'dokumen' => $storedPath,
-        'semester' => $request->semester,
-    ]);
-
-    return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
+// dd($result);
+} else {
 }
+            return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
+        } else {
+            return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
+        }
+    }
 
 
     /**
@@ -90,18 +96,18 @@ class IPK extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-{
-    $rekap = Rekap::select('rekap.*', 'users.name', 'users.nim')
-        ->join('users', 'rekap.user_id', '=', 'users.id')
-        ->where('rekap.id', $id)
-        ->first();
+    {
+        $rekap = Rekap::select('rekap.*', 'users.name', 'users.nim')
+            ->join('users', 'rekap.user_id', '=', 'users.id')
+            ->where('rekap.id', $id)
+            ->first();
 
-    if (!$rekap) {
-        return redirect()->route('rekap.index')->with('error', 'Data tidak ditemukan.');
+        if (!$rekap) {
+            return redirect()->route('rekap.index')->with('error', 'Data tidak ditemukan.');
+        }
+
+        return view('ipk.edit', compact('rekap'));
     }
-
-    return view('ipk.edit', compact('rekap'));
-}
 
 
     /**
@@ -130,7 +136,7 @@ class IPK extends Controller
             'IPK' => $request->IPK,
             'validated' => 1,
         ]);
-        
+
         return redirect()->route('Rekap.index')->with('success', 'Data berhasil diupdate');
     }
 
@@ -140,6 +146,6 @@ class IPK extends Controller
     public function destroy($id)
     {
         Rekap::find($id)->delete();
-        return redirect()->route('ipk.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('Rekap.index')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -1,388 +1,390 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>INNOVANA</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+  <head>
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
-        <link rel="icon" type="image/png" sizes="20x20" href="<?php echo e(asset('logopolindra.png ')); ?>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>FORMADIKSI</title>
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('logopolindra.png ')); ?>">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<!--
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+TemplateMo 570 Chain App Dev
 
+https://templatemo.com/tm-570-chain-app-dev
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+-->
 
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
 
-    <body>
+  </head>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="Chain App Dev" height="80px" width="80px">
+              
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#services">Services</a></li>
+              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li class="scroll-to-section"><a href="<?php echo e(route('rumahaspirasi')); ?>">Rumah Aspirasi</a></li>
+              <li class="scroll-to-section"><a href="#artikel">Artikel</a></li>
+              <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
         </div>
-        <!-- Spinner End -->
+      </div>
+    </div>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+    }
+    </style>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  
+  <div id="modal" class="popupContainer" style="display:none;">
+    <div class="popupHeader">
+        <span class="header_title">Login</span>
+        <span class="modal_close"><i class="fa fa-times"></i></span>
+    </div>
 
+    <section class="popupBody">
+        <!-- Social Login -->
+        <div class="social_login">
+            <div class="">
+                <a href="#" class="social_box fb">
+                    <span class="icon"><i class="fab fa-facebook"></i></span>
+                    <span class="icon_title">Connect with Facebook</span>
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 10vh">
-                <a href="" class="navbar-brand p-0">
-                    <h4 class="m-0"><img src="logopolindra.png " alt="" style="height: 20px;width:20px;"></i>FORMADIKSI</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 mt-5">
-                        
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                
-                            </div>
-                        </div>
-                        
-                        <?php if(Route::has('login')): ?>
-                            <div class="nav-item center ">
-                                <?php if(auth()->guard()->check()): ?>
-                                    <a href="<?php echo e(url('/dashboard')); ?>" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
-                                        Dashboard
-                                    </a>
-                                <?php else: ?>
-                                    <a href="<?php echo e(route('login')); ?>" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
-                                        Log in
-                                    </a>
-        
-                                    <?php if(Route::has('register')): ?>
-                                        <a href="<?php echo e(route('register')); ?>"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                            Register
-                                        </a>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </nav>
 
-            <!-- Carousel Start -->
-            <div class="carousel-header">
-                <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="img/polindra-bg.png" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;"> EXPLORE YOUR BRAIN TO BREAK THE LIMIT</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">PROGRAM KREATIVITAS MAHASISWA</h1>
-                                    <p class="mb-5 fs-5">"Program Kreativitas Mahasiswa (PKM) adalah wadah bagi generasi muda untuk menciptakan solusi nyata, mengembangkan potensi diri, dan memberikan kontribusi positif bagi masyarakat. Bergabunglah sekarang dan jadilah bagian dari perubahan!" 
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/polindra-bg2.png" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">PROGRAM KREATIVITAS MAHASISWA</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Berani Bermimpi, Berani Berkarya: Jadilah Inovator Muda Bersama PKM!</h1>
-                                    <p class="mb-5 fs-5">Transformasikan ide-ide brilianmu menjadi solusi nyata bagi masyarakat. Program Kreativitas Mahasiswa (PKM) adalah langkah pertama menuju masa depan penuh inovasi dan prestasi!
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/polindra-bg3.png" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">PROGRAM KREATIVITAS MAHASISWA</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Dari Ide Kecil Menjadi Karya Besar: PKM Adalah Awal Perjalananmu!</h1>
-                                    <p class="mb-5 fs-5">Apapun bidangmu, apapun passion-mu, Program Kreativitas Mahasiswa (PKM) adalah peluang emas untuk menciptakan perubahan yang berarti. 
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                        <span class="carousel-control-next-icon btn bg-primary" aria-hidden="false"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+                <a href="#" class="social_box google">
+                    <span class="icon"><i class="fab fa-google-plus"></i></span>
+                    <span class="icon_title">Connect with Google</span>
+                </a>
             </div>
-            <!-- Carousel End -->
-        </div>
-        
-        <!-- Navbar & Hero End -->
 
+            <div class="centeredText">
+                <span>Or use your Email address</span>
+            </div>
 
-        <!-- Services Start -->
-        <div class="container-fluid bg-light service py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">PKM</h5>
-                    <h1 class="mb-0">Macam Macam Program Kreatifitas Mahasiswa</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-                                    <div class="service-content text-end">
-                                        <h5 class="mb-4">PKM Riset (PKM-R)</h5>
-                                        <p class="mb-0">Program ini bertujuan untuk mengembangkan budaya meneliti di kalangan mahasiswa. <br>
-                                            Fokus: Riset dasar atau terapan.<br>
-                                            Contoh: Eksperimen laboratorium, penelitian sosial, atau pengembangan teknologi baru.<br>
-                                        </p>
-                                    </div>
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-flask fa-4x text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center  bg-white border border-primary rounded p-4 pe-0">
-                                    <div class="service-content text-end">
-                                        <h5 class="mb-4">PKM Kewirausahaan (PKM-K)</h5>
-                                        <p class="mb-0">
-                                            Ditujukan untuk mahasiswa yang memiliki jiwa bisnis dan ingin mengembangkan usaha kreatif. <br>
-
-Fokus: Membentuk bisnis mandiri berbasis inovasi.<br>
-Contoh: Produk fashion, makanan inovatif, atau aplikasi digital.<br>
-
-                                        </p>
-                                    </div>
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-store fa-4x text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-                                    <div class="service-content text-end">
-                                        <h5 class="mb-4">PKM Pengabdian kepada Masyarakat (PKM-PM)</h5>
-                                        <p class="mb-0">Mahasiswa diajak untuk memberikan solusi kepada masyarakat melalui program pengabdian.<br>
-
-                                            Fokus: Memberdayakan masyarakat atau kelompok tertentu.<br>
-                                            Contoh: Pelatihan teknologi untuk petani, program literasi digital untuk UMKM.</p>
-                                    </div>
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-handshake-angle fa-4x text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
-                                    <div class="service-content text-end">
-                                        <h5 class="mb-4">PKM Penerapan Iptek (PKM-PI)</h5>
-                                        <p class="mb-0">Mahasiswa menerapkan ilmu pengetahuan dan teknologi untuk menyelesaikan masalah nyata.<br>
-                                            Fokus: Implementasi hasil riset ke dunia nyata.<br>
-                                            Contoh: Alat bantu petani, sistem manajemen limbah.</p>
-                                    </div>
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-cogs fa-4x text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-lightbulb fa-4x text-primary"></i>
-                                    </div>
-                                    <div class="service-content">
-                                        <h5 class="mb-4">PKM Gagasan Futuristik Konstruktif (PKM-GFK)</h5>
-                                        <p class="mb-0">Mahasiswa diminta untuk merumuskan gagasan kreatif untuk menyelesaikan masalah di masa depan.<br>
-
-                                            Fokus: Gagasan inovatif dan aplikatif untuk masa depan.<br>
-                                            Contoh: Konsep kota pintar, energi terbarukan, transportasi berkelanjutan.
-                                            </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-tools fa-4x text-primary"></i>
-                                    </div>
-                                    <div class="service-content">
-                                        <h5 class="mb-4">PKM Karya Inovatif (PKM-KI)</h5>
-                                        <p class="mb-0">Program ini berfokus pada penciptaan karya yang kreatif dan inovatif.<br>
-
-                                            Fokus: Produk atau layanan baru yang memberi manfaat besar.<br>
-                                            Contoh: Desain alat kesehatan inovatif, aplikasi untuk pendidikan inklusif.
-                                            </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-file-alt fa-4x text-primary"></i>
-                                    </div>
-                                    <div class="service-content">
-                                        <h5 class="mb-4">PKM Artikel Ilmiah (PKM-AI)</h5>
-                                        <p class="mb-0">Mahasiswa mengembangkan keterampilan menulis ilmiah melalui publikasi karya tulis.<br>
-
-                                            Fokus: Penulisan artikel berbasis penelitian atau gagasan.<br>
-                                            Contoh: Artikel yang diterbitkan dalam jurnal ilmiah.
-                                            </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
-                                    <div class="service-icon p-4">
-                                        <i class="fa fa-video fa-4x text-primary"></i>
-                                    </div>
-                                    <div class="service-content">
-                                        <h5 class="mb-4">PKM Video Gagasan Konstruktif (PKM-VGK)</h5>
-                                        <p class="mb-0">Mahasiswa menyampaikan gagasan atau solusi konstruktif dalam format video.<br>
-
-                                            Fokus: Gagasan kreatif melalui visual yang menarik.<br>
-                                            Contoh: Video kampanye perubahan perilaku, animasi edukasi.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="text-center">
-                            <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Service More</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="action_btns">
+                <div class="one_half"><a href="<?php echo e(route('login')); ?>" id="" class="btn">Login</a></div>
+                <div class="one_half last"><a href="<?php echo e(route('registrasi')); ?>" id="" class="btn">Sign up</a></div>
             </div>
         </div>
-        <!-- Services End -->
 
-        
-        <!-- Subscribe Start -->
-        <div class="container-fluid subscribe py-5">
-            <div class="container text-center py-5">
-                <div class="mx-auto text-center" style="max-width: 900px;">
-                    <h5 class="subscribe-title px-3">Join US</h5>
-                    <h1 class="text-white mb-4">Kesempatan Emas</h1>
-                    <p class="text-white mb-5">Jangan lewatkan kesempatan untuk berkontribusi melalui PKM! Kembangkan potensi dan raih prestasi di tingkat nasional!
-                    </p>
+        <!-- Username & Password Login form -->
+        <div class="user_login">
+            <form>
+                <label>Email / Username</label>
+                <input type="text" />
+                <br />
+
+                <label>Password</label>
+                <input type="password" />
+                <br />
+
+                <div class="checkbox">
+                    <input id="remember" type="checkbox" />
+                    <label for="remember">Remember me on this computer</label>
                 </div>
-            </div>
-        </div>
-        <!-- Subscribe End -->
 
-        <!-- Footer Start -->
-        <div class="container-fluid footer py-5">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Get In Touch</h4>
-                            <a href=""><i class="fas fa-home me-2"></i> 123 Street, New York, USA</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-white me-2"></i>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">App</h4>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Support</h4>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item">
-                            
-                            
-                        </div>
-                    </div>
+                <div class="action_btns">
+                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                    <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
                 </div>
-            </div>
+            </form>
+
+            <a href="#" class="forgot_password">Forgot password?</a>
         </div>
-        <!-- Footer End -->
-        
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright text-body py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-end mb-md-0">
-                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">INNOVANA</a>,
-                    </div>
-                    <div class="col-md-6 text-center text-md-start">
-                        Designed by <a class="text-white">Fazah</a></div>
-                    </div>
+
+        <!-- Register Form -->
+        <div class="user_register">
+            <form>
+                <label>Full Name</label>
+                <input type="text" />
+                <br />
+
+                <label>Email Address</label>
+                <input type="email" />
+                <br />
+
+                <label>Password</label>
+                <input type="password" />
+                <br />
+
+                <div class="checkbox">
+                    <input id="send_updates" type="checkbox" />
+                    <label for="send_updates">Send me occasional email updates</label>
                 </div>
-            </div>
+
+                <div class="action_btns">
+                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                    <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+                </div>
+            </form>
         </div>
-        <!-- Copyright End -->
+    </section>
+</div>
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>FORUM MAHASISWA BIDIKMISI</h2>
+                    <p>Teguhkan tekad, satukan langkah, bersama mencapai kesuksesan dan meraih prestasi yang gemilang</p>
+                  </div>
+                  <div class="col-lg-12">
+                    
+                    <?php if(Route::has('login')): ?>
+    <div class="white-button first-button scroll-to-section">
+        <?php if(auth()->guard()->check()): ?>
+            <a href="<?php echo e(url('/dashboard')); ?>" class="">
+              <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+        <?php else: ?>
+            <a href="<?php echo e(route('login')); ?>" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
+                <i class="fas fa-door-open"></i> Login
+            </a>
         
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
+            <?php if(Route::has('register')): ?>
+                <div class="white-button scroll-to-section">
+                    <a href="<?php echo e(route('registrasi')); ?>">
+                <i class="fas fa-door-open"></i>
+                Register
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="<?php echo e(asset('mascot.png')); ?>" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4>FORUM MAHASISWA <em>BIDIKMISI </h4>
+            <img src="assets/images/heading-line-dec.png" alt="">
+            <p>Tempat terbaik untuk berbagi informasi, pengalaman, dan tips sukses dalam menjalani kehidupan sebagai penerima KIP KULIAH. Temukan komunitas yang mendukung perjalanan akademik dan pengembangan diri Anda di sini.
+              
+              Jika Anda membutuhkan panduan atau informasi lebih lanjut tentang Bidikmisi, silakan <a rel="nofollow" href="https://linktr.ee/Koorprodi_Formadiksi_Polindra" target="_blank">hubungi kami</a> 
+              . Bergabunglah dengan kami untuk memanfaatkan berbagai fitur yang membantu Anda mencapai potensi maksimal! 
+              
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="artikel">
+      <div class="row">
+        <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+        <div class="col-lg-3">
+          <div class="service-item first-service">
+            <div class="icon"></div>
+            <h4><?php echo e($recommendedArticle->title); ?></h4>
+            <p><?php echo Str::limit($recommendedArticle->content, 100); ?></p>
+            <div class="text-button">
+              <a href="<?php echo e(route('article.show.detail', $recommendedArticle->id)); ?>">Read More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+                
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4>About <em>FORMADIKSI</em> &amp; Who We Are</h4>
+            <img src="assets/images/heading-line-dec.png" alt="">
+            <p>Temukan inspirasi, dukungan, dan informasi seputar perjalanan akademik penerima KIP Kuliah di sini!
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Diskusi Interaktif</a></h4>
+                <p>berdiskusi dengan kami seputar KIPK</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Bimbingan Perkuliahan</a></h4>
+                <p>Berjalan bersama kami dalam perjalanan akademik</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Tepat Bernaung</a></h4>
+                <p>Kami menaungi dan mendampingi kamu dalam perjalanan akademik</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Event</a></h4>
+                <p>acara acara yang menarik dan berguna dalam akademik</p>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <p><b>"Teguhkan tekad, satukan langkah, bersama mencapai kesuksesan dan meraih prestasi yang gemilang"</b>
+                <br>
+                #Formadiksipolindra <br>
+                #MembidikPrestasi <br>
+                #MembangunNegeri</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-image">
+            <img src="assets/images/about-right-dec.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            
+          </div>
+        </div>
         
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>loh bener, indramayu, jawa barat</p>
+            <p><a href="https://api.whatsapp.com/send?phone=6285956404789">6285956404789</a></p>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="https://www.instagram.com/formadiksi_polindra/">FORMADIKSI</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="https://linktr.ee/duwipangga">developer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>Rumah aspirasi</h4>
+            <ul>
+              <li><a href="#">aspirasi bersama</a></li>
+              
+            </ul>
+            
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="footer-widget">
+            <h4>FORMADIKSI</h4>
+            <div class="logo">
+              <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="">
+            </div>
+            <p>Tempat terbaik untuk berbagi informasi, pengalaman, dan tips sukses dalam menjalani kehidupan sebagai penerima Bidikmisi. Temukan komunitas yang mendukung perjalanan akademik dan pengembangan diri Anda di sini. <br>#Formadiksipolindrabr <br>
+              #MembidikPrestasi <br>
+              #MembangunNegeri</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p>Copyright © 2024 FORMADIKSI POLINDRA. All Rights Reserved. 
+          <br>Design: <a href="https://api.whatsapp.com/send?phone=6285956404789" target="_blank" title="css templates">KOORPRODI-Duwipangga</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
 
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+</body>
 </html><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/index.blade.php ENDPATH**/ ?>

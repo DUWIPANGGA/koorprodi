@@ -16,6 +16,7 @@ class Rekap extends Model
         'IPK',
         'dokumen',
         'semester',
+        'kesulitan',
         'user_id',
         'validated'
     ];

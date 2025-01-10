@@ -21,6 +21,7 @@ class User extends Authenticatable
         'bakat',
         'kelas',
         'angkatan',
+        'pelaporan_ipk',
         'gender',
         'phone',
         'phone_wali',

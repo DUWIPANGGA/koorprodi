@@ -9,6 +9,7 @@ use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AcaraController;
+use App\Models\article as ModelsArticle;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewerController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PkmProcessController;
 use App\Http\Controllers\aspirasiController;
+use App\Http\Controllers\mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,8 @@ Route::get('/about', function () {
 */
 
 Route::get('/', function () {
-    return view('index');
+    $recommendedArticles = ModelsArticle::latest()->take(8)->get();
+    return view('index',compact('recommendedArticles'));
 });
 
 // Form Login
@@ -82,6 +85,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('pengaduan', PengaduanController::class);
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
+    Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::resource('acara', AcaraController::class);

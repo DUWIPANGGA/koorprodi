@@ -43,35 +43,73 @@
             flex-direction: row;
         }
 
-        .sidebar {
-            width: 240px;
-            background-color: #031927; /* Warna biru gelap */
-            color: #fff;
-            padding: 20px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            flex-shrink: 0;
-            overflow-y: scroll;
-        }
-        .sidebar::-webkit-scrollbar {
+        /* Sidebar Styling */
+.sidebar {
+    width: 240px;
+    padding: 20px;
+    background-color: #adc0bb; /* Secondary color */
+    color: #080907; /* Text color */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.sidebar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #849878; /* Accent color */
+    object-fit: cover;
+}
+
+.sidebar h5 {
+    font-size: 18px;
+    color: #080907; /* Text color */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #080907;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #849878; /* Primary color */
+    color: #f8f9f8; /* Background color */
+}
+
+.sidebar a i {
+    margin-right: 10px;
+    /* color: #080907; Accent color */
+}
+
+.dropdown-menu {
+    background-color: #adc0bb; /* Secondary color */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    color: #080907;
+}
+
+.dropdown-item:hover {
+    background-color: #849878; /* Primary color */
+    color: #f8f9f8;
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
     display: none;
 }
-        .sidebar img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
 
-        .sidebar h4 {
-            /* color: #fff; */
-            margin-bottom: 10px;
-        }
-
-        .sidebar p {
-            font-size: 14px;
-            /* color: #ccc; */
-            margin-bottom: 20px;
-        }
 
         .menu a {
             display: block;
@@ -87,9 +125,12 @@
 
         .menu a:hover {
             color: #fff;
-            background-color: #849878; /* Aksen hijau untuk hover */
-        }
-
+            background-color: #849878b1; /* Aksen hijau untuk hover */
+        }   
+.active{
+    background-color: #849878;
+    color: #fff;
+}
         .menu a i {
             margin-right: 10px;
         }
@@ -252,40 +293,62 @@ body {
 
 <body>
     <div class="dashboard">
-        <div class="sidebar col-md-2 bg-white vh-90" id="sidebar" style="width: 200px;">
-            <div class="row">
-                <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil"
-                style="height: 3rem;width:3rem; border-radius: 50%; object-fit:cover; border: #000 1px solid">
-            
-                <h5 style="text-align: center; font-size: 18px; color: #080907;">FORMADIKSI</h5>
+        <div class="sidebar col-md-2 bg-white vh-100 d-flex flex-column align-items-start p-3" id="sidebar" style="width: 200px;">
+            <!-- Header Logo dan Nama -->
+            <div class="d-flex align-items-center justify-content-center text-center mb-4">
+                <div class="me-2">
+                    <img src="{{ asset('formadiksi.png') }}" alt="Foto Profil" class="rounded-circle border"
+                        style="height: 3rem; width: 3rem; object-fit: cover;">
+                </div>
+                <div>
+                    <h5 class="mb-0" style="font-size: 18px; color: #080907;">FORMADIKSI</h5>
+                </div>
             </div>
-            {{-- <h5 style="text-align: center; font-size: 18px; color: blue;">FORMADIKSI</h5> --}}
-            <div class="menu">
-                <a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i> Home</a>
-                
-                <a href="{{route('rekap')  }}"><i class="fas fa-sliders-h"></i> Rekap</a>
+        
+            <!-- Menu Items -->
+            <div class="menu w-100">
+                <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <i class="fas fa-home me-2"></i> Home
+                </a>
+                <a href="{{ route('rekap') }}" class="nav-link {{ request()->routeIs('rekap') ? 'active' : '' }}">
+                    <i class="fas fa-sliders-h me-2"></i> Rekap
+                </a>
                 @if (Auth::user()->role == 'user')
-                <a href="{{ route('pengaduan') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
+                <a href="{{ route('pengaduan') }}" class="nav-link {{ request()->routeIs('pengaduan') ? 'active' : '' }}">
+                    <i class="fas fa-bullhorn me-2"></i> Pengaduan
+                </a>
                 @endif
-                @if (Auth::user()->role == 'admin')
-                <a href="{{ route('pengaduan.index') }}"><i class="fas fa-bullhorn"></i> Pengaduan</a>
-                <a href="{{ route('Rekap.index') }}"><i class="fas fa-chart-line"></i> Data IPK</a>
-                <a href="{{ route('article.main') }}"><i class="fas fa-newspaper"></i> Artikel</a>
-                <a href="{{ route('users.index') }}"><i class="fas fa-user"></i> User</a>
-                <a href="{{ route('acara.index') }}"><i class="fas fa-calendar"></i>Acara</a>
+                @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
+                <a href="{{ route('pengaduan.index') }}" class="nav-link {{ request()->routeIs('pengaduan.index') ? 'active' : '' }}">
+                    <i class="fas fa-bullhorn me-2"></i> Pengaduan
+                </a>
+                <a href="{{ route('Rekap.index') }}" class="nav-link {{ request()->routeIs('Rekap.index') ? 'active' : '' }}">
+                    <i class="fas fa-chart-line me-2"></i> Data IPK
+                </a>
+                <a href="{{ route('article.main') }}" class="nav-link {{ request()->routeIs('article.main') ? 'active' : '' }}">
+                    <i class="fas fa-newspaper me-2"></i> Artikel
+                </a>
+                <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                    <i class="fas fa-user me-2"></i> User
+                </a>
+                <a href="{{ route('acara.index') }}" class="nav-link {{ request()->routeIs('acara.index') ? 'active' : '' }}">
+                    <i class="fas fa-calendar me-2"></i> Acara
+                </a>
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-graduation-cap"></i> Mahasiswa</a>
-                    <div class="dropdown-menu">
-                        <a href="">Daftar Mahasiswa</a>
-                        <a href=" ">Tambah Mahasiswa</a>
-                        <a href=" ">Statistik Mahasiswa</a>
-                    </div>
+                    <a class="nav-link dropdown-toggle" href="{{ route('mahasiswa.index') }}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-graduation-cap me-2"></i> Mahasiswa
+                    </a>
                 </div>
                 @endif
-                <a href="{{ route('profile.edit',Auth::user()->id) }}"><i class="fas fa-cog"></i> Settings</a>
-                <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+                    <i class="fas fa-cog me-2"></i> Settings
+                </a>
+                <a href="{{ route('logout') }}" class="nav-link">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </a>
             </div>
         </div>
+        
         <button onclick="toggleSidebar()" class="param-button"
             style="position: absolute; top: 10px; left: 10px; z-index: 100;">
             <i class="fas fa-bars"></i>

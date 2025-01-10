@@ -1,169 +1,142 @@
 @extends('layouts.dashboard')
 
 @section('title', 'Update Profile')
-@section('styles')
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #8A92FF, #C7D2FE);
-        }
-
-        .form-card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            font-size: 16px;
-            color: #555;
-        }
-
-        .form-control {
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 12px;
-            font-size: 16px;
-        }
-
-        .form-control:focus {
-            border-color: #4A56E2;
-            box-shadow: 0 0 5px rgba(74, 86, 226, 0.5);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-submit {
-            background: linear-gradient(to right, #4A56E2, #6A75F0);
-            color: white;
-            padding: 12px 30px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            width: 100%;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: linear-gradient(to right, #6A75F0, #4A56E2);
-        }
-    </style>
-@endsection
 
 @section('content')
-    <div class="container mx-auto mt-10">
-        <div class="flex justify-center">
-            <div class="form-card w-full lg:w-2/3">
-                <h2 class="form-title">Update Profile</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-white">
+                    <h3 class="mb-0">Update Profile</h3>
+                </div>
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                    <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-                <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Profile Picture -->
-                        <div>
-                            <div class="form-card">
-                                <div class="d-flex items-center mb-6 flex-row">
-                                    <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
-                                        alt="Foto Profil"
-                                        style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid black; margin-right:5%;">
-                                    <div class="ml-4">
-                                        <p class="text-lg font-semibold">Nama: {{ $user->name }}</p>
-                                        <p class="text-sm">Prodi: {{ $user->prodi }}</p>
-                                        <p class="text-sm">Kelas: {{ $user->kelas }}</p>
-                                        <p class="text-sm">Gender: {{ $user->gender }}</p>
-                                    </div>
+                        <div class="row g-3">
+                            <!-- Profile Picture -->
+                            {{-- <div class="col-lg-12 text-center">
+                                <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+                                    alt="Foto Profil"
+                                    class="rounded-circle border border-dark mb-3"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                                <div>
+                                    <p class="fw-bold mb-1">Nama: {{ $user->name }}</p>
+                                    <p class="mb-1">Prodi: {{ $user->prodi }}</p>
+                                    <p class="mb-1">Kelas: {{ $user->kelas }}</p>
+                                    <p class="mb-1">Gender: {{ $user->gender }}</p>
                                 </div>
+                            </div> --}}
+                            <div class="text-center">
+    <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+        alt="Foto Profil"
+        class="rounded-circle border border-dark mb-3"
+        style="width: 150px; height: 150px; object-fit: cover;">
+</div>
+                            <div class="" style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; margin-bottom: 20px;">
+                               
+                                <table class="" style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <td style="padding: 5px; font-weight: bold;">NIM</td>
+                                        <td>:</td>
+                                        <td style="padding: 5px;">{{ Auth::user()->nim }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; font-weight: bold;">Nama Mahasiswa</td>
+                                        <td>:</td>
+                                        <td style="padding: 5px;">{{ Auth::user()->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; font-weight: bold;">Tahun Angkatan</td>
+                                        <td>:</td>
+                                        <td style="padding: 5px;">{{ Auth::user()->angkatan }}</td>
+                                    </tr>
+                                </table>
                             </div>
-
-                            <div class="form-group">
+                        
+                            <!-- Foto Profil -->
+                            <div class="col-lg-6">
                                 <label for="foto_profil" class="form-label">Foto Profil</label>
-                                <input type="file" id="foto_profil" name="foto_profil" class="form-control"
-                                    accept="image/*">
-                                <small class="text-gray-500">Leave blank to keep current foto profil.</small>
+                                <input type="file" id="foto_profil" name="foto_profil" class="form-control" accept="image/*">
+                                <small class="text-muted">Kosongkan jika tidak ingin mengubah foto profil.</small>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Phone -->
+                            <div class="col-lg-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input type="text" id="phone" name="phone" class="form-control"
                                     value="{{ old('phone', $user->phone) }}" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Phone Wali -->
+                            <div class="col-lg-6">
                                 <label for="phone_wali" class="form-label">Phone Wali</label>
                                 <input type="text" id="phone_wali" name="phone_wali" class="form-control"
                                     value="{{ old('phone_wali', $user->phone_wali) }}" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Email -->
+                            <div class="col-lg-6">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" id="email" name="email" class="form-control"
                                     value="{{ old('email', $user->email) }}" required>
                             </div>
-                        </div>
 
-                        <!-- Right Column -->
-                        <div>
-                            <div class="form-group">
+                            <!-- Alamat -->
+                            <div class="col-lg-12">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <textarea id="alamat" name="alamat" class="form-control" required>{{ old('alamat', $user->alamat) }}</textarea>
+                                <textarea id="alamat" name="alamat" class="form-control" rows="3" required>{{ old('alamat', $user->alamat) }}</textarea>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Asal Sekolah -->
+                            <div class="col-lg-6">
                                 <label for="asal_sekolah" class="form-label">Asal Sekolah</label>
                                 <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
                                     value="{{ old('asal_sekolah', $user->asal_sekolah) }}" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Hobi -->
+                            <div class="col-lg-6">
                                 <label for="hobi" class="form-label">Hobi</label>
                                 <input type="text" id="hobi" name="hobi" class="form-control"
                                     value="{{ old('hobi', $user->hobi) }}" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Bakat -->
+                            <div class="col-lg-6">
                                 <label for="bakat" class="form-label">Bakat</label>
                                 <input type="text" id="bakat" name="bakat" class="form-control"
                                     value="{{ old('bakat', $user->bakat) }}" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- Password -->
+                            <div class="col-lg-6">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" id="password" name="password" class="form-control">
-                                <small class="text-gray-500">Leave blank to keep current password.</small>
+                                <small class="text-muted">Kosongkan jika tidak ingin mengubah password.</small>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Submit Button -->
-                    <div class="mt-6">
-                        <button type="submit"
-                            class="btn-submit py-3 px-6 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold transition duration-200">Update
-                            Profile</button>
-                    </div>
-                </form>
+                        <!-- Submit Button -->
+                        <div class="mt-4 text-center">
+                            <button type="submit" class="btn btn-primary px-4 py-2">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

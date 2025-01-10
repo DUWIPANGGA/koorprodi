@@ -19,9 +19,11 @@ class admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
+        elseif (Auth::check() && Auth::user()->role != 'super_admin') {
+            return $next($request);}
         elseif (Auth::check() && Auth::user()->role != 'admin') {
-            return redirect()->route('dashboard');
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route('dashboard');
         }
 }

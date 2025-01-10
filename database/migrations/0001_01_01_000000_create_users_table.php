@@ -27,7 +27,13 @@ return new class extends Migration
             $table->string('phone', 15)->nullable(); 
             $table->string('phone_wali', 15)->nullable(); 
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->text('bio')->nullable();
+            $table->boolean('diawasi')->default('0');
+            $table->boolean('pelaporan_ipk')->default('0');
+            $table->boolean('penerima_kipk')->default('0');
+            $table->enum('status_pengawasan', ['0','1', '2', '3'])->nullable()->default('0');
+            $table->enum('status_keanggotaan', ['anggota_aktif', 'pengurus', 'alumni', 'demisioner','ketua_umum'])->nullable()->default('anggota_aktif');
+            $table->timestamp('email_verified_at');
             $table->string('password');
             $table->enum('role', ['bph','admin', 'user', 'super_admin','koordinator RPL','koordinator TI', 'koordinator SIKC','koordinator KP','koordinator TM','koordinator PM','koordinator TP','koordinator TRIK','KOMINFO'])->default('user');
             $table->rememberToken();
