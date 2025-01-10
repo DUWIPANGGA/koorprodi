@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('aspirasi', function (Blueprint $table) {
             $table->id();
+            $table->string('ip_address')->nullable();
             $table->string('nama');
             $table->text('isi');
             $table->timestamps();

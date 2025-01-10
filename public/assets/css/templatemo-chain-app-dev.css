@@ -1165,6 +1165,91 @@ About Us
   transform: translateY(-50%);
   z-index: 0;
 }
+/*
+---------------------------------------------
+Rumah Aspirasi
+---------------------------------------------
+*/
+
+.rumah-aspirasi {
+  padding-top: 130px;
+  position: relative;
+}
+
+.rumah-aspirasi form {
+  padding: 2% !important;
+  border-radius: 8px !important;
+  background: #fff;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.07);
+}
+
+.rumah-aspirasi-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2a2a2a;
+}
+
+.rumah-aspirasi h4 em {
+  font-style: italic;
+  color: #4b8ef1;
+}
+
+.rumah-aspirasi p {
+  padding-bottom: 10px;
+}
+
+.rumah-aspirasi .section-heading,
+.rumah-aspirasi .box-item,
+.rumah-aspirasi .box-item .gradient-button,
+.rumah-aspirasi .box-item span {
+  position: relative;
+  z-index: 1;
+}
+
+.rumah-aspirasi .box-item {
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.07);
+  padding: 10px 30px;
+  background-color: #fff;
+  border-radius: 40px;
+  margin-bottom: 30px;
+}
+
+.rumah-aspirasi .box-item h4 a {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #2a2a2a;
+  transition: all .3s;
+}
+
+.rumah-aspirasi button {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: rgb(19,175,240);
+  background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
+  outline: none;
+  border: none;
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
+
+.rumah-aspirasi button:focus {
+  outline: none;
+  border: none;
+}
+
+.rumah-aspirasi button:hover {
+  color: #fff !important;
+  background: rgb(19,175,240);
+  background: linear-gradient(105deg, rgb(235, 91, 91) 0%, rgb(253, 161, 40) 100%);
+}
+
 
 
 

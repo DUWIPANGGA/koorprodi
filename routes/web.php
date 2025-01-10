@@ -25,17 +25,9 @@ use App\Http\Controllers\mahasiswa;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('index', [aspirasiController::class, 'index'])->name('rumahaspirasi');
 
-Route::get('/rumahaspirasi', [aspirasiController::class, 'index'])->name('rumahaspirasi');
-
-Route::post('/rumahaspirasi', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::post('index', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 
 
 /*

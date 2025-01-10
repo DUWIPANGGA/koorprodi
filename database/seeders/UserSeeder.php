@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
                 'name' => 'Admin',
                 'NIM' => '0',
                 'email' => 'admin@gmail.com',
+                'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
                 'alamat' => 'loh bener',
                 'role' => 'super_admin',
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Mahasiswa',
                 'NIM' => '2305063',
+                'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
                 'email' => 'mahasiswa@gmail.com',
                 'alamat' => 'loh bener',
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Reviewer',
                 'NIM' => '2305062',
+                'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
                 'email' => 'reviewer@gmail.com',
                 'role' => 'admin',

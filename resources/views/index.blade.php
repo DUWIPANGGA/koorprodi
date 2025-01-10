@@ -65,7 +65,7 @@ https://templatemo.com/tm-570-chain-app-dev
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="{{ route('rumahaspirasi') }}">Rumah Aspirasi</a></li>
+              <li class="scroll-to-section"><a href="#rumahaspirasi">Rumah Aspirasi</a></li>
               <li class="scroll-to-section"><a href="#artikel">Artikel</a></li>
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
             </ul>        
@@ -242,7 +242,7 @@ https://templatemo.com/tm-570-chain-app-dev
 
     <div class="container" id="artikel">
       <div class="row">
-        @foreach ($recommendedArticles as $recommendedArticle)
+        {{-- @foreach ($recommendedArticles as $recommendedArticle)
 
         <div class="col-lg-3">
           <div class="service-item first-service">
@@ -255,7 +255,7 @@ https://templatemo.com/tm-570-chain-app-dev
           </div>
         </div>
                 
-            @endforeach
+            @endforeach --}}
       </div>
     </div>
   </div>
@@ -308,6 +308,58 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-lg-6">
           <div class="right-image">
             <img src="assets/images/about-right-dec.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rumahaspirasi" class="rumah-aspirasi section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4>Rumah <em>Aspirasi</em></h4>
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+              {{ session('status') }}
+            </div>
+            @elseif (session('error'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('error') }}
+            </div>
+            @endif
+            <p>
+              Punya pendapat atau saran tentang formadiksi? sampaikan saja lewat form dibawah ini!
+            </p>
+          </div>
+          <div>
+            <form method="POST" action="{{ route('rumahaspirasi.kirim') }}" class="w-full">
+            @csrf
+            <div class="mb-4">
+                <p class="rumah-aspirasi-label">Nama</p>
+                <input type="text" name="nama" id="nama" placeholder="Nama kamu" 
+                    class="form-control @error('nama') border-red-500 @enderror">
+                @error('nama')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <p class="rumah-aspirasi-label">Aspirasi</p>
+                <textarea name="isi" id="isi" placeholder="Masukan aspirasi kamu" rows="4"
+                    class="form-control @error('isi') border-red-500 @enderror"></textarea>
+                @error('isi')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <button type="submit" class="rumah-aspirasi button"><i class="fa fa-paper-plane"></i>
+                    Kirim!
+                </button>
+            </div>
+        </form>
           </div>
         </div>
       </div>
