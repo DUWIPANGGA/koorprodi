@@ -1199,6 +1199,24 @@ Rumah Aspirasi
   padding-bottom: 10px;
 }
 
+.form-feedback-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-coy {
+  font-style: italic;
+  color: #d6d6d6;
+  margin: 0;
+}
+
+.text-danger {
+  color: #dc3545;
+  margin: 0;
+  font-size: 14px;
+}
+
 .rumah-aspirasi .section-heading,
 .rumah-aspirasi .box-item,
 .rumah-aspirasi .box-item .gradient-button,

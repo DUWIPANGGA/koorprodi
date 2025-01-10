@@ -25,9 +25,9 @@ use App\Http\Controllers\mahasiswa;
 |--------------------------------------------------------------------------
 */
 
-Route::get('index', [aspirasiController::class, 'index'])->name('rumahaspirasi');
+Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
 
-Route::post('index', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
+Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 
 
 /*
@@ -81,6 +81,8 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::resource('acara', AcaraController::class);
+    Route::resource('aspirasi', aspirasiController::class);
+    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
     Route::resource('Rekap', IPK::class);
@@ -92,6 +94,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::post('admin/article/save', [Article::class, 'store'])->name('article.insert');
     Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
 });
+
 
 
 Route::get('/logout', function () {

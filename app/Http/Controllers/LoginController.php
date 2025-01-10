@@ -32,6 +32,8 @@ class LoginController extends Controller
                     return redirect()->route('dashboard'); 
                 case 'reviewer':
                     return redirect()->route('reviewer.dashboard'); // Reviewer
+                case 'kominfo':
+                    return redirect()->route('admin.dashboardKom'); // Kominfo
                 default:
                     // Jika role tidak valid, logout dan kembali ke halaman login
                     Auth::logout();

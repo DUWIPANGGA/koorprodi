@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Aspirasi;
 
 class aspirasiController extends Controller
 {
     public function index()
+    {
+        $aspirasi = Aspirasi::orderBy('created_at', 'desc')->paginate(10);
+        return view('aspirasi.index', compact('aspirasi'));
+    }
+
+    public function udahkirim()
     {
         return view('index');
     }
@@ -45,6 +52,17 @@ class aspirasiController extends Controller
             return redirect()->route('rumahaspirasi')->with('status', 'Aspirasi berhasil dikirim!');
         } catch (\Exception $e) {
             return redirect()->route('rumahaspirasi')->with('error', 'Aspirasi gagal dikirim! Cek koneksi kamu.');
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $aspirasi = Aspirasi::findOrFail($id);
+            $aspirasi->delete();
+            return redirect()->route('aspirasi.index')->with('success', 'Aspirasi berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->route('aspirasi.index')->with('error', 'Gagal menghapus aspirasi!');
         }
     }
 }

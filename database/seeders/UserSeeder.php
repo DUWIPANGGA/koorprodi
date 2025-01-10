@@ -46,6 +46,18 @@ class UserSeeder extends Seeder
                 'phone'=>'0',
                 'password' => bcrypt('123456'),
             ],
+            [
+                'name' => 'Kominfo',
+                'NIM' => '9999999',
+                'email_verified_at' => now(),
+                'prodi' => 'REKAYASA PERANGKAT LUNAK',
+                'email' => 'kominfo@gmail.com',
+                'role' => 'admin',
+                'alamat' => 'arab',
+                'angkatan' => '2024',
+                'phone'=>'0',
+                'password' => bcrypt('123456'),
+            ],
         ];
 
         foreach ($userData as $user) {

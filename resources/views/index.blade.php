@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -336,22 +335,32 @@ https://templatemo.com/tm-570-chain-app-dev
           <div>
             <form method="POST" action="{{ route('rumahaspirasi.kirim') }}" class="w-full">
             @csrf
-            <div class="mb-4">
-                <p class="rumah-aspirasi-label">Nama</p>
-                <input type="text" name="nama" id="nama" placeholder="Nama kamu" 
-                    class="form-control @error('nama') border-red-500 @enderror">
-                @error('nama')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
+            <div class="mb-2">
+              <p class="rumah-aspirasi-label">Nama</p>
+              <input type="text" name="nama" id="nama" placeholder="Nama kamu" 
+                  class="form-control @error('nama') border-red-500 @enderror"
+                  maxlength="100"
+                  onkeyup="document.getElementById('charCount1').innerHTML = this.value.length + '/100'">
+              <div class="form-feedback-wrapper">
+                  @error('nama')
+                      <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                  <p class="p-coy"><span id="charCount1">0/100</span> karakter</p>
+              </div>
             </div>
-
-            <div class="mb-4">
+            
+            <div class="mb-2">
                 <p class="rumah-aspirasi-label">Aspirasi</p>
                 <textarea name="isi" id="isi" placeholder="Masukan aspirasi kamu" rows="4"
-                    class="form-control @error('isi') border-red-500 @enderror"></textarea>
-                @error('isi')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
+                    class="form-control @error('isi') border-red-500 @enderror"
+                    maxlength="1000"
+                    onkeyup="document.getElementById('charCount2').innerHTML = this.value.length + '/1000'"></textarea>
+                <div class="form-feedback-wrapper">
+                  @error('isi')
+                      <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                  <p class="p-coy"><span id="charCount2">0/1000</span> karakter</p>
+              </div>
             </div>
 
             <div class="mb-4">
