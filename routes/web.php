@@ -39,8 +39,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Proses Login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// Form Registrasi
-Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
+
 // Proses Registrasi
 Route::post('/registrasi', [AuthController::class, 'store']);
 
@@ -74,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'admin'])->group(function () {
+    // Form Registrasi
+Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
     Route::resource('users', UserController::class);
     Route::resource('pengaduan', PengaduanController::class);
