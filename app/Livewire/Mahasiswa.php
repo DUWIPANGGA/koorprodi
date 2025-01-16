@@ -4,11 +4,15 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Mahasiswa extends Component
 {
+    use WithPagination;
+
     public $search = '';  // Properti pencarian
     public $page = 1;
+    public $perPage = 10;
     public function render()
 {
     // Jika tidak ada pencarian, ambil semua data mahasiswa
@@ -25,7 +29,7 @@ class Mahasiswa extends Component
     }
 
     // Paginate data mahasiswa
-    $mahasiswa = $query->paginate(10);
+    $mahasiswa = $query->paginate($this->perPage);
 
     return view('livewire.mahasiswa', [
         'mahasiswa' => $mahasiswa
