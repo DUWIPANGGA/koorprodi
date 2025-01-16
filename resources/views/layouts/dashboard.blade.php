@@ -250,9 +250,25 @@ body {
 .dropdown:hover .dropdown-menu {
     display: block;
 }
-
+#rekap-edit{
+                display: flex;
+                flex-direction: row;
+            }
+            .ipk-edit{
+                height: 
+                100%;
+                width: 50%;
+            }
         /* Mobile responsiveness */
         @media (max-width: 768px) {
+            #rekap-edit{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .ipk-edit{
+                width: 100%;
+            }
             .param-button {
                 display: block;
             }

@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="container d-flex flex-row h-100 justify-content-between" style="gap: 40px;">
+    <div class="container h-100 justify-content-between" id="rekap-edit" style="gap: 40px;">
         <!-- Container untuk dokumen -->
-        <div class="col-md-6"
-            style="width: 50%; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="col-md-6 ipk-edit"
+            style=" padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <div class="card h-100">
                 <div class="card-body h-100">
                     <iframe src="{{ asset($rekap->dokumen) }}" style="height: 100%; width: 100%; border: none;"></iframe>
@@ -14,7 +14,7 @@
 
         <!-- Form validasi -->
         <form action="{{ route('rekap.validasi', $rekap->id) }}" method="POST" enctype="multipart/form-data"
-            style="width: 50%; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" class="ipk-edit">
             @csrf
             @if ($rekap->id)
                 @method('PUT')
