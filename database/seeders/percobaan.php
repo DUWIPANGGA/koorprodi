@@ -21,64 +21,63 @@ class percobaan extends Seeder
     {
         $userData = [
             [
-                'name' => 'Admin',
-                'NIM' => '00',
-                'email' => 'admin@gmail.com',
-                'semester' => 0,
-
+                'name' => 'superadmin',
+                'NIM' => '0',
+                'email' => 'superadmin@gmail.com',
                 'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
                 'alamat' => 'loh bener',
                 'role' => 'super_admin',
                 'angkatan' => '2024',
-'phone'=>'0',
+                'semester'=>'0',
+                'phone'=>'0',
                 'password' => bcrypt('123456'),
             ], 
             [
-                'name' => 'Mahasiswa',
-                'NIM' => '2305063',
-                'semester' => 0,
+                'name' => 'admin',
+                'NIM' => '1',
                 'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
-                'email' => 'mahasiswa@gmail.com',
+                'email' => 'admin@gmail.com',
                 'alamat' => 'loh bener',
                 'angkatan' => '2024',
+                'semester'=>'0',
                 'phone'=>'0',
-                'role' => 'user',
-                'password' => bcrypt('123456'),
-            ], 
-            [
-                'name' => 'Reviewer',
-                'NIM' => '2305062',
-                'semester' => 0,
-                'email_verified_at' => now(),
-                'prodi' => 'REKAYASA PERANGKAT LUNAK',
-                'email' => 'reviewer@gmail.com',
                 'role' => 'admin',
+                'password' => bcrypt('3283478923'),
+            ], 
+            [
+                'name' => 'user',
+                'NIM' => '2',
+                'email_verified_at' => now(),
+                'prodi' => 'REKAYASA PERANGKAT LUNAK',
+                'email' => 'user@gmail.com',
+                'role' => 'user',
                 'alamat' => 'loh bener',
                 'angkatan' => '2024',
+                'semester'=>'0',
                 'phone'=>'0',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('09834508304'),
             ],
             [
                 'name' => 'Kominfo',
-                'NIM' => '9999999',
-                'semester' => 0,
+                'NIM' => '3',
                 'email_verified_at' => now(),
                 'prodi' => 'REKAYASA PERANGKAT LUNAK',
                 'email' => 'kominfo@gmail.com',
                 'role' => 'admin',
                 'alamat' => 'arab',
+                'semester'=>'0',
                 'angkatan' => '2024',
                 'phone'=>'0',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('384759348'),
             ],
         ];
 
         foreach ($userData as $user) {
             User::create($user);
         }
-        User::factory(30)->create()->each(function ($user) {
+        User::factory(100)->create()->each(function ($user) {
             Rekap::factory(3)->create(['user_id' => $user->id]);
             Pengaduan::factory(2)->create(['user_id' => $user->id]);
             ModelsArticle::factory(1)->create(['user_id' => $user->id]);
