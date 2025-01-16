@@ -21,7 +21,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\mahasiswa;
 
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-
+Route::resource('aspirasi', aspirasiController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name
 Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
     Route::resource('acara', AcaraController::class);
-    Route::resource('aspirasi', aspirasiController::class);
+
     Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
     Route::get('admin/article/create', [Article::class, 'create'])->name('article.create');
     
