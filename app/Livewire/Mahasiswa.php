@@ -8,7 +8,7 @@ use Livewire\Component;
 class Mahasiswa extends Component
 {
     public $search = '';  // Properti pencarian
-
+    public $page = 1;
     public function render()
 {
     // Jika tidak ada pencarian, ambil semua data mahasiswa

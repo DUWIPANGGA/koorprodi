@@ -12,6 +12,7 @@ class UserTable extends Component
     use WithPagination;
 
     public $search = '';
+    public $page = 1;
     // public $users = [];
 
     // Menampilkan data pengguna yang sesuai dengan pencarian

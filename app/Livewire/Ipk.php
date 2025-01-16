@@ -12,7 +12,7 @@ class Ipk extends Component
     public $search = '';
     public $filter = 'all';
     public $perPage = 40;
-
+    public $page = 1;
     protected $paginationTheme = 'bootstrap';
     protected $queryString = [
         'search' => ['except' => ''],
