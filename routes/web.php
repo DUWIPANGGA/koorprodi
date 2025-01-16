@@ -37,7 +37,7 @@ Route::get('/', function () {
 // Form Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Proses Login
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Form Registrasi
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
