@@ -19,6 +19,9 @@ class UserSeeder extends Seeder
                 'alamat' => 'loh bener',
                 'role' => 'super_admin',
                 'angkatan' => '2024',
+                'semester'=>'0',
+
+                
 'phone'=>'0',
                 'password' => bcrypt('123456'),
             ], 
