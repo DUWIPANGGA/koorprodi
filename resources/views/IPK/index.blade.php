@@ -37,3 +37,26 @@
     </div>
 
 @endsection
+@section('style')
+<style>
+    @media print {
+    body * {
+        visibility: hidden; /* Menyembunyikan semua elemen */
+    }
+
+    #print-layout, #print-layout * {
+        visibility: visible; /* Menampilkan hanya elemen dengan ID print-layout */
+    }
+
+    /* Memastikan elemen print-layout tidak terpotong pada halaman berikutnya */
+    #print-layout {
+        page-break-before: always;
+    }
+
+    /* Aturan lain untuk memperbaiki layout pencetakan */
+    .page {
+        page-break-after: always;
+    }
+}
+</style>
+@endsection

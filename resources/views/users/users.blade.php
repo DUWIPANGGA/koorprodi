@@ -21,6 +21,7 @@
                     <td>
                         <a href="{{ route('users.show', $user) }}">Lihat</a>
                         <a href="{{ route('users.edit', $user) }}">Edit</a>
+                        
                         <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

@@ -314,9 +314,11 @@ body {
                 <a href="{{ route('Rekap.index') }}" class="nav-link {{ request()->routeIs('Rekap.index') ? 'active' : '' }}">
                     <i class="fas fa-chart-line me-2"></i> Data IPK
                 </a>
+                @if (Auth::user()->role == 'super_admin')
                 <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
                     <i class="fas fa-user me-2"></i> User
                 </a>
+                @endif
                 <div class="dropdown">
                     <a class="nav-link" href="{{ route('mahasiswa.index')}}" aria-expanded="false">
                         <i class="fas fa-graduation-cap me-2"></i> Mahasiswa

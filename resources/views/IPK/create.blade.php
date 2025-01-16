@@ -13,7 +13,8 @@
         {{-- <input type="number" name="IPK" value="{{ old('IPK') }}" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> --}}
         
-        <label style="display: block; margin-bottom: 10px;">Dokumen:</label>
+        <label style="display: block; margin-bottom: 10px;">Kesulitan:</label>
+
         <input type="file" name="dokumen" required
             style="width: 100%; height: 40px; margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
         

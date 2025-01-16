@@ -32,12 +32,12 @@ class LoginController extends Controller
                     return redirect()->route('dashboard'); 
                 case 'reviewer':
                     return redirect()->route('reviewer.dashboard'); // Reviewer
-                case 'kominfo':
-                    return redirect()->route('admin.dashboardKom'); // Kominfo
+                case 'KOMINFO':
+                    return redirect()->route('dashboard'); // Kominfo
                 default:
                     // Jika role tidak valid, logout dan kembali ke halaman login
                     Auth::logout();
-                    return redirect()->route('login')->withErrors(['email' => 'Role tidak valid.']);
+                    return redirect()->route('login')->withErrors(['email' => 'ada yang salah dengan akun anda, silahkan hubungi administrator']);
             }
         }
 

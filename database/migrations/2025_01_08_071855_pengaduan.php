@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('cerita');
+            $table->text('cerita');
             $table->boolean('validasi');
             $table->timestamps();
         });

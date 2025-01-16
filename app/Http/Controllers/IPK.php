@@ -66,6 +66,7 @@ class IPK extends Controller
                 'IPK' => $request->IPK,
                 'dokumen' => $storedPath,
                 'semester' => $request->semester,
+                'kesulitan' => $request->kesulitan,
             ]);
             $user = User::find(Auth::user()->id);
 

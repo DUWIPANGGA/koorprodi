@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('rekap', function (Blueprint $table) {
             $table->id();
-            $table->integer('IPK');
+            $table->double('IPK');
             $table->string('dokumen');
             $table->integer('semester');
             $table->string('kesulitan');

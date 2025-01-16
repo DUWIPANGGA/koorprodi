@@ -1,7 +1,5 @@
-    
-
-    <?php $__env->startSection('content'); ?>
-    <form action="<?php echo e(route('Rekap.store')); ?>" method="POST" enctype="multipart/form-data"
+<?php $__env->startSection('content'); ?>
+<form action="<?php echo e(route('Rekap.store')); ?>" method="POST" enctype="multipart/form-data"
     style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
     <?php echo csrf_field(); ?>
     <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Form Pelaporan IPK Mahasiswa</h4>
@@ -42,7 +40,15 @@
                 </ul>
             </div>
         <?php endif; ?>
-
+        <div style="margin-bottom: 20px;">
+            <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
+            <select id="semester" name="semester" required
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+                <?php for($i = 1; $i <= 8; $i++): ?>
+                    <option value="<?php echo e($i); ?>" <?php echo e(old('semester') == $i ? 'selected' : ''); ?>>Semester <?php echo e($i); ?></option>
+                <?php endfor; ?>
+            </select>
+        </div>
         <div style="margin-bottom: 20px;">
             <label for="IPK" style="display: block; font-weight: bold; margin-bottom: 5px;">IPK:</label>
             <input type="number" id="IPK" name="IPK" value="<?php echo e(old('IPK')); ?>" step="0.01" min="0" max="4" required
@@ -55,14 +61,11 @@
                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
         </div>
 
+        <!-- Tambahkan input textarea untuk kesulitan -->
         <div style="margin-bottom: 20px;">
-            <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
-            <select id="semester" name="semester" required
-                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-                <?php for($i = 1; $i <= 8; $i++): ?>
-                    <option value="<?php echo e($i); ?>" <?php echo e(old('semester') == $i ? 'selected' : ''); ?>>Semester <?php echo e($i); ?></option>
-                <?php endfor; ?>
-            </select>
+            <label for="kesulitan" style="display: block; font-weight: bold; margin-bottom: 5px;">Kesulitan:</label>
+            <textarea id="kesulitan" name="kesulitan" rows="4" required
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><?php echo e(old('kesulitan')); ?></textarea>
         </div>
 
         <button type="submit"
@@ -71,7 +74,6 @@
         </button>
     <?php endif; ?>
 </form>
-
-    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/ipk/main.blade.php ENDPATH**/ ?>

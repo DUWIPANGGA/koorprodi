@@ -1,10 +1,18 @@
-<div class="container-fluid">
+<div class="container-fluid" id="print-layout">
     <!-- Form Pencarian -->
     <div class="mb-3">
         <input type="text" wire:model="search" class="form-control" placeholder="Cari mahasiswa...">
-        <button wire:click="rekaps" class="btn btn-primary mt-2">
-            Cari
-        </button>
+<button type="button" wire:click.prevent="applyFilter('all')" class="btn btn-{{ $filter == 'all' ? 'success' : 'primary' }} mt-2">
+    Semua Data
+</button>
+<button type="button" wire:click.prevent="applyFilter('ipkDibawah3')" class="btn btn-{{ $filter == 'ipkDibawah3' ? 'success' : 'primary' }} mt-2">
+    IPK di bawah 3
+</button>
+@for ($i = 1; $i <= 8; $i++)
+    <button type="button" wire:click.prevent="applyFilter('semester-{{ $i }}')" class="btn btn-{{ $filter == 'semester-' . $i ? 'success' : 'primary' }} mt-2">
+        Semester {{ $i }}
+    </button>
+@endfor
     </div>
 
     <!-- Tabel -->
@@ -15,6 +23,7 @@
                     <th>No</th>
                     <th>NIM</th>
                     <th>Nama</th>
+                    <th>Prodi</th>
                     <th>IPK</th>
                     <th>Status</th>
                     <th>Semester</th>
@@ -22,27 +31,31 @@
                 </tr>
             </thead>
             <tbody>
-                @if (isset($rekaps) && count($rekaps) > 0)
+                @if (isset($rekaps) && $rekaps->count() > 0)
                     @foreach ($rekaps as $rekap)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $rekap->NIM }}</td>
-                            <td>{{ $rekap->name }}</td>
-                            <td>{{ $rekap->IPK }}</td>
+                            <td>{{ $rekap->nim ?? '-' }}</td>
+                            <td>{{ $rekap->name ?? '-' }}</td>
+                            <td>{{ $rekap->prodi ?? '-' }}</td>
+                            <td>{{ $rekap->IPK ?? '-' }}</td>
                             <td>
                                 <span class="{{ $rekap->validated == 0 ? 'badge bg-danger' : 'badge bg-success' }}">
                                     {{ $rekap->validated == 0 ? 'Belum Di Validasi' : 'Sudah Di Validasi' }}
                                 </span>
                             </td>
-                            <td>{{ $rekap->semester }}</td>
+                            <td>{{ $rekap->semester ?? '-' }}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="{{ route('Rekap.edit', $rekap->id) }}">Cek</a>
-                                <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="post"
+                                <a class="btn btn-primary btn-sm" href="{{ route('Rekap.edit', $rekap->id) }} "> <i class="fas fa-eye"></i></a>
+
+                                @if (Auth::user()->role == 'super_admin')
+                                <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="POST"
                                     style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -53,5 +66,9 @@
                 @endif
             </tbody>
         </table>
+        <!-- Paginasi -->
+        <div class="mt-3">
+            {{ $rekaps->links() }}
+        </div>
     </div>
 </div>

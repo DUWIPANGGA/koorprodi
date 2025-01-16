@@ -316,9 +316,11 @@ body {
                 <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link <?php echo e(request()->routeIs('Rekap.index') ? 'active' : ''); ?>">
                     <i class="fas fa-chart-line me-2"></i> Data IPK
                 </a>
+                <?php if(Auth::user()->role == 'super_admin'): ?>
                 <a href="<?php echo e(route('users.index')); ?>" class="nav-link <?php echo e(request()->routeIs('users.index') ? 'active' : ''); ?>">
                     <i class="fas fa-user me-2"></i> User
                 </a>
+                <?php endif; ?>
                 <div class="dropdown">
                     <a class="nav-link" href="<?php echo e(route('mahasiswa.index')); ?>" aria-expanded="false">
                         <i class="fas fa-graduation-cap me-2"></i> Mahasiswa

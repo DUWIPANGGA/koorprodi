@@ -8,7 +8,7 @@
                     <!-- Title Section -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h1>Data Artikel</h1>
-                        <a href="<?php echo e(route('rekap.index')); ?>" class="btn btn-primary btn-sm">Buat Artikel Baru</a>
+                        <a href="<?php echo e(route('article.create')); ?>" class="btn btn-primary btn-sm">Buat Artikel Baru</a>
                     </div>
 
                     <?php if(session('success')): ?>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nim')->unique(); 
             $table->string('name');
             $table->string('prodi');
+            $table->integer('semester');
             $table->string('alamat')->nullable();
             $table->string('asal_sekolah')->nullable();
             $table->string('hobi')->nullable();

@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => \App\Http\Middleware\Authenticate::class,
         'admin' => \App\Http\Middleware\admin::class,
         'kominfo' => \App\Http\Middleware\kominfo::class,
+        'superAdmin' => \App\Http\Middleware\superAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

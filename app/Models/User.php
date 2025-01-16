@@ -14,6 +14,7 @@ class User extends Authenticatable
         'id',
         'nim',
         'name',
+        'semester',
         'prodi',
         'alamat',
         'asal_sekolah',

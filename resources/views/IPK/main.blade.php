@@ -1,7 +1,7 @@
-    @extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
-    @section('content')
-    <form action="{{ route('Rekap.store') }}" method="POST" enctype="multipart/form-data"
+@section('content')
+<form action="{{ route('Rekap.store') }}" method="POST" enctype="multipart/form-data"
     style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
     @csrf
     <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Form Pelaporan IPK Mahasiswa</h4>
@@ -42,7 +42,15 @@
                 </ul>
             </div>
         @endif
-
+        <div style="margin-bottom: 20px;">
+            <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
+            <select id="semester" name="semester" required
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+                @for ($i = 1; $i <= 8; $i++)
+                    <option value="{{ $i }}" {{ old('semester') == $i ? 'selected' : '' }}>Semester {{ $i }}</option>
+                @endfor
+            </select>
+        </div>
         <div style="margin-bottom: 20px;">
             <label for="IPK" style="display: block; font-weight: bold; margin-bottom: 5px;">IPK:</label>
             <input type="number" id="IPK" name="IPK" value="{{ old('IPK') }}" step="0.01" min="0" max="4" required
@@ -55,14 +63,11 @@
                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
         </div>
 
+        <!-- Tambahkan input textarea untuk kesulitan -->
         <div style="margin-bottom: 20px;">
-            <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
-            <select id="semester" name="semester" required
-                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-                @for ($i = 1; $i <= 8; $i++)
-                    <option value="{{ $i }}" {{ old('semester') == $i ? 'selected' : '' }}>Semester {{ $i }}</option>
-                @endfor
-            </select>
+            <label for="kesulitan" style="display: block; font-weight: bold; margin-bottom: 5px;">Kesulitan:</label>
+            <textarea id="kesulitan" name="kesulitan" rows="4" required
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">{{ old('kesulitan') }}</textarea>
         </div>
 
         <button type="submit"
@@ -71,5 +76,4 @@
         </button>
     @endif
 </form>
-
-    @endsection
+@endsection
