@@ -28,6 +28,8 @@ class LoginController extends Controller
             switch ($role) {
                 case 'super_admin':
                     return redirect()->route('admin.dashboard'); // Admin
+                case 'admin':
+                    return redirect()->route('admin.dashboard'); // Admin
                 case 'user':
                     return redirect()->route('dashboard'); 
                 case 'reviewer':

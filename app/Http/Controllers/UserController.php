@@ -50,6 +50,11 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    public function user($id)
+    {
+        $user = User::find($id);
+        return view('users.user', compact('user'));
+    }
     public function edit(User $user)
     {
         $user = Auth::user();
@@ -74,7 +79,7 @@ class UserController extends Controller
 
                 $request->validate(['foto_profil' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
 
-                $imageName = Auth::user()->name . '-profil.' . $request->foto_profil->extension();
+                $imageName = $user->name . '-profil.' . $request->foto_profil->extension();
 
                 $request->foto_profil->move(public_path('storage/profil'), $imageName);
 

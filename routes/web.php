@@ -63,7 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ajukan-pengaduan', [PengaduanController::class, 'create'])->name('pengaduan');
     Route::get('admin/article/{id}', [Article::class, 'show'])->name('article.show');
     Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
-    Route::get('/user-edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
+    Route::get('/profile-edit', [UserController::class, 'edit'])->name('profile.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
 });
 
