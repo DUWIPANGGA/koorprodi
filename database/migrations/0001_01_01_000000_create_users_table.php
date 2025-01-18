@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('kelas')->nullable();
             $table->string('angkatan', 4)->nullable(); 
             $table->enum('gender', ['P','none', 'L'])->default('none')->nullable();
-            $table->string('phone', 15)->nullable(); 
-            $table->string('phone_wali', 15)->nullable(); 
-            $table->string('email')->unique();
+            $table->string('phone', 50)->nullable(); 
+            $table->string('phone_wali', 50)->nullable(); 
+            $table->string('email')->unique()->nullable();
             $table->text('bio')->nullable();
             $table->boolean('diawasi')->default('0');
             $table->boolean('pelaporan_ipk')->default('0');

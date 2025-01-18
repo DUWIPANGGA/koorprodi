@@ -128,6 +128,7 @@ class UserController extends Controller
     }
     public function importCSV(Request $request)
     {
+        set_time_limit(500);
         $request->validate([
             'csv_file' => 'required|mimes:csv,txt'
         ]);
@@ -137,16 +138,20 @@ class UserController extends Controller
         $data = array_map('str_getcsv', file($filePath));
 
         $header = array_shift($data);
-
+        try {
         foreach ($data as $row) {
             $userData = array_combine($header, $row);
-
-            User::updateOrCreate(
-                [
+        
+            $existingUser = User::where('nim', (string) $userData['NIM:'])
+            ->when(isset($userData['Email:']) && !empty($userData['Email:']), function ($query) use ($userData) {
+                $query->orWhere('email', (string) $userData['Email:']);
+            })
+            ->first();
+        
+            if (!$existingUser) {
+                User::create([
                     'nim' => (string) $userData['NIM:'],
-                    'email' => (string) $userData['Email:']
-                ],
-                [
+                    'email' =>!empty($userData['Email:']) ? $userData['Email:'] : 'default_' . $userData['NIM:'] . '@formadiksi.com',
                     'name' => (string) $userData['Nama:'],
                     'password' => bcrypt('FORMADIKSI' . (string) $userData['NIM:']),
                     'prodi' => (string) $userData['Prodi:'],
@@ -158,9 +163,14 @@ class UserController extends Controller
                     'kelas' => (string) $userData['Kelas (Contoh: RPL 1 C):'],
                     'asal_sekolah' => (string) $userData['Asal sekolah:'],
                     'alamat' => (string) $userData['Alamat(lengkap):'],
-                ]
-            ); 
+                    'angkatan' => (string) $userData['angkatan'],
+                    'semester' => (string) $userData['semester'],
+                ]);
+            }
         }
+    } catch (\Exception $e) {
+        Log::error('Error saat memasukkan data: ' . $e->getMessage());
+    }
         return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
     }
 }

@@ -21,7 +21,7 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password]) || Auth::attempt(['nim' => $request->email, 'password' => $request->password])  ) {
 
             $role = Auth::user()->role;
 // dd($role);
@@ -42,6 +42,6 @@ class LoginController extends Controller
         }
 
         // Jika login gagal, tampilkan pesan error
-        return back()->withErrors(['email' => 'Email atau password yang dimasukkan tidak sesuai']);
+        return back()->withErrors(['email' => 'Email, NIM atau password yang dimasukkan tidak sesuai']);
     }
 }

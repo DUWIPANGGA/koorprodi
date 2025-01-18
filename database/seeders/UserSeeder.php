@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'angkatan' => '2024',
                 'semester'=>'0',
                 'phone'=>'0',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('9w3uj0vu3n'),
             ], 
             [
                 'name' => 'admin',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'semester'=>'0',
                 'phone'=>'0',
                 'role' => 'admin',
-                'password' => bcrypt('3283478923'),
+                'password' => bcrypt('89ju498bncv'),
             ], 
             [
                 'name' => 'user',
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
                 'angkatan' => '2024',
                 'semester'=>'0',
                 'phone'=>'0',
-                'password' => bcrypt('09834508304'),
+                'password' => bcrypt('ijnahdwu9jiwojmf'),
             ],
             [
                 'name' => 'Kominfo',
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
                 'semester'=>'0',
                 'angkatan' => '2024',
                 'phone'=>'0',
-                'password' => bcrypt('384759348'),
+                'password' => bcrypt('ineru9wenrwu9'),
             ],
         ];
 

@@ -47,8 +47,8 @@
     <form method="POST" action="<?php echo e(route('login')); ?>">
         <?php echo csrf_field(); ?>
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" value="<?php echo e(old('email')); ?>" class="form-control" id="email" name="email" required>
+            <label for="email" class="form-label">Email atau NIM</label>
+            <input type="text" value="<?php echo e(old('email')); ?>" class="form-control" id="email" name="email" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
