@@ -6,6 +6,10 @@
     <title>Halaman Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+
+
+
+
         body {
             background-color: #f7f7f7;
         }
@@ -47,8 +51,8 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" value="{{ old('email') }}" class="form-control" id="email" name="email" required>
+            <label for="email" class="form-label">NIM atau pun email</label>
+            <input type="text" value="{{ old('email') }}" class="form-control" id="email" name="email" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
