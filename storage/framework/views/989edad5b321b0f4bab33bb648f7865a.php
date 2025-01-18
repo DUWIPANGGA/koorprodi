@@ -61,7 +61,7 @@
         <button type="masuk" class="btn btn-primary w-100">Masuk</button>
         <br>
         <br>
-        <button type="button" class="btn btn-primary w-100" onclick="location.href='<?php echo e(url('/registrasi')); ?>'">Daftar Sekarang</button>
+        
     </form>
 </div>
 

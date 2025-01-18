@@ -63,17 +63,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-
-        $request->validate([
-            'alamat' => 'required',
-            'asal_sekolah' => 'string',
-            'hobi' => 'string',
-            'bakat' => 'string',
-            'kelas' => 'string',
-            'gender' => 'in:L,P',
-            'phone' => 'numeric',
-            'phone_wali' => 'numeric',
-        ]);
+            $request->validate([
+                'alamat' => 'required',
+                'asal_sekolah' => 'string',
+                'hobi' => 'string',
+                'bakat' => 'string',
+                'kelas' => 'string',
+                'gender' => 'in:L,P',
+                'phone' => 'numeric',
+                'phone_wali' => 'numeric',
+            ]);
         try {
             if ($request->hasFile('foto_profil')) {
 
@@ -107,7 +106,12 @@ class UserController extends Controller
             if ($request->email) {
                 $user->email = $request->email;
             }
+            if(Auth::user()->role == 'admin' or Auth::user()->role == 'super_admin'){
 
+            if ($request->role) {
+                $user->role = $request->role;
+            }
+        }
             if ($request->password) {
                 $user->password = Hash::make($request->password);
             }
