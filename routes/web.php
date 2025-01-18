@@ -77,6 +77,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Form Registrasi
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
+    Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
     Route::resource('users', UserController::class);
     Route::resource('pengaduan', PengaduanController::class);
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');

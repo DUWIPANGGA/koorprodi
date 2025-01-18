@@ -8,10 +8,20 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function rekapEvent(Request $request){
-        
+    public function rekapEvent(Request $request)
+    {
+
         User::query()->update([
             'pelaporan_ipk' => $request->status,
         ]);
-return redirect()->route('dashboard')->with('success', 'Rekap Event Berhasil');}
+        return redirect()->route('dashboard')->with('success', 'Rekap Event Berhasil');
+    }
+    public function rekapUser(Request $request,$id)
+    {
+$user = User::find($id);
+        $user->update([
+            'pelaporan_ipk' => $request->status,
+        ]);
+        return redirect()->route('users.index')->with('success', 'user Berhasil di update');
+    }
 }

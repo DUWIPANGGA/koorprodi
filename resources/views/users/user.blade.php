@@ -100,6 +100,10 @@
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <textarea id="alamat" name="alamat" class="form-control" rows="3" required>{{ old('alamat', $user->alamat) }}</textarea>
                                 </div>
+                               <div class="col-lg-6">
+    <label for="nim" class="form-label">NIM</label>
+    <input type="text" id="nim" name="nim" class="form-control" value="{{ old('nim', $user->nim) }}" required>
+</div>
                                 <div class="col-lg-6">
                                     <label for="role" class="form-label">Role</label>
                                     <select id="role" name="role" class="form-control">

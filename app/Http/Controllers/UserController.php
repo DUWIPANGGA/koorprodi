@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $users = User::all();
-        return view('users.index', compact('users','user'));
+        return view('users.index', compact('users', 'user'));
     }
 
     public function create()
@@ -45,8 +45,8 @@ class UserController extends Controller
     }
 
     public function show(User $user)
-    {   
-        $rekap=Rekap::where('user_id',$user->id)->get();
+    {
+        $rekap = Rekap::where('user_id', $user->id)->get();
         return view('users.show', compact('user'));
     }
 
@@ -63,16 +63,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-            $request->validate([
-                'alamat' => 'required',
-                'asal_sekolah' => 'string',
-                'hobi' => 'string',
-                'bakat' => 'string',
-                'kelas' => 'string',
-                'gender' => 'in:L,P',
-                'phone' => 'numeric',
-                'phone_wali' => 'numeric',
-            ]);
+        $request->validate([
+            'alamat' => 'required',
+            'asal_sekolah' => 'string',
+            'hobi' => 'string',
+            'bakat' => 'string',
+            'kelas' => 'string',
+            'gender' => 'in:L,P',
+            'phone' => 'numeric',
+            'phone_wali' => 'numeric',
+        ]);
         try {
             if ($request->hasFile('foto_profil')) {
 
@@ -106,12 +106,15 @@ class UserController extends Controller
             if ($request->email) {
                 $user->email = $request->email;
             }
-            if(Auth::user()->role == 'admin' or Auth::user()->role == 'super_admin'){
+            if (Auth::user()->role == 'admin' or Auth::user()->role == 'super_admin') {
 
-            if ($request->role) {
-                $user->role = $request->role;
+                if ($request->role) {
+                    $user->role = $request->role;
+                }
+                if ($request->nim) {
+                    $user->nim = $request->nim;
+                }
             }
-        }
             if ($request->password) {
                 $user->password = Hash::make($request->password);
             }
@@ -122,7 +125,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Failed to update user: ' . $e->getMessage());
         }
 
-        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');  
+        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
     }
 
     public function destroy(User $user)
@@ -148,38 +151,38 @@ class UserController extends Controller
 
         $header = array_shift($data);
         try {
-        foreach ($data as $row) {
-            $userData = array_combine($header, $row);
-        
-            $existingUser = User::where('nim', (string) $userData['NIM:'])
-            ->when(isset($userData['Email:']) && !empty($userData['Email:']), function ($query) use ($userData) {
-                $query->orWhere('email', (string) $userData['Email:']);
-            })
-            ->first();
-        
-            if (!$existingUser) {
-                User::create([
-                    'nim' => (string) $userData['NIM:'],
-                    'email' =>!empty($userData['Email:']) ? $userData['Email:'] : 'default_' . $userData['NIM:'] . '@formadiksi.com',
-                    'name' => (string) $userData['Nama:'],
-                    'password' => bcrypt('FORMADIKSI' . (string) $userData['NIM:']),
-                    'prodi' => (string) $userData['Prodi:'],
-                    'hobi' => (string) $userData['Hobi:'],
-                    'bakat' => (string) $userData['Bakat:'],
-                    'gender' => (string) $userData['Gender:'],
-                    'phone' => (string) $userData['Nomor WA (pribadi):'],
-                    'phone_wali' => (string) $userData['kontak WA orang tua atau wali:'],
-                    'kelas' => (string) $userData['Kelas (Contoh: RPL 1 C):'],
-                    'asal_sekolah' => (string) $userData['Asal sekolah:'],
-                    'alamat' => (string) $userData['Alamat(lengkap):'],
-                    'angkatan' => (string) $userData['angkatan'],
-                    'semester' => (string) $userData['semester'],
-                ]);
+            foreach ($data as $row) {
+                $userData = array_combine($header, $row);
+
+                $existingUser = User::where('nim', (string) $userData['NIM:'])
+                    ->when(isset($userData['Email:']) && !empty($userData['Email:']), function ($query) use ($userData) {
+                        $query->orWhere('email', (string) $userData['Email:']);
+                    })
+                    ->first();
+
+                if (!$existingUser) {
+                    User::create([
+                        'nim' => (string) $userData['NIM:'],
+                        'email' => !empty($userData['Email:']) ? $userData['Email:'] : 'default_' . $userData['NIM:'] . '@formadiksi.com',
+                        'name' => (string) $userData['Nama:'],
+                        'password' => bcrypt('FORMADIKSI' . (string) $userData['NIM:']),
+                        'prodi' => (string) $userData['Prodi:'],
+                        'hobi' => (string) $userData['Hobi:'],
+                        'bakat' => (string) $userData['Bakat:'],
+                        'gender' => (string) $userData['Gender:'],
+                        'phone' => (string) $userData['Nomor WA (pribadi):'],
+                        'phone_wali' => (string) $userData['kontak WA orang tua atau wali:'],
+                        'kelas' => (string) $userData['Kelas (Contoh: RPL 1 C):'],
+                        'asal_sekolah' => (string) $userData['Asal sekolah:'],
+                        'alamat' => (string) $userData['Alamat(lengkap):'],
+                        'angkatan' => (string) $userData['angkatan'],
+                        'semester' => (string) $userData['semester'],
+                    ]);
+                }
             }
+        } catch (\Exception $e) {
+            Log::error('Error saat memasukkan data: ' . $e->getMessage());
         }
-    } catch (\Exception $e) {
-        Log::error('Error saat memasukkan data: ' . $e->getMessage());
-    }
         return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
     }
 }
