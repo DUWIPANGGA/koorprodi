@@ -52,6 +52,16 @@ Route::get('/try', function () {
     return view('Tentang');
 });
 
+Route::middleware('auth')->group(function () {
+        Route::prefix('user')->group(function () {
+        Route::resource('pengaduan', PengaduanController::class)->only(['store'])->middleware('auth')->names([
+            'store' => 'user.pengaduan.store',
+        ]);;
+        Route::resource('Rekap', IPK::class)->only(['store'])->names([
+            'store' => 'user.Rekap.store',
+        ]);
+    });
+});
 /*
 |--------------------------------------------------------------------------
 | Route untuk user
@@ -66,9 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
     Route::get('/profile-edit', [UserController::class, 'edit'])->name('profile.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
-    Route::resource('pengaduan', PengaduanController::class)->only(['store','create']);
-    Route::resource('Rekap', IPK::class)->only(['store','create']);
-
+    
 });
 
 /*
@@ -78,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
 */
 Route::middleware(['auth', 'admin'])->group(function () {
     // Form Registrasi
+    Route::resource('Rekap', IPK::class);
     Route::resource('pengaduan', PengaduanController::class);
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
@@ -89,7 +98,6 @@ Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
-    Route::resource('Rekap', IPK::class);
 });
 
 

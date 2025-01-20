@@ -6,7 +6,7 @@
 <div class="container" style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
     <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Formulir Pengaduan</h4>
 
-    <form action="{{ route('pengaduan.store') }}" method="POST">
+    <form action="{{ route('user.pengaduan.store') }}" method="POST">
         @csrf
 
         <div class="form-group" style="margin-bottom: 20px;">
