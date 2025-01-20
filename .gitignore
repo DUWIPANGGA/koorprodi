@@ -19,6 +19,7 @@
 # /.idea
 # /.vscode
 # /.zed
+/storage/app/public/*
 storage/framework/views/009a4a1803bcab4974e0370d240ab04a.php
 storage/framework/views/12ed2d17ea84c9e351166b0b89c9733f.php
 storage/framework/views/23d1158fb68916d975d7811baa5998e3.php
