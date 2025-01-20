@@ -69,7 +69,7 @@
             <textarea id="kesulitan" name="kesulitan" rows="4" required
                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">{{ old('kesulitan') }}</textarea>
         </div>
-
+<div style="margin-bottom: 20px; font-size: 12px; color: #666;">* Anda hanya dapat mengisi form ini satu kali.</div>
         <button type="submit"
             style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
             Simpan Pelaporan

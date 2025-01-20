@@ -66,6 +66,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
     Route::get('/profile-edit', [UserController::class, 'edit'])->name('profile.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
+    Route::resource('pengaduan', PengaduanController::class)->only(['store','create']);
+    Route::resource('Rekap', IPK::class)->only(['store','create']);
+
 });
 
 /*
@@ -75,11 +78,11 @@ Route::middleware(['auth'])->group(function () {
 */
 Route::middleware(['auth', 'admin'])->group(function () {
     // Form Registrasi
+    Route::resource('pengaduan', PengaduanController::class);
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
     Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
     Route::resource('users', UserController::class);
-    Route::resource('pengaduan', PengaduanController::class);
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
     Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
