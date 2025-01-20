@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<form action="{{ route('Rekap.store') }}" method="POST" enctype="multipart/form-data"
+<form action="{{ route('user.Rekap.store') }}" method="POST" enctype="multipart/form-data"
     style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
     @csrf
     <h4 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Form Pelaporan IPK Mahasiswa</h4>

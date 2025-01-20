@@ -50,12 +50,8 @@ class IPK extends Controller
         $documentName = $user->nim . '-IPK-semester-' . $request->semester . '.' . $request->dokumen->extension();
         $path = storage_path('app/public/angkatan-' . $user->angkatan);
 
-        if (!File::exists($path)) {
-            File::makeDirectory($path, 0755, true);
-        }
-        // Cek apakah file sudah ada
         if (file_exists($path . '/' . $documentName)) {
-            return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
+            unlink($path . '/' . $documentName);
         }
 
         // Simpan file
@@ -70,13 +66,13 @@ class IPK extends Controller
             ]);
             $user = User::find(Auth::user()->id);
 
-if ($user) {
-    $user->update([
-        'pelaporan_ipk' => 1
-    ]);
-// dd($result);
-} else {
-}
+            if ($user) {
+                $user->update([
+                    'pelaporan_ipk' => 1
+                ]);
+                // dd($result);
+            } else {
+            }
             return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
         } else {
             return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
