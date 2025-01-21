@@ -49,7 +49,7 @@
         
     @endif
     <form method="POST" action="{{ route('login') }}">
-        @csrf
+       <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="mb-3">
             <label for="email" class="form-label">NIM atau pun email</label>
             <input type="text" value="{{ old('email') }}" class="form-control" id="email" name="email" required>
