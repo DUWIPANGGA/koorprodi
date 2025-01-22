@@ -127,6 +127,9 @@ class UserController extends Controller
                 if ($request->nim) {
                     $user->nim = $request->nim;
                 }
+                if ($request->name) {
+                    $user->name = $request->name;
+                }
             }
             if ($request->password) {
                 $user->password = Hash::make($request->password);

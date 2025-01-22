@@ -91,6 +91,10 @@
     <label for="nim" class="form-label">NIM</label>
     <input type="text" id="nim" name="nim" class="form-control" value="<?php echo e(old('nim', $user->nim)); ?>" required>
 </div>
+                               <div class="col-lg-6">
+    <label for="name" class="form-label">Nama:</label>
+    <input type="text" id="name" name="name" class="form-control" value="<?php echo e(old('name', $user->name)); ?>" required>
+</div>
                                 <div class="col-lg-6">
                                     <label for="role" class="form-label">Role</label>
                                     <select id="role" name="role" class="form-control">
