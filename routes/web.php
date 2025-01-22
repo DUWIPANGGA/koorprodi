@@ -82,6 +82,8 @@ Route::middleware(['auth'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
+
     Route::resource('Rekap', IPK::class);
     Route::resource('pengaduan', PengaduanController::class);
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');

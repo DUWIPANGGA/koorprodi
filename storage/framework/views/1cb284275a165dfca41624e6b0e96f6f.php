@@ -2,18 +2,23 @@
     <!-- Form Pencarian -->
     <div class="mb-3">
         <input type="text" wire:model="search" class="form-control" placeholder="Cari mahasiswa...">
-<button type="button" wire:click.prevent="applyFilter('all')" class="btn btn-<?php echo e($filter == 'all' ? 'success' : 'primary'); ?> mt-2">
-    Semua Data
-</button>
-<button type="button" wire:click.prevent="applyFilter('ipkDibawah3')" class="btn btn-<?php echo e($filter == 'ipkDibawah3' ? 'success' : 'primary'); ?> mt-2">
-    IPK di bawah 3
-</button>
-<!--[if BLOCK]><![endif]--><?php for($i = 1; $i <= 8; $i++): ?>
-    <button type="button" wire:click.prevent="applyFilter('semester-<?php echo e($i); ?>')" class="btn btn-<?php echo e($filter == 'semester-' . $i ? 'success' : 'primary'); ?> mt-2">
-        Semester <?php echo e($i); ?>
+        <button type="button" wire:click.prevent="applyFilter('all')"
+            class="btn btn-<?php echo e($filter == 'all' ? 'success' : 'primary'); ?> mt-2">
+            Semua Data
+        </button>
+        <button type="button" wire:click.prevent="applyFilter('ipkDibawah3')"
+            class="btn btn-<?php echo e($filter == 'ipkDibawah3' ? 'success' : 'primary'); ?> mt-2">
+            IPK di bawah 3
+        </button>
+        <!--[if BLOCK]><![endif]--><?php for($i = 1; $i <= 8; $i++): ?>
+            <button type="button" wire:click.prevent="applyFilter('semester-<?php echo e($i); ?>')"
+                class="btn btn-<?php echo e($filter == 'semester-' . $i ? 'success' : 'primary'); ?> mt-2">
+                Semester <?php echo e($i); ?>
 
-    </button>
-<?php endfor; ?><!--[if ENDBLOCK]><![endif]-->
+            </button>
+        <?php endfor; ?><!--[if ENDBLOCK]><![endif]-->
+        <button type="button" class="btn btn-danger mt-2"><a href="<?php echo e(route('export.KHS')); ?>" style="text-decoration:none;color:#fff;">Export</a>
+        </button>
     </div>
 
     <!-- Tabel -->
@@ -48,15 +53,16 @@
                             </td>
                             <td><?php echo e($rekap->semester ?? '-'); ?></td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="<?php echo e(route('Rekap.edit', $rekap->id)); ?> "> <i class="fas fa-eye"></i></a>
+                                <a class="btn btn-primary btn-sm" href="<?php echo e(route('Rekap.edit', $rekap->id)); ?> "> <i
+                                        class="fas fa-eye"></i></a>
 
                                 <!--[if BLOCK]><![endif]--><?php if(Auth::user()->role == 'super_admin'): ?>
-                                <form action="<?php echo e(route('Rekap.destroy', $rekap->id)); ?>" method="POST"
-                                    style="display: inline-block;">
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo method_field('DELETE'); ?>
-                                    <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
-                                </form>
+                                    <form action="<?php echo e(route('Rekap.destroy', $rekap->id)); ?>" method="POST"
+                                        style="display: inline-block;">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                                    </form>
                                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                             </td>
                         </tr>

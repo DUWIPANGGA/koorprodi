@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Rekap;
+use App\Exports\RekapExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IPK extends Controller
 {
+    public function export()
+{
+    return Excel::download(new RekapExport, 'data-rekap-KHS.xlsx');
+}
+
     public function main()
     {
         $rekaps = Rekap::where('validated', 0)->get();

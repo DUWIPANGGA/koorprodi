@@ -2,17 +2,22 @@
     <!-- Form Pencarian -->
     <div class="mb-3">
         <input type="text" wire:model="search" class="form-control" placeholder="Cari mahasiswa...">
-<button type="button" wire:click.prevent="applyFilter('all')" class="btn btn-{{ $filter == 'all' ? 'success' : 'primary' }} mt-2">
-    Semua Data
-</button>
-<button type="button" wire:click.prevent="applyFilter('ipkDibawah3')" class="btn btn-{{ $filter == 'ipkDibawah3' ? 'success' : 'primary' }} mt-2">
-    IPK di bawah 3
-</button>
-@for ($i = 1; $i <= 8; $i++)
-    <button type="button" wire:click.prevent="applyFilter('semester-{{ $i }}')" class="btn btn-{{ $filter == 'semester-' . $i ? 'success' : 'primary' }} mt-2">
-        Semester {{ $i }}
-    </button>
-@endfor
+        <button type="button" wire:click.prevent="applyFilter('all')"
+            class="btn btn-{{ $filter == 'all' ? 'success' : 'primary' }} mt-2">
+            Semua Data
+        </button>
+        <button type="button" wire:click.prevent="applyFilter('ipkDibawah3')"
+            class="btn btn-{{ $filter == 'ipkDibawah3' ? 'success' : 'primary' }} mt-2">
+            IPK di bawah 3
+        </button>
+        @for ($i = 1; $i <= 8; $i++)
+            <button type="button" wire:click.prevent="applyFilter('semester-{{ $i }}')"
+                class="btn btn-{{ $filter == 'semester-' . $i ? 'success' : 'primary' }} mt-2">
+                Semester {{ $i }}
+            </button>
+        @endfor
+        <button type="button" class="btn btn-danger mt-2"><a href="{{ route('export.KHS') }}" style="text-decoration:none;color:#fff;">Export</a>
+        </button>
     </div>
 
     <!-- Tabel -->
@@ -46,15 +51,16 @@
                             </td>
                             <td>{{ $rekap->semester ?? '-' }}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="{{ route('Rekap.edit', $rekap->id) }} "> <i class="fas fa-eye"></i></a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('Rekap.edit', $rekap->id) }} "> <i
+                                        class="fas fa-eye"></i></a>
 
                                 @if (Auth::user()->role == 'super_admin')
-                                <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="POST"
-                                    style="display: inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
-                                </form>
+                                    <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="POST"
+                                        style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                                    </form>
                                 @endif
                             </td>
                         </tr>

@@ -5,6 +5,25 @@
         <button wire:click="Mahasiswa" class="btn btn-primary mt-2">
             Cari
         </button>
+            <button type="button" wire:click.prevent="applyFilter('all')"
+                class="btn btn-{{ $filter == 'all' ? 'success' : 'primary' }} mt-2">
+                Semua Data
+            </button>
+            <button type="button" wire:click.prevent="applyFilter('ipkDibawah3')"
+                class="btn btn-{{ $filter == 'ipkDibawah3' ? 'success' : 'primary' }} mt-2">
+                IPK di bawah 3
+            </button>
+            @for ($i = 1; $i <= 8; $i++)
+                <button type="button" wire:click.prevent="applyFilter('semester-{{ $i }}')"
+                    class="btn btn-{{ $filter == 'semester-' . $i ? 'success' : 'primary' }} mt-2">
+                    Semester {{ $i }}
+                </button>
+            @endfor
+            <button type="button" wire:click.prevent="applyFilter('pelaporan_ipk')"
+                class="btn btn-{{ $filter == 'pelaporan_ipk' ? 'success' : 'primary' }} mt-2">
+                Belum rekap IPK
+            </button>
+            
     </div>
 
     <!-- Tabel -->
@@ -45,6 +64,6 @@
         </table>
 
         <!-- Pagination -->
-        {{ $mahasiswa->links('pagination::bootstrap-5') }}
+        {{ $mahasiswa->links() }}
     </div>
 </div>

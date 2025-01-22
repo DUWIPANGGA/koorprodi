@@ -5,6 +5,26 @@
         <button wire:click="Mahasiswa" class="btn btn-primary mt-2">
             Cari
         </button>
+            <button type="button" wire:click.prevent="applyFilter('all')"
+                class="btn btn-<?php echo e($filter == 'all' ? 'success' : 'primary'); ?> mt-2">
+                Semua Data
+            </button>
+            <button type="button" wire:click.prevent="applyFilter('ipkDibawah3')"
+                class="btn btn-<?php echo e($filter == 'ipkDibawah3' ? 'success' : 'primary'); ?> mt-2">
+                IPK di bawah 3
+            </button>
+            <!--[if BLOCK]><![endif]--><?php for($i = 1; $i <= 8; $i++): ?>
+                <button type="button" wire:click.prevent="applyFilter('semester-<?php echo e($i); ?>')"
+                    class="btn btn-<?php echo e($filter == 'semester-' . $i ? 'success' : 'primary'); ?> mt-2">
+                    Semester <?php echo e($i); ?>
+
+                </button>
+            <?php endfor; ?><!--[if ENDBLOCK]><![endif]-->
+            <button type="button" wire:click.prevent="applyFilter('pelaporan_ipk')"
+                class="btn btn-<?php echo e($filter == 'pelaporan_ipk' ? 'success' : 'primary'); ?> mt-2">
+                Belum rekap IPK
+            </button>
+            
     </div>
 
     <!-- Tabel -->
@@ -45,7 +65,7 @@
         </table>
 
         <!-- Pagination -->
-        <?php echo e($mahasiswa->links('pagination::bootstrap-5')); ?>
+        <?php echo e($mahasiswa->links()); ?>
 
     </div>
 </div>

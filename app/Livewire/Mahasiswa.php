@@ -10,9 +10,16 @@ class Mahasiswa extends Component
 {
     use WithPagination;
 
-    public $search = '';  // Properti pencarian
+    public $search = '';
+    public $filter = 'all';
     public $page = 1;
     public $perPage = 10;
+    protected $paginationTheme = 'bootstrap';
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'filter' => ['except' => 'all'],
+        'page' => ['except' => 1],
+    ];
     public function render()
 {
     // Jika tidak ada pencarian, ambil semua data mahasiswa
@@ -27,7 +34,25 @@ class Mahasiswa extends Component
               ->orWhere('asal_sekolah', 'like', '%'.$this->search.'%')
               ->orWhere('prodi', 'like', '%'.$this->search.'%');
     }
-
+    if ($this->filter === 'semester-1') {
+        $query->where('users.semester', '=', 1);
+    } elseif ($this->filter === 'semester-2') {
+        $query->where('users.semester', '=', 2);
+    } elseif ($this->filter === 'semester-3') {
+        $query->where('users.semester', '=', 3);
+    } elseif ($this->filter === 'semester-4') {
+        $query->where('users.semester', '=', 4);
+    } elseif ($this->filter === 'semester-5') {
+        $query->where('users.semester', '=', 5);
+    } elseif ($this->filter === 'semester-6') {
+        $query->where('users.semester', '=', 6);
+    } elseif ($this->filter === 'semester-7') {
+        $query->where('users.semester', '=', 7);
+    } elseif ($this->filter === 'semester-8') {
+        $query->where('users.semester', '=', 8);
+    } elseif ($this->filter === 'pelaporan_ipk') {
+        $query->where('users.pelaporan_ipk', '=', 0);
+    }
     // Paginate data mahasiswa
     $mahasiswa = $query->paginate($this->perPage);
 
@@ -45,5 +70,10 @@ class Mahasiswa extends Component
                     ->orWhere('prodi', 'like', '%'.$this->search.'%')
                     ->paginate(10);
 
+    }
+    public function applyFilter($filter)
+    {
+        $this->filter = $filter;
+        $this->resetPage();
     }
 }
