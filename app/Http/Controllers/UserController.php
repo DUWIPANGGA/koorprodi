@@ -38,6 +38,19 @@ class UserController extends Controller
             [
                 'nim' => $request->nim,
                 'name' => $request->name,
+                'prodi' => $request->prodi,
+                'password' => bcrypt($request->password),
+                'alamat' => $request->alamat,
+                'asal_sekolah' => $request->asal_sekolah,
+                'hobi' => $request->hobi,
+                'bakat' => $request->bakat,
+                'kelas' => $request->kelas,
+                'angkatan' => $request->angkatan,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'phone_wali' => $request->phone_wali,
+                'email' => $request->email,
+                'semester' => $request->semester,
             ]
         );
 

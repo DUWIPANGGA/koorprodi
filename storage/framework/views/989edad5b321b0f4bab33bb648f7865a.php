@@ -49,7 +49,7 @@
         
     <?php endif; ?>
     <form method="POST" action="<?php echo e(route('login')); ?>">
-        <?php echo csrf_field(); ?>
+       <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
         <div class="mb-3">
             <label for="email" class="form-label">NIM atau pun email</label>
             <input type="text" value="<?php echo e(old('email')); ?>" class="form-control" id="email" name="email" required>
