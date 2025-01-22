@@ -40,15 +40,8 @@
     <label for="cerita">Cerita:</label>
     <textarea name="cerita" class="form-control" readonly style="width: 100%; height: 200px;"><?php echo e(old('cerita', $pengaduan->cerita)); ?></textarea>
 </div>
-                    <div class="form-group">
-                        <label for="validasi">Validasi</label>
-                        <select name="validasi" class="form-control" required>
-                            <option value="1" <?php echo e($pengaduan->validasi ? 'selected' : ''); ?>>Validasi</option>
-                            <option value="0" <?php echo e(!$pengaduan->validasi ? 'selected' : ''); ?>>Belum Validasi</option>
-                        </select>
-                    </div>
 
-                    <button type="submit" class="btn btn-success mt-3">Update</button>
+                    <button type="submit" class="btn btn-success mt-3" name="validasi" value="1">validasi</button>
                 </form>
             </div>
         </div>
