@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\IPK;
-use App\Http\Controllers\Article;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -10,12 +9,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AcaraController;
 use App\Models\article as ModelsArticle;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ReviewerController;
+use App\Http\Controllers\Article;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\PkmProcessController;
 use App\Http\Controllers\aspirasiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\mahasiswa;
@@ -85,7 +82,6 @@ Route::middleware(['auth'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'admin'])->group(function () {
-    // Form Registrasi
     Route::resource('Rekap', IPK::class);
     Route::resource('pengaduan', PengaduanController::class);
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
@@ -113,8 +109,8 @@ Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspira
 Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::resource('acara', AcaraController::class);
 
+    Route::get('article/create', [Article::class, 'create'])->name('article.create');
     Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
-    Route::get('admin/article/create', [Article::class, 'create'])->name('article.create');
     
     Route::get('admin/article', [Article::class, 'main'])->name('article.main');
     Route::delete('admin/article/{id}', [Article::class, 'destroy'])->name('article.destroy');

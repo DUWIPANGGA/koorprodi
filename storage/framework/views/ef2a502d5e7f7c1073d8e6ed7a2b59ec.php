@@ -241,7 +241,33 @@ https://templatemo.com/tm-570-chain-app-dev
 
     <div class="container" id="artikel">
       <div class="row">
+        <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card shadow-sm border-0 rounded-lg overflow-hidden">
+            <!-- Article Image -->
+            <img src="<?php echo e(asset('storage/'.$recommendedArticle->picture_article)); ?>" alt="<?php echo e($recommendedArticle->title); ?>" class="card-img-top" style="object-fit: cover; height: 200px;">
+            
+            <div class="card-body">
+              <!-- Article Title -->
+              <h5 class="card-title font-weight-bold text-truncate" style="max-width: 100%;"><?php echo e($recommendedArticle->title); ?></h5>
+              
+              <!-- Article Content (limit to 100 characters) -->
+              <p class="card-text text-muted" style="min-height: 50px;">
+                <?php echo Str::limit($recommendedArticle->content, 100); ?>
+
+              </p>
         
+              <!-- Read More Button -->
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="<?php echo e(route('article.show.detail', $recommendedArticle->id)); ?>" class="btn btn-sm btn-primary">Read More <i class="fa fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+                
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </div>
     </div>
   </div>

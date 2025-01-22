@@ -1,53 +1,43 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Models\article as ModelsArticle;
+use App\Models\Article as ModelsArticle;
 
 class Article extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $articles = ModelsArticle::all();
         return view('article.show', compact('articles'));
     }
+
     public function main()
     {
         $articles = ModelsArticle::all();
         return view('article.index', compact('articles'));
     }
+
     public function showDetail($id)
     {
         $article = ModelsArticle::find($id);
         $recommendedArticles = ModelsArticle::latest()->take(8)->get();
-
         return view('article.show', compact('article', 'recommendedArticles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('article.create');
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'picture_article' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Maksimal 2MB
+            'picture_article' => 'required|file|mimes:jpg,jpeg,png|max:2048',
         ]);
         $path = $request->file('picture_article')->store('uploads/article', 'public');
         $result = ModelsArticle::create([
@@ -57,57 +47,32 @@ class Article extends Controller
             'picture_article' => $path,
         ]);
         if ($result) {
-            $article = ModelsArticle::find($result)->first();
-            // dd($article);
-            return redirect()->route('article.show', $article->id)->with('success', 'berhasil menyimpan ke database');
+            return redirect()->route('article.show', $result->id)->with('success', 'Successfully saved to the database');
         } else {
-            return redirect()->route('article.insert')->with('error', 'gagal menyimpan ke database');
+            return redirect()->route('article.create')->with('error', 'Failed to save to the database');
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $article = ModelsArticle::find($id);
         $recommendedArticles = ModelsArticle::latest()->take(8)->get();
-
-        if (isset($article)) {
-            return view('article.edit', compact('article', 'recommendedArticles'));
-        } else {
-            $articles = ModelsArticle::all();
-            return view('article.index', compact('articles', 'recommendedArticles'));
-        }
+        return view('article.edit', compact('article', 'recommendedArticles'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        dd('woy');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'picture_article' => 'nullable|file|mimes:jpg,jpeg,png|max:2048', // Optional, max 2MB
+            'picture_article' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $article = ModelsArticle::findOrFail($id);
         $article->judul = $request->title;
         $article->content = $request->content;
-        if ($article->picture_article) {
-        }
         if ($request->hasFile('picture_article')) {
-            Storage::delete('uploads/' . $article->picture_article);
+            Storage::delete('public/' . $article->picture_article);
             $path = $request->file('picture_article')->store('uploads', 'public');
             $article->picture_article = $path;
         }
@@ -115,14 +80,10 @@ class Article extends Controller
         return redirect()->route('article.main')->with('success', 'Article updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $article = ModelsArticle::findOrFail($id);
         $article->delete();
-
         return redirect()->route('article.main')->with('success', 'Article deleted successfully');
     }
 }
