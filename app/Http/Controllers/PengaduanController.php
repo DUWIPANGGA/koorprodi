@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,17 +36,21 @@ class PengaduanController extends Controller
 
     public function edit(Pengaduan $pengaduan)
     {
-        return view('pengaduan.edit', compact('pengaduan'));
+        $user = User::find($pengaduan->user_id);
+        return view('pengaduan.edit', compact(['pengaduan','user']));
     }
 
     public function update(Request $request, Pengaduan $pengaduan)
     {
         $request->validate([
             'cerita' => 'required|string',
-            'validasi' => 'required|boolean',
+            'validasi' => 'required',
         ]);
 
-        $pengaduan->update($request->only('cerita', 'validasi'));
+        $pengaduan->update([
+            'cerita' => $request->cerita,
+            'validasi' => $request->validasi,
+        ]);
 
         return redirect()->route('pengaduan.index')->with('success', 'Pengaduan berhasil diupdate.');
     }
