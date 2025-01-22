@@ -58,7 +58,7 @@
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="dokumen" style="display: block; font-weight: bold; margin-bottom: 5px;">Dokumen (PDF):</label>
+            <label for="dokumen" style="display: block; font-weight: bold; margin-bottom: 5px;">KHS(PDF):</label>
             <input type="file" id="dokumen" name="dokumen" accept=".pdf" required
                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
         </div>
