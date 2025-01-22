@@ -257,10 +257,10 @@ https://templatemo.com/tm-570-chain-app-dev
             </div>
         </div>
 
-        <div class="container" id="artikel">
-            <div class="row">
-                @foreach ($recommendedArticles as $recommendedArticle)
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="container" id="artikel" style="width: 100vw;">
+          <div class="d-flex flex-wrap w-100" style="gap: 2rem;">
+            @foreach ($recommendedArticles as $recommendedArticle)
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="min-height: 400px;">
                         <div class="card shadow-sm border-0 rounded-lg overflow-hidden">
                             <!-- Article Image -->
                             <img src="{{ asset('storage/' . $recommendedArticle->picture_article) }}"
@@ -284,8 +284,8 @@ https://templatemo.com/tm-570-chain-app-dev
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                      </div>
+                        @endforeach
             </div>
         </div>
     </div>

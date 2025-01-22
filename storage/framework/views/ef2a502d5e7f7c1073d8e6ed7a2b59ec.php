@@ -257,10 +257,10 @@ https://templatemo.com/tm-570-chain-app-dev
             </div>
         </div>
 
-        <div class="container" id="artikel">
-            <div class="row">
-                <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="container" id="artikel" style="width: 100vw;">
+          <div class="d-flex flex-wrap w-100" style="gap: 2rem;">
+            <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="min-height: 400px;">
                         <div class="card shadow-sm border-0 rounded-lg overflow-hidden">
                             <!-- Article Image -->
                             <img src="<?php echo e(asset('storage/' . $recommendedArticle->picture_article)); ?>"
@@ -285,8 +285,8 @@ https://templatemo.com/tm-570-chain-app-dev
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
