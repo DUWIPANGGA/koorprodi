@@ -43,7 +43,7 @@
                             </span>
                         </td>
                         <td>
-                            <a href="<?php echo e(route('pengaduan.edit', $item->id)); ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?php echo e(route('pengaduan.edit', $item->id)); ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                             <form action="<?php echo e(route('pengaduan.destroy', $item->id)); ?>" method="POST" style="display: inline;">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>

@@ -43,7 +43,7 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{{ route('pengaduan.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('pengaduan.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                             <form action="{{ route('pengaduan.destroy', $item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
