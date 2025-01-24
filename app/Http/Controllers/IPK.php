@@ -9,13 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class IPK extends Controller
 {
     public function export()
-{
-    return Excel::download(new RekapExport, 'data-rekap-KHS.xlsx');
-}
+    {
+        return Excel::download(new RekapExport, 'data-rekap-KHS.xlsx');
+    }
 
     public function main()
     {
@@ -134,10 +135,28 @@ class IPK extends Controller
     {
         $request->validate([
             'IPK' => 'required',
+            'semester' => 'required',
         ]);
+        $rekap = Rekap::find($id);
+        if ($rekap->semester != $request->semester) {
+            $user = User::find($rekap->user_id);
 
-        Rekap::find($id)->update([
+            $oldName = $user->nim . '-IPK-semester-' . $rekap->semester . '.pdf';
+            $newName = $user->nim . '-IPK-semester-' . $request->semester . '.pdf';
+            $path = 'angkatan-' . $user->angkatan;
+            
+            if (Storage::disk('public')->exists($path . '/' . $oldName)) {
+                Storage::disk('public')->move($path . '/' . $oldName, $path . '/' . $newName);
+                
+                $rekap->update([
+                'dokumen' => 'storage/'. $path . '/' . $newName
+                ]);
+            }
+        }
+        // dd($request->semester);
+        $rekap->update([
             'IPK' => $request->IPK,
+            'semester' => $request->semester,
             'validated' => 1,
         ]);
 
