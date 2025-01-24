@@ -19,6 +19,10 @@
 # /.idea
 # /.vscode
 # /.zed
+public/backup/
+public/storage/
+storage/framework/sessions/
+storage/framework/views/
 /public/storage/
 /storage/app/public/
 storage/framework/views/009a4a1803bcab4974e0370d240ab04a.php
