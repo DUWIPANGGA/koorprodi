@@ -5,400 +5,381 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMADIKSI - <?php echo $__env->yieldContent('title'); ?></title>
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('logopolindra.png ')); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('logopolindra.png')); ?>">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Trix Editor -->
     <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
-
-    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
-
-    <style>
-        body {
-            margin: 0;
-            background-color: #F4F4F4;
-            font-family: sans-serif;
-            height: 100vh;
-        }
-
-        .navbar {
-            background-color: #031927; /* Warna biru gelap */
-            color: #fff;
-        }
-
-        .navbar-brand {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .dashboard {
-            display: flex;
-            height: 100vh;
-            flex-direction: row;
-        }
-
-        /* Sidebar Styling */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    padding: 20px;
-    background-color: #adc0bb; /* Secondary color */
-    color: #080907; /* Text color */
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
-
-.sidebar img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 2px solid #849878; /* Accent color */
-    object-fit: cover;
-}
-
-.sidebar h5 {
-    font-size: 18px;
-    color: #080907; /* Text color */
-}
-
-.sidebar a {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    color: #080907;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.sidebar a:hover,
-.sidebar a.active {
-    background-color: #849878; /* Primary color */
-    color: #f8f9f8; /* Background color */
-}
-
-.sidebar a i {
-    margin-right: 10px;
-    /* color: #080907; Accent color */
-}
-
-.dropdown-menu {
-    background-color: #adc0bb; /* Secondary color */
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-item {
-    color: #080907;
-}
-
-.dropdown-item:hover {
-    background-color: #849878; /* Primary color */
-    color: #f8f9f8;
-}
-
-/* Scrollbar Styling */
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-
-        .menu a {
-            display: block;
-            color: #080907;
-            color: #080907;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .menu a:hover {
-            color: #fff;
-            background-color: #849878b1; /* Aksen hijau untuk hover */
-        }   
-.active{
-    background-color: #849878;
-    color: #fff;
-}
-        .menu a i {
-            margin-right: 10px;
-        }
-
-        .content-wrapper {
-            /* min-height: 100vh    ; */
-            overflow-x: hidden;
-            flex: 1;
-            padding: 20px;
-            background-color: #F4F4F4; /* Warna abu-abu lembut */
-            overflow-y: auto;
-        }
-.hidden{
-    display: none;
-}
-        .container-card {
-            background: #fff;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .container-card h4 {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .container-card i {
-            font-size: 24px;
-            color: #333;
-        }
-
-        .charts {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .chart {
-            flex: 1;
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-            border-radius: 10px;
-        }
-
-        .param-button {
-            background: linear-gradient(to right, #849878, #adc0bb);
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 2s, background-color 2s;
-            display: none;
-        }
-
-        .param-button:hover {
-            background: linear-gradient(to right, #adc0bb, #98aeb0); /* Aksen hijau pada hover */
-        }
-        .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.menu a {
-    text-decoration: none;
-    padding: 10px;
-    color: #080907;
-    display: flex;
-    align-items: center;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-.dropdown-menu a {
-    padding: 10px 20px;
-    display: block;
-    color: #080907;
-}
-.dropdown-menu a:hover {
-    color: #black;
-    background-color: #98aeb0;
-}
-body {
-        font-family: 'Poppins', sans-serif;
-    }
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-#rekap-edit{
-                display: flex;
-                flex-direction: row;
-            }
-            .ipk-edit{
-                height: 
-                100%;
-                width: 50%;
-            }
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            #rekap-edit{
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-            .ipk-edit{
-                width: 100%;
-            }
-            .param-button {
-                display: block;
-            }
-            .dashboard {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                box-shadow: none;
-                position: absolute;
-                z-index: 99;
-                width: 50%;
-            }
-
-            .menu a {
-                font-size: 14px;
-            }
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
 
+    
+    <style>
+        :root {
+            --primary-color: #031927;
+            --secondary-color: #508AA8;
+            --accent-color: #C8E0F4;
+            --light-color: #F4F4F4;
+            --dark-color: #080907;
+            --success-color: #849878;
+            --danger-color: #BA1200;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            min-height: 100vh;
+        }
+        
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .sidebar-brand img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            margin: 0.25rem 0;
+            color: var(--dark-color);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover, 
+        .nav-link.active {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .nav-link i {
+            width: 24px;
+            margin-right: 0.75rem;
+            text-align: center;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-x: hidden;
+        }
+        
+        /* Mobile Toggle Button */
+        .sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1100;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        /* Tables */
+        .table {
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                position: fixed;
+                left: -250px;
+                height: 100vh;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: flex;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="dashboard">
-        <div class="sidebar col-md-2 bg-white vh-100 align-items-start p-3" id="sidebar_">
-
-            <!-- Header Logo dan Nama -->
-            <div class="d-flex align-items-center justify-content-center text-center mb-4">
-                <div class="me-2">
-                    <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="Foto Profil" class="rounded-circle border"
-                        style="height: 3rem; width: 3rem; object-fit: cover;">
-                </div>
-                <div>
-                    <h5 class="mb-0" style="font-size: 18px; color: #080907;">FORMADIKSI</h5>
-                </div>
-            </div>
-        
-            <!-- Menu Items -->
-            <div class="menu w-100">
-                <a href="<?php echo e(route('dashboard')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard') ? 'active' : ''); ?>">
-                    <i class="fas fa-home me-2"></i> Home
-                </a>
-                <a href="<?php echo e(route('rekap')); ?>" class="nav-link <?php echo e(request()->routeIs('rekap') ? 'active' : ''); ?>">
-                    <i class="fas fa-sliders-h me-2"></i> Rekap
-                </a>
-                <?php if(Auth::user()->role == 'user'): ?>
-                <a href="<?php echo e(route('pengaduan')); ?>" class="nav-link <?php echo e(request()->routeIs('pengaduan') ? 'active' : ''); ?>">
-                    <i class="fas fa-bullhorn me-2"></i> Pengaduan
-                </a>
-                <?php endif; ?>
-                <?php if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
-                <a href="<?php echo e(route('pengaduan.index')); ?>" class="nav-link <?php echo e(request()->routeIs('pengaduan.index') ? 'active' : ''); ?>">
-                    <i class="fas fa-bullhorn me-2"></i> Pengaduan
-                </a>
-                <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link <?php echo e(request()->routeIs('Rekap.index') ? 'active' : ''); ?>">
-                    <i class="fas fa-chart-line me-2"></i> Data IPK
-                </a>
-                <?php if(Auth::user()->role == 'super_admin'): ?>
-                <a href="<?php echo e(route('users.index')); ?>" class="nav-link <?php echo e(request()->routeIs('users.index') ? 'active' : ''); ?>">
-                    <i class="fas fa-user me-2"></i> User
-                </a>
-                <?php endif; ?>
-                <div class="dropdown">
-                    <a class="nav-link" href="<?php echo e(route('mahasiswa.index')); ?>" aria-expanded="false">
-                        <i class="fas fa-graduation-cap me-2"></i> Mahasiswa
-                    </a>
-                </div>
-                <?php endif; ?>
-                <?php if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
-                <a href="<?php echo e(route('aspirasi.index')); ?>" class="nav-link <?php echo e(request()->routeIs('aspirasi.index') ? 'active' : ''); ?>">
-                    <i class="fa fa-envelope"></i> Aspirasi
-                </a>
-                <a href="<?php echo e(route('article.main')); ?>" class="nav-link <?php echo e(request()->routeIs('article.main') ? 'active' : ''); ?>">
-                    <i class="fas fa-newspaper me-2"></i> Artikel
-                </a>
-                <a href="<?php echo e(route('acara.index')); ?>" class="nav-link <?php echo e(request()->routeIs('acara.index') ? 'active' : ''); ?>">
-                    <i class="fas fa-calendar me-2"></i> Acara
-                </a>
-                <?php endif; ?>
-                
-                
-                <a href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>" class="nav-link <?php echo e(request()->routeIs('profile.edit') ? 'active' : ''); ?>">
-                    <i class="fas fa-cog me-2"></i> Settings
-                </a>
-                <a href="<?php echo e(route('logout')); ?>" class="nav-link">
-                    <i class="fas fa-sign-out-alt me-2"></i> Logout
-                </a>
-            </div>
-        </div>
-        
-        <button onclick="toggleSidebar()" class="param-button"
-            style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+    <div class="dashboard-container">
+        <!-- Sidebar Toggle Button (Mobile) -->
+        <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
-
-    <div class="content-wrapper">
-        <?php echo $__env->yieldContent('content'); ?>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar overflow-y " id="sidebar">
+            <div class="sidebar-header">
+                <a href="<?php echo e(route('dashboard')); ?>" class="sidebar-brand">
+                    <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="FORMADIKSI Logo">
+                    <span>FORMADIKSI</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-menu p-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard') ? 'active' : ''); ?>">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('rekap')); ?>" class="nav-link <?php echo e(request()->routeIs('rekap') ? 'active' : ''); ?>">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Rekap</span>
+                        </a>
+                    </li>
+                    
+                    <?php if(Auth::user()->role == 'user'): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('pengaduan')); ?>" class="nav-link <?php echo e(request()->routeIs('pengaduan') ? 'active' : ''); ?>">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Pengaduan</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    
+                    <?php if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('pengaduan.index')); ?>" class="nav-link <?php echo e(request()->routeIs('pengaduan.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-tasks"></i>
+                            <span>Pengaduan</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link <?php echo e(request()->routeIs('Rekap.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Data IPK</span>
+                        </a>
+                    </li>
+                    
+                    <?php if(Auth::user()->role == 'super_admin'): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('users.index')); ?>" class="nav-link <?php echo e(request()->routeIs('users.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-users-cog"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('mahasiswa.index')); ?>" class="nav-link <?php echo e(request()->routeIs('mahasiswa.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Mahasiswa</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    
+                    <?php if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('aspirasi.index')); ?>" class="nav-link <?php echo e(request()->routeIs('aspirasi.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <span>Aspirasi</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('article.main')); ?>" class="nav-link <?php echo e(request()->routeIs('article.main') ? 'active' : ''); ?>">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Artikel</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('acara.index')); ?>" class="nav-link <?php echo e(request()->routeIs('acara.index') ? 'active' : ''); ?>">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Acara</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>" class="nav-link <?php echo e(request()->routeIs('profile.edit') ? 'active' : ''); ?>">
+                            <i class="fas fa-cog"></i>
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('logout')); ?>" class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Keluar</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <?php echo $__env->yieldContent('content'); ?>
+        </main>
     </div>
 
-    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+    
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
 
-    <script src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
+    
     <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar_");
+        // Toggle sidebar on mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('sidebarToggle');
             
-            console.log(sidebar);
-            if (sidebar.style.display == "none") {
-                console.log('on');
-                
-                sidebar.style.display = "block";
-            } else {
-                console.log('off');
-                sidebar.style.display = "none";
+            if (window.innerWidth <= 992 && 
+                !sidebar.contains(event.target) && 
+                !toggleBtn.contains(event.target)) {
+                sidebar.classList.remove('show');
             }
-        }
-
+        });
+        
+        // Active link highlighting
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
     </script>
-<?php echo $__env->yieldContent('scripts'); ?>
-<?php echo $__env->yieldPushContent('scripts'); ?>
+    
+    <?php echo $__env->yieldContent('scripts'); ?>
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 
-</html>
-<?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>

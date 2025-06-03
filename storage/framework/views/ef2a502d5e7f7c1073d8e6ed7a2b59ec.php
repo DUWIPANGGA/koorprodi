@@ -439,9 +439,6 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 
-    
-    
-
     <footer id="newsletter">
         <div class="container">
             <div class="row">

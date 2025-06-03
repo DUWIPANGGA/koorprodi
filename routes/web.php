@@ -130,3 +130,10 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
 Route::get('/logout', function () {
     return redirect('/login');
 })->name('logout');
+
+
+
+// route tambahan
+Route::get('/pendataan-tempat-tinggal', function(){
+    return redirect('https://docs.google.com/forms/d/e/1FAIpQLScw53OlD_kYxLLTAXo5CTMq0ejlEGN8d2rpQYo1cJ8Ud2Dz0A/viewform?usp=header');
+});

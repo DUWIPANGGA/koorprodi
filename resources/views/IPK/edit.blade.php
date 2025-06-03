@@ -31,7 +31,19 @@
             @endif
             <p><strong>Nama:</strong> {{ $rekap->name }}</p>
             <p><strong>NIM:</strong> {{ $rekap->nim }}</p>
-            <p><strong>Semester:</strong> {{ $rekap->semester }}</p>
+            <div style="margin-bottom: 20px;">
+                <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
+                <select id="semester" name="semester" required
+                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+                    @for ($i = 1; $i <= 8; $i++)
+                        @if ($rekap->semester == $i)
+        <option value="{{ $i }}" selected>Semester {{ $i }}</option>
+    @else
+        <option value="{{ $i }}" {{ old('semester') == $i ? 'selected' : '' }}>Semester {{ $i }}</option>
+    @endif
+                    @endfor
+                </select>
+            </div>
             <p style="color: red; font-size: 12px;">Note: Klik validasi untuk memvalidasi kebenaran IPK</p>
             
             <p><strong>IPK:</strong> </p>
