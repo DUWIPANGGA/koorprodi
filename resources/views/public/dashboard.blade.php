@@ -73,37 +73,19 @@
             </div>
         
             <!-- Bagian Teks dan Ikon -->
-            <div class="flex flex-col justify-center w-full pl-4 text-left">
-    <h5 class="text-lg font-bold text-gray-800">Selamat Datang Kembali! {{ Auth::user()->name }}</h5>
-    <p class="text-gray-600">Silakan jelajahi fitur-fitur yang tersedia untuk memantau kemajuan Anda.</p>
-    <div class="flex gap-4 mt-3">
-        <a href="{{ route('profile.edit', Auth::user()->id) }}" 
-           class="text-blue-600 hover:text-blue-800 transition-colors"
-           title="Edit Profil">
-            <i class="fas fa-user-edit text-xl"></i>
-        </a>
-        <a href="#" 
-           class="text-gray-600 hover:text-gray-800 transition-colors"
-           title="Refresh">
-            <i class="fas fa-sync text-xl"></i>
-        </a>
-        <a href="#" 
-           class="text-green-600 hover:text-green-800 transition-colors"
-           title="Statistik">
-            <i class="fas fa-chart-line text-xl"></i>
-        </a>
-        <a href="{{ route('rekap') }}" 
-           class="text-indigo-600 hover:text-indigo-800 transition-colors"
-           title="Rekap">
-            <i class="fas fa-book text-xl"></i>
-        </a>
-        <a href="#" 
-           class="text-gray-600 hover:text-gray-800 transition-colors"
-           title="Pengaturan">
-            <i class="fas fa-cog text-xl"></i>
-        </a>
-    </div>
-</div>
+            <div class="container d-flex flex-column justify-content-center" style="text-align: left; width: 100%; padding-left: 15px;">
+                <h5 class="fw-bold fs-5">Selamat Datang Kembali! {{ Auth::user()->name }}</h5>
+                <p class="text-left">Silakan jelajahi fitur-fitur yang tersedia untuk memantau kemajuan Anda.</p>
+                <div class="icon-list">
+                    <ul class="list-group justify-content-start d-flex flex-row flex-wrap border-0">
+                        <li class="list-group-item border-0 bg-transparent"><a href="{{ route('profile.edit', Auth::user()->id) }}"><i class="fas fa-user-edit"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-sync"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-chart-line"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="{{ route('rekap') }}"><i class="fas fa-book"></i></a></li>
+                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-cog"></i></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         
         
