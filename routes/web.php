@@ -105,7 +105,7 @@ Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name
 |--------------------------------------------------------------------------
 */
 
-Route::get('index', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
+Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
 
 
 Route::middleware(['auth', 'kominfo'])->group(function () {

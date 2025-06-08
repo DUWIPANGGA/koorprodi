@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Aspirasi;
+use App\Models\article as ModelsArticle;
 
 class aspirasiController extends Controller
 {
@@ -16,7 +17,8 @@ class aspirasiController extends Controller
 
     public function udahkirim()
     {
-        return view('index');
+        $recommendedArticles = ModelsArticle::latest()->take(8)->get();
+        return view("index", compact('recommendedArticles'));
     }
 
     public function kirim(Request $request)
@@ -38,7 +40,7 @@ class aspirasiController extends Controller
             ->first();
     
         if ($adaAspirasi) {
-            return redirect()->route('rumahaspirasi')
+            return redirect('/?status=error')
                 ->with('error', 'Anda sudah mengirim aspirasi hari ini. Silakan coba lagi besok!');
         }
     
@@ -48,10 +50,12 @@ class aspirasiController extends Controller
             $aspirasi->nama = $request->nama;
             $aspirasi->isi = $request->isi;
             $aspirasi->save();
-    
-            return redirect()->route('rumahaspirasi')->with('status', 'Aspirasi berhasil dikirim!');
+
+            return redirect('/?status=success')
+                ->with('status', 'Aspirasi berhasil dikirim!');
         } catch (\Exception $e) {
-            return redirect()->route('rumahaspirasi')->with('error', 'Aspirasi gagal dikirim! Cek koneksi kamu.');
+            return redirect('/?status=error')
+                ->with('error', 'Aspirasi gagal dikirim! Cek koneksi kamu.');
         }
     }
 
