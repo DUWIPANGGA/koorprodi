@@ -41,7 +41,9 @@
 </head>
 
 <body class="text-gray-800">
+    
     <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 ease-in-out" id="navbar">
+        
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a class="flex-shrink-0" href="#">
                 <img src="<?php echo e(asset('formadiksi.png')); ?>" alt="FORMADIKSI" class="h-16 transition-transform duration-300 hover:scale-105">
@@ -125,7 +127,7 @@
             </div>
         </div>
     </nav>
-
+    
     <section id="home" class="py-24 bg-gradient-to-br from-primary-100 to-secondary-50" data-aos="fade-up">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center justify-center text-center lg:text-left">
@@ -236,10 +238,10 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-center">
                 <div class="w-full lg:w-3/4">
-                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="zoom-in">
+                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-center mb-8 text-4xl font-bold section-title relative inline-block pb-4 text-gray-900">Rumah <span class="text-primary-500">Aspirasi</span></h2>
 
-                        <?php if(session('status')): ?>
+                        <?php if(session('status')): ?> 
                             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                                 <?php echo e(session('status')); ?>
 
@@ -312,7 +314,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn-primary px-8 py-3 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center mx-auto text-lg">
+                                <button type="submit" class="btn-primary px-8 py-3 rounded-lg bg-blue-700 text-white hover:bg-blue-800 transition duration-300 flex items-center justify-center mx-auto text-lg">
                                     <i class="fas fa-paper-plane mr-2"></i> Kirim!
                                 </button>
                             </div>
@@ -380,6 +382,8 @@ unset($__errorArgs, $__bag); ?>
             duration: 1000,
             once: true,
         });
+
+
 
         // Custom JS for Navbar and Character Counters
         document.addEventListener('DOMContentLoaded', function() {
@@ -476,6 +480,30 @@ unset($__errorArgs, $__bag); ?>
 
             window.addEventListener('scroll', activateNavLink);
             activateNavLink(); // Call on load to set initial active link
+
+            // Auto scroll ke rumah aspirasi
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('status')) {
+                const rumahAspirasiSection = document.getElementById('rumahaspirasi');
+                if (rumahAspirasiSection) {
+                    setTimeout(function() {
+                        rumahAspirasiSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 500);
+                }
+            } else if (urlParams.has('error')) {
+                const rumahAspirasiSection = document.getElementById('rumahaspirasi');
+                if (rumahAspirasiSection) {
+                    setTimeout(function() {
+                        rumahAspirasiSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 500);
+                }
+            }
         });
     </script>
 </body>

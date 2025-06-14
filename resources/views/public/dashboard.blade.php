@@ -1,347 +1,313 @@
 @extends('layouts.dashboard')
 
 @section('title', 'Dashboard')
-@section('styles')
-    <style>
-        .vertical-hr {
-            border-left: 2px solid #ccc;
-            height: 100%;
-            position: absolute;
-            left: 50%;
-            top: 0;
-        }
-
-        .container-card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .container-card i {
-            font-size: 100px;
-            color: #4CAF50;
-        }
-
-        .container-card .fw-bold {
-            color: #333;
-        }
-
-        .container-card .fs-5 {
-            color: #555;
-        }
-
-        .icon-list ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            gap: 15px;
-        }
-
-        .icon-list ul li a {
-            color: #080907;
-            /* Warna biru gelap */
-            font-size: 20px;
-            text-decoration: none;
-        }
-
-        /* .icon-list ul li:hover {
-                                color: #98aeb0;
-                            } */
-
-        /* Warna dan desain untuk grafik */
-        #ipkChart {
-            border-radius: 10px;
-            background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-@endsection
 
 @section('content')
-    <div class="main-content d-flex gap-3 flex-wrap">
-        {{-- <div class="container-card card d-flex flex-row" style="width:100%; height:10vh;overflow:hidden">
-        </div> --}}
-        <div class="container-card card d-flex flex-column flex-md-row" style="width: 100vw; height: auto; overflow: hidden;">
-            <!-- Bagian Foto Profil -->
-            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;max-width: 400px; ">
-                <div class="d-flex justify-content-center align-items-center" style="width: 100%; text-align: center;">
-                    <img src="{{ Auth::user()->foto_profil ?? asset(Auth::user()->foto_profil) | asset('LogoOrang.jpg') }}" alt="Logo"
-                         style="height: 90%; max-width: 100px; aspect-ratio: 1/1; border-radius: 50%; object-fit: cover; border: #000 1px solid;">
-                </div>
-            </div>
-        
-            <!-- Bagian Teks dan Ikon -->
-            <div class="container d-flex flex-column justify-content-center" style="text-align: left; width: 100%; padding-left: 15px;">
-                <h5 class="fw-bold fs-5">Selamat Datang Kembali! {{ Auth::user()->name }}</h5>
-                <p class="text-left">Silakan jelajahi fitur-fitur yang tersedia untuk memantau kemajuan Anda.</p>
-                <div class="icon-list">
-                    <ul class="list-group justify-content-start d-flex flex-row flex-wrap border-0">
-                        <li class="list-group-item border-0 bg-transparent"><a href="{{ route('profile.edit', Auth::user()->id) }}"><i class="fas fa-user-edit"></i></a></li>
-                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-sync"></i></a></li>
-                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-chart-line"></i></a></li>
-                        <li class="list-group-item border-0 bg-transparent"><a href="{{ route('rekap') }}"><i class="fas fa-book"></i></a></li>
-                        <li class="list-group-item border-0 bg-transparent"><a href="#"><i class="fas fa-cog"></i></a></li>
-                    </ul>
-                </div>
+<div class="min-h-screen bg-gray-50 p-4 md:p-8">
+    <!-- Welcome Section -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6 flex flex-col md:flex-row items-center gap-6">
+        <div class="relative">
+            <img src="{{ Auth::user()->foto_profil ?? asset('LogoOrang.jpg') }}" 
+                 alt="Profile picture"
+                 class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-white shadow-lg">
+            <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-1.5 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
             </div>
         </div>
-        
-        
-        <!-- IPK Input -->
-        <div class="container-card card d-flex flex-row align-items-center justify-content-between"
-            style="width: 100%; max-width: 350px; height: auto; padding: 15px; background-color: #ffffff; 
-            border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div class="container-fluid d-flex justify-content-center align-items-center"
-                style="height: 100%; width: 100%;">
-                <canvas id="ipkChart" style="width: 100%; height: 100%;"></canvas> <!-- Canvas menyesuaikan penuh -->
+        <div class="flex-1">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">Welcome back, {{ Auth::user()->name }}!</h1>
+            <p class="text-gray-600 mt-1">Track your academic progress and stay updated</p>
+            
+            <div class="flex gap-4 mt-4">
+                <a href="{{ route('profile.edit', Auth::user()->id) }}" class="text-blue-600 hover:text-blue-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                </a>
+                <a href="{{ route('rekap') }}" class="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </a>
             </div>
         </div>
+    </div>
 
-
-
-        <div class="container-card card d-flex flex-row align-items-start justify-content-between"
-            style="width: 100%; max-width: 350px; height: auto; padding: 20px; background-color: #ffffff; 
-            border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-            <div class="container" style="text-align: left;">
-                <!-- SEMESTER -->
-                <div class="d-flex align-items-center mb-4">
-                    <div
-                        style="background-color: #007bff; width: 50px; height: 50px; border-radius: 50%; display: flex; 
-                        justify-content: center; align-items: center; margin-right: 15px;">
-                        <i class="fas fa-calendar-alt" style="font-size: 24px; color: white;"></i>
-                    </div>
-                    <div>
-                        <h2 class="h5" style="color: #007bff; margin-bottom: 5px;">SEMESTER</h2>
-                        <p class="fs-3 fw-bold" style="color: #333; margin: 0;">{{ $ipkNew->semester ?? 1 }}</p>
-                    </div>
-                </div>
-
-                <!-- IPK -->
-                <div class="d-flex align-items-center">
-                    <div
-                        style="background-color: #28a745; width: 50px; height: 50px; border-radius: 50%; display: flex; 
-                        justify-content: center; align-items: center; margin-right: 15px;">
-                        <i class="fas fa-graduation-cap" style="font-size: 24px; color: white;"></i>
-                    </div>
-                    <div>
-                        <h2 class="h5" style="color: #28a745; margin-bottom: 5px;">IPK</h2>
-                        <p class="fs-3 fw-bold" style="color: #333; margin: 0;">{{ $ipkNew->IPK ?? 0 }}</p>
-                    </div>
-                </div>
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <!-- GPA Chart Card -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">GPA Progress</h3>
+                <span class="text-sm text-gray-500">Semester {{ $ipkNew->semester ?? 1 }}</span>
+            </div>
+            <div class="h-48">
+                <canvas id="ipkChart"></canvas>
             </div>
         </div>
 
-
-
-        <div class="container-card card d-flex flex-row align-items-start justify-content-between"
-            style="width: 100%; max-width: 350px; height: auto; padding: 20px; background-color: #ffffff; 
-            border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-            <div
-                style="background-color: #28a745; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-book" style="font-size: 50px; color: white;"></i>
-            </div>
-            <div class="container ms-3" style="text-align: left;">
-                @if (Auth::user()->pelaporan_ipk == 1)
-                    <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
-                    <p class="fs-6" style="color: #333;">Anda sudah melakukan pelaporan IPK di semester ini!</p>
-                    <p class="fs-7" style="color: #555;">Terima kasih telah memperbarui data semester ini.</p>
-                @elseif (Auth::user()->pelaporan_ipk == 0)
-                    <h5 class="fw-bold fs-5" style="color: #28a745;">Rekap IPK</h5>
-                    <p class="fs-6" style="color: #333;">Anda belum melakukan pelaporan IPK di semester ini!</p>
-                    <p class="fs-7" style="color: #555;">Segera laporkan IPK Anda untuk memperbarui data semester ini.</p>
-                @endif
-            </div>
-        </div>
-
-        <!-- Informasi Semester -->
-        <div class="container-card card d-flex flex-row align-items-start justify-content-between"
-            style="width: 100%; max-width: 350px; height: auto; padding: 20px; background-color: #ffffff; 
-            border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-            <div
-                style="background-color: #007bff; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-calendar-alt" style="font-size: 50px; color: white;"></i>
-            </div>
-            <div class="container ms-3" style="text-align: left;">
-                <h5 class="fw-bold fs-5" style="color: #007bff;">Informasi Semester</h5>
-                <p class="fs-6" style="color: #333;">Anda sedang berada di <strong>semester
-                        {{ $semester }}</strong>.</p>
-                <p class="fs-7" style="color: #555;">Pastikan Anda mengikuti setiap pengumuman semester ini.</p>
-            </div>
-        </div>
-        @if (Auth::user()->role == 'super_admin')
-            <!-- Container Card -->
-            <div class="container-card card d-flex flex-column align-items-center justify-content-between"
-                style="width: 30%; height: 40vh; padding: 15px; background-color: #ffffff; border-radius: 10px; 
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
-                <!-- Description -->
-                <div
-                    style="background-color: #4CAF50; padding: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; width: 100px; height: 100px;">
-                    <i class="fas fa-file-alt" style="font-size: 50px; color: white;"></i>
+        <!-- Semester Card -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex items-start space-x-4">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                 </div>
                 <div>
-                    <h5 style="color: #333;">Event Rekap</h5>
-                    <p style="color: #555; font-size: 14px; margin: 10px 0;">Klik tombol di bawah untuk membuka form rekap
-                        event.</p>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Current Semester</h3>
+                    <p class="mt-1 text-3xl font-semibold text-gray-900">{{ $ipkNew->semester ?? 1 }}</p>
+                    <p class="mt-1 text-sm text-gray-500">You're in semester {{ $semester }}</p>
                 </div>
+            </div>
+        </div>
 
-                <!-- Button -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-                    Click for option
+        <!-- GPA Card -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex items-start space-x-4">
+                <div class="bg-green-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Current GPA</h3>
+                    <p class="mt-1 text-3xl font-semibold text-gray-900">{{ $ipkNew->IPK ?? 0 }}</p>
+                    <p class="mt-1 text-sm text-gray-500">
+                        @if(($ipkNew->IPK ?? 0) >= 3.5)
+                            Excellent performance
+                        @elseif(($ipkNew->IPK ?? 0) >= 3.0)
+                            Good performance
+                        @else
+                            Keep improving
+                        @endif
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- IPK Report Card -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex items-start space-x-4">
+                <div class="{{ Auth::user()->pelaporan_ipk == 1 ? 'bg-green-100' : 'bg-yellow-100' }} p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 {{ Auth::user()->pelaporan_ipk == 1 ? 'text-green-600' : 'text-yellow-600' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">GPA Report</h3>
+                    @if (Auth::user()->pelaporan_ipk == 1)
+                        <p class="mt-1 text-lg font-medium text-gray-900">Submitted</p>
+                        <p class="mt-1 text-sm text-gray-500">Thank you for updating this semester</p>
+                    @else
+                        <p class="mt-1 text-lg font-medium text-gray-900">Pending</p>
+                        <p class="mt-1 text-sm text-gray-500">Please submit your GPA report</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Section (Conditional) -->
+    @if (Auth::user()->role == 'super_admin')
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Admin Controls</h3>
+            <span class="text-sm text-gray-500">Manage GPA reporting</span>
+        </div>
+        <div class="bg-blue-50 rounded-lg p-4">
+            <div class="flex items-center space-x-4">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-medium text-gray-800">GPA Reporting Period</h4>
+                    <p class="text-sm text-gray-600">Open or close the GPA reporting for students</p>
+                </div>
+                <button type="button" 
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#formModal">
+                    Manage Reporting
                 </button>
             </div>
-        @endif
-        <div class="row g-4" style="width: 100vw;">
-            {{-- <h3 class="mb-4">Baca Juga</h3> --}}
-            @foreach ($recommendedArticles as $recommendedArticle)
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-top"
-                            style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}'); 
-                                    background-size: cover; 
-                                    background-position: center; 
-                                    height: 200px; 
-                                    filter: brightness(50%);
-                                    border-radius: 0.375rem 0.375rem 0 0;">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-dark">{{ $recommendedArticle->title }}</h5>
-                            <p class="card-text text-muted">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
-                            <a href="{{ route('article.show.detail', $recommendedArticle->id) }}"
-                                class="btn btn-primary mt-auto">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
         </div>
-        @if (Auth::user()->role == 'super_admin')
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="formModalLabel">EVENT REKAP IPK</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="statusForm" method="POST" action="{{ route('rekap.event') }}">
-                                <!-- CSRF Token -->
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="alert alert-warning" role="alert">
-                                    <i class="fas fa-exclamation-triangle"></i> Peringatan: Mohon berhati-hati, karena
-                                    dapat
-                                    berpengaruh besar terhadap data perekapan.
-                                </div>
-                                <!-- Buttons for Status -->
-                                <div class="d-flex justify-content-between">
-                                    <button type="submit" class="btn btn-danger w-48 send-status" data-status="0"
-                                        name="status" value="0">Buka rekap</button>
-                                    <button type="submit" class="btn btn-success w-48 send-status" data-status="1"
-                                        name="status" value="1">Tutup rekap</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+    </div>
+    @endif
+
+    <!-- Recommended Articles -->
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Recommended Articles</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            @foreach ($recommendedArticles as $recommendedArticle)
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="h-48 bg-cover bg-center" 
+                     style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}')">
+                </div>
+                <div class="p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">{{ $recommendedArticle->title }}</h4>
+                    <p class="text-gray-600 text-sm mb-4">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
+                    <a href="{{ route('article.show.detail', $recommendedArticle->id) }}" 
+                       class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center">
+                        Read more
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-        @endif
+            @endforeach
+        </div>
     </div>
+
+    <!-- Admin Modal -->
+    @if (Auth::user()->role == 'super_admin')
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-b-0 pb-0">
+                    <h5 class="modal-title text-lg font-semibold text-gray-800" id="formModalLabel">GPA Reporting Control</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <form id="statusForm" method="POST" action="{{ route('rekap.event') }}">
+                        @csrf
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-yellow-700">
+                                        Warning: This action will affect all students' ability to submit GPA reports.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between space-x-4">
+                            <button type="submit" name="status" value="0" 
+                                    class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                                Open Reporting
+                            </button>
+                            <button type="submit" name="status" value="1" 
+                                    class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                                Close Reporting
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+</div>
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-    <script>
-        // Data IPK Mahasiswa
-        var ipkArray = @json($ipkArray);
-        console.log(ipkArray);
-        const dataMahasiswa = {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8'], // Label semester (harus sesuai panjang dengan data)
-            datasets: [{
-                label: 'IPK',
-                data: ipkArray,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Warna fill area
-                borderColor: 'rgba(75, 192, 192, 1)', // Warna garis
-                borderWidth: 1.5,
-                tension: 0.4, // Kurva garis
-                fill: true, // Isi area di bawah garis
-                pointRadius: 5, // Ukuran titik
-                pointBackgroundColor: 'rgba(75, 192, 192, 1)' // Warna titik
-            }]
-        };
+<script>
+    // Data IPK Mahasiswa
+    var ipkArray = @json($ipkArray);
+    
+    const dataMahasiswa = {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+        datasets: [{
+            label: 'GPA',
+            data: ipkArray,
+            backgroundColor: 'rgba(79, 70, 229, 0.05)',
+            borderColor: 'rgba(79, 70, 229, 1)',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true,
+            pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+            pointRadius: 5,
+            pointHoverRadius: 7
+        }]
+    };
 
-        // Konfigurasi Grafik
-        const config = {
-            type: 'line', // Jenis grafik
-            data: dataMahasiswa,
-            options: {
-                responsive: true,
-
-                plugins: {
-                    datalabels: {
-                        align: 'top',
-                        color: 'grey',
-                        font: {
-                            weight: 'bold',
-                            size: 10 // Ukuran font
-                        },
-                        formatter: (value) => {
-                            return value.toFixed(2); // Menampilkan nilai data (2 angka desimal)
-                        }
-                    },
-                    legend: {
-                        display: false,
-                    },
+    // Konfigurasi Grafik
+    const config = {
+        type: 'line',
+        data: dataMahasiswa,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 5, // Skala maksimal (IPK maksimal)
-                        grid: {
-                            display: false // Menampilkan grid pada sumbu Y
-                        },
-                        ticks: {
-                            display: false
-                        }
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
                     },
-                    x: {
-                        grid: {
-                            display: false // Menghilangkan grid pada sumbu X
-                        },
-                        ticks: {
-                            stepSize: 1 // Jarak antar nilai label
+                    bodyFont: {
+                        size: 12
+                    },
+                    callbacks: {
+                        label: function(context) {
+                            return `GPA: ${context.parsed.y.toFixed(2)}`;
                         }
                     }
                 }
             },
-            plugins: [ChartDataLabels] // Tambahkan datalabels ke array plugin
-        };
-
-        // Inisialisasi Chart
-        const ctx = document.getElementById('ipkChart').getContext('2d');
-        const ipkChart = new Chart(ctx, config);
-
-        const modal = document.getElementById('modal');
-        const openModal = document.getElementById('openModal');
-        const closeModal = document.getElementById('closeModal');
-
-        // Open modal
-        openModal.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-
-        // Close modal
-        closeModal.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        // Close modal when clicking outside the modal content
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.classList.add('hidden');
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 4,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        stepSize: 1,
+                        color: 'rgba(107, 114, 128, 0.7)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: 'rgba(107, 114, 128, 0.7)'
+                    }
+                }
+            },
+            elements: {
+                line: {
+                    tension: 0.4
+                }
             }
-        });
-    </script>
+        },
+        plugins: [ChartDataLabels]
+    };
+
+    // Inisialisasi Chart
+    const ctx = document.getElementById('ipkChart').getContext('2d');
+    const ipkChart = new Chart(ctx, config);
+</script>
 @endsection

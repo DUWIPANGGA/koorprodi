@@ -26,6 +26,7 @@
     
     <!-- Trix Editor -->
     <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     @livewireStyles
     
@@ -222,117 +223,128 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="dashboard-container overflow-hidden h-[100vh]">
         <!-- Sidebar Toggle Button (Mobile) -->
         <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
         
         <!-- Sidebar -->
-        <aside class="sidebar overflow-y " id="sidebar">
-            <div class="sidebar-header">
-                <a href="{{ route('dashboard') }}" class="sidebar-brand">
-                    <img src="{{ asset('formadiksi.png') }}" alt="FORMADIKSI Logo">
-                    <span>FORMADIKSI</span>
-                </a>
-            </div>
-            
-            <div class="sidebar-menu p-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                            <i class="fas fa-home"></i>
+        <aside class="sidebar" id="sidebar">
+    <div class="h-full flex flex-col bg-white shadow-md">
+        <!-- Brand/Header Section -->
+        <div class="sidebar-header p-4 border-b border-gray-100">
+            <a href="{{ route('dashboard') }}" class="sidebar-brand flex items-center space-x-3">
+                <img src="{{ asset('formadiksi.png') }}" alt="FORMADIKSI Logo" class="h-10 w-auto">
+                <span class="text-xl font-semibold text-gray-800">FORMADIKSI</span>
+            </a>
+        </div>
+        
+        <!-- Menu Container -->
+        <div class="flex-1 overflow-y-auto">
+            <nav class="sidebar-menu p-4">
+                <ul class="space-y-1">
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-home mr-3 w-5 text-center"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="{{ route('rekap') }}" class="nav-link {{ request()->routeIs('rekap') ? 'active' : '' }}">
-                            <i class="fas fa-chart-bar"></i>
+                    <li>
+                        <a href="{{ route('rekap') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rekap') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-chart-bar mr-3 w-5 text-center"></i>
                             <span>Rekap</span>
                         </a>
                     </li>
                     
                     @if (Auth::user()->role == 'user')
-                    <li class="nav-item">
-                        <a href="{{ route('pengaduan') }}" class="nav-link {{ request()->routeIs('pengaduan') ? 'active' : '' }}">
-                            <i class="fas fa-bullhorn"></i>
+                    <li>
+                        <a href="{{ route('pengaduan') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-bullhorn mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
                     </li>
                     @endif
                     
                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
-                    <li class="nav-item">
-                        <a href="{{ route('pengaduan.index') }}" class="nav-link {{ request()->routeIs('pengaduan.index') ? 'active' : '' }}">
-                            <i class="fas fa-tasks"></i>
+                    <li>
+                        <a href="{{ route('pengaduan.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-tasks mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="{{ route('Rekap.index') }}" class="nav-link {{ request()->routeIs('Rekap.index') ? 'active' : '' }}">
-                            <i class="fas fa-chart-line"></i>
+                    <li>
+                        <a href="{{ route('Rekap.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('Rekap.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
                             <span>Data IPK</span>
                         </a>
                     </li>
                     
                     @if (Auth::user()->role == 'super_admin')
-                    <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
-                            <i class="fas fa-users-cog"></i>
+                    <li>
+                        <a href="{{ route('users.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('users.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-users-cog mr-3 w-5 text-center"></i>
                             <span>User Management</span>
                         </a>
                     </li>
                     @endif
                     
-                    <li class="nav-item">
-                        <a href="{{ route('mahasiswa.index')}}" class="nav-link {{ request()->routeIs('mahasiswa.index') ? 'active' : '' }}">
-                            <i class="fas fa-user-graduate"></i>
+                    <li>
+                        <a href="{{ route('mahasiswa.index')}}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('mahasiswa.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-user-graduate mr-3 w-5 text-center"></i>
                             <span>Mahasiswa</span>
                         </a>
                     </li>
                     @endif
                     
                     @if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
-                    <li class="nav-item">
-                        <a href="{{ route('aspirasi.index') }}" class="nav-link {{ request()->routeIs('aspirasi.index') ? 'active' : '' }}">
-                            <i class="fas fa-envelope-open-text"></i>
+                    <li>
+                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-envelope-open-text mr-3 w-5 text-center"></i>
                             <span>Aspirasi</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="{{ route('article.main') }}" class="nav-link {{ request()->routeIs('article.main') ? 'active' : '' }}">
-                            <i class="fas fa-newspaper"></i>
+                    <li>
+                        <a href="{{ route('article.main') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('article.main') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-newspaper mr-3 w-5 text-center"></i>
                             <span>Artikel</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="{{ route('acara.index') }}" class="nav-link {{ request()->routeIs('acara.index') ? 'active' : '' }}">
-                            <i class="fas fa-calendar-alt"></i>
+                    <li>
+                        <a href="{{ route('acara.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
                             <span>Acara</span>
                         </a>
                     </li>
                     @endif
-                    
-                    <li class="nav-item">
-                        <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
-                            <i class="fas fa-cog"></i>
-                            <span>Pengaturan</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Keluar</span>
-                        </a>
-                    </li>
                 </ul>
-            </div>
-        </aside>
+
+                <!-- Bottom Section -->
+                <div class="mt-8 pt-4 border-t border-gray-100">
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('profile.edit') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                                <i class="fas fa-cog mr-3 w-5 text-center"></i>
+                                <span>Pengaturan</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ route('logout') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+                                <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>
+                                <span>Keluar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</aside>
         
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
