@@ -2,11 +2,11 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-gray-50 p-4 md:p-8">
-    <!-- Welcome Section -->
+    <!-- Bagian Sambutan -->
     <div class="bg-white rounded-xl shadow-sm p-6 mb-6 flex flex-col md:flex-row items-center gap-6">
         <div class="relative">
             <img src="<?php echo e(Auth::user()->foto_profil ?? asset('LogoOrang.jpg')); ?>" 
-                 alt="Profile picture"
+                 alt="Foto profil"
                  class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-white shadow-lg">
             <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-1.5 shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -15,8 +15,8 @@
             </div>
         </div>
         <div class="flex-1">
-            <h1 class="text-xl md:text-2xl font-bold text-gray-800">Welcome back, <?php echo e(Auth::user()->name); ?>!</h1>
-            <p class="text-gray-600 mt-1">Track your academic progress and stay updated</p>
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">Selamat datang kembali, <?php echo e(Auth::user()->name); ?>!</h1>
+            <p class="text-gray-600 mt-1">Pantau perkembangan akademik Anda dan tetap terupdate</p>
             
             <div class="flex gap-4 mt-4">
                 <a href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>" class="text-blue-600 hover:text-blue-800 transition-colors">
@@ -49,12 +49,12 @@
         </div>
     </div>
 
-    <!-- Stats Grid -->
+    <!-- Grid Statistik -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <!-- GPA Chart Card -->
+        <!-- Kartu Grafik IPK -->
         <div class="bg-white rounded-xl shadow-sm p-6">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-800">GPA Progress</h3>
+                <h3 class="text-lg font-semibold text-gray-800">Perkembangan IPK</h3>
                 <span class="text-sm text-gray-500">Semester <?php echo e($ipkNew->semester ?? 1); ?></span>
             </div>
             <div class="h-48">
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <!-- Semester Card -->
+        <!-- Kartu Semester -->
         <div class="bg-white rounded-xl shadow-sm p-6">
             <div class="flex items-start space-x-4">
                 <div class="bg-blue-100 p-3 rounded-full">
@@ -71,14 +71,14 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Current Semester</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Semester Saat Ini</h3>
                     <p class="mt-1 text-3xl font-semibold text-gray-900"><?php echo e($ipkNew->semester ?? 1); ?></p>
-                    <p class="mt-1 text-sm text-gray-500">You're in semester <?php echo e($semester); ?></p>
+                    <p class="mt-1 text-sm text-gray-500">Anda berada di semester <?php echo e($semester); ?></p>
                 </div>
             </div>
         </div>
 
-        <!-- GPA Card -->
+        <!-- Kartu IPK -->
         <div class="bg-white rounded-xl shadow-sm p-6">
             <div class="flex items-start space-x-4">
                 <div class="bg-green-100 p-3 rounded-full">
@@ -87,22 +87,22 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Current GPA</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">IPK Saat Ini</h3>
                     <p class="mt-1 text-3xl font-semibold text-gray-900"><?php echo e($ipkNew->IPK ?? 0); ?></p>
                     <p class="mt-1 text-sm text-gray-500">
                         <?php if(($ipkNew->IPK ?? 0) >= 3.5): ?>
-                            Excellent performance
+                            Performa sangat baik
                         <?php elseif(($ipkNew->IPK ?? 0) >= 3.0): ?>
-                            Good performance
+                            Performa baik
                         <?php else: ?>
-                            Keep improving
+                            Terus tingkatkan
                         <?php endif; ?>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- IPK Report Card -->
+        <!-- Kartu Laporan IPK -->
         <div class="bg-white rounded-xl shadow-sm p-6">
             <div class="flex items-start space-x-4">
                 <div class="<?php echo e(Auth::user()->pelaporan_ipk == 1 ? 'bg-green-100' : 'bg-yellow-100'); ?> p-3 rounded-full">
@@ -111,25 +111,25 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">GPA Report</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Laporan IPK</h3>
                     <?php if(Auth::user()->pelaporan_ipk == 1): ?>
-                        <p class="mt-1 text-lg font-medium text-gray-900">Submitted</p>
-                        <p class="mt-1 text-sm text-gray-500">Thank you for updating this semester</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900">Terkirim</p>
+                        <p class="mt-1 text-sm text-gray-500">Terima kasih telah memperbarui semester ini</p>
                     <?php else: ?>
-                        <p class="mt-1 text-lg font-medium text-gray-900">Pending</p>
-                        <p class="mt-1 text-sm text-gray-500">Please submit your GPA report</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900">Menunggu</p>
+                        <p class="mt-1 text-sm text-gray-500">Silakan kirim laporan IPK Anda</p>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Admin Section (Conditional) -->
+    <!-- Bagian Admin (Kondisional) -->
     <?php if(Auth::user()->role == 'super_admin'): ?>
     <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-gray-800">Admin Controls</h3>
-            <span class="text-sm text-gray-500">Manage GPA reporting</span>
+            <h3 class="text-lg font-semibold text-gray-800">Kontrol Admin</h3>
+            <span class="text-sm text-gray-500">Kelola pelaporan IPK</span>
         </div>
         <div class="bg-blue-50 rounded-lg p-4">
             <div class="flex items-center space-x-4">
@@ -139,23 +139,23 @@
                     </svg>
                 </div>
                 <div class="flex-1">
-                    <h4 class="font-medium text-gray-800">GPA Reporting Period</h4>
-                    <p class="text-sm text-gray-600">Open or close the GPA reporting for students</p>
+                    <h4 class="font-medium text-gray-800">Periode Pelaporan IPK</h4>
+                    <p class="text-sm text-gray-600">Buka atau tutup pelaporan IPK untuk mahasiswa</p>
                 </div>
                 <button type="button" 
                         class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                         data-bs-toggle="modal" 
                         data-bs-target="#formModal">
-                    Manage Reporting
+                    Kelola Pelaporan
                 </button>
             </div>
         </div>
     </div>
     <?php endif; ?>
 
-    <!-- Recommended Articles -->
+    <!-- Artikel Rekomendasi -->
     <div class="mb-6">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Recommended Articles</h3>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Artikel Rekomendasi</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <?php $__currentLoopData = $recommendedArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recommendedArticle): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
@@ -167,7 +167,7 @@
                     <p class="text-gray-600 text-sm mb-4"><?php echo Str::limit($recommendedArticle->content, 100); ?></p>
                     <a href="<?php echo e(route('article.show.detail', $recommendedArticle->id)); ?>" 
                        class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center">
-                        Read more
+                        Baca selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
@@ -178,13 +178,13 @@
         </div>
     </div>
 
-    <!-- Admin Modal -->
+    <!-- Modal Admin -->
     <?php if(Auth::user()->role == 'super_admin'): ?>
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header border-b-0 pb-0">
-                    <h5 class="modal-title text-lg font-semibold text-gray-800" id="formModalLabel">GPA Reporting Control</h5>
+                    <h5 class="modal-title text-lg font-semibold text-gray-800" id="formModalLabel">Kontrol Pelaporan IPK</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body py-4">
@@ -199,7 +199,7 @@
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-sm text-yellow-700">
-                                        Warning: This action will affect all students' ability to submit GPA reports.
+                                        Peringatan: Tindakan ini akan mempengaruhi kemampuan semua mahasiswa untuk mengirim laporan IPK.
                                     </p>
                                 </div>
                             </div>
@@ -207,11 +207,11 @@
                         <div class="flex justify-between space-x-4">
                             <button type="submit" name="status" value="0" 
                                     class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                Open Reporting
+                                Buka Pelaporan
                             </button>
                             <button type="submit" name="status" value="1" 
                                     class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                Close Reporting
+                                Tutup Pelaporan
                             </button>
                         </div>
                     </form>
@@ -234,7 +234,7 @@
     const dataMahasiswa = {
         labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
         datasets: [{
-            label: 'GPA',
+            label: 'IPK',
             data: ipkArray,
             backgroundColor: 'rgba(79, 70, 229, 0.05)',
             borderColor: 'rgba(79, 70, 229, 1)',
@@ -269,7 +269,7 @@
                     },
                     callbacks: {
                         label: function(context) {
-                            return `GPA: ${context.parsed.y.toFixed(2)}`;
+                            return `IPK: ${context.parsed.y.toFixed(2)}`;
                         }
                     }
                 }

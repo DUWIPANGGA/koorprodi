@@ -245,14 +245,14 @@
             <nav class="sidebar-menu p-4">
                 <ul class="space-y-1">
                     <li>
-                        <a href="{{ route('dashboard') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('dashboard') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
                             <i class="fas fa-home mr-3 w-5 text-center"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="{{ route('rekap') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rekap') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('rekap') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rekap') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black' }}">
                             <i class="fas fa-chart-bar mr-3 w-5 text-center"></i>
                             <span>Rekap</span>
                         </a>
@@ -260,7 +260,7 @@
                     
                     @if (Auth::user()->role == 'user')
                     <li>
-                        <a href="{{ route('pengaduan') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('pengaduan') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-bullhorn mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
@@ -269,14 +269,14 @@
                     
                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
                     <li>
-                        <a href="{{ route('pengaduan.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('pengaduan.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-tasks mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="{{ route('Rekap.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('Rekap.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('Rekap.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('Rekap.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
                             <span>Data IPK</span>
                         </a>
@@ -284,7 +284,7 @@
                     
                     @if (Auth::user()->role == 'super_admin')
                     <li>
-                        <a href="{{ route('users.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('users.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('users.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('users.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-users-cog mr-3 w-5 text-center"></i>
                             <span>User Management</span>
                         </a>
@@ -292,7 +292,7 @@
                     @endif
                     
                     <li>
-                        <a href="{{ route('mahasiswa.index')}}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('mahasiswa.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('mahasiswa.index')}}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('mahasiswa.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-user-graduate mr-3 w-5 text-center"></i>
                             <span>Mahasiswa</span>
                         </a>
@@ -301,21 +301,21 @@
                     
                     @if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
                     <li>
-                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-envelope-open-text mr-3 w-5 text-center"></i>
                             <span>Aspirasi</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="{{ route('article.main') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('article.main') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('article.main') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('article.main') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-newspaper mr-3 w-5 text-center"></i>
                             <span>Artikel</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="{{ route('acara.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                        <a href="{{ route('acara.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black ' }}">
                             <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
                             <span>Acara</span>
                         </a>
@@ -327,14 +327,14 @@
                 <div class="mt-8 pt-4 border-t border-gray-100">
                     <ul class="space-y-1">
                         <li>
-                            <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('profile.edit') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50' }}">
+                            <a href="{{ route('profile.edit', Auth::user()->id) }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('profile.edit') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50' }}">
                                 <i class="fas fa-cog mr-3 w-5 text-center"></i>
                                 <span>Pengaturan</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="{{ route('logout') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+                            <a href="{{ route('logout') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors text-gray-500 hover:bg-gray-50  hover:text-black ">
                                 <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>
                                 <span>Keluar</span>
                             </a>

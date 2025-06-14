@@ -246,14 +246,14 @@
             <nav class="sidebar-menu p-4">
                 <ul class="space-y-1">
                     <li>
-                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black'); ?>">
                             <i class="fas fa-home mr-3 w-5 text-center"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="<?php echo e(route('rekap')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('rekap') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('rekap')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('rekap') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black'); ?>">
                             <i class="fas fa-chart-bar mr-3 w-5 text-center"></i>
                             <span>Rekap</span>
                         </a>
@@ -261,7 +261,7 @@
                     
                     <?php if(Auth::user()->role == 'user'): ?>
                     <li>
-                        <a href="<?php echo e(route('pengaduan')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('pengaduan') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('pengaduan')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('pengaduan') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-bullhorn mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
@@ -270,14 +270,14 @@
                     
                     <?php if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
                     <li>
-                        <a href="<?php echo e(route('pengaduan.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('pengaduan.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-tasks mr-3 w-5 text-center"></i>
                             <span>Pengaduan</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('Rekap.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('Rekap.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('Rekap.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
                             <span>Data IPK</span>
                         </a>
@@ -285,7 +285,7 @@
                     
                     <?php if(Auth::user()->role == 'super_admin'): ?>
                     <li>
-                        <a href="<?php echo e(route('users.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('users.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('users.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('users.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-users-cog mr-3 w-5 text-center"></i>
                             <span>User Management</span>
                         </a>
@@ -293,7 +293,7 @@
                     <?php endif; ?>
                     
                     <li>
-                        <a href="<?php echo e(route('mahasiswa.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('mahasiswa.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('mahasiswa.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('mahasiswa.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-user-graduate mr-3 w-5 text-center"></i>
                             <span>Mahasiswa</span>
                         </a>
@@ -302,21 +302,21 @@
                     
                     <?php if(Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'): ?>
                     <li>
-                        <a href="<?php echo e(route('aspirasi.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('aspirasi.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-envelope-open-text mr-3 w-5 text-center"></i>
                             <span>Aspirasi</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="<?php echo e(route('article.main')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('article.main') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('article.main')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('article.main') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-newspaper mr-3 w-5 text-center"></i>
                             <span>Artikel</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="<?php echo e(route('acara.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                        <a href="<?php echo e(route('acara.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50  hover:text-black '); ?>">
                             <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
                             <span>Acara</span>
                         </a>
@@ -328,14 +328,14 @@
                 <div class="mt-8 pt-4 border-t border-gray-100">
                     <ul class="space-y-1">
                         <li>
-                            <a href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('profile.edit') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50'); ?>">
+                            <a href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('profile.edit') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50'); ?>">
                                 <i class="fas fa-cog mr-3 w-5 text-center"></i>
                                 <span>Pengaturan</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="<?php echo e(route('logout')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+                            <a href="<?php echo e(route('logout')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors text-gray-500 hover:bg-gray-50  hover:text-black ">
                                 <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>
                                 <span>Keluar</span>
                             </a>
