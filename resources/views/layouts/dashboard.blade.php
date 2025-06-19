@@ -112,7 +112,7 @@
         /* Main Content Area */
         .main-content {
             flex: 1;
-            padding: 1.5rem;
+            /* padding: 1.5rem; */
             overflow-x: hidden;
         }
         

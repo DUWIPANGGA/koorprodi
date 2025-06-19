@@ -1,8 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
-    <div class="container my-5" style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<div class="container my-5">
+    
+    <div class="container my-2"
+        style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
         <div class="text-end mb-3">
             <a class="btn btn-success" href="{{ route('users.create') }}">Tambah User</a>
@@ -29,5 +31,5 @@
             <livewire:user-table />
         </div>
     </div>
-
+</div>
 @endsection

@@ -1,6 +1,8 @@
 <?php $__env->startSection('content'); ?>
-
-    <div class="container my-5" style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<div class="container my-5">
+    
+    <div class="container my-2"
+        style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
         <div class="text-end mb-3">
             <a class="btn btn-success" href="<?php echo e(route('users.create')); ?>">Tambah User</a>
@@ -43,7 +45,7 @@ if (isset($__slots)) unset($__slots);
 ?>
         </div>
     </div>
-
+</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/users/index.blade.php ENDPATH**/ ?>

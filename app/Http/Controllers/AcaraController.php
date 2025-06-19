@@ -9,7 +9,20 @@ class AcaraController extends Controller
 {
     public function index()
     {
-        $acara = Acara::with('user')->get();
+        // Untuk tampilan kalender
+        if(request()->ajax()) {
+            $start = request('start');
+            $end = request('end');
+            
+            $acara = Acara::whereBetween('tanggal', [$start, $end])
+                ->with('user')
+                ->get();
+                
+            return response()->json($acara);
+        }
+        
+        // Untuk tampilan list
+        $acara = Acara::with('user')->latest()->get();
         return view('acara.index', compact('acara'));
     }
 
@@ -23,8 +36,11 @@ class AcaraController extends Controller
         $request->validate([
             'nama_acara' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'lama_acara' => 'required|integer',
+            'lama_acara' => 'required|integer|min:1',
             'start' => 'required|boolean',
+            'deskripsi' => 'nullable|string',
+            'warna' => 'nullable|string',
+            'lokasi' => 'nullable|string'
         ]);
 
         Acara::create([
@@ -32,38 +48,49 @@ class AcaraController extends Controller
             'tanggal' => $request->tanggal,
             'lama_acara' => $request->lama_acara,
             'start' => $request->start,
-            'user_id' => Auth::user()->id,
+            'deskripsi' => $request->deskripsi,
+            'warna' => $request->warna,
+            'lokasi' => $request->lokasi,
+            'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('acara.index')->with('success', 'Acara berhasil dibuat!');
+        return redirect()->route('acara.index')
+            ->with('success', 'Acara berhasil dibuat!');
     }
 
-    public function edit($id)
+    public function show(Acara $acara)
     {
-        $acara = Acara::findOrFail($id);
+        return view('acara.show', compact('acara'));
+    }
+
+    public function edit(Acara $acara)
+    {
         return view('acara.edit', compact('acara'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Acara $acara)
     {
         $request->validate([
             'nama_acara' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'lama_acara' => 'required|integer',
+            'lama_acara' => 'required|integer|min:1',
             'start' => 'required|boolean',
+            'deskripsi' => 'nullable|string',
+            'warna' => 'nullable|string',
+            'lokasi' => 'nullable|string'
         ]);
 
-        $acara = Acara::findOrFail($id);
         $acara->update($request->all());
 
-        return redirect()->route('acara.index')->with('success', 'Acara berhasil diupdate!');
+        return redirect()->route('acara.index')
+            ->with('success', 'Acara berhasil diupdate!');
     }
 
-    public function destroy($id)
+    public function destroy(Acara $acara)
     {
-        $acara = Acara::findOrFail($id);
         $acara->delete();
 
-        return redirect()->route('acara.index')->with('success', 'Acara berhasil dihapus!');
+        return redirect()->route('acara.index')
+            ->with('success', 'Acara berhasil dihapus!');
     }
 }

@@ -1,6 +1,23 @@
 <?php $__env->startSection('content'); ?>
-
-    <div class="container my-5" style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<div class="container my-5">
+<div class="card">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Update Semester Massal</h5>
+        </div>
+        <div class="card-body">
+            <form action="<?php echo e(route('admin.update.semester')); ?>" method="POST" class="d-flex gap-3">
+                <?php echo csrf_field(); ?>
+                <button type="submit" name="action" value="increment" class="btn btn-primary">
+                    <i class="fas fa-arrow-up mr-2"></i> Naikkan Semester
+                </button>
+                <button type="submit" name="action" value="decrement" class="btn btn-warning">
+                    <i class="fas fa-arrow-down mr-2"></i> Turunkan Semester
+                </button>
+                
+            </form>
+        </div>
+    </div>
+    <div class="container my-1" style="max-width: 100%; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
         <?php if(session()->has('success')): ?>
             <div class="alert alert-success">
@@ -39,7 +56,7 @@ if (isset($__slots)) unset($__slots);
 ?>
         </div>
     </div>
-
+</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\KULIAH\UKM\formadiksi\koorprodi-web\koorprodi\resources\views/mahasiswa/index.blade.php ENDPATH**/ ?>
