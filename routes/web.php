@@ -172,6 +172,7 @@ Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
 | Route untuk logout
 |--------------------------------------------------------------------------
 */
-Route::get('/logout', function () {
+Route::post('/logout', function () {
+    Auth::logout();
     return redirect('/login');
 })->name('logout');

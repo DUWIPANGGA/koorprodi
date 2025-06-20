@@ -66,7 +66,7 @@ public function adminIndex()
         ->latest()
         ->get();
 
-    return view('admin.domisili.index', compact('domisili'));
+    return view('domisili.admin.index', compact('domisili'));
 }
 
 public function approve(Domisili $domisili)

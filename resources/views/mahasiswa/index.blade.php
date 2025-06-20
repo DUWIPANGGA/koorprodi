@@ -2,6 +2,45 @@
 
 @section('content')
 <div class="container my-5">
+    <div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0">Filter Rekap</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" action="{{ route('admin.rekap.ipk') }}" class="row g-3">
+            <div class="col-md-4">
+                <label for="prodi" class="form-label">Program Studi</label>
+                <select class="form-select" id="prodi" name="prodi">
+                    <option value="all">Semua Prodi</option>
+                    @foreach($prodies as $prodi)
+                        <option value="{{ $prodi }}" {{ request('prodi') == $prodi ? 'selected' : '' }}>
+                            {{ $prodi }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="angkatan" class="form-label">Angkatan</label>
+                <select class="form-select" id="angkatan" name="angkatan">
+                    <option value="all">Semua Angkatan</option>
+                    @foreach($angkatans as $angkatan)
+                        <option value="{{ $angkatan }}" {{ request('angkatan') == $angkatan ? 'selected' : '' }}>
+                            {{ $angkatan }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+                <a href="{{ route('admin.rekap.ipk') }}" class="btn btn-secondary">
+                    <i class="fas fa-sync-alt"></i> Reset
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
 <div class="card">
         <div class="card-header bg-light">
             <h5 class="mb-0">Update Semester Massal</h5>
@@ -15,9 +54,6 @@
                 <button type="submit" name="action" value="decrement" class="btn btn-warning">
                     <i class="fas fa-arrow-down mr-2"></i> Turunkan Semester
                 </button>
-                {{-- <button type="submit" name="action" value="reset" class="btn btn-danger">
-                    <i class="fas fa-undo mr-2"></i> Reset ke Semester 1
-                </button> --}}
             </form>
         </div>
     </div>

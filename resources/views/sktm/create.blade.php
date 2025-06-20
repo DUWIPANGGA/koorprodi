@@ -30,7 +30,7 @@
                     
                     <div class="mb-3">
                         <label for="ktm" class="form-label">KTM (PDF/JPG/PNG, maks 2MB)</label>
-                        <input type="file" class="form-control" id="ktp" name="ktp" required>
+                        <input type="file" class="form-control" id="ktm" name="ktm" required>
                     </div>
                     
                     <div class="mb-3">

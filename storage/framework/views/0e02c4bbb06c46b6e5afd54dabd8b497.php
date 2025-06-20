@@ -199,7 +199,7 @@
                 </a>
 
                 <!-- SKTM -->
-                <a href="<?php echo e(route('sktm.index')); ?>"
+                <a href="<?php echo e(route('sktm.create')); ?>"
                     class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
                     <div class="bg-purple-100 p-3 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none"
@@ -215,20 +215,7 @@
                 </a>
 
                 <!-- Organisasi -->
-                <a href="#"
-                    class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
-                    <div class="bg-yellow-100 p-3 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-800">Organisasi</h4>
-                        <p class="text-gray-600 text-sm">Daftar organisasi yang diikuti</p>
-                    </div>
-                </a>
+                
 
                 <!-- Kalender Akademik -->
                 <a href="<?php echo e(route('acara.index')); ?>"
@@ -300,19 +287,19 @@
                         </div>
                     </a>
                     <a href="<?php echo e(route('redirect-links.index')); ?>"
-    class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
-    <div class="bg-blue-100 p-3 rounded-full">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" 
-             viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-        </svg>
-    </div>
-    <div>
-        <h4 class="font-semibold text-gray-800">Manajemen Link</h4>
-        <p class="text-gray-600 text-sm">Short URL & Redirect</p>
-    </div>
-</a>
+                        class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Manajemen Link</h4>
+                            <p class="text-gray-600 text-sm">Short URL & Redirect</p>
+                        </div>
+                    </a>
                     <?php if(Auth::user()->role == 'super_admin'): ?>
                         <!-- User Management -->
                         <a href="<?php echo e(route('users.index')); ?>"
@@ -330,7 +317,38 @@
                             </div>
                         </a>
                     <?php endif; ?>
+                    <a href="<?php echo e(route('admin.sktm.index')); ?>"
+                        class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+                        <div class="bg-yellow-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">SKTM</h4>
+                            <p class="text-gray-600 text-sm">Manage Surat Keterangan Tidak Mampu</p>
+                        </div>
+                    </a>
+                    <a href="<?php echo e(route('admin.domisili.index')); ?>"
+                    class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+                    <div class="bg-purple-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Domisili</h4>
+                        <p class="text-gray-600 text-sm">Manage Domisili Rumah</p>
+                    </div>
+                </a>
                 </div>
+                
             </div>
         <?php endif; ?>
 
@@ -355,7 +373,6 @@
                         </div>
                     </a>
 
-                    <!-- Manajemen Artikel -->
                     <a href="<?php echo e(route('article.main')); ?>"
                         class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
                         <div class="bg-purple-100 p-3 rounded-full">
@@ -396,7 +413,7 @@
                     <h3 class="text-lg font-semibold text-gray-800">Kontrol Admin</h3>
                     <span class="text-sm text-gray-500">Kelola pelaporan IPK</span>
                 </div>
-                
+
                 <div class="bg-blue-50 rounded-lg p-4">
                     <div class="flex items-center space-x-4">
                         <div class="bg-blue-100 p-3 rounded-full">

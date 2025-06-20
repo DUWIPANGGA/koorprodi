@@ -8,17 +8,28 @@ use Illuminate\Http\Request;
 
 class RekapController extends Controller
 {
-
     /**
-     * Menampilkan rekap berdasarkan pelaporan IPK
+     * Menampilkan rekap berdasarkan pelaporan IPK dengan filter
      */
-    public function rekapIpk()
+    public function rekapIpk(Request $request)
     {
-        $users = User::whereNotNull('pelaporan_ipk')
-                    ->orderBy('prodi')
-                    ->orderBy('semester')
-                    ->orderBy('name')
-                    ->paginate(20);
+        $query = User::whereNotNull('pelaporan_ipk');
+
+        // Filter by prodi jika ada
+        if ($request->has('prodi') && $request->prodi != 'all') {
+            $query->where('prodi', $request->prodi);
+        }
+
+        // Filter by angkatan jika ada
+        if ($request->has('angkatan') && $request->angkatan != 'all') {
+            $query->where('angkatan', $request->angkatan);
+        }
+
+        $users = $query->orderBy('prodi')
+                      ->orderBy('semester')
+                      ->orderBy('name')
+                      ->paginate(20)
+                      ->appends($request->query());
 
         // Group by prodi untuk statistik
         $statistik = User::whereNotNull('pelaporan_ipk')
@@ -26,39 +37,74 @@ class RekapController extends Controller
                         ->groupBy('prodi')
                         ->get();
 
-        return view('admin.rekap.ipk', compact('users', 'statistik'));
+        // Get distinct prodies for filter dropdown
+        $prodies = User::select('prodi')
+                      ->distinct()
+                      ->orderBy('prodi')
+                      ->pluck('prodi');
+
+        // Get distinct angkatan for filter dropdown
+        $angkatans = User::select('angkatan')
+                        ->distinct()
+                        ->orderBy('angkatan', 'desc')
+                        ->pluck('angkatan');
+
+        return view('admin.rekap.ipk', compact('users', 'statistik', 'prodies', 'angkatans'));
     }
 
     /**
-     * Update semester semua mahasiswa
+     * Update semester semua mahasiswa dengan filter
      */
     public function updateSemesterMassal(Request $request)
     {
         $request->validate([
-            'action' => 'required|in:increment,decrement,reset'
+            'action' => 'required|in:increment,decrement',
+            'prodi' => 'nullable|string',
+            'angkatan' => 'nullable|integer'
         ]);
+
+        $query = User::query();
+
+        // Filter by prodi jika ada
+        if ($request->filled('prodi') && $request->prodi != 'all') {
+            $query->where('prodi', $request->prodi);
+        }
+
+        // Filter by angkatan jika ada
+        if ($request->filled('angkatan') && $request->angkatan != 'all') {
+            $query->where('angkatan', $request->angkatan);
+        }
 
         $action = $request->action;
         $affected = 0;
 
         switch ($action) {
             case 'increment':
-                $affected = User::where('semester', '<', 14)->where('semester', '>', 0)
-                              ->increment('semester');
-                $message = "Semester semua mahasiswa berhasil dinaikkan";
+                $affected = $query->where('semester', '<', 14)
+                                ->where('semester', '>', 0)
+                                ->increment('semester');
+                $message = "Semester mahasiswa berhasil dinaikkan";
                 break;
                 
             case 'decrement':
-                $affected = User::where('semester', '>', 1)->where('semester', '<', 14)
-                              ->decrement('semester');
-                $message = "Semester semua mahasiswa berhasil diturunkan";
+                $affected = $query->where('semester', '>', 1)
+                                ->where('semester', '<', 14)
+                                ->decrement('semester');
+                $message = "Semester mahasiswa berhasil diturunkan";
                 break;
-                
-            // case 'reset':
-            //     $affected = User::where('semester', '>', 1)
-            //                   ->update(['semester' => 1]);
-            //     $message = "Semester semua mahasiswa direset ke 1";
-            //     break;
+        }
+
+        // Tambahkan info filter dalam pesan
+        $filterInfo = [];
+        if ($request->filled('prodi') && $request->prodi != 'all') {
+            $filterInfo[] = "Prodi: {$request->prodi}";
+        }
+        if ($request->filled('angkatan') && $request->angkatan != 'all') {
+            $filterInfo[] = "Angkatan: {$request->angkatan}";
+        }
+
+        if (!empty($filterInfo)) {
+            $message .= " (" . implode(', ', $filterInfo) . ")";
         }
 
         return redirect()->back()
@@ -66,15 +112,26 @@ class RekapController extends Controller
     }
 
     /**
-     * Export data rekap IPK
+     * Export data rekap IPK dengan filter
      */
-    public function exportRekapIpk()
+    public function exportRekapIpk(Request $request)
     {
-        $users = User::whereNotNull('pelaporan_ipk')
-                    ->orderBy('prodi')
-                    ->orderBy('semester')
-                    ->orderBy('name')
-                    ->get();
+        $query = User::whereNotNull('pelaporan_ipk');
+
+        // Filter by prodi jika ada
+        if ($request->has('prodi') && $request->prodi != 'all') {
+            $query->where('prodi', $request->prodi);
+        }
+
+        // Filter by angkatan jika ada
+        if ($request->has('angkatan') && $request->angkatan != 'all') {
+            $query->where('angkatan', $request->angkatan);
+        }
+
+        $users = $query->orderBy('prodi')
+                      ->orderBy('semester')
+                      ->orderBy('name')
+                      ->get();
 
         $headers = [
             'Content-Type' => 'text/csv',

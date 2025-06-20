@@ -22,7 +22,7 @@ class Logout
      */
     public $user;
 
-    /**
+    /*
      * Create a new event instance.
      *
      * @param  string  $guard

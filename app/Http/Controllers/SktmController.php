@@ -46,7 +46,7 @@ class SktmController extends Controller
         $dokumen = [
             ['jenis' => 'KTM', 'file' => $request->ktm],
             ['jenis' => 'KK', 'file' => $request->kk],
-            ['jenis' => 'Surat RT/RW', 'file' => $request->surat_rt],
+            ['jenis' => 'SKTM', 'file' => $request->surat_rt],
         ];
 
         foreach ($dokumen as $doc) {
@@ -126,7 +126,7 @@ public function update(Request $request, Sktm $sktm)
 
     $request->validate([
         'alasan' => 'required|string|max:1000',
-        'ktp' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+        'ktm' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
         'kk' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
         'surat_rt' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
     ]);
@@ -139,7 +139,7 @@ public function update(Request $request, Sktm $sktm)
     $dokumenTypes = [
         'ktp' => 'KTP',
         'kk' => 'KK',
-        'surat_rt' => 'Surat RT/RW'
+        'surat_rt' => 'SKTM'
     ];
 
     foreach ($dokumenTypes as $field => $jenis) {
