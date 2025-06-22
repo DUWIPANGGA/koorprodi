@@ -116,7 +116,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
     Route::resource('users', UserController::class);
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
-    Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
+    Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
     Route::get('import-data', [UserController::class, 'import']);

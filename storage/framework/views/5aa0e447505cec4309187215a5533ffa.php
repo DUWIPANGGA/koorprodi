@@ -54,7 +54,6 @@
                 <button type="submit" name="action" value="decrement" class="btn btn-warning">
                     <i class="fas fa-arrow-down mr-2"></i> Turunkan Semester
                 </button>
-                
             </form>
         </div>
     </div>
