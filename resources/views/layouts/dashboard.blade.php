@@ -281,7 +281,7 @@
                     </li>
                     
                     <li>
-                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('aspirasi.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
+                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rumahaspirasi.create') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
                             <i class="fas fa-comment-dots mr-3 w-5 text-center"></i>
                             <span>Aspirasi</span>
                         </a>
