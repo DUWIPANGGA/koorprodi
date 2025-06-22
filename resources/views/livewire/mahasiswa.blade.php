@@ -34,6 +34,7 @@
                     <th>NIM</th>
                     <th>Nama</th>
                     <th>Prodi</th>
+                    <th>Semester</th>
                     <th>Alamat</th>
                     <th>Asal sekolah</th>
                     <th>Kelas</th>
@@ -49,6 +50,7 @@
                         <td>{{ $user->nim }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->prodi }}</td>
+                        <td>{{ $user->semester }}</td>
                         <td>{{ $user->alamat }}</td>
                         <td>{{ $user->asal_sekolah }}</td>
                         <td>{{ $user->kelas }}</td>
