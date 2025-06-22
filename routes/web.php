@@ -22,7 +22,14 @@ use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\RedirectLinkController;
 
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-Route::resource('aspirasi', aspirasiController::class);
+Route::resource('aspirasi', aspirasiController::class)->only(
+    [
+        'show', 'store'
+    ]
+)->names([
+    'show' => 'aspirasi.show',
+    'store' => 'aspirasi.store',
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -145,6 +152,7 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::put('admin/article/{id}', [Article::class, 'update'])->name('article.update');
     Route::post('admin/article/save', [Article::class, 'store'])->name('article.insert');
     Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
+    Route::resource('aspirasi', aspirasiController::class);
 });
 Route::middleware('auth')->group(function () {
     Route::resource('redirect-links', RedirectLinkController::class)->except(['show'])->names([
