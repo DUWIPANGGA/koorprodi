@@ -21,16 +21,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\RedirectLinkController;
 
-Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-Route::resource('aspirasi', aspirasiController::class)->only(
-    [
-        'show', 'store','create'
-    ]
-)->names([
-    'show' => 'aspirasi.show',
-    'store' => 'aspirasi.store',
-    'create' => 'aspirasi.create',
-]);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -176,6 +167,17 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
      ->where('shortUrl', '[A-Za-z0-9\-_]+')
      ->name('redirect');
+
+     Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
+Route::resource('aspirasi', aspirasiController::class)->only(
+    [
+        'show', 'store','create'
+    ]
+)->names([
+    'show' => 'aspirasi.show',
+    'store' => 'aspirasi.store',
+    'create' => 'aspirasi.create',
+]);
 /*
 |--------------------------------------------------------------------------
 | Route untuk logout
