@@ -24,11 +24,12 @@ use App\Http\Controllers\RedirectLinkController;
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 Route::resource('aspirasi', aspirasiController::class)->only(
     [
-        'show', 'store'
+        'show', 'store','create'
     ]
 )->names([
     'show' => 'aspirasi.show',
     'store' => 'aspirasi.store',
+    'create' => 'aspirasi.create',
 ]);
 
 /*
