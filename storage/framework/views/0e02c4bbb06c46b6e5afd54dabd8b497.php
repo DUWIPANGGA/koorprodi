@@ -165,7 +165,7 @@
                 </a>
 
                 <!-- Aspirasi -->
-                <a href="<?php echo e(route('aspirasi.create')); ?>"
+                <a href="<?php echo e(route('rumahaspirasi.create')); ?>"
                     class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
                     <div class="bg-blue-100 p-3 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"

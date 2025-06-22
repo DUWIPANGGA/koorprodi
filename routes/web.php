@@ -78,17 +78,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
     Route::resource('domisili', DomisiliController::class)
         ->middleware(['auth']);
-// Student routes
-Route::resource('sktm', SktmController::class)
-    ->middleware(['auth']);
-    
+    // Student routes
+    Route::resource('sktm', SktmController::class)
+        ->middleware(['auth']);
 
-// Admin routes
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/sktm', [SktmController::class, 'adminIndex'])->name('admin.sktm.index');
-    Route::put('/sktm/{sktm}/approve', [SktmController::class, 'approve'])->name('admin.sktm.approve');
-    Route::put('/sktm/{sktm}/reject', [SktmController::class, 'reject'])->name('admin.sktm.reject');
-});
+
+    // Admin routes
+    Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+        Route::get('/sktm', [SktmController::class, 'adminIndex'])->name('admin.sktm.index');
+        Route::put('/sktm/{sktm}/approve', [SktmController::class, 'approve'])->name('admin.sktm.approve');
+        Route::put('/sktm/{sktm}/reject', [SktmController::class, 'reject'])->name('admin.sktm.reject');
+    });
 
     Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/domisili', [DomisiliController::class, 'adminIndex'])->name('admin.domisili.index');
@@ -156,7 +156,7 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'redirect-links.destroy',
     ]);
     Route::get('link/{redirectLink}', [RedirectLinkController::class, 'show'])
-         ->name('redirect-links.show');
+        ->name('redirect-links.show');
 });
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/rekap-ipk', [RekapController::class, 'rekapIpk'])->name('admin.rekap.ipk');
@@ -165,19 +165,22 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 });
 // Public route for redirecting
 Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
-     ->where('shortUrl', '[A-Za-z0-9\-_]+')
-     ->name('redirect');
+    ->where('shortUrl', '[A-Za-z0-9\-_]+')
+    ->name('redirect');
 
-     Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
+
 Route::resource('aspirasi', aspirasiController::class)->only(
     [
-        'show', 'store','create'
+        'show',
+        'store',
+        'create'
     ]
 )->names([
-    'show' => 'aspirasi.show',
-    'store' => 'aspirasi.store',
-    'create' => 'aspirasi.create',
+    'show' => 'rumahaspirasi.show',
+    'store' => 'rumahaspirasi.store',
+    'create' => 'rumahaspirasi.create',
 ]);
+Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 /*
 |--------------------------------------------------------------------------
 | Route untuk logout
