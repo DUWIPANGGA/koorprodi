@@ -100,7 +100,7 @@
         <!-- Bottom Section - Content -->
         <div class="p-4">
             <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Semester Saat Ini</h3>
-            <p class="mt-1 text-2xl font-bold text-gray-900">{{ $ipkNew->semester ?? 1 }}</p>
+            <p class="mt-1 text-2xl font-bold text-gray-900">{{ Auth::user()->semester ?? 1 }}</p>
             <p class="mt-1 text-xs text-gray-500">Anda berada di semester {{ $semester }}</p>
         </div>
     </div>

@@ -228,20 +228,7 @@
                 
 
                 <!-- Kalender Akademik -->
-                <a href="<?php echo e(route('acara.index')); ?>"
-                    class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
-                    <div class="bg-pink-100 p-3 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-800">Kalender Formadiksi</h4>
-                        <p class="text-gray-600 text-sm">Jadwal kegiatan formadiksi</p>
-                    </div>
-                </a>
+                
             </div>
         </div>
         <!-- Fitur Layanan Admin -->

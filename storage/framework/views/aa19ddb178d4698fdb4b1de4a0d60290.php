@@ -304,12 +304,7 @@
                     
                     
                     
-                    <li>
-                        <a href="<?php echo e(route('acara.index')); ?>" class="nav-link flex items-center p-3 rounded-lg transition-colors <?php echo e(request()->routeIs('acara.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black'); ?>">
-                            <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
-                            <span>Kalender Formadiksi</span>
-                        </a>
-                    </li>
+                    
                     <?php endif; ?>
                     
                     <!-- Admin Services -->
