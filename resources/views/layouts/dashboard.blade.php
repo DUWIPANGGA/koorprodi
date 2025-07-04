@@ -281,7 +281,7 @@
                     </li>
                     
                     <li>
-                        <a href="{{ route('aspirasi.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rumahaspirasi.create') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
+                        <a href="{{ route('rumah-aspirasi.create') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('rumah-aspirasi.create') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
                             <i class="fas fa-comment-dots mr-3 w-5 text-center"></i>
                             <span>Aspirasi</span>
                         </a>
@@ -321,7 +321,7 @@
                     <li class="mt-6 mb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Layanan Admin</li>
                     
                     <li>
-                        <a href="{{ route('pengaduan.index') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
+                        <a href="{{ route('pengaduan') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('pengaduan.index') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
                             <i class="fas fa-tasks mr-3 w-5 text-center"></i>
                             <span>Manajemen Pengaduan</span>
                         </a>

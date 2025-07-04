@@ -12,7 +12,6 @@ class Ipk extends Component
     public $search = '';
     public $filter = 'all';
     public $perPage = 40;
-    public $page = 1;
     protected $paginationTheme = 'bootstrap';
     protected $queryString = [
         'search' => ['except' => ''],
@@ -22,41 +21,45 @@ class Ipk extends Component
 
     public function render()
     {
-        $query = Rekap::select('rekap.*', 'users.name','users.prodi','users.semester', 'users.nim')
+        $query = Rekap::select('rekap.*', 'users.name', 'users.prodi', 'users.semester', 'users.nim')
             ->join('users', 'rekap.user_id', '=', 'users.id')
             ->where(function ($q) {
                 $q->where('users.nim', 'like', '%' . $this->search . '%')
-                    ->orWhere('users.email', 'like', '%' . $this->search . '%')
-                    ->orWhere('users.angkatan', 'like', '%' . $this->search . '%')
-                    ->orWhere('users.asal_sekolah', 'like', '%' . $this->search . '%')
+                    ->orWhere('users.name', 'like', '%' . $this->search . '%')
                     ->orWhere('users.prodi', 'like', '%' . $this->search . '%')
                     ->orWhere('users.semester', 'like', '%' . $this->search . '%');
             });
 
-        if ($this->filter === 'ipkDibawah3') {
-            $query->where('rekap.ipk', '<', 3);
+        switch ($this->filter) {
+            case 'all-rekap':
+                // No additional filters - show all rekap data
+                break;
+                
+            case 'current-semester':
+                $query->whereColumn('rekap.semester', 'users.semester');
+                break;
+                
+            case 'ipkDibawah3':
+                $query->where('rekap.IPK', '<', 3);
+                break;
+                
+            case preg_match('/^semester-\d+$/', $this->filter) ? true : false:
+                $semester = (int) str_replace('semester-', '', $this->filter);
+                $query->where('rekap.semester', $semester)
+                      ->whereColumn('rekap.semester', 'users.semester');
+                break;
+                
+            default: // 'all'
+                $query->whereNotNull('users.pelaporan_ipk');
+                break;
         }
-        elseif ($this->filter === 'semester-1') {
-    $query->where('users.semester', '=', 1);
-} elseif ($this->filter === 'semester-2') {
-    $query->where('users.semester', '=', 2);
-} elseif ($this->filter === 'semester-3') {
-    $query->where('users.semester', '=', 3);
-} elseif ($this->filter === 'semester-4') {
-    $query->where('users.semester', '=', 4);
-} elseif ($this->filter === 'semester-5') {
-    $query->where('users.semester', '=', 5);
-} elseif ($this->filter === 'semester-6') {
-    $query->where('users.semester', '=', 6);
-} elseif ($this->filter === 'semester-7') {
-    $query->where('users.semester', '=', 7);
-} elseif ($this->filter === 'semester-8') {
-    $query->where('users.semester', '=', 8);
-}
 
-        $rekaps = $query->paginate($this->perPage);
+        $rekaps = $query->orderBy('users.prodi')
+                       ->orderBy('rekap.semester')
+                       ->orderBy('users.name')
+                       ->paginate($this->perPage);
 
-        return view('livewire.ipk', ['rekaps' => $rekaps]);
+        return view('livewire.ipk', compact('rekaps'));
     }
 
     public function applyFilter($filter)

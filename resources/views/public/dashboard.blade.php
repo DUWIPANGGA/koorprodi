@@ -101,7 +101,7 @@
         <div class="p-4">
             <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Semester Saat Ini</h3>
             <p class="mt-1 text-2xl font-bold text-gray-900">{{ Auth::user()->semester ?? 1 }}</p>
-            <p class="mt-1 text-xs text-gray-500">Anda berada di semester {{ $semester }}</p>
+            <p class="mt-1 text-xs text-gray-500">Anda berada di semester {{ Auth::user()->semester }}</p>
         </div>
     </div>
 
@@ -161,7 +161,7 @@
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Layanan Mahasiswa</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Pengaduan -->
-                <a href="{{ route('pengaduan.index') }}"
+                <a href="{{ route('pengaduan') }}"
                     class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
                     <div class="bg-red-100 p-3 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none"
@@ -177,7 +177,7 @@
                 </a>
 
                 <!-- Aspirasi -->
-                <a href="{{ route('rumahaspirasi.create') }}"
+                <a href="{{ route('rumah-aspirasi.create') }}"
                     class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
                     <div class="bg-blue-100 p-3 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"

@@ -52,7 +52,7 @@
             </div>
 
             <!-- Form -->
-            <form method="POST" action="{{ route('rumahaspirasi.store') }}" class="space-y-6">
+            <form method="POST" action="{{ route('rumah-aspirasi.store') }}" class="space-y-6">
                 @csrf
                 
                 <!-- Name Field -->

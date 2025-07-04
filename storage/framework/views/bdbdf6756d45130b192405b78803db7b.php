@@ -35,6 +35,7 @@
                     <th>NIM</th>
                     <th>Nama</th>
                     <th>Prodi</th>
+                    <th>Semester</th>
                     <th>Alamat</th>
                     <th>Asal sekolah</th>
                     <th>Kelas</th>
@@ -50,6 +51,7 @@
                         <td><?php echo e($user->nim); ?></td>
                         <td><?php echo e($user->name); ?></td>
                         <td><?php echo e($user->prodi); ?></td>
+                        <td><?php echo e($user->semester); ?></td>
                         <td><?php echo e($user->alamat); ?></td>
                         <td><?php echo e($user->asal_sekolah); ?></td>
                         <td><?php echo e($user->kelas); ?></td>
