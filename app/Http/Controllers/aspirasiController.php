@@ -6,9 +6,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Aspirasi;
 use App\Models\article as ModelsArticle;
+use App\Exports\AspirasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class aspirasiController extends Controller
 {
+    public function exportExcel(Request $request)
+    {
+        $date = now()->format('d-m-Y');
+        return Excel::download(new AspirasiExport, "data-aspirasi $date.xlsx");
+    }
+
     public function index()
     {
         $aspirasi = Aspirasi::orderBy('created_at', 'desc')->paginate(10);

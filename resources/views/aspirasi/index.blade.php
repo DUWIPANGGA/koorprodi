@@ -12,6 +12,11 @@
             <div class="alert alert-success mb-4">{{ session('success') }}</div>
         @endif
 
+        <div class="flex justify-content-end mb-3">
+            <a href="{{ route('aspirasi.export') }}" class="btn btn-success"><i class="fa fa-download"></i> Unduh aspirasi</a>
+
+        </div>
+
         <div class="card p-4" style="border-radius: 10px; background-color: #fff;">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -30,7 +35,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ Str::limit($item->isi, 50) }}</td>
-                                <td>{{ $item->created_at->format('d M Y H:i') }}</td>
+                                <td>{{ $item->created_at->format('d M Y') }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}">
                                         <i class="fas fa-eye"></i>

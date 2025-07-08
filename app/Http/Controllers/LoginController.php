@@ -46,4 +46,13 @@ class LoginController extends Controller
         // Jika login gagal, tampilkan pesan error
         return back()->withErrors(['email' => 'Email, NIM atau password yang dimasukkan tidak sesuai']);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return redirect(route('login'));
+    }
 }

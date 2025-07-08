@@ -16,9 +16,11 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\aspirasiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\mahasiswa;
+use App\Exports\AspirasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-Route::resource('aspirasi', aspirasiController::class);
+Route::resource('aspirasi', aspirasiController::class)->except(['show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +112,8 @@ Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('ru
 
 Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::resource('acara', AcaraController::class);
+    Route::get('/aspirasi/export', [AspirasiController::class, 'exportExcel'])->name('aspirasi.export');
+
 
     Route::get('article/create', [Article::class, 'create'])->name('article.create');
     Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
@@ -127,10 +131,7 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
 | Route untuk logout
 |--------------------------------------------------------------------------
 */
-Route::get('/logout', function () {
-    return redirect('/login');
-})->name('logout');
-
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // route tambahan
