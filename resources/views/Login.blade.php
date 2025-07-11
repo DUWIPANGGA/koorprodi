@@ -41,7 +41,7 @@
             <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
                 <!-- Logo with AOS animation -->
                 <div class="mb-8 transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-duration="800">
-                    <img src="{{ asset('formadiksi.png') }}" alt="Formadiksi Logo" class="w-48 h-auto mx-auto drop-shadow-lg">
+                    <img src="{{ asset('mascot.png') }}" alt="Formadiksi Logo" class="w-48 h-auto mx-auto drop-shadow-lg">
                 </div>
                 
                 <!-- Text content with AOS animations -->

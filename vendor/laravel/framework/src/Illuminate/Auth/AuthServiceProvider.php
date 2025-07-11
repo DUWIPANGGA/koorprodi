@@ -2,13 +2,15 @@
 
 namespace Illuminate\Auth;
 
+use App\Models\RedirectLink;
 use Illuminate\Auth\Access\Gate;
+use App\Policies\RedirectLinkPolicy;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Auth\Middleware\RequirePassword;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -90,6 +92,9 @@ class AuthServiceProvider extends ServiceProvider
             });
         });
     }
+protected $policies = [
+    RedirectLink::class => RedirectLinkPolicy::class,
+];
 
     /**
      * Handle the re-binding of the event dispatcher binding.

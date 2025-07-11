@@ -42,16 +42,15 @@
             <?php endif; ?>
             <div style="margin-bottom: 20px;">
                 <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
-                <select id="semester" name="semester" required
+                <select id="semester" name="semester" required disabled
                     style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
                     <?php for($i = 1; $i <= 8; $i++): ?>
-                        <?php if(Auth::user()->semester == $i): ?>
-                            <option value="<?php echo e($i); ?>" selected>Semester <?php echo e($i); ?></option>
-                        <?php else: ?>
-                            <option value="<?php echo e($i); ?>" <?php echo e(old('semester') == $i ? 'selected' : ''); ?>>Semester
-                                <?php echo e($i); ?></option>
-                        <?php endif; ?>
-                    <?php endfor; ?>
+            <option value="<?php echo e($i); ?>"
+                    <?php if(old('semester', Auth::user()->semester) == $i): ?> selected <?php endif; ?>>
+                Semester <?php echo e($i); ?>
+
+            </option>
+        <?php endfor; ?>
                 </select>
             </div>
             <div style="margin-bottom: 20px;">

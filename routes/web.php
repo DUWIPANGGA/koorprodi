@@ -1,30 +1,28 @@
 <?php
 
 use App\Http\Controllers\IPK;
-use Illuminate\Auth\Events\Login;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Article;
+use App\Models\article as ModelsArticle;
+use App\Http\Controllers\mahasiswa;
 use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SktmController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AcaraController;
-use App\Models\article as ModelsArticle;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\Article;
+use App\Http\Controllers\aspirasiController;
+use App\Http\Controllers\DomisiliController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\aspirasiController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\mahasiswa;
-use App\Exports\AspirasiExport;
-use Maatwebsite\Excel\Facades\Excel;
-
-Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
-Route::resource('aspirasi', aspirasiController::class)->except(['show']);
+use App\Http\Controllers\Admin\RekapController;
+use App\Http\Controllers\RedirectLinkController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Route untuk Halaman Utama
+| Public Routes
 |--------------------------------------------------------------------------
 */
 
@@ -33,108 +31,144 @@ Route::get('/', function () {
     return view('index', compact('recommendedArticles'));
 });
 
-// Form Login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-// Proses Login
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-
-
-// Proses Registrasi
-Route::post('/registrasi', [AuthController::class, 'store']);
-
-/*
-|--------------------------------------------------------------------------
-| Route untuk uji coba halaman
-|--------------------------------------------------------------------------
-*/
 Route::get('/try', function () {
     return view('Tentang');
 });
 
-Route::middleware('auth')->group(function () {
-        Route::prefix('user')->group(function () {
-        Route::resource('pengaduan', PengaduanController::class)->only(['store'])->middleware('auth')->names([
-            'store' => 'user.pengaduan.store',
-        ]);;
-        Route::resource('Rekap', IPK::class)->only(['store'])->names([
-            'store' => 'user.Rekap.store',
-        ]);
-    });
-});
-/*
-|--------------------------------------------------------------------------
-| Route untuk user
-|--------------------------------------------------------------------------
-*/
-Route::middleware(['auth'])->group(function () {
-    Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/ajukan-pengaduan', [PengaduanController::class, 'create'])->name('pengaduan');
-    Route::get('admin/article/{id}', [Article::class, 'show'])->name('article.show');
-    Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
-    Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
-    Route::get('/profile-edit', [UserController::class, 'edit'])->name('profile.edit');
-    Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
-    
-});
+
+
+// Authentication Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
+// Registration Routes
+Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi')
+    ->middleware(['auth', 'admin']);
+Route::post('/registrasi', [AuthController::class, 'store']);
+
+
 
 /*
 |--------------------------------------------------------------------------
-| Route untuk admin, super admin, koorprodi
+| Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
-
-    Route::resource('Rekap', IPK::class);
-    Route::resource('pengaduan', PengaduanController::class);
-Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
-    Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
-    Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
-    Route::resource('users', UserController::class);
-    Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
-    Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
-    Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    // Dashboard
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
+
+    // User Management
+    Route::resource('users', UserController::class);
+    Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
-});
 
+    // Rekap Management
+    Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
+    Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
+    Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
+    Route::resource('Rekap', IPK::class)->except(['store']);
+    Route::resource('pengaduan', PengaduanController::class);
+
+    // Document Approvals
+    Route::get('/domisili', [DomisiliController::class, 'adminIndex'])->name('admin.domisili.index');
+    Route::put('/domisili/{domisili}/approve', [DomisiliController::class, 'approve'])->name('admin.domisili.approve');
+    Route::put('/domisili/{domisili}/reject', [DomisiliController::class, 'reject'])->name('admin.domisili.reject');
+
+    Route::get('/sktm', [SktmController::class, 'adminIndex'])->name('admin.sktm.index');
+    Route::put('/sktm/{sktm}/approve', [SktmController::class, 'approve'])->name('admin.sktm.approve');
+    Route::put('/sktm/{sktm}/reject', [SktmController::class, 'reject'])->name('admin.sktm.reject');
+
+    // Rekap IPK Routes
+    Route::get('/rekap-ipk', [RekapController::class, 'rekapIpk'])->name('admin.rekap.ipk');
+    Route::post('/update-semester', [RekapController::class, 'updateSemesterMassal'])->name('admin.update.semester');
+    Route::get('/export-rekap-ipk', [RekapController::class, 'exportRekapIpk'])->name('admin.export.ipk');
+
+    // Event Routes
+    Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
+    Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
+});
 
 /*
 |--------------------------------------------------------------------------
-| Route buat guest (Home, About Us, Rumah Aspirasi)
+| Kominfo Routes
 |--------------------------------------------------------------------------
 */
-
-Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
-
-
 Route::middleware(['auth', 'kominfo'])->group(function () {
-    Route::resource('acara', AcaraController::class);
-    Route::get('/aspirasi/export', [AspirasiController::class, 'exportExcel'])->name('aspirasi.export');
-
-
+    // Article Management
     Route::get('article/create', [Article::class, 'create'])->name('article.create');
-    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
-    
     Route::get('admin/article', [Article::class, 'main'])->name('article.main');
     Route::delete('admin/article/{id}', [Article::class, 'destroy'])->name('article.destroy');
     Route::post('admin/article/new', [Article::class, 'store'])->name('article.store');
     Route::put('admin/article/{id}', [Article::class, 'update'])->name('article.update');
     Route::post('admin/article/save', [Article::class, 'store'])->name('article.insert');
-    Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
+
+    // Aspirasi Management
+    Route::resource('aspirasi', aspirasiController::class)->except(['create', 'store']);
+    Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
 });
 
 /*
 |--------------------------------------------------------------------------
-| Route untuk logout
+| Event Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::resource('acara', AcaraController::class);
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes (All Users)
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth')->group(function () {
+    // Profile Routes
+    Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
+    Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
+    Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
 
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-// route tambahan
-Route::get('/pendataan-tempat-tinggal', function(){
-    return redirect('https://docs.google.com/forms/d/e/1FAIpQLScw53OlD_kYxLLTAXo5CTMq0ejlEGN8d2rpQYo1cJ8Ud2Dz0A/viewform?usp=header');
+    // Rekap Routes
+    Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
+    Route::resource('Rekap', IPK::class)->only(['store'])->names([
+        'store' => 'user.Rekap.store',
+    ]);
+
+    // Document Routes
+    Route::resource('domisili', DomisiliController::class);
+    Route::resource('sktm', SktmController::class);
+
+    // Complaint Routes
+    Route::get('/ajukan-pengaduan', [PengaduanController::class, 'create'])->name('pengaduan');
+    Route::resource('pengaduan', PengaduanController::class)->only(['store', 'create'])->names([
+        'store' => 'user.pengaduan.store',
+        'create' => 'user.pengaduan.create',
+    ]);
+
+    // Article Routes
+    Route::get('admin/article/{id}', [Article::class, 'show'])->name('article.show');
+    Route::get('article/{id}', [Article::class, 'showDetail'])->name('article.show.detail');
+
+    // Redirect Links
+    Route::resource('redirect-links', RedirectLinkController::class)->except(['show']);
+    Route::get('link/{redirectLink}', [RedirectLinkController::class, 'show'])
+        ->name('redirect-links.show');
 });
+/*
+|--------------------------------------------------------------------------
+| Public Redirect Route
+|--------------------------------------------------------------------------
+*/
+Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
+Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
+Route::resource('rumah-aspirasi', aspirasiController::class)->only(['create', 'store'])->names([
+    'create' => 'rumah-aspirasi.create',
+    'store' => 'rumah-aspirasi.store',
+]);
+Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
+    ->where('shortUrl', '[A-Za-z0-9\-_]+')
+    ->name('redirect');

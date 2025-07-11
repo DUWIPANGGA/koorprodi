@@ -44,16 +44,14 @@
             @endif
             <div style="margin-bottom: 20px;">
                 <label for="semester" style="display: block; font-weight: bold; margin-bottom: 5px;">Semester:</label>
-                <select id="semester" name="semester" required
+                <select id="semester" name="semester" required disabled
                     style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
                     @for ($i = 1; $i <= 8; $i++)
-                        @if (Auth::user()->semester == $i)
-                            <option value="{{ $i }}" selected>Semester {{ $i }}</option>
-                        @else
-                            <option value="{{ $i }}" {{ old('semester') == $i ? 'selected' : '' }}>Semester
-                                {{ $i }}</option>
-                        @endif
-                    @endfor
+            <option value="{{ $i }}"
+                    @if(old('semester', Auth::user()->semester) == $i) selected @endif>
+                Semester {{ $i }}
+            </option>
+        @endfor
                 </select>
             </div>
             <div style="margin-bottom: 20px;">

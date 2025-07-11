@@ -40,52 +40,58 @@ class IPK extends Controller
     }
 
     public function store(Request $request)
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        $request->validate([
-            'IPK' => 'required',
-            'dokumen' => 'required|mimes:pdf',
-            'semester' => 'required',
-        ]);
-        // Cek apakah data rekap untuk user sudah ada
-        $existingRekap = Rekap::where('user_id', $user->id)->where('semester', $request->semester)->first();
-        if ($existingRekap) {
-            return redirect()->back()->with('error', 'Rekap untuk semester ini sudah ada.');
-        }
-
-        // Nama dokumen
-        $documentName = $user->nim . '-IPK-semester-' . $request->semester . '.' . $request->dokumen->extension();
-        $path = storage_path('app/public/angkatan-' . $user->angkatan);
-
-        if (file_exists($path . '/' . $documentName)) {
-            unlink($path . '/' . $documentName);
-        }
-
-        // Simpan file
-        if ($request->dokumen->storeAs('angkatan-' . $user->angkatan, $documentName, 'public')) {
-            $storedPath = 'storage/angkatan-' . $user->angkatan . '/' . $documentName;
-            Rekap::create([
-                'user_id' => $user->id,
-                'IPK' => $request->IPK,
-                'dokumen' => $storedPath,
-                'semester' => $request->semester,
-                'kesulitan' => $request->kesulitan,
-            ]);
-            $user = User::find(Auth::user()->id);
-
-            if ($user) {
-                $user->update([
-                    'pelaporan_ipk' => 1
-                ]);
-                // dd($result);
-            } else {
-            }
-            return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
-        } else {
-            return redirect()->back()->with('error', 'Dokumen sudah ada, silakan hapus dokumen yang sudah ada terlebih dahulu.');
-        }
+    $request->validate([
+        'IPK' => 'required',
+        'dokumen' => 'required|mimes:pdf',
+    ]);
+    
+    // Cek apakah data rekap untuk user sudah ada
+    $existingRekap = Rekap::where('user_id', $user->id)->where('semester', $request->semester)->first();
+    if ($existingRekap) {
+        return redirect()->back()->with('error', 'Rekap untuk semester ini sudah ada.');
     }
+
+    // Nama dokumen
+    $documentName = $user->nim . '-IPK-semester-' . $request->semester . '.' . $request->dokumen->extension();
+    $path = storage_path('app/public/angkatan-' . $user->angkatan . '/semester-' . $request->semester);
+
+    // Buat direktori jika belum ada
+    if (!file_exists($path)) {
+        mkdir($path, 0777, true);
+    }
+
+    // Hapus file jika sudah ada
+    if (file_exists($path . '/' . $documentName)) {
+        unlink($path . '/' . $documentName);
+    }
+
+    // Simpan file
+    if ($request->dokumen->storeAs('angkatan-' . $user->angkatan . '/semester-' . $request->semester, $documentName, 'public')) {
+        $storedPath = 'storage/angkatan-' . $user->angkatan . '/semester-' . $request->semester . '/' . $documentName;
+        
+        Rekap::create([
+            'user_id' => $user->id,
+            'IPK' => $request->IPK,
+            'dokumen' => $storedPath,
+            'semester' => $user->semester,
+            'kesulitan' => $request->kesulitan,
+        ]);
+        
+        $user = User::find(Auth::user()->id);
+        if ($user) {
+            $user->update([
+                'pelaporan_ipk' => 1
+            ]);
+        }
+        
+        return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
+    } else {
+        return redirect()->back()->with('error', 'Gagal menyimpan dokumen.');
+    }
+}
 
 
     /**

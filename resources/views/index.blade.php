@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMADIKSI</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logopolindra.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('mascot.png') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
@@ -73,15 +74,15 @@
                     <li class="nav-item lg:ml-3 mt-4 lg:mt-0">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg text-gray-500 border border-primary-500 hover:bg-blue-500 hover:text-white transition duration-300 flex items-center justify-center">
+                                <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
                                     <i class="fas fa-home mr-2"></i> Dashboard
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="btn-primary px-6 py-2 rounded-lg bg-primary-500 text-gray-500 border border-primary-500 hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                                <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
                                     <i class="fas fa-sign-in-alt mr-2"></i> Login
                                 </a>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('registrasi') }}" class="btn-outline-primary ml-2 px-6 py-2 rounded-lg text-gray-500 border border-primary-500 hover:bg-primary-500 hover:text-white transition duration-300 flex items-center justify-center mt-2 lg:mt-0">
+                                    <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
                                         <i class="fas fa-user-plus mr-2"></i> Register
                                     </a>
                                 @endif
@@ -106,21 +107,21 @@
                         <li><a class="nav-link-underline text-gray-700 font-medium py-2 px-4 block" href="#artikel">Artikel</a></li>
                         <li class="mt-4">
                             @if (Route::has('login'))
-                                @auth
-                                    <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white transition duration-300 flex items-center justify-center">
-                                        <i class="fas fa-home mr-2"></i> Dashboard
-                                    </a>
-                                @else
-                                    <a href="{{ route('login') }}" class="btn-primary px-6 py-2 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center">
-                                        <i class="fas fa-sign-in-alt mr-2"></i> Login
-                                    </a>
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('registrasi') }}" class="btn-outline-primary mt-2 px-6 py-2 rounded-lg text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white transition duration-300 flex items-center justify-center">
-                                            <i class="fas fa-user-plus mr-2"></i> Register
-                                        </a>
-                                    @endif
-                                @endauth
-                            @endif
+    @auth
+        <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+            <i class="fas fa-home mr-2"></i> Dashboard
+        </a>
+    @else
+        <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+            <i class="fas fa-sign-in-alt mr-2"></i> Login
+        </a>
+        @if (Route::has('register'))
+            <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+                <i class="fas fa-user-plus mr-2"></i> Register
+            </a>
+        @endif
+    @endauth
+@endif
                         </li>
                     </ul>
                 </div>

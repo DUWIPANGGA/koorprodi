@@ -15,9 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nama_acara');
             $table->date('tanggal');
-            $table->integer('lama_acara');
-            $table->boolean('start');
+            $table->integer('lama_acara')->comment('Durasi acara dalam hari/jam'); // Tambahkan keterangan jika perlu
+            $table->boolean('start')->default(false);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+
+            // Tambahan kolom baru
+            $table->text('deskripsi')->nullable();
+            $table->string('warna', 20)->nullable(); // warna seperti "red", "#ff0000", dll
+            $table->string('lokasi')->nullable();
+
             $table->timestamps();
         });
     }
@@ -28,6 +34,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('acara');
-
     }
 };

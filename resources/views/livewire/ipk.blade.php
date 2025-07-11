@@ -1,11 +1,15 @@
 <div class="container-fluid" id="print-layout">
     <!-- Form Pencarian -->
-    <div class="mb-3">
+   <div class="mb-3">
         <input type="text" wire:model="search" class="form-control" placeholder="Cari mahasiswa...">
-        <button type="button" wire:click.prevent="applyFilter('all')"
-            class="btn btn-{{ $filter == 'all' ? 'success' : 'primary' }} mt-2">
-            Semua Data
+        
+        <!-- Tombol Filter Baru -->
+        <button type="button" wire:click.prevent="applyFilter('all-rekap')"
+            class="btn btn-{{ $filter == 'all-rekap' ? 'success' : 'primary' }} mt-2">
+            Semua Data Rekap
         </button>
+        
+
         <button type="button" wire:click.prevent="applyFilter('ipkDibawah3')"
             class="btn btn-{{ $filter == 'ipkDibawah3' ? 'success' : 'primary' }} mt-2">
             IPK di bawah 3
@@ -16,7 +20,8 @@
                 Semester {{ $i }}
             </button>
         @endfor
-        <button type="button" class="btn btn-danger mt-2"><a href="{{ route('export.KHS') }}" style="text-decoration:none;color:#fff;">Export</a>
+        <button type="button" class="btn btn-danger mt-2">
+            <a href="{{ route('export.KHS') }}" style="text-decoration:none;color:#fff;">Export</a>
         </button>
     </div>
 
