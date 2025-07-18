@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
-
+    use App\Exports\UserExport;
 class UserController extends Controller
 {
     public function index()
@@ -144,9 +144,10 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        $user = User::findOrFail($id);
+    $user->delete();
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
     public function import()
@@ -201,4 +202,10 @@ class UserController extends Controller
         }
         return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
     }
+
+
+public function exportUsers() 
+{
+    return Excel::download(new UserExport(), 'data_mahasiswa.xlsx');
+}
 }

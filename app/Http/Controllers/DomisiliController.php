@@ -7,6 +7,14 @@ use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\DomisiliExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class DomisiliController extends Controller
 {
@@ -58,40 +66,42 @@ class DomisiliController extends Controller
     {
         return view('domisili.show', compact('domisili'));
     }
-    // Add these methods to your DomisiliController
 
-public function adminIndex()
-{
-    $domisili = Domisili::with(['mahasiswa', 'fotos'])
-        ->latest()
-        ->get();
+    public function adminIndex()
+    {
+        return view('domisili.admin');
+    }
 
-    return view('domisili.admin.index', compact('domisili'));
-}
+    public function approve(Domisili $domisili)
+    {
+        $domisili->update([
+            'status' => 'approved',
+            'keterangan' => 'Pengajuan domisili telah disetujui'
+        ]);
 
-public function approve(Domisili $domisili)
-{
-    $domisili->update([
-        'status' => 'approved',
-        'keterangan' => 'Pengajuan domisili telah disetujui'
-    ]);
+        return redirect()->back()
+            ->with('success', 'Pengajuan domisili berhasil disetujui');
+    }
 
-    return redirect()->back()
-        ->with('success', 'Pengajuan domisili berhasil disetujui');
-}
+    public function reject(Request $request, Domisili $domisili)
+    {
+        $request->validate([
+            'keterangan' => 'required|string|max:255'
+        ]);
 
-public function reject(Request $request, Domisili $domisili)
-{
-    $request->validate([
-        'keterangan' => 'required|string|max:255'
-    ]);
+        $domisili->update([
+            'status' => 'rejected',
+            'keterangan' => $request->keterangan
+        ]);
 
-    $domisili->update([
-        'status' => 'rejected',
-        'keterangan' => $request->keterangan
-    ]);
+        return redirect()->back()
+            ->with('success', 'Pengajuan domisili berhasil ditolak');
+    }
 
-    return redirect()->back()
-        ->with('success', 'Pengajuan domisili berhasil ditolak');
+
+    public function exportCSV()
+    {
+            return Excel::download(new DomisiliExport(), 'data_domisili.xlsx');
+
 }
 }

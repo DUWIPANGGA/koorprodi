@@ -3,159 +3,193 @@
 @section('title', 'Update Profile')
 
 @section('content')
-    <div class="container mx-auto mt-10 px-4">
-        <div class="flex justify-center">
-            <div class="w-full lg:w-4/5">
-                <div class="bg-white shadow-lg rounded-xl overflow-hidden">
-                    <div class="bg-white px-6 py-4 border-b border-gray-200 text-center">
-                        <h3 class="text-2xl font-semibold text-gray-800">Update Profile</h3>
-                    </div>
-                    <div class="p-8">
-                        @if ($errors->any())
-                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
-                                <strong class="font-bold">Oops!</strong>
-                                <span class="block sm:inline">There were some problems with your input.</span>
-                                <ul class="mt-2 list-disc list-inside">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Update Profile</h3>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                        <i class="fas fa-trash-alt me-1"></i> Delete Account
+                    </button>
+                </div>
+                <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="row g-3">
+                            <!-- Profile Picture -->
+                            <div class="text-center mb-4">
+                                <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+                                    alt="Foto Profil"
+                                    class="rounded-circle border border-3 border-primary mb-3"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-sm btn-outline-primary position-relative">
+                                        <i class="fas fa-camera me-1"></i> Change Photo
+                                        <input type="file" id="foto_profil" name="foto_profil" class="position-absolute top-0 start-0 w-100 h-100 opacity-0" accept="image/*">
+                                    </div>
+                                </div>
                             </div>
-                        @endif
 
-                        <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-
-                            <div class="space-y-6">
-                                <div class="text-center">
-                                    <img src="{{ $user->foto_profil ? asset($user->foto_profil) : asset('LogoOrang.jpg') }}"
-                                        alt="Foto Profil"
-                                        class="w-36 h-36 object-cover rounded-full border-4 border-gray-300 mb-6 mx-auto shadow-md">
-
-                                    <div class="p-5 border border-gray-300 rounded-lg bg-gray-50 text-left">
-                                        <table class="w-full border-collapse">
+                            <!-- User Info Card -->
+                            <div class="col-12">
+                                <div class="card border-primary mb-4">
+                                    <div class="card-body">
+                                        <table class="table table-borderless mb-0">
                                             <tr>
-                                                <td class="py-2 px-3 font-bold text-gray-700 w-1/3">NIM</td>
-                                                <td class="py-2 px-3 text-gray-700 w-1/12">:</td>
-                                                <td class="py-2 px-3 text-gray-800">{{ $user->nim }}</td>
+                                                <td width="30%" class="fw-bold text-primary">NIM</td>
+                                                <td width="5%">:</td>
+                                                <td>{{ Auth::user()->nim }}</td>
                                             </tr>
                                             <tr>
-                                                <td class="py-2 px-3 font-bold text-gray-700">Nama Mahasiswa</td>
-                                                <td class="py-2 px-3 text-gray-700">:</td>
-                                                <td class="py-2 px-3 text-gray-800">{{ $user->name }}</td>
+                                                <td class="fw-bold text-primary">Nama Mahasiswa</td>
+                                                <td>:</td>
+                                                <td>{{ Auth::user()->name }}</td>
                                             </tr>
                                             <tr>
-                                                <td class="py-2 px-3 font-bold text-gray-700">Tahun Angkatan</td>
-                                                <td class="py-2 px-3 text-gray-700">:</td>
-                                                <td class="py-2 px-3 text-gray-800">{{ $user->angkatan }}</td>
+                                                <td class="fw-bold text-primary">Tahun Angkatan</td>
+                                                <td>:</td>
+                                                <td>{{ Auth::user()->angkatan }}</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label for="foto_profil" class="block text-sm font-medium text-gray-700 mb-1">Foto Profil</label>
-                                        <input type="file" id="foto_profil" name="foto_profil"
-                                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent p-2.5"
-                                            accept="image/*">
-                                        <p class="mt-1 text-sm text-gray-500">Leave blank if you don't want to change the profile picture.</p>
-                                    </div>
-
-                                    <div>
-                                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                        <input type="text" id="phone" name="phone"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('phone', $user->phone) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="phone_wali" class="block text-sm font-medium text-gray-700 mb-1">Phone Wali</label>
-                                        <input type="text" id="phone_wali" name="phone_wali"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('phone_wali', $user->phone_wali) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                        <input type="email" id="email" name="email"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('email', $user->email) }}" required>
-                                    </div>
-
-                                    <div class="md:col-span-2">
-                                        <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
-                                        <textarea id="alamat" name="alamat" rows="3"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            required>{{ old('alamat', $user->alamat) }}</textarea>
-                                    </div>
-
-                                    <div>
-                                        <label for="nim" class="block text-sm font-medium text-gray-700 mb-1">NIM</label>
-                                        <input type="text" id="nim" name="nim"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('nim', $user->nim) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama:</label>
-                                        <input type="text" id="name" name="name"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('name', $user->name) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                                        <select id="role" name="role"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                            <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                                            <option value="super_admin" {{ old('role', $user->role) == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
-                                            <option value="KOMINFO" {{ old('role', $user->role) == 'KOMINFO' ? 'selected' : '' }}>KOMINFO</option>
-                                            <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label for="asal_sekolah" class="block text-sm font-medium text-gray-700 mb-1">Asal Sekolah</label>
-                                        <input type="text" id="asal_sekolah" name="asal_sekolah"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('asal_sekolah', $user->asal_sekolah) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="hobi" class="block text-sm font-medium text-gray-700 mb-1">Hobi</label>
-                                        <input type="text" id="hobi" name="hobi"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('hobi', $user->hobi) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="bakat" class="block text-sm font-medium text-gray-700 mb-1">Bakat</label>
-                                        <input type="text" id="bakat" name="bakat"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                            value="{{ old('bakat', $user->bakat) }}" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                                        <input type="password" id="password" name="password"
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                        <p class="mt-1 text-sm text-gray-500">Leave blank if you don't want to change the password.</p>
-                                    </div>
+                            <!-- Form Fields -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="phone" name="phone" class="form-control" 
+                                        value="{{ old('phone', $user->phone) }}" required>
+                                    <label for="phone">Phone</label>
                                 </div>
                             </div>
 
-                            <div class="mt-8 text-center">
-                                <button type="submit"
-                                    class="inline-flex justify-center py-3 px-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
-                                    Update Profile
-                                </button>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="phone_wali" name="phone_wali" class="form-control"
+                                        value="{{ old('phone_wali', $user->phone_wali) }}" required>
+                                    <label for="phone_wali">Phone Wali</label>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" id="email" name="email" class="form-control"
+                                        value="{{ old('email', $user->email) }}" required>
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <textarea id="alamat" name="alamat" class="form-control" style="height: 100px" required>{{ old('alamat', $user->alamat) }}</textarea>
+                                    <label for="alamat">Alamat</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
+                                        value="{{ old('asal_sekolah', $user->asal_sekolah) }}" required>
+                                    <label for="asal_sekolah">Asal Sekolah</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="hobi" name="hobi" class="form-control"
+                                        value="{{ old('hobi', $user->hobi) }}" required>
+                                    <label for="hobi">Hobi</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="bakat" name="bakat" class="form-control"
+                                        value="{{ old('bakat', $user->bakat) }}" required>
+                                    <label for="bakat">Bakat</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="password" id="password" name="password" class="form-control">
+                                    <label for="password">Password</label>
+                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah password</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-1"></i> Back
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-1"></i> Update Profile
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="lead">Are you sure you want to delete your account?</p>
+                <p class="text-danger"><strong>Warning:</strong> This action cannot be undone. All your data will be permanently deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash-alt me-1"></i> Delete Account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Image Script -->
+<script>
+    document.getElementById('foto_profil').addEventListener('change', function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            const preview = document.querySelector('.rounded-circle');
+            preview.src = URL.createObjectURL(file);
+        }
+    });
+</script>
 @endsection

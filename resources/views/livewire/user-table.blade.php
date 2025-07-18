@@ -28,11 +28,6 @@
                             <a class="btn btn-success" href="{{ route('users.show', $user) }}">Lihat</a>
                             @if(Auth::user()->role == 'super_admin')
                             <a class="btn btn-warning" href="{{ route('user.edit', $user) }}">Edit</a>
-                            <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
                             @endif
                         </td>
                     </tr>

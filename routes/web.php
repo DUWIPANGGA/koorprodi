@@ -66,8 +66,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
-
-    // Rekap Management
+Route::get('/domisili/export-csv', [DomisiliController::class, 'exportCSV'])->name('domisili.export.csv');    // Rekap Management
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
@@ -87,6 +86,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/rekap-ipk', [RekapController::class, 'rekapIpk'])->name('admin.rekap.ipk');
     Route::post('/update-semester', [RekapController::class, 'updateSemesterMassal'])->name('admin.update.semester');
     Route::get('/export-rekap-ipk', [RekapController::class, 'exportRekapIpk'])->name('admin.export.ipk');
+    Route::get('/users-export', [UserController::class, 'exportUsers'])->name('users.export');
 
     // Event Routes
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');

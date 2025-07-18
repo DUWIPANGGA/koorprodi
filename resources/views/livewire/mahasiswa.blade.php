@@ -23,6 +23,12 @@
                 class="btn btn-{{ $filter == 'pelaporan_ipk' ? 'success' : 'primary' }} mt-2">
                 Belum rekap IPK
             </button>
+            <div class="d-flex justify-content-between mb-3">
+    <h2>Data Mahasiswa</h2>
+    <a href="{{ route('users.export') }}" class="btn btn-success">
+        <i class="fas fa-file-excel"></i> Export Excel
+    </a>
+</div>
             
     </div>
 
