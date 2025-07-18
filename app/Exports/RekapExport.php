@@ -25,7 +25,7 @@ class RekapExport implements FromCollection, WithHeadings, WithMapping, WithStyl
         return Rekap::join('users', 'rekap.user_id', '=', 'users.id')
             ->select('users.nim', 'users.name', 'users.prodi', 'users.semester', 'rekap.IPK')
             ->where('rekap.validated', 1)
-            ->where('users.semester',"=",'rekap.semester')
+            ->whereColumn('users.semester', 'rekap.semester')
             ->orderBy('users.prodi')
             ->orderBy('users.semester')
             ->orderBy('users.nim')
