@@ -18,6 +18,7 @@
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
+
         /* Custom underline for nav-link to mimic current effect with Tailwind */
         .nav-link-underline {
             position: relative;
@@ -30,7 +31,8 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #00AAFF; /* primary-color */
+            background-color: #00AAFF;
+            /* primary-color */
             transition: width 0.3s ease-in-out;
         }
 
@@ -38,13 +40,14 @@
         .nav-link-underline.active::after {
             width: 100%;
         }
+
     </style>
 </head>
 
 <body class="text-gray-800">
-    
+
     <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 ease-in-out" id="navbar">
-        
+
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a class="flex-shrink-0" href="#">
                 <img src="{{ asset('formadiksi.png') }}" alt="FORMADIKSI" class="h-16 transition-transform duration-300 hover:scale-105">
@@ -71,22 +74,26 @@
                     <li class="nav-item">
                         <a class="nav-link-underline text-gray-700 font-medium py-2 px-4" href="#artikel">Artikel</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link-underline text-gray-700 font-medium py-2 px-4 {{ request()->routeIs('pengurus.public') ? 'active' : '' }}" href="{{ route('pengurus.public') }}">Kepengurusan</a>
+                    </li>
+
                     <li class="nav-item lg:ml-3 mt-4 lg:mt-0">
                         @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
-                                    <i class="fas fa-home mr-2"></i> Dashboard
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
-                                    <i class="fas fa-sign-in-alt mr-2"></i> Login
-                                </a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
-                                        <i class="fas fa-user-plus mr-2"></i> Register
-                                    </a>
-                                @endif
-                            @endauth
+                        @auth
+                        <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-home mr-2"></i> Dashboard
+                        </a>
+                        @else
+                        <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Login
+                        </a>
+                        @if (Route::has('register'))
+                        <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-user-plus mr-2"></i> Register
+                        </a>
+                        @endif
+                        @endauth
                         @endif
                     </li>
                 </ul>
@@ -105,30 +112,34 @@
                         <li><a class="nav-link-underline text-gray-700 font-medium py-2 px-4 block" href="#about">About</a></li>
                         <li><a class="nav-link-underline text-gray-700 font-medium py-2 px-4 block" href="#rumahaspirasi">Rumah Aspirasi</a></li>
                         <li><a class="nav-link-underline text-gray-700 font-medium py-2 px-4 block" href="#artikel">Artikel</a></li>
+                        <li>
+                            <a class="nav-link-underline text-gray-700 font-medium py-2 px-4 block {{ request()->routeIs('pengurus.public') ? 'active' : '' }}" href="{{ route('pengurus.public') }}">Kepengurusan</a>
+                        </li>
+
                         <li class="mt-4">
                             @if (Route::has('login'))
-    @auth
-        <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
-            <i class="fas fa-home mr-2"></i> Dashboard
-        </a>
-    @else
-        <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
-            <i class="fas fa-sign-in-alt mr-2"></i> Login
-        </a>
-        @if (Route::has('register'))
-            <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
-                <i class="fas fa-user-plus mr-2"></i> Register
-            </a>
-        @endif
-    @endauth
-@endif
+                            @auth
+                            <a href="{{ url('/dashboard') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+                                <i class="fas fa-home mr-2"></i> Dashboard
+                            </a>
+                            @else
+                            <a href="{{ route('login') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+                                <i class="fas fa-sign-in-alt mr-2"></i> Login
+                            </a>
+                            @if (Route::has('register'))
+                            <a href="{{ route('registrasi') }}" class="btn-outline-primary px-6 py-2 rounded-lg bg-primary text-gray-500 border border-primary-500 hover:bg-blue-700 hover:text-white transition duration-300 flex items-center justify-center"> {{-- Tambahkan ini --}}
+                                <i class="fas fa-user-plus mr-2"></i> Register
+                            </a>
+                            @endif
+                            @endauth
+                            @endif
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    
+
     <section id="home" class="py-24 bg-gradient-to-br from-primary-100 to-secondary-50" data-aos="fade-up">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center justify-center text-center lg:text-left">
@@ -137,20 +148,20 @@
                     <p class="text-lg text-gray-600 mb-8">Teguhkan tekad, satukan langkah, bersama mencapai kesuksesan dan meraih prestasi yang gemilang</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="btn-primary px-8 py-3 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg">
-                                    <i class="fas fa-home mr-2"></i> Dashboard
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn-primary px-8 py-3 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg">
-                                    <i class="fas fa-sign-in-alt mr-2"></i> Login
-                                </a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('registrasi') }}" class="btn-outline-primary px-8 py-3 rounded-lg text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white transition duration-300 flex items-center justify-center text-lg">
-                                        <i class="fas fa-user-plus mr-2"></i> Register
-                                    </a>
-                                @endif
-                            @endauth
+                        @auth
+                        <a href="{{ url('/dashboard') }}" class="btn-primary px-8 py-3 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg">
+                            <i class="fas fa-home mr-2"></i> Dashboard
+                        </a>
+                        @else
+                        <a href="{{ route('login') }}" class="btn-primary px-8 py-3 rounded-lg bg-primary-500 text-white hover:bg-blue-700 transition duration-300 flex items-center justify-center text-lg">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Login
+                        </a>
+                        @if (Route::has('register'))
+                        <a href="{{ route('registrasi') }}" class="btn-outline-primary px-8 py-3 rounded-lg text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white transition duration-300 flex items-center justify-center text-lg">
+                            <i class="fas fa-user-plus mr-2"></i> Register
+                        </a>
+                        @endif
+                        @endauth
                         @endif
                     </div>
                 </div>
@@ -242,20 +253,26 @@
                     <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-center mb-8 text-4xl font-bold section-title relative inline-block pb-4 text-gray-900">Rumah <span class="text-primary-500">Aspirasi</span></h2>
 
-                        @if (session('status')) 
-                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                                {{ session('status') }}
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onclick="this.parentElement.style.display='none';">
-                                    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.103l-2.651 3.746a1.2 1.2 0 0 1-1.697-1.697l3.746-2.651-3.746-2.651a1.2 1.2 0 0 1 1.697-1.697l2.651 3.746 2.651-3.746a1.2 1.2 0 0 1 1.697 1.697l-3.746 2.651 3.746 2.651a1.2 1.2 0 0 1 0 1.697z"/></svg>
-                                </span>
-                            </div>
+                        @if (session('status'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            {{ session('status') }}
+                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onclick="this.parentElement.style.display='none';">
+                                <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <title>Close</title>
+                                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.103l-2.651 3.746a1.2 1.2 0 0 1-1.697-1.697l3.746-2.651-3.746-2.651a1.2 1.2 0 0 1 1.697-1.697l2.651 3.746 2.651-3.746a1.2 1.2 0 0 1 1.697 1.697l-3.746 2.651 3.746 2.651a1.2 1.2 0 0 1 0 1.697z" />
+                                </svg>
+                            </span>
+                        </div>
                         @elseif (session('error'))
-                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                                {{ session('error') }}
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onclick="this.parentElement.style.display='none';">
-                                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.103l-2.651 3.746a1.2 1.2 0 0 1-1.697-1.697l3.746-2.651-3.746-2.651a1.2 1.2 0 0 1 1.697-1.697l2.651 3.746 2.651-3.746a1.2 1.2 0 0 1 0 1.697z"/></svg>
-                                </span>
-                            </div>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            {{ session('error') }}
+                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onclick="this.parentElement.style.display='none';">
+                                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <title>Close</title>
+                                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.103l-2.651 3.746a1.2 1.2 0 0 1-1.697-1.697l3.746-2.651-3.746-2.651a1.2 1.2 0 0 1 1.697-1.697l2.651 3.746 2.651-3.746a1.2 1.2 0 0 1 0 1.697z" />
+                                </svg>
+                            </span>
+                        </div>
                         @endif
 
                         <p class="text-center text-gray-600 mb-8">Punyai pendapat atau saran tentang formadiksi? Sampaikan saja lewat form dibawah ini!</p>
@@ -264,22 +281,18 @@
                             @csrf
                             <div class="mb-6">
                                 <label for="nama" class="block text-gray-700 text-sm font-bold mb-2">Nama</label>
-                                <input type="text" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-500 @error('nama') border-red-500 @enderror"
-                                    id="nama" name="nama" placeholder="Nama kamu" maxlength="100"
-                                    onkeyup="document.getElementById('charCount1').innerHTML = this.value.length + '/100'">
+                                <input type="text" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-500 @error('nama') border-red-500 @enderror" id="nama" name="nama" placeholder="Nama kamu" maxlength="100" onkeyup="document.getElementById('charCount1').innerHTML = this.value.length + '/100'">
                                 @error('nama')
-                                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                                <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                 @enderror
                                 <div class="text-right text-xs text-gray-500 mt-1"><span id="charCount1">0/100</span> karakter</div>
                             </div>
 
                             <div class="mb-6">
                                 <label for="isi" class="block text-gray-700 text-sm font-bold mb-2">Aspirasi</label>
-                                <textarea class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-500 @error('isi') border-red-500 @enderror" id="isi"
-                                            name="isi" rows="6" placeholder="Masukan aspirasi kamu" maxlength="1000"
-                                            onkeyup="document.getElementById('charCount2').innerHTML = this.value.length + '/1000'"></textarea>
+                                <textarea class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-500 @error('isi') border-red-500 @enderror" id="isi" name="isi" rows="6" placeholder="Masukan aspirasi kamu" maxlength="1000" onkeyup="document.getElementById('charCount2').innerHTML = this.value.length + '/1000'"></textarea>
                                 @error('isi')
-                                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                                <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                 @enderror
                                 <div class="text-right text-xs text-gray-500 mt-1"><span id="charCount2">0/1000</span> karakter</div>
                             </div>
@@ -350,9 +363,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 1000,
-            once: true,
-        });
+            duration: 1000
+            , once: true
+        , });
 
 
 
@@ -376,7 +389,7 @@
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
-                     // Close mobile menu if open
+                    // Close mobile menu if open
                     const mobileMenu = document.getElementById('mobile-menu');
                     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
                     if (mobileMenu && mobileMenu.classList.contains('translate-x-0')) {
@@ -458,9 +471,9 @@
                 const rumahAspirasiSection = document.getElementById('rumahaspirasi');
                 if (rumahAspirasiSection) {
                     setTimeout(function() {
-                        rumahAspirasiSection.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
+                        rumahAspirasiSection.scrollIntoView({
+                            behavior: 'smooth'
+                            , block: 'start'
                         });
                     }, 500);
                 }
@@ -468,14 +481,15 @@
                 const rumahAspirasiSection = document.getElementById('rumahaspirasi');
                 if (rumahAspirasiSection) {
                     setTimeout(function() {
-                        rumahAspirasiSection.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
+                        rumahAspirasiSection.scrollIntoView({
+                            behavior: 'smooth'
+                            , block: 'start'
                         });
                     }, 500);
                 }
             }
         });
+
     </script>
 </body>
 </html>

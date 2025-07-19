@@ -2,23 +2,25 @@
 
 use App\Http\Controllers\IPK;
 use App\Http\Controllers\Article;
-use App\Models\article as ModelsArticle;
 use App\Http\Controllers\mahasiswa;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SktmController;
 use App\Http\Controllers\UserController;
+use App\Models\article as ModelsArticle;
 use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\aspirasiController;
 use App\Http\Controllers\DomisiliController;
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\RedirectLinkController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +112,19 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     // Aspirasi Management
     Route::resource('aspirasi', aspirasiController::class)->except(['create', 'store']);
     Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+    Route::resource('periode', PeriodeController::class)->except(['show', 'edit', 'update']);
+    Route::post('periode/{periode}/set-aktif', [PeriodeController::class, 'setAktif'])->name('periode.set-aktif');
+    
+    // Pengurus Routes dengan parameter periode
+    Route::get('pengurus', [PengurusController::class, 'index'])->name('pengurus.index');
+    Route::get('pengurus/create', [PengurusController::class, 'create'])->name('pengurus.create');
+    Route::post('pengurus', [PengurusController::class, 'store'])->name('pengurus.store');
+    Route::resource('pengurus', PengurusController::class)->except(['index', 'create', 'store']);
 });
+
+// Public View
+Route::get('struktur-kepengurusan', [PengurusController::class, 'show'])->name('pengurus.public');
+Route::get('struktur-kepengurusan/{periode}', [PengurusController::class, 'publicViewDetail'])->name('pengurus.public.detail');
 
 /*
 |--------------------------------------------------------------------------
