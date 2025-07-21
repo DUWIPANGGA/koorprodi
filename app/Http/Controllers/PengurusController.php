@@ -72,7 +72,7 @@ public function show($id = null)
         'nama' => 'required|string|max:255',
         'jabatan' => 'required|string|max:255',
         'divisi' => 'required|string|in:' . implode(',', array_keys(Pengurus::divisiList())),
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         'urutan' => 'nullable|integer|min:0',
     ]);
 
