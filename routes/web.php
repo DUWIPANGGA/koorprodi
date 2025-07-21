@@ -122,9 +122,6 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::resource('pengurus', PengurusController::class)->except(['index', 'create', 'store']);
 });
 
-// Public View
-Route::get('struktur-kepengurusan', [PengurusController::class, 'show'])->name('pengurus.public');
-Route::get('struktur-kepengurusan/{periode}', [PengurusController::class, 'publicViewDetail'])->name('pengurus.public.detail');
 
 /*
 |--------------------------------------------------------------------------
@@ -177,6 +174,10 @@ Route::middleware('auth')->group(function () {
 | Public Redirect Route
 |--------------------------------------------------------------------------
 */
+// Public View
+Route::get('struktur-kepengurusan', [PengurusController::class, 'show'])->name('pengurus.public');
+Route::get('struktur-kepengurusan/{periode}', [PengurusController::class, 'publicViewDetail'])->name('pengurus.public.detail');
+
 Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
 Route::resource('rumah-aspirasi', aspirasiController::class)->only(['create', 'store'])->names([
