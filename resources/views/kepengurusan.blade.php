@@ -216,21 +216,30 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
-                        :style="`
-                            box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
-                            transform: scale(${isHovered ? 1.05 : 1});
-                            transition: all 0.3s ease;
-                        `"
-                    >
-                        @if($ketua->foto)
-                        <img src="{{ asset('storage/'.$ketua->foto) }}" alt="{{ $ketua->nama }}" class="w-full h-full object-cover">
-                        @else
-                        <div class="text-gray-400 text-5xl">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        @endif
-                    </div>
+    x-data="{ isHovered: false }"
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    class="mx-auto mb-4 w-40 h-40 bg-transparent flex items-center justify-center overflow-hidden rounded-full"
+    :style="`
+        transform: scale(${isHovered ? 1.05 : 1});
+        transition: all 0.3s ease;
+    `"
+>
+    @if($ketua->foto)
+        <img 
+            src="{{ asset('storage/'.$ketua->foto) }}" 
+            alt="{{ $ketua->nama }}" 
+            class="w-full h-full object-cover"
+            :class="isHovered ? 'drop-shadow-lg' : 'drop-shadow-sm'"
+            style="filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));"
+            :style="`filter: drop-shadow(${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'})`"
+        >
+    @else
+        <div class="text-gray-400 text-5xl">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    @endif
+</div>
                     <h3 class="text-xl font-semibold text-gray-800">{{ $ketua->nama }}</h3>
                     <p class="text-primary-500 font-medium">{{ $ketua->jabatan }}</p>
                     <p class="text-gray-600 text-sm mt-1">{{ $ketua->divisi }}</p>
@@ -284,21 +293,30 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
-                        :style="`
-                            box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
-                            transform: scale(${isHovered ? 1.05 : 1});
-                            transition: all 0.3s ease;
-                        `"
-                    >
-                        @if($wakil->foto)
-                        <img src="{{ asset('storage/'.$wakil->foto) }}" alt="{{ $wakil->nama }}" class="w-full h-full object-cover">
-                        @else
-                        <div class="text-gray-400 text-5xl">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        @endif
-                    </div>
+    x-data="{ isHovered: false }"
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    class="mx-auto mb-4 w-40 h-40 bg-transparent flex items-center justify-center overflow-hidden rounded-full"
+    :style="`
+        transform: scale(${isHovered ? 1.05 : 1});
+        transition: all 0.3s ease;
+    `"
+>
+    @if($wakil->foto)
+        <img 
+            src="{{ asset('storage/'.$wakil->foto) }}" 
+            alt="{{ $wakil->nama }}" 
+            class="w-full h-full object-cover"
+            :class="isHovered ? 'drop-shadow-lg' : 'drop-shadow-sm'"
+            style="filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));"
+            :style="`filter: drop-shadow(${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'})`"
+        >
+    @else
+        <div class="text-gray-400 text-5xl">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    @endif
+</div>
                     <h3 class="text-xl font-semibold text-gray-800">{{ $wakil->nama }}</h3>
                     <p class="text-primary-500 font-medium">{{ $wakil->jabatan }}</p>
                     <p class="text-gray-600 text-sm mt-1">{{ $wakil->divisi }}</p>
@@ -355,21 +373,31 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
-                        :style="`
-                            box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
-                            transform: scale(${isHovered ? 1.05 : 1});
-                            transition: all 0.3s ease;
-                        `"
-                    >
-                        @if($sekretaris->foto)
-                        <img src="{{ asset('storage/'.$sekretaris->foto) }}" alt="{{ $sekretaris->nama }}" class="w-full h-full object-cover">
-                        @else
-                        <div class="text-gray-400 text-5xl">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        @endif
-                    </div>
+    x-data="{ isHovered: false }"
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    class="mx-auto mb-4 w-40 h-40 bg-transparent flex items-center justify-center overflow-hidden rounded-full"
+    :style="`
+        transform: scale(${isHovered ? 1.05 : 1});
+        transition: all 0.3s ease;
+    `"
+>
+    @if($sekretaris->foto)
+        <img 
+            src="{{ asset('storage/'.$sekretaris->foto) }}" 
+            alt="{{ $sekretaris->nama }}" 
+            class="w-full h-full object-cover"
+            :class="isHovered ? 'drop-shadow-lg' : 'drop-shadow-sm'"
+            style="filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));"
+            :style="`filter: drop-shadow(${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'})`"
+        >
+    @else
+        <div class="text-gray-400 text-5xl">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    @endif
+</div>
+
                     <h3 class="text-xl font-semibold text-gray-800">{{ $sekretaris->nama }}</h3>
                     <p class="text-primary-500 font-medium">{{ $sekretaris->jabatan }}</p>
                     <p class="text-gray-600 text-sm mt-1">{{ $sekretaris->divisi }}</p>
@@ -423,21 +451,31 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40 bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
-                        :style="`
-                            box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
-                            transform: scale(${isHovered ? 1.05 : 1});
-                            transition: all 0.3s ease;
-                        `"
-                    >
-                        @if($bendahara->foto)
-                        <img src="{{ asset('storage/'.$bendahara->foto) }}" alt="{{ $bendahara->nama }}" class="w-full h-full object-cover">
-                        @else
-                        <div class="text-gray-400 text-5xl">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        @endif
-                    </div>
+    x-data="{ isHovered: false }"
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    class="mx-auto mb-4 w-40 h-40 bg-transparent flex items-center justify-center overflow-hidden rounded-full"
+    :style="`
+        transform: scale(${isHovered ? 1.05 : 1});
+        transition: all 0.3s ease;
+    `"
+>
+    @if($bendahara->foto)
+        <img 
+            src="{{ asset('storage/'.$bendahara->foto) }}" 
+            alt="{{ $bendahara->nama }}" 
+            class="w-full h-full object-cover"
+            :class="isHovered ? 'drop-shadow-lg' : 'drop-shadow-sm'"
+            style="filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));"
+            :style="`filter: drop-shadow(${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'})`"
+        >
+    @else
+        <div class="text-gray-400 text-5xl">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    @endif
+</div>
+
                     <h3 class="text-xl font-semibold text-gray-800">{{ $bendahara->nama }}</h3>
                     <p class="text-primary-500 font-medium">{{ $bendahara->jabatan }}</p>
                     <p class="text-gray-600 text-sm mt-1">{{ $bendahara->divisi }}</p>
@@ -498,21 +536,31 @@
                         `"
                     >
                         <div 
-                            class="mx-auto mb-3 w-32 h-32  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
-                            :style="`
-                                box-shadow: ${isHovered ? '0 6px 20px rgba(0, 0, 0, 0.15)' : '0 3px 12px rgba(0, 0, 0, 0.1)'};
-                                transform: scale(${isHovered ? 1.05 : 1});
-                                transition: all 0.3s ease;
-                            `"
-                        >
-                            @if($anggota->foto)
-                            <img src="{{ asset('storage/'.$anggota->foto) }}" alt="{{ $anggota->nama }}" class="w-full h-full object-cover">
-                            @else
-                            <div class="text-gray-400 text-4xl">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            @endif
-                        </div>
+    x-data="{ isHovered: false }"
+    @mouseenter="isHovered = true" 
+    @mouseleave="isHovered = false"
+    class="mx-auto mb-4 w-40 h-40 bg-transparent flex items-center justify-center overflow-hidden rounded-full"
+    :style="`
+        transform: scale(${isHovered ? 1.05 : 1});
+        transition: all 0.3s ease;
+    `"
+>
+    @if($anggota->foto)
+        <img 
+            src="{{ asset('storage/'.$anggota->foto) }}" 
+            alt="{{ $anggota->nama }}" 
+            class="w-full h-full object-cover"
+            :class="isHovered ? 'drop-shadow-lg' : 'drop-shadow-sm'"
+            style="filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));"
+            :style="`filter: drop-shadow(${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'})`"
+        >
+    @else
+        <div class="text-gray-400 text-5xl">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    @endif
+</div>
+
                         <h4 class="text-lg font-semibold text-gray-800">{{ $anggota->nama }}</h4>
                         <p class="text-primary-500 text-sm font-medium">{{ $anggota->jabatan }}</p>
                         <div 
