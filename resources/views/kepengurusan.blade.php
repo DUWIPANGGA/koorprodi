@@ -176,7 +176,7 @@
         </div>
 
         <!-- Ketua dan Wakil -->
-<div class="flex justify-center gap-8">
+<div class="flex flex-wrap justify-center gap-8 my-8">
             @foreach($pengurus[App\Models\Pengurus::DIVISI_KETUA_UMUM] ?? [] as $ketua)
             <div class="flex flex-col items-center" data-aos="fade-up">
                 <div 
@@ -333,7 +333,7 @@
         </div>
 
         <!-- Sekretaris dan Bendahara -->
-<div class="flex justify-center gap-8 my-8">
+<div class="flex flex-wrap justify-center gap-8 my-8">
             @foreach($pengurus[App\Models\Pengurus::DIVISI_SEKRETARIS] ?? [] as $sekretaris)
             <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
                 <div 
