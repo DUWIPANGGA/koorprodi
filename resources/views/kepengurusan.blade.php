@@ -216,7 +216,7 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
+                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
                         :style="`
                             box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
                             transform: scale(${isHovered ? 1.05 : 1});
@@ -284,7 +284,7 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
+                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
                         :style="`
                             box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
                             transform: scale(${isHovered ? 1.05 : 1});
@@ -355,7 +355,7 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
+                        class="mx-auto mb-4 w-40 h-40  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
                         :style="`
                             box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
                             transform: scale(${isHovered ? 1.05 : 1});
@@ -423,7 +423,7 @@
                     `"
                 >
                     <div 
-                        class="mx-auto mb-4 w-40 h-40 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
+                        class="mx-auto mb-4 w-40 h-40 bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
                         :style="`
                             box-shadow: ${isHovered ? '0 8px 25px rgba(0, 0, 0, 0.15)' : '0 4px 15px rgba(0, 0, 0, 0.1)'};
                             transform: scale(${isHovered ? 1.05 : 1});
@@ -498,7 +498,7 @@
                         `"
                     >
                         <div 
-                            class="mx-auto mb-3 w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
+                            class="mx-auto mb-3 w-32 h-32  bg-gray-100 flex items-center justify-center overflow-hidden border-2 border-white"
                             :style="`
                                 box-shadow: ${isHovered ? '0 6px 20px rgba(0, 0, 0, 0.15)' : '0 3px 12px rgba(0, 0, 0, 0.1)'};
                                 transform: scale(${isHovered ? 1.05 : 1});
