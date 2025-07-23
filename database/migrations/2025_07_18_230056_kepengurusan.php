@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('urutan')->default(0);
             $table->timestamps();
         });
+            if (!Schema::hasTable('periodes')) {
+
         Schema::create('periodes', function (Blueprint $table) {
             $table->id();
             $table->string('nama'); // Contoh: "Formadiksi 10", "Kepengurusan 2023-2024"
@@ -29,6 +31,7 @@ return new class extends Migration
             $table->boolean('aktif')->default(false); // Hanya satu yang aktif
             $table->timestamps();
         });
+    }
     }
 
     /**
