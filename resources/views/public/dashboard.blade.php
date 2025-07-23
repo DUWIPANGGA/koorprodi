@@ -256,8 +256,8 @@
         </svg>
     </div>
     <div>
-        <h4 class="font-semibold text-gray-800">Anggota Organisasi</h4>
-        <p class="text-gray-600 text-sm">Kelola keanggotaan organisasi</p>
+        <h4 class="font-semibold text-gray-800">Keaktifan Organisasi</h4>
+        <p class="text-gray-600 text-sm">Perekapan Keaktifan organisasi</p>
     </div>
 </a>
 
@@ -416,7 +416,7 @@
         </svg>
     </div>
     <div>
-        <h4 class="font-semibold text-gray-800">User Organisasi</h4>
+        <h4 class="font-semibold text-gray-800">Manajemen Rekap Organisasi</h4>
         <p class="text-gray-600 text-sm">Kelola data organisasi mahasiswa</p>
     </div>
 </a>
