@@ -93,30 +93,36 @@ public function export(Request $request)
         return view('user-organisasi.create', compact('user', 'organisasis', 'currentSemester'));
     }
 
-    public function store(Request $request, $user_id)
-    {
-        $user = User::findOrFail($user_id);
-        
-        $request->validate([
-            'organisasi_ids' => 'required|array',
-            'organisasi_ids.*' => 'exists:organisasis,id',
-            'semester' => 'required|string',
-        ]);
+    // app/Http/Controllers/UserOrganisasiController.php
 
-        // Hapus dulu organisasi di semester yang sama
-        $user->organisasis()
-            ->wherePivot('semester', $request->semester)
-            ->detach();
+public function store(Request $request, $user_id)
+{
+    $user = User::findOrFail($user_id);
+    
+    $request->validate([
+        'organisasi_ids' => 'required|array',
+        'organisasi_ids.*' => 'exists:organisasis,id',
+        'semester' => 'required|string',
+        'jabatan' => 'required|array',
+        'jabatan.*' => 'required|string|max:255',
+    ]);
 
-        // Tambahkan organisasi baru
-        $user->organisasis()->attach($request->organisasi_ids, [
-            'semester' => $request->semester
-        ]);
-
-        return redirect()->route('profile.show')
-            ->with('success', 'Organisasi berhasil diperbarui untuk semester ini');
+    // Prepare data for sync
+    $organisasiData = [];
+    foreach ($request->organisasi_ids as $index => $organisasi_id) {
+        $organisasiData[$organisasi_id] = [
+            'semester' => $request->semester,
+            'jabatan' => $request->jabatan[$index]
+        ];
     }
 
+    $user->organisasis()
+        ->wherePivot('semester', $request->semester)
+        ->sync($organisasiData);
+
+    return redirect()->route('profile.show')
+        ->with('success', 'Organisasi berhasil diperbarui untuk semester ini');
+}
     public function edit($user_id, $semester)
     {
         $user = User::with(['organisasis' => function($query) use ($semester) {

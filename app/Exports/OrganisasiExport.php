@@ -23,7 +23,6 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
 
     public function collection()
     {
-        // Separate users who have submitted organizations and those who haven't
         return $this->users->sortByDesc(function($user) {
             return $user->organisasis->where('pivot.semester', $user->semester)->count() > 0;
         });
@@ -32,31 +31,34 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
     public function headings(): array
     {
         return [
+            'No',
             'Nama',
             'NIM', 
             'Prodi',
             'Semester',
-            'Organisasi',
+            'Organisasi dan Jabatan',  // Combined column
             'Status Pengumpulan'
         ];
     }
 
     public function map($user): array
     {
-        // Get organizations for the user's current semester
-        $organizations = $user->organisasis
-            ->where('pivot.semester', $user->semester)
-            ->pluck('nama_organisasi')
-            ->implode(', ');
+        // Get organizations with their positions
+        $orgDetails = [];
+        foreach ($user->organisasis->where('pivot.semester', $user->semester) as $org) {
+            $orgDetails[] = $org->nama_organisasi . ' - ' . $org->pivot->jabatan;
+        }
 
-        $status = $organizations ? 'Sudah Mengumpulkan' : 'Belum Mengumpulkan';
+        $orgString = $orgDetails ? implode("\n", $orgDetails) : '-';
+        $status = $orgDetails ? 'Sudah Mengumpulkan' : 'Belum Mengumpulkan';
 
         return [
+            '', // Will be filled with row number in styles
             $user->name,
-            "'" . $user->nim, // Prepend with ' to preserve leading zeros in NIM
+            "'" . $user->nim,
             $user->prodi,
             $user->semester,
-            $organizations ?: '-',
+            $orgString,
             $status
         ];
     }
@@ -64,7 +66,7 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
     public function styles(Worksheet $sheet)
     {
         // Header styling
-        $sheet->getStyle('A1:F1')->applyFromArray([
+        $sheet->getStyle('A1:G1')->applyFromArray([
             'font' => [
                 'bold' => true,
                 'color' => ['rgb' => 'FFFFFF']
@@ -81,23 +83,30 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
             ],
             'alignment' => [
                 'horizontal' => Alignment::HORIZONTAL_CENTER,
-                'vertical' => Alignment::VERTICAL_CENTER
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'wrapText' => true
             ]
         ]);
 
         // Set column widths
-        $sheet->getColumnDimension('A')->setWidth(30); // Nama
-        $sheet->getColumnDimension('B')->setWidth(15); // NIM
-        $sheet->getColumnDimension('C')->setWidth(20); // Prodi
-        $sheet->getColumnDimension('D')->setWidth(10); // Semester
-        $sheet->getColumnDimension('E')->setWidth(40); // Organisasi
-        $sheet->getColumnDimension('F')->setWidth(20); // Status
+        $sheet->getColumnDimension('A')->setWidth(5);  // No
+        $sheet->getColumnDimension('B')->setWidth(30); // Nama
+        $sheet->getColumnDimension('C')->setWidth(15); // NIM
+        $sheet->getColumnDimension('D')->setWidth(20); // Prodi
+        $sheet->getColumnDimension('E')->setWidth(10); // Semester
+        $sheet->getColumnDimension('F')->setWidth(40); // Organisasi & Jabatan
+        $sheet->getColumnDimension('G')->setWidth(20); // Status
 
         // Apply styles to data rows
         $lastRow = $sheet->getHighestRow();
         
+        // Add row numbers
+        for ($i = 2; $i <= $lastRow; $i++) {
+            $sheet->setCellValue('A'.$i, $i-1);
+        }
+
         // Style for all data cells
-        $sheet->getStyle('A2:F'.$lastRow)->applyFromArray([
+        $sheet->getStyle('A2:G'.$lastRow)->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => Border::BORDER_THIN,
@@ -105,16 +114,23 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
                 ]
             ],
             'alignment' => [
-                'vertical' => Alignment::VERTICAL_CENTER
+                'vertical' => Alignment::VERTICAL_TOP,
+                'wrapText' => true
             ]
         ]);
 
+        // Center align for number, NIM, semester, and status
+        $sheet->getStyle('A2:A'.$lastRow)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('C2:C'.$lastRow)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('E2:E'.$lastRow)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('G2:G'.$lastRow)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
         // Conditional formatting for status
         for ($row = 2; $row <= $lastRow; $row++) {
-            $statusCell = $sheet->getCell('F'.$row)->getValue();
+            $statusCell = $sheet->getCell('G'.$row)->getValue();
             
             if ($statusCell === 'Sudah Mengumpulkan') {
-                $sheet->getStyle('F'.$row)->applyFromArray([
+                $sheet->getStyle('G'.$row)->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'C6EFCE']
@@ -124,7 +140,7 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
                     ]
                 ]);
             } else {
-                $sheet->getStyle('F'.$row)->applyFromArray([
+                $sheet->getStyle('G'.$row)->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'FFC7CE']
@@ -139,16 +155,16 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
         // Add separator between submitted and not submitted
         $foundFirstNotSubmitted = false;
         for ($row = 2; $row <= $lastRow; $row++) {
-            $statusCell = $sheet->getCell('F'.$row)->getValue();
+            $statusCell = $sheet->getCell('G'.$row)->getValue();
             
             if ($statusCell === 'Belum Mengumpulkan' && !$foundFirstNotSubmitted) {
                 $foundFirstNotSubmitted = true;
                 
                 // Insert a separator row
                 $sheet->insertNewRowBefore($row, 1);
-                $sheet->mergeCells('A'.$row.':F'.$row);
+                $sheet->mergeCells('A'.$row.':G'.$row);
                 $sheet->setCellValue('A'.$row, 'BELUM MENGUMPULKAN ORGANISASI');
-                $sheet->getStyle('A'.$row.':F'.$row)->applyFromArray([
+                $sheet->getStyle('A'.$row.':G'.$row)->applyFromArray([
                     'font' => [
                         'bold' => true,
                         'color' => ['rgb' => 'FFFFFF']
@@ -162,7 +178,6 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
                     ]
                 ]);
                 
-                // Adjust row counter since we added a row
                 $row++;
                 $lastRow++;
             }
@@ -170,6 +185,15 @@ class OrganisasiExport implements FromCollection, WithHeadings, WithMapping, Wit
 
         // Freeze header row
         $sheet->freezePane('A2');
+
+        // Set row height for organization details
+        for ($row = 2; $row <= $lastRow; $row++) {
+            $orgCell = $sheet->getCell('F'.$row);
+            if (strpos($orgCell->getValue(), "\n") !== false) {
+                $lineCount = substr_count($orgCell->getValue(), "\n") + 1;
+                $sheet->getRowDimension($row)->setRowHeight(15 * $lineCount);
+            }
+        }
 
         return [];
     }

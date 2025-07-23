@@ -16,6 +16,7 @@ Schema::create('user_organisasi', function (Blueprint $table) {
     $table->foreignId('user_id')->constrained()->onDelete('cascade');
     $table->foreignId('organisasi_id')->constrained()->onDelete('cascade');
     $table->string('semester');
+    $table->string('jabatan');
     $table->timestamps();
     
     $table->unique(['user_id', 'organisasi_id', 'semester']);

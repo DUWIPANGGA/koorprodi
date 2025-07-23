@@ -12,9 +12,14 @@ class Organisasi extends Model
     protected $fillable = ['nama_organisasi', 'deskripsi', 'pembina'];
 
     public function users()
-    {
-        return $this->belongsToMany(User::class, 'user_organisasi')
-            ->withPivot('semester')
-            ->withTimestamps();
-    }
+{
+    return $this->belongsToMany(User::class, 'user_organisasi')
+        ->withPivot([
+            'semester',
+            'jabatan',  // Include the additional column
+            'created_at',
+            'updated_at'
+        ])
+        ->withTimestamps();
+}
 }

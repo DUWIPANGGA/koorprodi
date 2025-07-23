@@ -58,7 +58,12 @@ class User extends Authenticatable
     public function organisasis()
 {
     return $this->belongsToMany(Organisasi::class, 'user_organisasi')
-        ->withPivot('semester')
+        ->withPivot([
+            'semester',
+            'jabatan', 
+            'created_at',
+            'updated_at'
+        ])
         ->withTimestamps();
 }
     public function laporanOrganisasi()

@@ -109,15 +109,26 @@
                             <td>{{ $user->prodi }}</td>
                             <td>{{ $user->semester }}</td>
                             <td>
-                                @foreach($user->organisasis->groupBy('pivot.semester') as $semester => $orgs)
-                                    <div class="mb-1">
-                                        <small class="text-muted">Sem {{ $semester }}:</small>
-                                        @foreach($orgs as $org)
-                                            <span class="badge bg-primary me-1">{{ $org->nama_organisasi }}</span>
-                                        @endforeach
-                                    </div>
-                                @endforeach
-                            </td>
+    @foreach($user->organisasis->groupBy('pivot.semester') as $semester => $orgs)
+        <div class="mb-1">
+            <small class="text-muted">Sem {{ $semester }}:</small>
+            @foreach($orgs as $org)
+                <span class="badge bg-primary me-1" data-bs-toggle="tooltip" 
+                      title="Jabatan: {{ $org->pivot->jabatan }}">
+                    {{ $org->nama_organisasi }}
+                </span>
+            @endforeach
+        </div>
+    @endforeach
+</td>
+
+@push('scripts')
+<script>
+    $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+@endpush
                             <td>
                                 @php
                                     $currentSemester = $user->semester;
