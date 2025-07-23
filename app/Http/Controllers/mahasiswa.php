@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa as ModelsMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Mahasiswa as ModelsMahasiswa;
 
 class mahasiswa extends Controller
 {
@@ -55,10 +56,12 @@ class mahasiswa extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show()
+{
+    $user = Auth::user()->load('rekap');
+
+    return view('mahasiswa.show', compact('user'));
+}
 
     /**
      * Show the form for editing the specified resource.

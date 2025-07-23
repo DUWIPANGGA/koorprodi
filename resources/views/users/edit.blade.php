@@ -3,139 +3,139 @@
 @section('title', 'Update Profile')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-sm">
-                <div class="card-header text-center bg-white">
-                    <h3 class="mb-0">Update Profile</h3>
+<div class="max-w-3xl mx-auto px-4 py-10">
+    <div class="bg-white shadow rounded-2xl">
+        <div class="text-center border-b border-gray-200 py-4">
+            <h3 class="text-2xl font-semibold text-gray-800">Update Profile</h3>
+        </div>
+        <div class="p-6">
+            @if ($errors->any())
+                <div class="mb-4 p-4 bg-red-100 border border-red-300 text-red-700 rounded">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+            @endif
+
+            <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="space-y-6">
+                    <!-- Foto Profil & Info Ringkas -->
+                    <div class="flex flex-col items-center">
+                        <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+                            alt="Foto Profil"
+                            class="w-36 h-36 rounded-full border-4 border-gray-300 mb-4 object-cover">
+                        <div class="w-full border border-gray-300 rounded-lg p-4 mb-6">
+                            <table class="w-full text-sm">
+                                <tr>
+                                    <td class="font-medium py-1">NIM</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">{{ Auth::user()->nim }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Nama Mahasiswa</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">{{ Auth::user()->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Tahun Angkatan</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">{{ Auth::user()->angkatan }}</td>
+                                </tr>
+                            </table>
                         </div>
-                    @endif
+                    </div>
 
-                    <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="row g-3">
-                            <!-- Profile Picture -->
-                            {{-- <div class="col-lg-12 text-center">
-                                <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
-                                    alt="Foto Profil"
-                                    class="rounded-circle border border-dark mb-3"
-                                    style="width: 150px; height: 150px; object-fit: cover;">
-                                <div>
-                                    <p class="fw-bold mb-1">Nama: {{ $user->name }}</p>
-                                    <p class="mb-1">Prodi: {{ $user->prodi }}</p>
-                                    <p class="mb-1">Kelas: {{ $user->kelas }}</p>
-                                    <p class="mb-1">Gender: {{ $user->gender }}</p>
-                                </div>
-                            </div> --}}
-                            <div class="text-center">
-    <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
-        alt="Foto Profil"
-        class="rounded-circle border border-dark mb-3"
-        style="width: 150px; height: 150px; object-fit: cover;">
-</div>
-                            <div class="" style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; margin-bottom: 20px;">
-                               
-                                <table class="" style="width: 100%; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="padding: 5px; font-weight: bold;">NIM</td>
-                                        <td>:</td>
-                                        <td style="padding: 5px;">{{ Auth::user()->nim }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 5px; font-weight: bold;">Nama Mahasiswa</td>
-                                        <td>:</td>
-                                        <td style="padding: 5px;">{{ Auth::user()->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 5px; font-weight: bold;">Tahun Angkatan</td>
-                                        <td>:</td>
-                                        <td style="padding: 5px;">{{ Auth::user()->angkatan }}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        
-                            <!-- Foto Profil -->
-                            <div class="col-lg-6">
-                                <label for="foto_profil" class="form-label">Foto Profil</label>
-                                <input type="file" id="foto_profil" name="foto_profil" class="form-control" accept="image/*">
-                                <small class="text-muted">Kosongkan jika tidak ingin mengubah foto profil.</small>
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="col-lg-6">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" id="phone" name="phone" class="form-control"
-                                    value="{{ old('phone', $user->phone) }}" required>
-                            </div>
-
-                            <!-- Phone Wali -->
-                            <div class="col-lg-6">
-                                <label for="phone_wali" class="form-label">Phone Wali</label>
-                                <input type="text" id="phone_wali" name="phone_wali" class="form-control"
-                                    value="{{ old('phone_wali', $user->phone_wali) }}" required>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="col-lg-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-control"
-                                    value="{{ old('email', $user->email) }}" required>
-                            </div>
-
-                            <!-- Alamat -->
-                            <div class="col-lg-12">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <textarea id="alamat" name="alamat" class="form-control" rows="3" required>{{ old('alamat', $user->alamat) }}</textarea>
-                            </div>
-
-                            <!-- Asal Sekolah -->
-                            <div class="col-lg-6">
-                                <label for="asal_sekolah" class="form-label">Asal Sekolah</label>
-                                <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
-                                    value="{{ old('asal_sekolah', $user->asal_sekolah) }}" required>
-                            </div>
-
-                            <!-- Hobi -->
-                            <div class="col-lg-6">
-                                <label for="hobi" class="form-label">Hobi</label>
-                                <input type="text" id="hobi" name="hobi" class="form-control"
-                                    value="{{ old('hobi', $user->hobi) }}" required>
-                            </div>
-
-                            <!-- Bakat -->
-                            <div class="col-lg-6">
-                                <label for="bakat" class="form-label">Bakat</label>
-                                <input type="text" id="bakat" name="bakat" class="form-control"
-                                    value="{{ old('bakat', $user->bakat) }}" required>
-                            </div>
-
-                            <!-- Password -->
-                            <div class="col-lg-6">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" name="password" class="form-control">
-                                <small class="text-muted">Kosongkan jika tidak ingin mengubah password.</small>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Foto Profil -->
+                        <div>
+                            <label for="foto_profil" class="block text-sm font-medium text-gray-700 mb-1">Foto Profil</label>
+                            <input type="file" id="foto_profil" name="foto_profil" accept="image/*"
+                                class="block w-full text-sm text-gray-900 border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                            <p class="text-xs text-gray-500 mt-1">Kosongkan jika tidak ingin mengubah foto profil.</p>
                         </div>
 
-                        <!-- Submit Button -->
-                        <div class="mt-4 text-center">
-                            <button type="submit" class="btn btn-primary px-4 py-2">Update Profile</button>
+                        @if(Auth::user()->role == 'super_admin' )
+                        <div>
+                            <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                            <select id="role" name="role"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 text-sm">
+                                <option value="user" {{ old('role', Auth::user()->role) == 'user' ? 'selected' : '' }}>User</option>
+                                <option value="admin" {{ old('role', Auth::user()->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="super_admin" {{ old('role', Auth::user()->role) == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
+                            </select>
                         </div>
-                    </form>
+@endif
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                            <input type="text" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Phone Wali -->
+                        <div>
+                            <label for="phone_wali" class="block text-sm font-medium text-gray-700 mb-1">Phone Wali</label>
+                            <input type="text" id="phone_wali" name="phone_wali" value="{{ old('phone_wali', Auth::user()->phone_wali) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="md:col-span-2">
+                            <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+                            <textarea id="alamat" name="alamat" rows="3"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>{{ old('alamat', Auth::user()->alamat) }}</textarea>
+                        </div>
+
+                        <!-- Asal Sekolah -->
+                        <div>
+                            <label for="asal_sekolah" class="block text-sm font-medium text-gray-700 mb-1">Asal Sekolah</label>
+                            <input type="text" id="asal_sekolah" name="asal_sekolah" value="{{ old('asal_sekolah', Auth::user()->asal_sekolah) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Hobi -->
+                        <div>
+                            <label for="hobi" class="block text-sm font-medium text-gray-700 mb-1">Hobi</label>
+                            <input type="text" id="hobi" name="hobi" value="{{ old('hobi', Auth::user()->hobi) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Bakat -->
+                        <div>
+                            <label for="bakat" class="block text-sm font-medium text-gray-700 mb-1">Bakat</label>
+                            <input type="text" id="bakat" name="bakat" value="{{ old('bakat', Auth::user()->bakat) }}"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="password" name="password"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm">
+                            <p class="text-xs text-gray-500 mt-1">Kosongkan jika tidak ingin mengubah password.</p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit"
+                            class="mt-6 px-6 py-2 bg-gray-700 text-white font-medium rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600">
+                            Update Profile
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

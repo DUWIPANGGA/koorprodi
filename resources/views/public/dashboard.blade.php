@@ -5,64 +5,81 @@
 @section('content')
     <div class="min-h-screen p-4 md:p-8">
         <!-- Bagian Sambutan -->
-        <div class="bg-white rounded-xl shadow-sm p-6 mb-6 flex flex-col md:flex-row items-center gap-6">
-            <div class="relative">
-                <img src="{{ Auth::user()->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto profil"
-                    class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-white shadow-lg">
-                <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-1.5 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
-            </div>
-            <div class="flex-1">
-                <h1 class="text-xl md:text-2xl font-bold text-gray-800">Selamat datang kembali, {{ Auth::user()->name }}!
-                </h1>
-                <p class="text-gray-600 mt-1">Pantau perkembangan akademik Anda dan tetap terupdate</p>
-
-                <div class="flex gap-4 mt-4">
-                    <a href="{{ route('profile.edit', Auth::user()->id) }}"
-                        class="text-blue-600 hover:text-blue-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                    </a>
-                    <a href="{{ route('rekap') }}" class="text-gray-600 hover:text-gray-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <!-- Bagian Sambutan - Enhanced Version -->
+<div class="bg-white rounded-xl shadow-sm p-6 mb-6 flex flex-col md:flex-row items-center gap-6 border border-gray-100">
+    <!-- Profile Picture -->
+    <div class="relative group">
+        <img src="{{ Auth::user()->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto profil"
+            class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:shadow-md transition-shadow">
+        <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-2 shadow-md group-hover:bg-blue-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
         </div>
+    </div>
+    
+    <!-- Welcome Content -->
+    <div class="flex-1 text-center md:text-left">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-1">
+            Selamat datang kembali, <span class="text-blue-600">{{ Auth::user()->name }}</span>!
+        </h1>
+        <p class="text-gray-600 text-sm md:text-base">Pantau perkembangan akademik Anda dan tetap terupdate</p>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-center md:justify-start gap-4 mt-5">
+            <a href="{{ route('profile.edit', Auth::user()->id) }}"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-blue-600 hover:text-blue-800 transition-all duration-300 group"
+                data-tippy-content="Edit Profil">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+            </a>
+            
+            <a href="#"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-gray-600 hover:text-gray-800 transition-all duration-300 group"
+                data-tippy-content="Refresh Data">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+            </a>
+            
+            <a href="#"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-gray-600 hover:text-gray-800 transition-all duration-300 group"
+                data-tippy-content="Statistik">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            </a>
+            
+            <a href="{{ route('rekap') }}"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-gray-600 hover:text-gray-800 transition-all duration-300 group"
+                data-tippy-content="Rekap Akademik">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+            </a>
+            
+            <a href="#"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-gray-600 hover:text-gray-800 transition-all duration-300 group"
+                data-tippy-content="Pengaturan">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
 
        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
     <!-- Kartu Grafik IPK -->
@@ -226,21 +243,23 @@
                     </div>
                 </a>
 
-                <!-- Organisasi -->
-                {{-- <a href="#"
-                    class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
-                    <div class="bg-yellow-100 p-3 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-800">Organisasi</h4>
-                        <p class="text-gray-600 text-sm">Daftar organisasi yang diikuti</p>
-                    </div>
-                </a> --}}
+                
+
+<!-- Link ke User Organisasi -->
+<a href="{{ route('user-organisasi.create', ['user_id' => Auth::user()->id]) }}"
+   class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+    <div class="bg-green-100 p-3 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" 
+             viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">Anggota Organisasi</h4>
+        <p class="text-gray-600 text-sm">Kelola keanggotaan organisasi</p>
+    </div>
+</a>
 
                 <!-- Kalender Akademik -->
                 {{-- <a href="{{ route('acara.index') }}"
@@ -372,6 +391,52 @@
                             <p class="text-gray-600 text-sm">Manage Domisili Rumah</p>
                         </div>
                     </a>
+                    <!-- Link ke Organisasi Index -->
+<a href="{{ route('organisasi.index') }}"
+   class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+    <div class="bg-blue-100 p-3 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" 
+             viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">Organisasi</h4>
+        <p class="text-gray-600 text-sm">Kelola data organisasi</p>
+    </div>
+</a>
+<a href="{{ route('user-organisasi.index') }}"
+   class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4">
+    <div class="bg-gray-100 p-3 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" 
+             viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M9 20H4v-2a3 3 0 015.356-1.857M16 3.13a4 4 0 11-4 6.87 4 4 0 014-6.87zM8 3.13a4 4 0 100 6.87 4 4 0 000-6.87z" />
+        </svg>
+    </div>
+    <div>
+        <h4 class="font-semibold text-gray-800">User Organisasi</h4>
+        <p class="text-gray-600 text-sm">Kelola data organisasi mahasiswa</p>
+    </div>
+</a>
+
+                    @if (Auth::user()->role == 'super_admin')
+    <a href="#" class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex items-center space-x-4"
+       data-bs-toggle="modal" data-bs-target="#formModal">
+        <div class="bg-blue-100 p-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <div>
+            <h4 class="font-semibold text-gray-800">Pelaporan IPK</h4>
+            <p class="text-gray-600 text-sm">Buka atau tutup pelaporan IPK untuk mahasiswa</p>
+        </div>
+    </a>
+@endif
                 </div>
 
             </div>
@@ -463,36 +528,7 @@
                 </div>
             </div>
         @endif
-        <!-- Bagian Admin (Kondisional) -->
-        @if (Auth::user()->role == 'super_admin')
-            <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Kontrol Admin</h3>
-                    <span class="text-sm text-gray-500">Kelola pelaporan IPK</span>
-                </div>
-
-                <div class="bg-blue-50 rounded-lg p-4">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-blue-100 p-3 rounded-full">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-medium text-gray-800">Periode Pelaporan IPK</h4>
-                            <p class="text-sm text-gray-600">Buka atau tutup pelaporan IPK untuk mahasiswa</p>
-                        </div>
-                        <button type="button"
-                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            data-bs-toggle="modal" data-bs-target="#formModal">
-                            Kelola Pelaporan
-                        </button>
-                    </div>
-                </div>
-            </div>
-        @endif
+        
 
         <!-- Artikel Rekomendasi -->
         <div class="mb-6">

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\LaporanOrganisasi;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -54,4 +55,21 @@ class User extends Authenticatable
     {
          return $this->hasMany(Rekap::class);
     }
+    public function organisasis()
+{
+    return $this->belongsToMany(Organisasi::class, 'user_organisasi')
+        ->withPivot('semester')
+        ->withTimestamps();
+}
+    public function laporanOrganisasi()
+{
+    return $this->belongsToMany(Organisasi::class, 'user_organisasi')
+        ->withPivot('semester')
+        ->withTimestamps();
+}
+// app/Models/User.php
+// public function laporanOrganisasi()
+// {
+//     return $this->hasMany(LaporanOrganisasi::class);
+// }
 }

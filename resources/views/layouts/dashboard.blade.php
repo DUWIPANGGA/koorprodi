@@ -261,6 +261,12 @@
                 <ul class="space-y-1">
                     <!-- Dashboard -->
                     <li>
+                        <a href="{{ route('profile.show') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('profile.show') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
+                            <i class="fas fa-user mr-3 w-5 text-center"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('dashboard') }}" class="nav-link flex items-center p-3 rounded-lg transition-colors {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50 hover:text-black' }}">
                             <i class="fas fa-home mr-3 w-5 text-center"></i>
                             <span>Dashboard</span>

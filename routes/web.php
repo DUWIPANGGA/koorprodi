@@ -19,8 +19,10 @@ use App\Http\Controllers\DomisiliController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\OrganisasiController;
 use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\RedirectLinkController;
+use App\Http\Controllers\UserOrganisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,10 +62,14 @@ Route::post('/registrasi', [AuthController::class, 'store']);
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::resource('organisasi', OrganisasiController::class);
+            Route::get('/user-organisasi', [UserOrganisasiController::class, 'index'])->name('user-organisasi.index');
+
     // Dashboard
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
 
     // User Management
+    Route::get('/user-organisasi/export', [UserOrganisasiController::class, 'export'])->name('user-organisasi.export');
     Route::resource('users', UserController::class);
     Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::get('import-data', [UserController::class, 'import']);
@@ -112,6 +118,7 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     // Aspirasi Management
     Route::resource('aspirasi', aspirasiController::class)->except(['create', 'store']);
     Route::delete('/aspirasi/{id}', [aspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+    Route::get('/admin/aspirasi/export', [aspirasiController::class, 'exportExcel'])->name('aspirasi.export');
     Route::resource('periode', PeriodeController::class)->except(['show', 'edit', 'update']);
     Route::post('periode/{periode}/set-aktif', [PeriodeController::class, 'setAktif'])->name('periode.set-aktif');
     
@@ -136,6 +143,7 @@ Route::resource('acara', AcaraController::class);
 */
 Route::middleware('auth')->group(function () {
     // Profile Routes
+    Route::get('/profile', [Mahasiswa::class, 'show'])->name('profile.show');
     Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
     Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
@@ -168,6 +176,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('redirect-links', RedirectLinkController::class)->except(['show']);
     Route::get('link/{redirectLink}', [RedirectLinkController::class, 'show'])
         ->name('redirect-links.show');
+Route::resource('users', UserController::class);    
+    Route::get('{user_id}/organisasi/create', [UserOrganisasiController::class, 'create'])->name('user-organisasi.create');
+
+    Route::post('{user_id}/organisasi', [UserOrganisasiController::class, 'store'])
+    ->name('user-organisasi.store');
+
+    Route::get('organisasi/{semester}/edit', [UserOrganisasiController::class, 'edit'])
+        ->name('user-organisasi.edit');
 });
 /*
 |--------------------------------------------------------------------------
