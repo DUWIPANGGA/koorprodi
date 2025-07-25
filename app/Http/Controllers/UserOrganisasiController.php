@@ -103,8 +103,7 @@ public function store(Request $request, $user_id)
         'organisasi_ids' => 'required|array',
         'organisasi_ids.*' => 'exists:organisasis,id',
         'semester' => 'required|string',
-        'jabatan' => 'required|array',
-        'jabatan.*' => 'required|string|max:255',
+        'jabatan' => 'required|array'
     ]);
 
     // Prepare data for sync

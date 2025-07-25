@@ -31,14 +31,14 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="row g-3">
                             <!-- Profile Picture -->
                             <div class="text-center mb-4">
-                                <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+                                <img src="{{ $user->foto_profil ? asset($user->foto_profil) : asset('LogoOrang.jpg') }}"
                                     alt="Foto Profil"
                                     class="rounded-circle border border-3 border-primary mb-3"
                                     style="width: 150px; height: 150px; object-fit: cover;">
@@ -58,17 +58,17 @@
                                             <tr>
                                                 <td width="30%" class="fw-bold text-primary">NIM</td>
                                                 <td width="5%">:</td>
-                                                <td>{{ Auth::user()->nim }}</td>
+                                                <td>{{ $user->nim }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-bold text-primary">Nama Mahasiswa</td>
                                                 <td>:</td>
-                                                <td>{{ Auth::user()->name }}</td>
+                                                <td>{{ $user->name }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-bold text-primary">Tahun Angkatan</td>
                                                 <td>:</td>
-                                                <td>{{ Auth::user()->angkatan }}</td>
+                                                <td>{{ $user->angkatan }}</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -99,7 +99,17 @@
                                     <label for="email">Email</label>
                                 </div>
                             </div>
-
+ @if(Auth::user()->role == 'super_admin' )
+                            <div class="col-md-6">
+                            <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                            <select id="role" name="role"
+                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 text-sm">
+                                <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+                                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="super_admin" {{ old('role', $user->role) == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
+                            </select>
+                        </div>
+                        @endif
                             <div class="col-12">
                                 <div class="form-floating mb-3">
                                     <textarea id="alamat" name="alamat" class="form-control" style="height: 100px" required>{{ old('alamat', $user->alamat) }}</textarea>

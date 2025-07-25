@@ -42,6 +42,8 @@ $ipkNew = count($rekaps) > 0 ? $rekaps[count($rekaps)-1] : null;
         $ipkArray[$rekap->semester - 1] = $rekap->IPK; 
     }
     // dd($ipkArray);
+    
+        // return view('public.user', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
         return view('public.dashboard', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
     }
 }
