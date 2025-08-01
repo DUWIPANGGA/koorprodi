@@ -436,6 +436,8 @@
                     </div>
                 </a>
             </div>
+            @include('public.admin')
+            
         </div>
     </div>
 
