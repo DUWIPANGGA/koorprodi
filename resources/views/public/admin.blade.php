@@ -1,7 +1,7 @@
 @if (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
 <div class="mb-8 py-3">
     <h3 class="text-xl font-semibold text-gray-800 mb-6 px-4">Layanan Admin</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4">
         <!-- Manajemen Pengaduan -->
         <a href="{{ route('pengaduan.index') }}" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow border border-gray-100">
             <div class="flex items-center space-x-4">
@@ -164,7 +164,7 @@
 @if (Auth::user()->role == 'KOMINFO' || Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin')
 <div class="mb-8 py-3">
     <h3 class="text-xl font-semibold text-gray-800 mb-6 px-4">Layanan KOMINFO</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4">
         <!-- Manajemen Aspirasi -->
         <a href="{{ route('aspirasi.index') }}" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow border border-gray-100">
             <div class="flex items-center space-x-4">
