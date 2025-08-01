@@ -209,7 +209,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm">
                     <h2 class="text-lg font-semibold text-blue-800 mb-4">Informasi Pribadi</h2>
                     <div class="flex flex-col items-center mb-4">
-                        <img class="w-20 h-20 rounded-full mb-4 border-4 border-blue-100" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}&background=random" alt="Foto mahasiswa">
+                        <img class="w-20 h-20 rounded-full mb-4 border-4 border-blue-100" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto mahasiswa">
                         <h3 class="font-bold text-lg">{{ $user->name }}</h3>
                         <div class="text-gray-500 text-sm">{{ $user->nim }}</div>
                     </div>
