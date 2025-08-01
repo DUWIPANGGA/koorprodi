@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'dashboard')
 @section('content')
 <div class="min-h-screen bg-gray-50 flex">
     <!-- Konten Utama -->
