@@ -70,11 +70,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     // User Management
     Route::get('/user-organisasi/export', [UserOrganisasiController::class, 'export'])->name('user-organisasi.export');
-    Route::resource('users', UserController::class);
     Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
-Route::get('/domisili/export-csv', [DomisiliController::class, 'exportCSV'])->name('domisili.export.csv');    // Rekap Management
+    Route::get('/domisili/export-csv', [DomisiliController::class, 'exportCSV'])->name('domisili.export.csv');    // Rekap Management
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
     Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
@@ -85,20 +84,21 @@ Route::get('/domisili/export-csv', [DomisiliController::class, 'exportCSV'])->na
     Route::get('/domisili', [DomisiliController::class, 'adminIndex'])->name('admin.domisili.index');
     Route::put('/domisili/{domisili}/approve', [DomisiliController::class, 'approve'])->name('admin.domisili.approve');
     Route::put('/domisili/{domisili}/reject', [DomisiliController::class, 'reject'])->name('admin.domisili.reject');
-
+    
     Route::get('/sktm', [SktmController::class, 'adminIndex'])->name('admin.sktm.index');
     Route::put('/sktm/{sktm}/approve', [SktmController::class, 'approve'])->name('admin.sktm.approve');
     Route::put('/sktm/{sktm}/reject', [SktmController::class, 'reject'])->name('admin.sktm.reject');
-
+    
     // Rekap IPK Routes
     Route::get('/rekap-ipk', [RekapController::class, 'rekapIpk'])->name('admin.rekap.ipk');
     Route::post('/update-semester', [RekapController::class, 'updateSemesterMassal'])->name('admin.update.semester');
     Route::get('/export-rekap-ipk', [RekapController::class, 'exportRekapIpk'])->name('admin.export.ipk');
     Route::get('/users-export', [UserController::class, 'exportUsers'])->name('users.export');
-
+    
     // Event Routes
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
     Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
+    Route::resource('users', UserController::class);
 });
 
 /*
@@ -176,7 +176,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('redirect-links', RedirectLinkController::class)->except(['show']);
     Route::get('link/{redirectLink}', [RedirectLinkController::class, 'show'])
         ->name('redirect-links.show');
-Route::resource('users', UserController::class);    
     Route::get('{user_id}/organisasi/create', [UserOrganisasiController::class, 'create'])->name('user-organisasi.create');
     Route::get('{user_id}/organisasi', [UserOrganisasiController::class, 'show'])->name('user-organisasi.show');
 

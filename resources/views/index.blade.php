@@ -40,12 +40,47 @@
         .nav-link-underline.active::after {
             width: 100%;
         }
+#stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
 
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: float linear infinite;
+  opacity: 0;
+}
+
+/* Animasi untuk bintang */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
     </style>
 </head>
 
 <body class="text-gray-800">
-
+<div id="stars-container"></div>
     <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 ease-in-out" id="navbar">
 
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -489,7 +524,46 @@
                 }
             }
         });
+document.addEventListener('DOMContentLoaded', function() {
+  const starsContainer = document.getElementById('stars-container');
+  const starCount = 100; // Jumlah bintang
+  
+  // Warna-warna bintang (bisa disesuaikan)
+  const starColors = [
+    '#ffffff', 
+    '#c8e0f4', 
+    '#00f2ff', 
+    '#508aa8', 
+    '#a8d0e6'
+  ];
 
+  // Membuat bintang
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    
+    // Ukuran acak antara 1px sampai 3px
+    const size = Math.random() * 2 + 1;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    
+    // Posisi acak di layar
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    
+    // Warna acak
+    star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
+    
+    // Durasi animasi acak antara 50s sampai 150s
+    const duration = Math.random() * 100 + 50;
+    star.style.animationDuration = `${duration}s`;
+    
+    // Delay animasi acak
+    star.style.animationDelay = `${Math.random() * 20}s`;
+    
+    starsContainer.appendChild(star);
+  }
+});
     </script>
 </body>
 </html>

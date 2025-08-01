@@ -233,6 +233,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(0, 0, 0, 0.2);
         }
+        
     </style>
 </head>
 
