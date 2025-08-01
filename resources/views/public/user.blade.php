@@ -130,7 +130,7 @@
             <div class="absolute -top-10 -right-10 w-40 h-40 bg-white bg-opacity-10 rounded-full"></div>
             <div class="absolute -bottom-16 right-8 w-32 h-32 bg-white bg-opacity-10 rounded-full"></div>
             <h1 class="text-2xl font-bold mb-2">Halo, {{ $user->name }}</h1>
-            <p class="opacity-90">Setiap ahli awalnya adalah seorang pemula!</p>
+            <p class="opacity-90">Setiap langkah kecil adalah bagian dari perjalanan yang besar!</p>
         </div>
 
         <!-- Grid Dashboard -->
