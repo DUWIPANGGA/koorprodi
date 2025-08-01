@@ -35,7 +35,7 @@ class DashboardController extends Controller
     $ipkArray = array_fill(0, 8, 0);
 $ipkNew = count($rekaps) > 0 ? $rekaps[count($rekaps)-1] : null; 
    // dd($ipkNew);
-    $semester = $user->angkatan > 0 ? $this->getSemester($user->angkatan) : 1;
+    $semester = $user->semester;
     // dd($semester);
     
     foreach ($rekaps as $rekap) {
@@ -43,7 +43,7 @@ $ipkNew = count($rekaps) > 0 ? $rekaps[count($rekaps)-1] : null;
     }
     // dd($ipkArray);
     
-        // return view('public.user', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
+        return view('public.user', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
         return view('public.dashboard', compact('user','rekaps','ipkArray','ipkNew','semester','recommendedArticles'));
     }
 }

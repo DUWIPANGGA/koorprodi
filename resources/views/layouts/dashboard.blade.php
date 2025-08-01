@@ -249,12 +249,7 @@
 <aside class="sidebar" id="sidebar">
     <div class="h-full flex flex-col bg-white shadow-md">
         <!-- Brand/Header Section -->
-        <div class="sidebar-header p-4 border-b border-gray-100">
-            <a href="{{ route('dashboard') }}" class="sidebar-brand flex items-center space-x-3">
-                <img src="{{ asset('formadiksi.png') }}" alt="FORMADIKSI Logo" class="h-10 w-auto">
-                <span class="text-xl font-semibold text-gray-800">FORMADIKSI</span>
-            </a>
-        </div>
+        
         
         <!-- Menu Container -->
         <div class="flex-1 overflow-y-auto">
