@@ -529,13 +529,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const starCount = 1000; // Jumlah bintang
   
   // Warna-warna bintang (bisa disesuaikan)
-  const starColors = [
-    '#ffffff', 
-    '#c8e0f4', 
-    '#00f2ff', 
-    '#508aa8', 
-    '#a8d0e6'
-  ];
+              const starColors = ['#ffffff', '#d1d5db', '#e5e7eb', '#9ca3af', '#6b7280'];
+
 
   // Membuat bintang
   for (let i = 0; i < starCount; i++) {

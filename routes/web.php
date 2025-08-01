@@ -203,3 +203,19 @@ Route::resource('rumah-aspirasi', aspirasiController::class)->only(['create', 's
 Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
     ->where('shortUrl', '[A-Za-z0-9\-_]+')
     ->name('redirect');
+    // Route untuk testing error pages
+Route::get('/error/404', function () {
+    abort(404);
+});
+
+Route::get('/error/403', function () {
+    abort(403);
+});
+
+Route::get('/error/500', function () {
+    abort(500);
+});
+
+Route::get('/error/401', function () {
+    abort(401);
+});
