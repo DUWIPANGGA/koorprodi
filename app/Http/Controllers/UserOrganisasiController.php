@@ -93,14 +93,29 @@ public function export(Request $request)
     return Excel::download(new OrganisasiExport($users), $fileName);
 }
 
-    public function create($user_id)
-    {
-        $user = User::findOrFail($user_id);
+   public function create($user_id)
+{
+    try {
+        if (Auth::user()->id == $user_id) {
+            $user = Auth::user();
+        } elseif (in_array(Auth::user()->role, ['admin', 'super_admin'])) {
+            $user = User::findOrFail($user_id);
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $organisasis = Organisasi::all();
         $currentSemester = $user->semester;
-        
+
         return view('user-organisasi.create', compact('user', 'organisasis', 'currentSemester'));
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect()->back()->withErrors(['user' => 'User tidak ditemukan.']);
+    } catch (\Exception $e) {
+        \Log::error('Gagal membuka halaman create organisasi: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat membuka halaman.']);
     }
+}
+
 public function store(Request $request, $user_id)
 {
     try {
