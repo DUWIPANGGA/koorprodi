@@ -55,36 +55,12 @@
             bottom: 0;
             left: 25%;
             background-color: #00AAFF;
-        }.floating-img-bg {
-    position: absolute;
-    border-radius: 50%;
-    object-fit: cover;
-    opacity: 0.15;
-    filter: grayscale(50%) blur(1px);
-    transition: all 20s linear;
-    z-index: 0;
-    will-change: transform;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
+        }
 
-.floating-img-bg:hover {
-    opacity: 0.3;
-    filter: grayscale(30%) blur(0.5px);
-}
-
-/* Pastikan konten utama di atas background */
-body {
-    position: relative;
-}
-
-nav, main, footer {
-    position: relative;
-    z-index: 10;
-}
     </style>
 </head>
 <body class="text-gray-800">
-<div id="floating-background" class="fixed inset-0 overflow-hidden pointer-events-none z-0"></div>    <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 ease-in-out" id="navbar">
 
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -655,89 +631,6 @@ nav, main, footer {
 
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('floating-background');
-    
-    // Daftar foto dari data pengurus
-    const pengurusPhotos = [
-        @foreach($allPengurus as $p)
-            @if($p->foto)
-                "{{ asset('storage/'.$p->foto) }}",
-            @endif
-        @endforeach
-        
-        // Fallback images
-        "{{ asset('LogoOrang.jpg') }}",
-        "{{ asset('formadiksi.png') }}",
-        "{{ asset('mascot.png') }}"
-    ];
-
-    const imageCount = Math.min(20, pengurusPhotos.length); // Maksimal 20 gambar
-    const imageSizeMin = 40;
-    const imageSizeMax = 100;
-    
-    function getRandomPosition() {
-        return {
-            x: 10 + Math.random() * 80,
-            y: 10 + Math.random() * 80
-        };
-    }
-
-    function getRandomSpeed() {
-        return {
-            x: (Math.random() - 0.5) * 0.08,
-            y: (Math.random() - 0.5) * 0.08
-        };
-    }
-
-    // Buat gambar floating
-    for (let i = 0; i < imageCount; i++) {
-        const img = document.createElement('img');
-        img.className = 'floating-img-bg';
-        
-        const randomImage = pengurusPhotos[Math.floor(Math.random() * pengurusPhotos.length)];
-        img.src = randomImage;
-        img.alt = 'Background Member';
-        
-        const size = Math.random() * (imageSizeMax - imageSizeMin) + imageSizeMin;
-        img.style.width = `${size}px`;
-        img.style.height = `${size}px`;
-        
-        const startPos = getRandomPosition();
-        img.style.left = `${startPos.x}%`;
-        img.style.top = `${startPos.y}%`;
-        img.style.transform = `rotate(${Math.random() * 360}deg)`;
-        
-        const speed = getRandomSpeed();
-        const rotationSpeed = (Math.random() - 0.5) * 0.2;
-        
-        function animate() {
-            const currentX = parseFloat(img.style.left);
-            const currentY = parseFloat(img.style.top);
-            const currentRot = parseInt(img.style.transform.match(/rotate\((\d+)deg\)/)?.[1] || 0);
-            
-            let newX = currentX + speed.x;
-            let newY = currentY + speed.y;
-            let newRot = currentRot + rotationSpeed;
-            
-            if (newX > 100) newX = -10;
-            if (newX < -10) newX = 100;
-            if (newY > 100) newY = -10;
-            if (newY < -10) newY = 100;
-            
-            img.style.left = `${newX}%`;
-            img.style.top = `${newY}%`;
-            img.style.transform = `rotate(${newRot}deg)`;
-            
-            requestAnimationFrame(animate);
-        }
-        
-        container.appendChild(img);
-        animate();
-    }
-});
-</script>
     <script>
         AOS.init({
             duration: 1000
