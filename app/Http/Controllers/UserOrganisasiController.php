@@ -92,9 +92,6 @@ public function export(Request $request)
         
         return view('user-organisasi.create', compact('user', 'organisasis', 'currentSemester'));
     }
-
-    // app/Http/Controllers/UserOrganisasiController.php
-
 public function store(Request $request, $user_id)
 {
     $user = User::findOrFail($user_id);
@@ -103,16 +100,24 @@ public function store(Request $request, $user_id)
         'organisasi_ids' => 'required|array',
         'organisasi_ids.*' => 'exists:organisasis,id',
         'semester' => 'required|string',
-        'jabatan' => 'required|array'
+        'jabatan' => 'required|array',
+        'jabatan.*' => 'required|string|max:255' // Add validation for each jabatan
     ]);
 
     // Prepare data for sync
     $organisasiData = [];
-    foreach ($request->organisasi_ids as $index => $organisasi_id) {
-        $organisasiData[$organisasi_id] = [
-            'semester' => $request->semester,
-            'jabatan' => $request->jabatan[$index]
-        ];
+    foreach ($request->organisasi_ids as $organisasi_id) {
+        if (!empty($request->jabatan[$organisasi_id])) {
+            $organisasiData[$organisasi_id] = [
+                'semester' => $request->semester,
+                'jabatan' => $request->jabatan[$organisasi_id]
+            ];
+        }
+    }
+
+    // Validate at least one organization was selected with position
+    if (empty($organisasiData)) {
+        return back()->withErrors(['jabatan' => 'Anda harus memilih setidaknya satu organisasi dan mengisi jabatan']);
     }
 
     $user->organisasis()

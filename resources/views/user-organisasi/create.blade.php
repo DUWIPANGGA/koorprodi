@@ -4,25 +4,25 @@
 @section('content')
 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     @if ($errors->any())
-        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-red-700">Terdapat {{ $errors->count() }} kesalahan dalam pengisian form:</h3>
-                    <div class="mt-2 text-sm text-red-600">
-                        <ul class="list-disc pl-5 space-y-1">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+    <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-700">Terdapat {{ $errors->count() }} kesalahan dalam pengisian form:</h3>
+                <div class="mt-2 text-sm text-red-600">
+                    <ul class="list-disc pl-5 space-y-1">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
     @endif
 
     <div class="bg-white rounded-xl shadow-md overflow-hidden p-6 mb-8 border border-gray-300">
@@ -30,10 +30,9 @@
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Rekap Keaktifan Organisasi</h1>
             <p class="text-base text-gray-600">Pilih organisasi untuk <span class="font-semibold text-gray-900">{{ $user->name }}</span> pada Semester {{ $currentSemester }}</p>
             <div class="mt-4 flex justify-center">
-                <d
-                iv class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-full shadow-sm">
+                <d iv class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-full shadow-sm">
                     <svg class="w-5 h-5 text-gray-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
                     </svg>
                     <span class="text-sm text-gray-700">Pilih organisasi yang anda ikuti dengan sebenar benarnya</span>
                 </d>
@@ -54,11 +53,7 @@
                 <div class="relative border border-gray-200 rounded-xl p-4 hover:border-gray-300 transition-colors duration-200">
                     <div class="flex items-start">
                         <div class="flex items-center h-5 mt-1">
-                            <input class="h-4 w-4 text-gray-700 border-gray-300 rounded focus:ring-gray-500"
-                                   type="checkbox"
-                                   name="organisasi_ids[]"
-                                   value="{{ $organisasi->id }}"
-                                   id="org_{{ $organisasi->id }}">
+                            <input class="h-4 w-4 text-gray-700 border-gray-300 rounded focus:ring-gray-500" type="checkbox" name="organisasi_ids[]" value="{{ $organisasi->id }}" id="org_{{ $organisasi->id }}">
                         </div>
                         <div class="ml-3 flex-1">
                             <label for="org_{{ $organisasi->id }}" class="block">
@@ -68,14 +63,14 @@
                                         <p class="text-sm text-gray-500 mt-1">Klik untuk memilih</p>
                                     </div>
                                 </div>
-                                
+
+                                <!-- Change this part in the form -->
                                 <div class="mt-3 org-jabatan-field hidden">
                                     <label for="jabatan_{{ $organisasi->id }}" class="block text-sm font-medium text-gray-700 mb-1">Jabatan</label>
-                                    <input type="text" 
-                                           name="jabatan[]" 
-                                           id="jabatan_{{ $organisasi->id }}" 
-                                           class="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
-                                           placeholder="Contoh: Ketua, Anggota, Bendahara">
+                                    <input type="text" name="jabatan[{{ $organisasi->id }}]" <!-- Change this line -->
+                                    id="jabatan_{{ $organisasi->id }}"
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                                    placeholder="Contoh: Ketua, Anggota, Bendahara">
                                 </div>
                             </label>
                         </div>
@@ -88,7 +83,7 @@
             <a href="{{ route('users.show', $user->id) }}" class="px-6 py-2 border border-gray-400 rounded-lg text-gray-700 font-medium text-center hover:bg-gray-100 transition-colors shadow-sm">
                 <span class="flex items-center justify-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                     Batalkan
                 </span>
@@ -96,7 +91,7 @@
             <button type="submit" class="px-6 py-2 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-1">
                 <span class="flex items-center justify-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     Simpan Pilihan
                 </span>
@@ -106,23 +101,24 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="organisasi_ids[]"]');
-        
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const orgId = this.value;
-                const jabatanField = this.closest('.relative').querySelector('.org-jabatan-field');
-                
-                if (this.checked) {
-                    jabatanField.classList.remove('hidden');
-                    jabatanField.querySelector('input').required = true;
-                } else {
-                    jabatanField.classList.add('hidden');
-                    jabatanField.querySelector('input').required = false;
-                    jabatanField.querySelector('input').value = '';
-                }
-            });
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="organisasi_ids[]"]');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const orgId = this.value;
+            const jabatanField = this.closest('.relative').querySelector('.org-jabatan-field');
+            
+            if (this.checked) {
+                jabatanField.classList.remove('hidden');
+                jabatanField.querySelector('input').setAttribute('required', 'required');
+            } else {
+                jabatanField.classList.add('hidden');
+                jabatanField.querySelector('input').removeAttribute('required');
+                jabatanField.querySelector('input').value = '';
+            }
         });
     });
+});
+
 </script>
 @endsection
