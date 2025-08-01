@@ -14463,3 +14463,19 @@ Did you mean one of these?
 [2025-08-01 07:13:30] local.ERROR: Gagal membuka halaman create organisasi: Unauthorized action.  
 [2025-08-01 07:13:31] local.ERROR: Gagal membuka halaman create organisasi: Unauthorized action.  
 [2025-08-01 07:13:42] local.ERROR: Gagal membuka halaman create organisasi: Unauthorized action.  
+[2025-08-01 15:49:01] local.ERROR: rename(E:\app\forma\koorprodi\bootstrap\cache\serAF95.tmp,E:\app\forma\koorprodi\bootstrap\cache\services.php): Access is denied (code: 5) {"exception":"[object] (ErrorException(code: 0): rename(E:\\app\\forma\\koorprodi\\bootstrap\\cache\\serAF95.tmp,E:\\app\\forma\\koorprodi\\bootstrap\\cache\\services.php): Access is denied (code: 5) at E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php:233)
+[stacktrace]
+#0 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'rename(E:\\\\app\\\\f...', 'E:\\\\app\\\\forma\\\\ko...', 233)
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'rename(E:\\\\app\\\\f...', 'E:\\\\app\\\\forma\\\\ko...', 233)
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(233): rename('E:\\\\app\\\\forma\\\\ko...', 'E:\\\\app\\\\forma\\\\ko...')
+#3 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(191): Illuminate\\Filesystem\\Filesystem->replace('E:\\\\app\\\\forma\\\\ko...', '<?php return ar...')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(163): Illuminate\\Foundation\\ProviderRepository->writeManifest(Array)
+#5 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#6 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(871): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(37): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#11 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+"} 

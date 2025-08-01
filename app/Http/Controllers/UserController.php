@@ -97,7 +97,19 @@ class UserController extends Controller
 
                 $user->foto_profil = 'storage/profil/' . $imageName;
             }
-
+            if (Auth::user()->can('updateBasicInfo', $user)){
+            if ($request->name) {
+                $user->name = $request->name;
+            }
+            if ($request->kelas) {
+                $user->kelas = $request->kelas;
+            }
+            if ($request->jenis_kelamin) {
+                $user->gender = $request->jenis_kelamin;
+            }
+            if ($request->angkatan) {
+                $user->angkatan = $request->angkatan;
+            }}
             if ($request->alamat) {
                 $user->alamat = $request->alamat;
             }
