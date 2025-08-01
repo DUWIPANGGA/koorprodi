@@ -68,9 +68,9 @@ class RedirectLinkController extends Controller
      */
     public function edit(RedirectLink $redirectLink)
     {
-if (Gate::denies('update', $redirectLink)) {
-        abort(403);
-    }
+// if (Gate::denies('update', $redirectLink)) {
+//         abort(403);
+//     }
         
         return view('redirect-links.edit', compact('redirectLink'));
     }

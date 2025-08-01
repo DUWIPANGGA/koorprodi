@@ -171,17 +171,108 @@ public function store(Request $request, $user_id)
         return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan data.'])->withInput();
     }
 }
+public function update(Request $request, $user_id)
+{
+    try {
+        // Authorization check
+        if (Auth::user()->id != $user_id && !in_array(Auth::user()->role, ['admin', 'super_admin'])) {
+            return abort(403, 'Unauthorized action.');
+        }
 
-    public function edit($user_id, $semester)
-    {
-        $user = User::with(['organisasis' => function($query) use ($semester) {
-            $query->wherePivot('semester', $semester);
-        }])->findOrFail($user_id);
+        $user = User::findOrFail($user_id);
+        $currentSemester = $request->input('semester');
 
-        $organisasis = Organisasi::all();
+        // Validate request
+        $request->validate([
+            'organisasi_ids' => 'required|array|min:1',
+            'organisasi_ids.*' => 'exists:organisasis,id',
+            'semester' => 'required|string',
+        ]);
+
+        // Additional validation for positions
+        $errors = [];
+        foreach ($request->organisasi_ids as $organisasi_id) {
+            if (empty($request->jabatan[$organisasi_id])) {
+                $errors["jabatan.$organisasi_id"] = 'Jabatan harus diisi untuk organisasi yang dipilih';
+            }
+        }
+
+        if (!empty($errors)) {
+            return back()
+                ->withErrors($errors)
+                ->withInput()
+                ->with('error', 'Terdapat kesalahan dalam pengisian form');
+        }
+
+        // Prepare data for sync
+        $organisasiData = [];
+        foreach ($request->organisasi_ids as $organisasi_id) {
+            $organisasiData[$organisasi_id] = [
+                'semester' => $currentSemester,
+                'jabatan' => $request->jabatan[$organisasi_id]
+            ];
+        }
+
+        // Sync organizations for the specific semester
+        $user->organisasis()
+            ->wherePivot('semester', $currentSemester)
+            ->sync($organisasiData);
+
+        // Redirect based on user role
+        $redirectRoute = in_array(Auth::user()->role, ['admin', 'super_admin']) 
+            ? route('user-organisasi.index') 
+            : route('profile.show');
+
+        return redirect($redirectRoute)
+            ->with('success', 'Keaktifan organisasi berhasil diperbarui untuk semester ' . $currentSemester);
+
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect()->back()
+            ->with('error', 'User tidak ditemukan')
+            ->withInput();
+            
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return redirect()->back()
+            ->withErrors($e->errors())
+            ->withInput()
+            ->with('error', 'Validasi gagal');
+            
+    } catch (\Exception $e) {
+        \Log::error('Error updating user organizations: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
         
-        return view('user-organisasi.edit', compact('user', 'organisasis', 'semester'));
+        return redirect()->back()
+            ->with('error', 'Terjadi kesalahan server: ' . $e->getMessage())
+            ->withInput();
     }
+}
+    public function edit($user_id, $semester)
+{
+    $user = User::with(['organisasis' => function($query) use ($semester) {
+        $query->wherePivot('semester', $semester);
+    }])->findOrFail($user_id);
+
+    $organisasis = Organisasi::all();
+
+    // Ambil ID organisasi yang sudah dipilih user di semester ini
+    $selectedOrganisasiIds = $user->organisasis->pluck('id')->toArray();
+
+    // Ambil data pivot (jabatan) untuk tiap organisasi
+    $selectedOrganisasi = [];
+    foreach ($user->organisasis as $organisasi) {
+        $selectedOrganisasi[$organisasi->id] = (object)[
+            'jabatan' => $organisasi->pivot->jabatan,
+        ];
+    }
+
+    return view('user-organisasi.edit', compact(
+        'user',
+        'organisasis',
+        'semester',
+        'selectedOrganisasiIds',
+        'selectedOrganisasi'
+    ));
+}
+
 
     private function getCurrentSemester()
     {

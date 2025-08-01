@@ -182,8 +182,9 @@ Route::middleware('auth')->group(function () {
     Route::post('{user_id}/organisasi', [UserOrganisasiController::class, 'store'])
     ->name('user-organisasi.store');
 
-    Route::get('organisasi/{semester}/edit', [UserOrganisasiController::class, 'edit'])
-        ->name('user-organisasi.edit');
+   Route::get('/user-organisasi/{user_id}/{semester}/edit', [UserOrganisasiController::class, 'edit'])->name('user-organisasi.edit');
+Route::put('/user-organisasi/{user}', [UserOrganisasiController::class, 'update'])
+    ->name('user-organisasi.update');
 });
 /*
 |--------------------------------------------------------------------------

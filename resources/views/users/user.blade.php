@@ -65,31 +65,72 @@
                     <!-- Basic Info Card -->
                     <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                         <h3 class="text-lg font-semibold text-blue-800 mb-4">Informasi Dasar</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">NIM</label>
-                                <div class="bg-white px-3 py-2 rounded border border-gray-300">
-                                    {{ $user->nim }}
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama</label>
-                                <div class="bg-white px-3 py-2 rounded border border-gray-300">
-                                    {{ $user->name }}
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Kelas</label>
-                                <div class="bg-white px-3 py-2 rounded border border-gray-300">
-                                    {{ $user->kelas ?? '-' }}
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Angkatan</label>
-                                <div class="bg-white px-3 py-2 rounded border border-gray-300">
-                                    {{ $user->angkatan }}
-                                </div>
-                            </div>
+                        <div class="w-full border border-gray-300 rounded-lg p-4 mb-6">
+                            <table class="w-full text-sm">
+                                <!-- Data yang hanya bisa dilihat -->
+                                <tr>
+                                    <td class="font-medium py-1">NIM</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">
+                                        @can('updateBasicInfo', $user)
+                                            <input type="text" name="nim" value="{{ old('nim', $user->nim) }}"
+                                                class="border rounded px-2 py-1 w-full">
+                                        @else
+                                            {{ $user->nim }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Nama</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">
+                                        @can('updateBasicInfo', $user)
+                                            <input type="text" name="name" value="{{ old('name', $user->name) }}"
+                                                class="border rounded px-2 py-1 w-full">
+                                        @else
+                                            {{ $user->name }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Kelas</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">
+                                        @can('updateBasicInfo', $user)
+                                            <input type="text" name="kelas" value="{{ old('kelas', $user->kelas) }}"
+                                                class="border rounded px-2 py-1 w-full">
+                                        @else
+                                            {{ $user->name }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Jenis Kelamin</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">
+                                        @can('updateBasicInfo', $user)
+                                            <select name="jenis_kelamin" class="border rounded px-2 py-1 w-full">
+                                                <option value="L" {{ $user->gender == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                                <option value="P" {{ $user->gender == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                            </select>
+                                        @else
+                                            {{ $user->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium py-1">Angkatan</td>
+                                    <td class="py-1 px-2">:</td>
+                                    <td class="py-1">
+                                        @can('updateBasicInfo', $user)
+                                            <input type="text" name="angkatan" value="{{ old('angkatan', $user->angkatan) }}"
+                                                class="border rounded px-2 py-1 w-full">
+                                        @else
+                                            {{ $user->angkatan }}
+                                        @endif
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
 
@@ -124,7 +165,7 @@
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                             </div>
 
-                            @if(Auth::user()->role == 'super_admin')
+                            @if($user->role == 'super_admin')
                             <div>
                                 <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
                                 <select id="role" name="role"

@@ -19,7 +19,7 @@
                             <label for="destination_url" class="form-label">Destination URL</label>
                             <input type="url" class="form-control @error('destination_url') is-invalid @enderror" 
                                    id="destination_url" name="destination_url" 
-                                   value="{{ old('destination_url', $redirectLink->destination_url) }}" required>
+                                   value="{{ old('destination_url', $redirectLink->destination_url); }}" required>
                             @error('destination_url')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -60,7 +60,7 @@
                             <label for="expires_at" class="form-label">Expiration Date</label>
                             <input type="datetime-local" class="form-control @error('expires_at') is-invalid @enderror" 
                                    id="expires_at" name="expires_at" 
-                                   value="{{ old('expires_at', optional($redirectLink->expires_at)->format('Y-m-d\TH:i') }}">
+                                   value="{{ old('expires_at', optional($redirectLink->expires_at))->format('Y-m-d\TH:i') }}">
                             @error('expires_at')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
