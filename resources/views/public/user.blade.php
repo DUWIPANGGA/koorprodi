@@ -121,7 +121,7 @@
             <!-- User Profile -->
             <div class="flex items-center">
                 <span class="mr-4 font-medium">{{ $user->name }}</span>
-                <img class="w-10 h-10 rounded-full" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto profil">
+                <img class="w-10 h-10 rounded-full object-cover" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto profil">
             </div>
         </div>
 
@@ -167,7 +167,7 @@
                             {{ $i+1 }}
                         </div>
                         <div class="text-xs mt-1 text-center">
-                            @if($i < $semester-1) {{ $ipkArray[$i] ?? '0.00' }} @elseif($i==$semester-1) Saat Ini @else Akan Datang @endif </div>
+                            @if($i < $semester) {{ $ipkArray[$i] ?? '0.00' }} @else Akan Datang @endif </div>
                         </div>
                         @endfor
                 </div>
@@ -209,7 +209,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm">
                     <h2 class="text-lg font-semibold text-blue-800 mb-4">Informasi Pribadi</h2>
                     <div class="flex flex-col items-center mb-4">
-                        <img class="w-20 h-20 rounded-full mb-4 border-4 border-blue-100" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto mahasiswa">
+                        <img class="w-20 h-20 rounded-full mb-4 border-4 border-blue-100 object-cover" src="{{ $user->foto_profil ?? asset('LogoOrang.jpg') }}" alt="Foto mahasiswa">
                         <h3 class="font-bold text-lg">{{ $user->name }}</h3>
                         <div class="text-gray-500 text-sm">{{ $user->nim }}</div>
                     </div>

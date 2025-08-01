@@ -9,7 +9,7 @@
         <!-- Kolom Kiri: Foto Profil -->
         <div class="bg-white rounded-2xl shadow p-6">
             <div class="flex flex-col items-center">
-                <img src="{{ Auth::user()->foto_profil ? asset('storage/'.Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
+                <img src="{{ Auth::user()->foto_profil ? asset(Auth::user()->foto_profil) : asset('LogoOrang.jpg') }}"
                      alt="Foto Profil"
                      class="w-48 h-48 rounded-full object-cover border-4 border-gray-300 mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
