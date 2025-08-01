@@ -100,15 +100,18 @@ public function store(Request $request, $user_id)
         'organisasi_ids' => 'required|array|min:1',
         'organisasi_ids.*' => 'exists:organisasis,id',
         'semester' => 'required|string',
-        'jabatan' => 'required|array',
-        'jabatan.*' => 'required|string|max:255'
     ]);
 
-    // Validasi tambahan untuk memastikan jabatan ada untuk organisasi yang dipilih
+    // Validasi manual untuk jabatan
+    $errors = [];
     foreach ($request->organisasi_ids as $organisasi_id) {
-        if (!isset($request->jabatan[$organisasi_id]) || empty($request->jabatan[$organisasi_id])) {
-            return back()->withErrors(['jabatan' => 'Harap isi jabatan untuk semua organisasi yang dipilih']);
+        if (empty($request->jabatan[$organisasi_id])) {
+            $errors["jabatan.$organisasi_id"] = 'Jabatan harus diisi';
         }
+    }
+
+    if (!empty($errors)) {
+        return back()->withErrors($errors);
     }
 
     // Prepare data for sync

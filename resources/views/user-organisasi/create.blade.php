@@ -39,107 +39,116 @@
         </div>
     </div>
 
-    <form action="{{ route('user-organisasi.store', $user->id) }}" method="POST" class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-        @csrf
-        <input type="hidden" name="semester" value="{{ $currentSemester }}">
+    <!-- Ubah bagian form input -->
+<form action="{{ route('user-organisasi.store', $user->id) }}" method="POST" id="organisasiForm">
+    @csrf
+    <input type="hidden" name="semester" value="{{ $currentSemester }}">
 
-        <div class="mb-8">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Organisasi</h3>
-            <p class="text-gray-600 mb-6">Pilih satu atau lebih organisasi yang anda ikuti pada semester ini dan isi jabatan anda.</p>
-
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Ubah bagian form input organisasi -->
-                @foreach($organisasis as $organisasi)
-                <div class="relative border border-gray-200 rounded-xl p-4 hover:border-gray-300 transition-colors duration-200">
-                    <div class="flex items-start">
-                        <div class="flex items-center h-5 mt-1">
-                            <input class="h-4 w-4 text-gray-700 border-gray-300 rounded focus:ring-gray-500" type="checkbox" name="organisasi_ids[]" value="{{ $organisasi->id }}" id="org_{{ $organisasi->id }}">
-                        </div>
-                        <div class="ml-3 flex-1">
-                            <label for="org_{{ $organisasi->id }}" class="block">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h4 class="font-medium text-gray-900">{{ $organisasi->nama_organisasi }}</h4>
-                                        <p class="text-sm text-gray-500 mt-1">Klik untuk memilih</p>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3 org-jabatan-field hidden">
-                                    <label for="jabatan_{{ $organisasi->id }}" class="block text-sm font-medium text-gray-700 mb-1">Jabatan</label>
-                                    <input type="text" name="jabatan[{{ $organisasi->id }}]" id="jabatan_{{ $organisasi->id }}" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm" placeholder="Contoh: Ketua, Anggota, Bendahara">
-                                </div>
-                            </label>
-                        </div>
+    @foreach($organisasis as $organisasi)
+    <div class="relative border border-gray-200 rounded-xl p-4 hover:border-gray-300 transition-colors duration-200">
+        <div class="flex items-start">
+            <div class="flex items-center h-5 mt-1">
+                <input class="org-checkbox h-4 w-4 text-gray-700 border-gray-300 rounded focus:ring-gray-500"
+                       type="checkbox"
+                       name="organisasi_ids[]"
+                       value="{{ $organisasi->id }}"
+                       id="org_{{ $organisasi->id }}">
+            </div>
+            <div class="ml-3 flex-1">
+                <label for="org_{{ $organisasi->id }}" class="block">
+                    <!-- ... bagian lainnya ... -->
+                    
+                    <div class="mt-3 org-jabatan-field hidden">
+                        <label for="jabatan_{{ $organisasi->id }}" class="block text-sm font-medium text-gray-700 mb-1">Jabatan</label>
+                        <input type="text" 
+                               name="jabatan_{{ $organisasi->id }}" 
+                               id="jabatan_{{ $organisasi->id }}" 
+                               class="jabatan-input block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                               placeholder="Contoh: Ketua, Anggota, Bendahara">
                     </div>
-                </div>
-                @endforeach
+                </label>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4">
-            <a href="{{ route('users.show', $user->id) }}" class="px-6 py-2 border border-gray-400 rounded-lg text-gray-700 font-medium text-center hover:bg-gray-100 transition-colors shadow-sm">
-                <span class="flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    Batalkan
-                </span>
-            </a>
-            <button type="submit" class="px-6 py-2 bg-gray-700 hover:bg-gray-800 rounded-lg text-white font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-1">
-                <span class="flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Simpan Pilihan
-                </span>
-            </button>
-        </div>
-    </form>
+    </div>
+    @endforeach
+</form>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="organisasi_ids[]"]');
-    
-    checkboxes.forEach(checkbox => {
+    // Toggle jabatan field
+    document.querySelectorAll('.org-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
-            const orgId = this.value;
             const jabatanField = this.closest('.relative').querySelector('.org-jabatan-field');
-            
             if (this.checked) {
                 jabatanField.classList.remove('hidden');
             } else {
                 jabatanField.classList.add('hidden');
-                jabatanField.querySelector('input').value = '';
             }
         });
     });
 
-    // Validasi form sebelum submit
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(e) {
-        const checkedBoxes = document.querySelectorAll('input[type="checkbox"][name="organisasi_ids[]"]:checked');
-        if (checkedBoxes.length === 0) {
-            e.preventDefault();
-            alert('Anda harus memilih setidaknya satu organisasi');
-            return false;
-        }
+    // Form submission handler
+    document.getElementById('organisasiForm').addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        let allValid = true;
-        checkedBoxes.forEach(checkbox => {
-            const orgId = checkbox.value;
-            const jabatanInput = document.querySelector(`input[name="jabatan[${orgId}]"]`);
-            if (!jabatanInput.value.trim()) {
-                allValid = false;
-                const jabatanField = checkbox.closest('.relative').querySelector('.org-jabatan-field');
-                jabatanField.classList.remove('hidden');
-                jabatanInput.focus();
-            }
+        const formData = new FormData(this);
+        const selectedOrgs = [];
+        const jabatanData = {};
+        
+        // Collect selected organisasi_ids
+        document.querySelectorAll('.org-checkbox:checked').forEach(checkbox => {
+            selectedOrgs.push(checkbox.value);
         });
         
-        if (!allValid) {
-            e.preventDefault();
-            alert('Harap isi jabatan untuk semua organisasi yang dipilih');
-            return false;
+        // Validate at least one selected
+        if (selectedOrgs.length === 0) {
+            alert('Pilih setidaknya satu organisasi');
+            return;
         }
+        
+        // Collect and validate jabatan
+        let isValid = true;
+        selectedOrgs.forEach(orgId => {
+            const jabatanInput = document.getElementById(`jabatan_${orgId}`);
+            if (!jabatanInput.value.trim()) {
+                isValid = false;
+                jabatanInput.focus();
+                alert(`Harap isi jabatan untuk organisasi ${orgId}`);
+                return;
+            }
+            jabatanData[orgId] = jabatanInput.value;
+        });
+        
+        if (!isValid) return;
+        
+        // Prepare final data
+        formData.delete('organisasi_ids');
+        formData.delete('jabatan');
+        
+        selectedOrgs.forEach(orgId => {
+            formData.append('organisasi_ids[]', orgId);
+            formData.append(`jabatan[${orgId}]`, jabatanData[orgId]);
+        });
+        
+        // Submit form programmatically
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else if (data.errors) {
+                // Handle server-side errors
+                alert('Terjadi kesalahan: ' + Object.values(data.errors).join('\n'));
+            }
+        })
+        .catch(error => console.error('Error:', error));
     });
 });
 
