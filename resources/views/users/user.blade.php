@@ -1,205 +1,199 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Update Profile')
-
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Update Profile</h3>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
-                        <i class="fas fa-trash-alt me-1"></i> Delete Account
-                    </button>
-                </div>
-                <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
+<style>
+    .report-container {
+        max-width: 700px;
+        margin: 2rem auto;
+    }
+    
+    .report-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        border: none;
+        padding: 2rem;
+    }
+    
+    .report-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .report-header h4 {
+        font-weight: 600;
+        color: #4f46e5;
+        margin-bottom: 1.5rem;
+    }
+    
+    .info-card {
+        background-color: #f9fafb;
+        border-radius: 10px;
+        border-left: 4px solid #4f46e5;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+    }
+    
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .info-table td {
+        padding: 0.75rem;
+        vertical-align: middle;
+    }
+    
+    .info-table tr:not(:last-child) td {
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .info-label {
+        color: #4f46e5;
+        font-weight: 500;
+        width: 40%;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        display: block;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control, .form-select {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #a5b4fc;
+        box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.3);
+        outline: none;
+    }
+    
+    textarea.form-control {
+        min-height: 120px;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 1rem;
+        background-color: #4f46e5;
+        color: white;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .btn-submit:hover {
+        background-color: #4338ca;
+        transform: translateY(-1px);
+    }
+    
+    .alert {
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .note-text {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-bottom: 1.5rem;
+    }
+</style>
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="row g-3">
-                            <!-- Profile Picture -->
-                            <div class="text-center mb-4">
-                                <img src="{{ $user->foto_profil ? asset($user->foto_profil) : asset('LogoOrang.jpg') }}"
-                                    alt="Foto Profil"
-                                    class="rounded-circle border border-3 border-primary mb-3"
-                                    style="width: 150px; height: 150px; object-fit: cover;">
-                                <div class="d-flex justify-content-center">
-                                    <div class="btn btn-sm btn-outline-primary position-relative">
-                                        <i class="fas fa-camera me-1"></i> Change Photo
-                                        <input type="file" id="foto_profil" name="foto_profil" class="position-absolute top-0 start-0 w-100 h-100 opacity-0" accept="image/*">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- User Info Card -->
-                            <div class="col-12">
-                                <div class="card border-primary mb-4">
-                                    <div class="card-body">
-                                        <table class="table table-borderless mb-0">
-                                            <tr>
-                                                <td width="30%" class="fw-bold text-primary">NIM</td>
-                                                <td width="5%">:</td>
-                                                <td>{{ $user->nim }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold text-primary">Nama Mahasiswa</td>
-                                                <td>:</td>
-                                                <td>{{ $user->name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-bold text-primary">Tahun Angkatan</td>
-                                                <td>:</td>
-                                                <td>{{ $user->angkatan }}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Form Fields -->
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" id="phone" name="phone" class="form-control" 
-                                        value="{{ old('phone', $user->phone) }}" required>
-                                    <label for="phone">Phone</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" id="phone_wali" name="phone_wali" class="form-control"
-                                        value="{{ old('phone_wali', $user->phone_wali) }}" required>
-                                    <label for="phone_wali">Phone Wali</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="email" id="email" name="email" class="form-control"
-                                        value="{{ old('email', $user->email) }}" required>
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
- @if(Auth::user()->role == 'super_admin' )
-                            <div class="col-md-6">
-                            <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                            <select id="role" name="role"
-                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 text-sm">
-                                <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
-                                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="super_admin" {{ old('role', $user->role) == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
-                            </select>
-                        </div>
-                        @endif
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <textarea id="alamat" name="alamat" class="form-control" style="height: 100px" required>{{ old('alamat', $user->alamat) }}</textarea>
-                                    <label for="alamat">Alamat</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
-                                        value="{{ old('asal_sekolah', $user->asal_sekolah) }}" required>
-                                    <label for="asal_sekolah">Asal Sekolah</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" id="hobi" name="hobi" class="form-control"
-                                        value="{{ old('hobi', $user->hobi) }}" required>
-                                    <label for="hobi">Hobi</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" id="bakat" name="bakat" class="form-control"
-                                        value="{{ old('bakat', $user->bakat) }}" required>
-                                    <label for="bakat">Bakat</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="password" id="password" name="password" class="form-control">
-                                    <label for="password">Password</label>
-                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah password</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary me-md-2">
-                                <i class="fas fa-arrow-left me-1"></i> Back
-                            </a>
-                            <button type="submit" class="btn btn-primary px-4">
-                                <i class="fas fa-save me-1"></i> Update Profile
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="report-container">
+    <div class="report-card">
+        <div class="report-header">
+            <h4>Form Pelaporan IPK Mahasiswa</h4>
         </div>
+
+        <!-- Student Info Card -->
+        <div class="info-card">
+            <table class="info-table">
+                <tr>
+                    <td class="info-label">NIM</td>
+                    <td width="5%">:</td>
+                    <td>{{ Auth::user()->nim }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label">Nama Mahasiswa</td>
+                    <td>:</td>
+                    <td>{{ Auth::user()->name }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label">Tahun Angkatan</td>
+                    <td>:</td>
+                    <td>{{ Auth::user()->angkatan }}</td>
+                </tr>
+            </table>
+        </div>
+
+        @if (Auth::user()->pelaporan_ipk == 1)
+            <!-- Already Reported -->
+            <div class="alert alert-success text-center" role="alert">
+                Anda sudah melaporkan IPK semester ini.
+            </div>
+        @else
+            <!-- Report Form -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('user.Rekap.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="form-group">
+                    <label for="semester" class="form-label">Semester:</label>
+                    <select id="semester" name="semester" class="form-select" required disabled>
+                        @for ($i = 1; $i <= 8; $i++)
+                            <option value="{{ $i }}" @if(old('semester', Auth::user()->semester) == $i) selected @endif>
+                                Semester {{ $i }}
+                            </option>
+                        @endfor
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="IPK" class="form-label">IPK:</label>
+                    <input type="number" id="IPK" name="IPK" class="form-control" 
+                        value="{{ old('IPK') }}" step="0.01" min="0" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dokumen" class="form-label">KHS (PDF):</label>
+                    <input type="file" id="dokumen" name="dokumen" class="form-control" 
+                        accept=".pdf" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kesulitan" class="form-label">Kesulitan:</label>
+                    <textarea id="kesulitan" name="kesulitan" class="form-control" required>{{ old('kesulitan') }}</textarea>
+                </div>
+
+                <p class="note-text">* Anda hanya dapat mengisi form ini satu kali.</p>
+
+                <button type="submit" class="btn-submit">
+                    Simpan Pelaporan
+                </button>
+            </form>
+        @endif
     </div>
 </div>
-
-<!-- Delete Account Modal -->
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="lead">Are you sure you want to delete your account?</p>
-                <p class="text-danger"><strong>Warning:</strong> This action cannot be undone. All your data will be permanently deleted.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash-alt me-1"></i> Delete Account
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Preview Image Script -->
-<script>
-    document.getElementById('foto_profil').addEventListener('change', function(event) {
-        const [file] = event.target.files;
-        if (file) {
-            const preview = document.querySelector('.rounded-circle');
-            preview.src = URL.createObjectURL(file);
-        }
-    });
-</script>
 @endsection
