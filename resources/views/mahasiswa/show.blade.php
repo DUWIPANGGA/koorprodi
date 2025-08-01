@@ -168,7 +168,7 @@
                     @foreach($rekapIpk as $rekap)
                     <tr>
                         <td class="px-4 py-2">{{ $rekap->semester }}</td>
-                        <td class="px-4 py-2">{{ number_format($rekap->ipk, 2) }}</td>
+                        <td class="px-4 py-2">{{ number_format($rekap->IPK, 2) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
