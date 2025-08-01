@@ -178,6 +178,7 @@ Route::middleware('auth')->group(function () {
         ->name('redirect-links.show');
 Route::resource('users', UserController::class);    
     Route::get('{user_id}/organisasi/create', [UserOrganisasiController::class, 'create'])->name('user-organisasi.create');
+    Route::get('{user_id}/organisasi', [UserOrganisasiController::class, 'show'])->name('user-organisasi.show');
 
     Route::post('{user_id}/organisasi', [UserOrganisasiController::class, 'store'])
     ->name('user-organisasi.store');

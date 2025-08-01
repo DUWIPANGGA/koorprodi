@@ -140,23 +140,10 @@ $hasReport = $user->organisasis->where('pivot.semester', $currentSemester)->coun
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('users.show', $user->id) }}" 
+                                    <a href="{{ route('user-organisasi.show', $user->id) }}" 
                                        class="btn btn-sm btn-info" title="Detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('user-organisasi.create', $user->id) }}" 
-                                       class="btn btn-sm btn-warning" title="Edit Organisasi">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" 
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus anggota ini?')"
-                                                title="Hapus">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
                                 </div>
                             </td>
                         </tr>

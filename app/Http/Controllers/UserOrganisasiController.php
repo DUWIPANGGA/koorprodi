@@ -7,12 +7,21 @@ use App\Models\User;
 use App\Models\Organisasi;
 use Illuminate\Http\Request;
 use App\Exports\OrganisasiExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserOrganisasiController extends Controller
 {
-    // app/Http/Controllers/UserOrganisasiController.php
-public function index(Request $request)
+public function show($user_id)
+{
+    $user = User::with(['organisasis' => function($query) {
+        $query->withPivot('semester', 'jabatan');
+    }, 'laporanOrganisasi'])->findOrFail($user_id);
+
+    return view('user-organisasi.show', compact('user'));
+}
+
+    public function index(Request $request)
 {
     $query = User::with(['organisasis', 'laporanOrganisasi' => function($q) {
         $q->where('semester', auth()->user()->semester);
@@ -94,42 +103,60 @@ public function export(Request $request)
     }
 public function store(Request $request, $user_id)
 {
-    $user = User::findOrFail($user_id);
-    
-    $request->validate([
-        'organisasi_ids' => 'required|array|min:1',
-        'organisasi_ids.*' => 'exists:organisasis,id',
-        'semester' => 'required|string',
-    ]);
-
-    // Validasi manual untuk jabatan
-    $errors = [];
-    foreach ($request->organisasi_ids as $organisasi_id) {
-        if (empty($request->jabatan[$organisasi_id])) {
-            $errors["jabatan.$organisasi_id"] = 'Jabatan harus diisi';
+    try {
+        if (Auth::user()->id == $user_id) {
+            $user = Auth::user();
+        } elseif (in_array(Auth::user()->role, ['admin', 'super_admin'])) {
+            $user = User::findOrFail($user_id);
+        } else {
+            return abort(403, 'Unauthorized action.');
         }
+
+        // Validasi request
+        $request->validate([
+            'organisasi_ids' => 'required|array|min:1',
+            'organisasi_ids.*' => 'exists:organisasis,id',
+            'semester' => 'required|string',
+        ]);
+
+        // Validasi manual untuk jabatan
+        $errors = [];
+        foreach ($request->organisasi_ids as $organisasi_id) {
+            if (empty($request->jabatan[$organisasi_id])) {
+                $errors["jabatan.$organisasi_id"] = 'Jabatan harus diisi';
+            }
+        }
+
+        if (!empty($errors)) {
+            return back()->withErrors($errors)->withInput();
+        }
+
+        // Prepare data for sync
+        $organisasiData = [];
+        foreach ($request->organisasi_ids as $organisasi_id) {
+            $organisasiData[$organisasi_id] = [
+                'semester' => $request->semester,
+                'jabatan' => $request->jabatan[$organisasi_id]
+            ];
+        }
+
+        // Sync data
+        $user->organisasis()
+            ->wherePivot('semester', $request->semester)
+            ->sync($organisasiData);
+
+        return redirect()->route('profile.show')
+            ->with('success', 'Organisasi berhasil diperbarui untuk semester ini');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect()->back()->withErrors(['user' => 'User tidak ditemukan.']);
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return redirect()->back()->withErrors($e->errors())->withInput();
+    } catch (\Exception $e) {
+        \Log::error('Gagal menyimpan data organisasi: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan data.'])->withInput();
     }
-
-    if (!empty($errors)) {
-        return back()->withErrors($errors);
-    }
-
-    // Prepare data for sync
-    $organisasiData = [];
-    foreach ($request->organisasi_ids as $organisasi_id) {
-        $organisasiData[$organisasi_id] = [
-            'semester' => $request->semester,
-            'jabatan' => $request->jabatan[$organisasi_id]
-        ];
-    }
-
-    $user->organisasis()
-        ->wherePivot('semester', $request->semester)
-        ->sync($organisasiData);
-
-    return redirect()->route('profile.show')
-        ->with('success', 'Organisasi berhasil diperbarui untuk semester ini');
 }
+
     public function edit($user_id, $semester)
     {
         $user = User::with(['organisasis' => function($query) use ($semester) {
