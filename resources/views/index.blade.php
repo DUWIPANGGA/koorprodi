@@ -526,7 +526,7 @@
         });
 document.addEventListener('DOMContentLoaded', function() {
   const starsContainer = document.getElementById('stars-container');
-  const starCount = 100; // Jumlah bintang
+  const starCount = 1000; // Jumlah bintang
   
   // Warna-warna bintang (bisa disesuaikan)
   const starColors = [

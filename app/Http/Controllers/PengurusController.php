@@ -33,25 +33,28 @@ class PengurusController extends Controller
         ]);
     }
 public function show($id = null)
-    {
-        $periode = $id ? Periode::findOrFail($id) : Periode::first();
-        
-        if (!$periode) {
-            return redirect()->route('login')->with('error', 'Tidak ada periode kepengurusan yang aktif');
-        }
-
-        // Get all pengurus for this period, ordered by divisi and urutan
-        $pengurus = $periode->pengurus()
-            ->orderBy('divisi')
-            ->orderBy('urutan')
-            ->get() 
-            ->groupBy('divisi');
-
-        // Get all periods for dropdown
-        $periodes = Periode::orderBy('tahun', 'desc')->get();
-
-        return view('kepengurusan', compact('periode', 'pengurus', 'periodes'));
+{
+    $periode = $id ? Periode::findOrFail($id) : Periode::first();
+    
+    if (!$periode) {
+        return redirect()->route('login')->with('error', 'Tidak ada periode kepengurusan yang aktif');
     }
+
+    // Get all pengurus for grouping by divisi
+    $pengurus = $periode->pengurus()
+        ->orderBy('divisi')
+        ->orderBy('urutan')
+        ->get()
+        ->groupBy('divisi');
+
+    // Get all pengurus for background (without grouping)
+    $allPengurus = $periode->pengurus()->get();
+
+    // Get all periods for dropdown
+    $periodes = Periode::orderBy('tahun', 'desc')->get();
+
+    return view('kepengurusan', compact('periode', 'pengurus', 'periodes', 'allPengurus'));
+}
     public function create(Request $request)
     {
         $periode = $request->periode 
