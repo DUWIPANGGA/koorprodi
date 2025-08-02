@@ -25,17 +25,25 @@ class BroadcastController extends Controller
 
         // Jika recipients tidak dipilih, kirim ke semua user
         $recipients = $request->recipients ? 
-                     User::whereIn('id', $request->recipients)->get() :
-                     User::all();
+              User::whereIn('id', $request->recipients)->get() :
+              User::all();
 
-        foreach ($recipients as $recipient) {
-            Mail::to($recipient->email)
-                ->send(new BroadcastMail(
-                    $request->subject,
-                    $request->content,
-                    $recipient->name
-                ));
-        }
+// Proses dalam batch 50 orang
+$recipients->chunk(50)->each(function ($batch) use ($request) {
+    foreach ($batch as $recipient) {
+        Mail::to($recipient->email)
+            ->queue(new BroadcastMail(  // Menggunakan queue() bukan send()
+                $request->subject,
+                $request->content,
+                $recipient->name
+            ));
+    }
+    
+    // Jeda 2 detik antar batch
+    if (app()->environment('production')) {
+        sleep(2);
+    }
+});
 
         return back()->with('success', "Broadcast sent to {$recipients->count()} recipients!");
     }
