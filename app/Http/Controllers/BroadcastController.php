@@ -29,12 +29,19 @@ class BroadcastController extends Controller
               User::all();
               $recipients->chunk(50)->each(function ($batch) use ($request) {
                   foreach ($batch as $recipient) {
+                    try {
         Mail::to($recipient->email)
-            ->queue(new BroadcastMail(
+            ->send(new BroadcastMail(
                 $request->subject,
                 $request->content,
                 $recipient->name
             ));
+            
+            } catch (\Exception $e) {
+                Log::error("Gagal mengirim ke $email: ".$e->getMessage());
+                
+}
+if ($i % 20 == 0) sleep(10);
     }
     
     // Jeda 2 detik antar batch
