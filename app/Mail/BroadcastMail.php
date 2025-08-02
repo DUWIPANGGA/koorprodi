@@ -3,12 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
-use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class BroadcastMail extends Mailable
 {
@@ -24,6 +25,8 @@ class BroadcastMail extends Mailable
      */
     public function __construct($subject, $content, $recipientName = null, $profileImagePath = null)
     {
+                Log::info($this->recipientName);
+
         $this->subject = $subject;
         $this->content = $content;
         $this->recipientName = $recipientName;
@@ -45,6 +48,7 @@ class BroadcastMail extends Mailable
      */
     public function content(): Content
     {
+        Log::info($this->recipientName);
         return new Content(
             view: 'emails.broadcast',
             with: [

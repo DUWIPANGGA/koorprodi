@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="content" class="form-label">Isi Pesan</label>
-                        <textarea class="form-control" id="content" name="content" rows="3" required placeholder="Tulis pesan Anda disini"></textarea>
+<textarea class="form-control" id="content" name="content" rows="3" required placeholder="Tulis pesan Anda disini"></textarea>
                     </div>
                 </div>
                 
@@ -270,5 +270,18 @@
         border-radius: 6px;
     }
 </style>
+<!-- Load CKEditor before your script -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#content').summernote({
+      height: 200
+    });
+  });
+</script>
+
+
 @endsection
 @endsection

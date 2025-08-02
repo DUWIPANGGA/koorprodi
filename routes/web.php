@@ -1,9 +1,11 @@
 <?php
 
+use App\Mail\TestMail;
 use App\Http\Controllers\IPK;
 use App\Http\Controllers\Article;
 use App\Http\Controllers\mahasiswa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
@@ -40,7 +42,10 @@ Route::get('/', function () {
 Route::get('/try', function () {
     return view('Tentang');
 });
-
+Route::get('/kirim-email', function () {
+    Mail::to('khoirunnisaalvi4@gmail.com')->send(new TestMail());
+    return 'Email sudah dikirim!';
+});
 
 
 // Authentication Routes
