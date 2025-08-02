@@ -139,6 +139,19 @@
                 </div>
             </div>
         </a>
+        <a href="{{ route('simple.broadcast.form') }}" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow border border-gray-100">
+    <div class="flex items-center space-x-4">
+        <div class="bg-gray-100 p-2 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        </div>
+        <div>
+            <h4 class="font-medium text-gray-800">Broadcast Email</h4>
+            <p class="text-gray-500 text-xs">Kirim pesan ke anggota</p>
+        </div>
+    </div>
+</a>
 
         @if (Auth::user()->role == 'super_admin')
         <!-- Pelaporan IPK -->

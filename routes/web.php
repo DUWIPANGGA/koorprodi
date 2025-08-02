@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PkmController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SktmController;
 use App\Http\Controllers\UserController;
 use App\Models\article as ModelsArticle;
@@ -17,6 +18,7 @@ use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\aspirasiController;
 use App\Http\Controllers\DomisiliController;
 use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\OrganisasiController;
@@ -127,6 +129,12 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::get('pengurus/create', [PengurusController::class, 'create'])->name('pengurus.create');
     Route::post('pengurus', [PengurusController::class, 'store'])->name('pengurus.store');
     Route::resource('pengurus', PengurusController::class)->except(['index', 'create', 'store']);
+    Route::get('/simple-broadcast', [BroadcastController::class, 'showForm'])->name('simple.broadcast.form');
+    Route::post('/simple-broadcast', [BroadcastController::class, 'sendBroadcast'])->name('simple.broadcast.send');
+    
+    // Simple Manual Chat Routes
+    Route::get('/simple-chat', [ChatController::class, 'showForm'])->name('simple.chat.form');
+    Route::post('/simple-chat', [ChatController::class, 'sendMessage'])->name('simple.chat.send');
 });
 
 
