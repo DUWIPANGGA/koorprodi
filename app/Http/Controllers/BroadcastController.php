@@ -30,7 +30,7 @@ class BroadcastController extends Controller
               $recipients->chunk(50)->each(function ($batch) use ($request) {
                   foreach ($batch as $recipient) {
         Mail::to($recipient->email)
-            ->send(new BroadcastMail(
+            ->queue(new BroadcastMail(
                 $request->subject,
                 $request->content,
                 $recipient->name

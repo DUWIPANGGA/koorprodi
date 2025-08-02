@@ -7,3 +7,1265 @@
 [2025-08-02 19:45:03] local.INFO: ALVI KHOIRUNNISA  
 [2025-08-02 19:49:47] local.INFO:   
 [2025-08-02 19:49:47] local.INFO: ALVI KHOIRUNNISA  
+[2025-08-02 21:56:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:56:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:57:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:57:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:57:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:58:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:58:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:59:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 21:59:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:00:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:00:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:01:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:01:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:02:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:02:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:02:41] local.INFO:   
+[2025-08-02 22:02:41] local.INFO: ALVI KHOIRUNNISA  
+[2025-08-02 22:02:51] local.ERROR: Unknown or bad timezone (UTC+07:00) {"userId":1,"exception":"[object] (Carbon\\Exceptions\\InvalidTimeZoneException(code: 0): Unknown or bad timezone (UTC+07:00) at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(224): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1222): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\RedirectResponse))
+#4 E:\\app\\forma\\koorprodi\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#5 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('E:\\\\app\\\\forma\\\\ko...')
+#6 {main}
+
+[previous exception] [object] (Exception(code: 0): DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35)
+[stacktrace]
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(224): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1222): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\RedirectResponse))
+#6 E:\\app\\forma\\koorprodi\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#7 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('E:\\\\app\\\\forma\\\\ko...')
+#8 {main}
+"} 
+[2025-08-02 22:02:53] local.ERROR: Unknown or bad timezone (UTC+07:00) {"userId":1,"exception":"[object] (Carbon\\Exceptions\\InvalidTimeZoneException(code: 0): Unknown or bad timezone (UTC+07:00) at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(224): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1222): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#4 E:\\app\\forma\\koorprodi\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#5 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('E:\\\\app\\\\forma\\\\ko...')
+#6 {main}
+
+[previous exception] [object] (Exception(code: 0): DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35)
+[stacktrace]
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(224): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1222): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 E:\\app\\forma\\koorprodi\\public\\index.php(17): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#7 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('E:\\\\app\\\\forma\\\\ko...')
+#8 {main}
+"} 
+[2025-08-02 22:03:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:03:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:04:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:04:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:05:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:05:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:06:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:06:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:07:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:07:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:07:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:08:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:08:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:09:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:09:04] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:10:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
+[2025-08-02 22:10:05] local.ERROR: Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php(110): Carbon\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\Exceptions\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(957): Carbon\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\app\forma\koorprodi\vendor\nesbot\carbon\src\Carbon\Traits\Date.php(1856): Carbon\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\app\forma\koorprodi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(225): Carbon\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\Foundation\Console\Kernel->terminate(Object(Symfony\Component\Console\Input\ArgvInput), 0)
+#4 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:35
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(35): DateTimeZone->__construct('UTC+07:00')
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php(110): Carbon\\CarbonTimeZone->__construct('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#3 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#4 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#6 {main}
+
+Next Carbon\\Exceptions\\InvalidTimeZoneException: Unknown or bad timezone (UTC+07:00) in E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115
+Stack trace:
+#0 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(957): Carbon\\CarbonTimeZone::instance('UTC+07:00', NULL)
+#1 E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\Traits\\Date.php(1856): Carbon\\Carbon::safeCreateDateTimeZone('UTC+07:00')
+#2 E:\\app\\forma\\koorprodi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(225): Carbon\\Carbon->setTimezone('UTC+07:00')
+#3 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->terminate(Object(Symfony\\Component\\Console\\Input\\ArgvInput), 0)
+#4 {main}
+  thrown at E:\\app\\forma\\koorprodi\\vendor\\nesbot\\carbon\\src\\Carbon\\CarbonTimeZone.php:115)
+[stacktrace]
+#0 {main}
+"} 
