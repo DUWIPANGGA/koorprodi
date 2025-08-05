@@ -453,6 +453,7 @@
                 <div class="h-48 bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $recommendedArticle->picture_article) }}')">
                 </div>
                 <div class="p-4">
+                    {{ dd($recommendedArticle->judul); }}
                     <h4 class="font-semibold text-gray-800 mb-2">{{ $recommendedArticle->judul }}</h4>
                     <p class="text-gray-600 text-sm mb-4">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
                     <a href="{{ route('article.show.detail', $recommendedArticle->id) }}" class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center">
