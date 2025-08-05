@@ -120,17 +120,34 @@
 
                         <!-- Data yang bisa diedit semua user -->
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                            <input type="text" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}"
-                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
-                        </div>
+    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+    <input type="text" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}"
+        class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" 
+        required
+        pattern="^62\d{9,13}$"
+        title="Format: 62xxxxxxxxxxx (min 11 digit, max 15 digit)">
+    
+    @if(!preg_match('/^62\d{9,13}$/', Auth::user()->phone))
+    <p class="mt-1 text-sm text-red-600">
+        Format nomor telepon salah. Harus diawali 62 dan terdiri dari 11-15 digit angka.
+    </p>
+    @endif
+</div>
 
-                        <div>
-                            <label for="phone_wali" class="block text-sm font-medium text-gray-700 mb-1">Phone Wali</label>
-                            <input type="text" id="phone_wali" name="phone_wali" value="{{ old('phone_wali', Auth::user()->phone_wali) }}"
-                                class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" required>
-                        </div>
-
+<div>
+    <label for="phone_wali" class="block text-sm font-medium text-gray-700 mb-1">Phone Wali</label>
+    <input type="text" id="phone_wali" name="phone_wali" value="{{ old('phone_wali', Auth::user()->phone_wali) }}"
+        class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 text-sm" 
+        required
+        pattern="^62\d{9,13}$"
+        title="Format: 62xxxxxxxxxxx (min 11 digit, max 15 digit)">
+    
+    @if(!preg_match('/^62\d{9,13}$/', Auth::user()->phone_wali))
+    <p class="mt-1 text-sm text-red-600">
+        Format nomor telepon wali salah. Harus diawali 62 dan terdiri dari 11-15 digit angka.
+    </p>
+    @endif
+</div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}"

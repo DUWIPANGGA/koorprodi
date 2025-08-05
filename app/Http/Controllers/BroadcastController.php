@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Jobs\BroadcastEmailJob;
+use App\Mail\BroadcastMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class BroadcastController extends Controller
 {
     public function showForm()
     {
-        $users = User::all(); // bisa diubah filter sesuai kebutuhan
+        $users = User::all();
         return view('broadcast.simple_form', compact('users'));
     }
 
@@ -27,28 +28,40 @@ class BroadcastController extends Controller
             ? User::whereIn('id', $request->recipients)->get()
             : User::all();
 
-        $total = $recipients->count();
+        $successCount = 0;
+        $failedCount = 0;
+        $failedEmails = [];
 
-        $recipients->chunk(50)->each(function ($batch) use ($request) {
-            foreach ($batch as $recipient) {
-                try {
-                    // Dispatch job dengan delay kecil jika ingin stagger
-                    BroadcastEmailJob::dispatch(
+        foreach ($recipients as $recipient) {
+            try {
+                // Kirim email langsung
+                Mail::to($recipient->email)
+                    ->send(new BroadcastMail(
                         $request->subject,
                         $request->content,
-                        $recipient->email,
                         $recipient->name
-                    )->delay(now()->addSeconds(5));
-                } catch (\Exception $e) {
-                    Log::error("Gagal dispatch job untuk {$recipient->email}: " . $e->getMessage());
+                    ));
+                $successCount++;
+                
+                // Tambahkan delay kecil di production untuk menghindari rate limit
+                if (app()->environment('production')) {
+                    usleep(200000); // 0.2 detik
                 }
+            } catch (\Exception $e) {
+                $failedCount++;
+                $failedEmails[] = $recipient->email;
+                Log::error("Gagal mengirim email ke {$recipient->email}: " . $e->getMessage());
             }
+        }
 
-            if (app()->environment('production')) {
-                sleep(2); // jeda antar batch jika perlu
-            }
-        });
+        $message = "Berhasil mengirim email ke {$successCount} penerima.";
+        if ($failedCount > 0) {
+            $message .= " Gagal mengirim ke {$failedCount} email: " . implode(', ', $failedEmails);
+        }
 
-        return back()->with('success', "Broadcast job dispatched to {$total} recipients!");
+        return back()->with(
+            $failedCount > 0 ? 'warning' : 'success',
+            $message
+        );
     }
 }

@@ -204,7 +204,6 @@
                             <p class="text-xs text-gray-500 mt-1">Kosongkan jika tidak ingin mengubah password</p>
                         </div>
                     </div>
-
                     <!-- Action Buttons -->
                     <div class="flex justify-end space-x-4 pt-6">
                         <a href="{{ url()->previous() }}" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -216,6 +215,43 @@
                     </div>
                 </div>
             </form>
+            <!-- Add this section in your form, preferably near the role selection or action buttons -->
+@if(Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
+<div class="md:col-span-2 mt-4">
+    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+        <h3 class="text-lg font-semibold text-blue-800 mb-4">Pengaturan Pelaporan IPK</h3>
+        <div class="flex space-x-4">
+            <form action="{{ route('rekap.user.status', $user->id) }}" method="POST" class="inline">
+                @csrf
+                <input type="hidden" name="status" value="1">
+                <button type="submit" 
+                    class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    Buka Pelaporan IPK
+                </button>
+            </form>
+            
+            <form action="{{ route('rekap.user.status', $user->id) }}" method="POST" class="inline">
+                @csrf
+                <input type="hidden" name="status" value="0">
+                <button type="submit" 
+                    class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    Tutup Pelaporan IPK
+                </button>
+            </form>
+            
+            <span class="self-center text-sm text-gray-600">
+                Status saat ini: 
+                <span class="font-semibold {{ $user->pelaporan_ipk ? 'text-green-600' : 'text-red-600' }}">
+                    {{ $user->pelaporan_ipk ? 'Terbuka' : 'Tertutup' }}
+                </span>
+            </span>
+        </div>
+        <p class="mt-2 text-sm text-gray-500">
+            Tombol ini mengontrol apakah user dapat mengirim laporan IPK atau tidak.
+        </p>
+    </div>
+</div>
+@endif
         </div>
     </div>
 </div>

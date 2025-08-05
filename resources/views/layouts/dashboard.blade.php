@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMADIKSI - @yield('title')</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('mascot.png') }}">
-		<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.0.0/ckeditor5.css">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.0.0/ckeditor5.css">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,14 +20,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -234,34 +233,38 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(0, 0, 0, 0.2);
         }
-        
+
     </style>
 </head>
 
 <body>
+
     <div class="dashboard-container overflow-hidden h-[100vh]">
         <!-- Sidebar Toggle Button (Mobile) -->
         <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
-
+        
         <!-- Sidebar -->
-       <!-- Sidebar -->
-<aside class="sidebar" id="sidebar">
-    <div class="h-full flex flex-col bg-white shadow-md">
-        <!-- Brand/Header Section -->
-        
-        
-        <!-- Menu Container -->
-        <div class="flex-1 overflow-y-auto">
-            @include('layouts.sidebar')
-        </div>
-        
-    </div>
-</aside>
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="h-full flex flex-col bg-white shadow-md">
+                <!-- Brand/Header Section -->
+                
+                
+                <!-- Menu Container -->
+                <div class="flex-1 overflow-y-auto">
+                    @include('layouts.sidebar')
+                </div>
+
+            </div>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
+            @if (!request()->routeIs('profile.edit'))
+        @include('public.modal-data')
+        @endif
             @yield('content')
         </main>
     </div>
@@ -300,6 +303,7 @@
                 link.classList.add('active');
             }
         });
+
     </script>
 
     @yield('scripts')

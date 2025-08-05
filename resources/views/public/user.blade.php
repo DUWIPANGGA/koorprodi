@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', 'dashboard')
 @section('content')
+
 <div class="min-h-screen bg-gray-50 flex">
     <!-- Konten Utama -->
     <div class="flex-1 p-8">
@@ -345,12 +346,16 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach($recommendedArticles as $article)
                         <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                            <h3 class="font-medium text-blue-700 mb-2">{{ $article->title }}</h3>
+                            <h3 class="font-medium text-blue-700 mb-2">{{ $article->judul }}</h3>
                             <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ $article->excerpt }}</p>
                             <div class="flex justify-between items-center text-xs text-gray-500">
                                 <span>{{ $article->created_at->format('d M Y') }}</span>
-                                <a href="#" class="text-blue-600 hover:underline">Baca selengkapnya</a>
-                            </div>
+<a href="{{ route('article.show.detail', $article->id) }}" class="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center">
+                        Baca selengkapnya
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>                            </div>
                         </div>
                         @endforeach
                     </div>

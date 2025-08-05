@@ -225,7 +225,7 @@
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     <img src="{{ asset('storage/' . $recommendedArticle->picture_article) }}" class="w-full h-48 object-cover" alt="{{ $recommendedArticle->title }}">
                     <div class="p-6 flex flex-col flex-grow">
-                        <h5 class="text-xl font-semibold mb-3 text-gray-900">{{ $recommendedArticle->title }}</h5>
+                        <h5 class="text-xl font-semibold mb-3 text-gray-900">{{ $recommendedArticle->judul }}</h5>
                         <p class="text-gray-600 text-sm flex-grow">{!! Str::limit($recommendedArticle->content, 100) !!}</p>
                     </div>
                     <div class="px-6 pb-6 pt-0 bg-transparent">

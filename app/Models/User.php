@@ -23,7 +23,6 @@ class User extends Authenticatable
         'bakat',
         'kelas',
         'angkatan',
-        'pelaporan_ipk',
         'gender',
         'phone',
         'phone_wali',
@@ -44,6 +43,7 @@ class User extends Authenticatable
      * The attributes that should be cast to native types.
      */
     protected $casts = [
+        'pelaporan_ipk' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
 

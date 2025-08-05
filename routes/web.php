@@ -104,8 +104,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     
     // Event Routes
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
-    Route::post('/event-user/{id}', [EventController::class, 'rekapUser'])->name('rekap.user');
     Route::resource('users', UserController::class);
+    Route::post('/event-user/rekap/{id}', [EventController::class, 'rekapUser'])->name('rekap.user.status');
 });
 
 /*
