@@ -24,9 +24,7 @@ class BroadcastMail extends Mailable
      * Create a new message instance.
      */
     public function __construct($subject, $content, $recipientName = null, $profileImagePath = null)
-    {
-                Log::info($this->recipientName);
-
+    {Log::info($this->recipientName);
         $this->subject = $subject;
         $this->content = $content;
         $this->recipientName = $recipientName;

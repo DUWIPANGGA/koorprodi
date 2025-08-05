@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Mail\BroadcastMail;
+use App\Jobs\BroadcastEmailJob;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class BroadcastController extends Controller
 {
     public function showForm()
     {
-        $users = User::all(); // Atau filter sesuai kebutuhan, misalnya User::where('subscribed', true)->get()
+        $users = User::all(); // bisa diubah filter sesuai kebutuhan
         return view('broadcast.simple_form', compact('users'));
     }
 
@@ -20,36 +20,35 @@ class BroadcastController extends Controller
         $request->validate([
             'subject' => 'required|string|max:255',
             'content' => 'required|string',
-            'recipients' => 'nullable|array'
+            'recipients' => 'nullable|array',
         ]);
 
-        // Jika recipients tidak dipilih, kirim ke semua user
-        $recipients = $request->recipients ?
-              User::whereIn('id', $request->recipients)->get() :
-              User::all();
-              $recipients->chunk(50)->each(function ($batch) use ($request) {
-                  foreach ($batch as $recipient) {
-                    try {
-        Mail::to($recipient->email)
-            ->send(new BroadcastMail(
-                $request->subject,
-                $request->content,
-                $recipient->name
-            ));
-            
-            } catch (\Exception $e) {
-                Log::error("Gagal mengirim ke $email: ".$e->getMessage());
-                
-}
-if ($i % 20 == 0) sleep(10);
-    }
-    
-    // Jeda 2 detik antar batch
-    if (app()->environment('production')) {
-        sleep(2);
-    }
-});
+        $recipients = $request->recipients
+            ? User::whereIn('id', $request->recipients)->get()
+            : User::all();
 
-        return back()->with('success', "Broadcast sent to {$recipients->count()} recipients!");
+        $total = $recipients->count();
+
+        $recipients->chunk(50)->each(function ($batch) use ($request) {
+            foreach ($batch as $recipient) {
+                try {
+                    // Dispatch job dengan delay kecil jika ingin stagger
+                    BroadcastEmailJob::dispatch(
+                        $request->subject,
+                        $request->content,
+                        $recipient->email,
+                        $recipient->name
+                    )->delay(now()->addSeconds(5));
+                } catch (\Exception $e) {
+                    Log::error("Gagal dispatch job untuk {$recipient->email}: " . $e->getMessage());
+                }
+            }
+
+            if (app()->environment('production')) {
+                sleep(2); // jeda antar batch jika perlu
+            }
+        });
+
+        return back()->with('success', "Broadcast job dispatched to {$total} recipients!");
     }
 }
