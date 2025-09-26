@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('mascot.png') }}">
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.0.0/ckeditor5.css">
 <!-- PWA Manifest -->
-<link rel="manifest" href="{{ asset('manifest.json') }}">
+<link rel="manifest" href="{{ asset('public/manifest.json') }}">
 <meta name="theme-color" content="#031927">
 
     <!-- Bootstrap 5 CSS -->
