@@ -1,22 +1,25 @@
 {
-  "name": "FORMADIKSI",
-  "short_name": "Formadiksi",
-  "description": "FORMADIKSI",
-  "start_url": "/",
-  "display": "standalone",
   "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "formadiksi",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "formadiksi",
+  "start_url": "/",
   "theme_color": "#031927",
-  "orientation": "portrait",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "https://formadiksi.id/mascot.png",
+      "type": "image/png",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
     }
   ]
 }
