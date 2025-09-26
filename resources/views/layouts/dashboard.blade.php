@@ -261,7 +261,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content" id="mainContent">
+        <main class="main-content min-w-screen" id="mainContent">
             @if (!request()->routeIs('profile.edit'))
         @include('public.modal-data')
         @endif

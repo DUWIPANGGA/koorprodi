@@ -4,7 +4,7 @@
 
 <div class="min-h-screen bg-gray-50 flex">
     <!-- Konten Utama -->
-    <div class="flex-1 p-8">
+    <div class="flex flex-col md:p-10 ">
         <!-- Top Bar -->
         <div class="flex justify-between items-center mb-8">
             <!-- Search Component -->
