@@ -2,20 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rekap;
 use App\Models\User;
+use App\Models\Rekap;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
-    public function rekapEvent(Request $request)
-    {
+public function rekapEvent(Request $request)
+{
+    $validated = $request->validate([
+        'status' => 'required|in:0,1', // atau in:open,close sesuai kebutuhan
+    ]);
 
-        User::query()->update([
-            'pelaporan_ipk' => $request->status,
-        ]);
-        return redirect()->route('dashboard')->with('success', 'Rekap Event Berhasil');
-    }
+    // update data
+    User::query()->update([
+        'pelaporan_ipk' => $validated['status'],
+    ]);
+
+    // bikin log
+    Log::info('Pelaporan IPK diubah', [
+        'user' => auth()->user()->id ?? null, // siapa yang ubah
+        'status_baru' => $validated['status'],
+        'time' => now()->toDateTimeString(),
+    ]);
+
+    return redirect()
+        ->route('dashboard')
+        ->with('success', 'Rekap Event Berhasil');
+}
 //     public function rekapUser(Request $request, $id)
 // {
 //     logger()->debug('Request Data:', [

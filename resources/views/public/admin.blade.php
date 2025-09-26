@@ -154,21 +154,55 @@
 </a>
 
         @if (Auth::user()->role == 'super_admin')
-        <!-- Pelaporan IPK -->
-        <a href="#" class="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow border border-gray-100" data-bs-toggle="modal" data-bs-target="#formModal">
-            <div class="flex items-center space-x-4">
-                <div class="bg-blue-100 p-2 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="font-medium text-gray-800">Pelaporan IPK</h4>
-                    <p class="text-gray-500 text-xs">Buka/tutup pelaporan IPK</p>
-                </div>
+    <!-- Pelaporan IPK -->
+    <a href="#" 
+       class="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow border border-gray-100" 
+       data-bs-toggle="modal" 
+       data-bs-target="#formModal">
+        <div class="flex items-center space-x-4">
+            <div class="bg-blue-100 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     class="h-5 w-5 text-blue-600" 
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
             </div>
-        </a>
-        @endif
+            <div>
+                <h4 class="font-medium text-gray-800">Pelaporan IPK</h4>
+                <p class="text-gray-500 text-xs">Buka/tutup pelaporan IPK</p>
+            </div>
+        </div>
+    </a>
+@endif
+<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="POST" action="{{ route('rekap.event') }}">
+        @csrf
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Atur Pelaporan IPK</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Pilih status pelaporan IPK:</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="buka" value="0">
+              <label class="form-check-label" for="buka">Buka</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="tutup" value="1">
+              <label class="form-check-label" for="tutup">Tutup</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+
     </div>
 </div>
 @endif
