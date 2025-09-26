@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Login</title>
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+<meta name="theme-color" content="#031927">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -119,6 +122,19 @@
             duration: 600
         });
     </script>
+        <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("{{ asset('service-worker.js') }}")
+      .then(function(reg) {
+        console.log("Service Worker registered", reg);
+      })
+      .catch(function(err) {
+        console.log("Service Worker failed", err);
+      });
+  });
+}
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
