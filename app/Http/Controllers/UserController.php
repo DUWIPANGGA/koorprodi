@@ -168,52 +168,62 @@ class UserController extends Controller
         return view('admin.import', compact('user'));
     }
     public function importCSV(Request $request)
-    {
-        set_time_limit(500);
-        $request->validate([
-            'csv_file' => 'required|mimes:csv,txt'
-        ]);
-        $file = $request->file('csv_file');
+{
+    set_time_limit(500);
+    $request->validate([
+        'csv_file' => 'required|mimes:csv,txt'
+    ]);
 
-        $filePath = $file->getRealPath();
-        $data = array_map('str_getcsv', file($filePath));
+    $file = $request->file('csv_file');
+    $filePath = $file->getRealPath();
 
-        $header = array_shift($data);
-        try {
-            foreach ($data as $row) {
-                $userData = array_combine($header, $row);
+    // pakai ; sebagai delimiter, kalau tab tinggal ganti "\t"
+    $data = array_map(function($line) {
+        return str_getcsv($line, ';');
+    }, file($filePath));
 
-                $existingUser = User::where('nim', (string) $userData['NIM:'])
-                    ->when(isset($userData['Email:']) && !empty($userData['Email:']), function ($query) use ($userData) {
-                        $query->orWhere('email', (string) $userData['Email:']);
-                    })
-                    ->first();
+    $header = array_map('trim', array_shift($data)); // ambil header
+    try {
+        foreach ($data as $row) {
+            $row = array_map('trim', $row);
+            $userData = array_combine($header, $row);
 
-                if (!$existingUser) {
-                    User::create([
-                        'nim' => (string) $userData['NIM:'],
-                        'email' => !empty($userData['Email:']) ? $userData['Email:'] : 'default_' . $userData['NIM:'] . '@formadiksi.com',
-                        'name' => (string) $userData['Nama:'],
-                        'password' => bcrypt('FORMADIKSI' . (string) $userData['NIM:']),
-                        'prodi' => (string) $userData['Prodi:'],
-                        'hobi' => (string) $userData['Hobi:'],
-                        'bakat' => (string) $userData['Bakat:'],
-                        'gender' => (string) $userData['Gender:'],
-                        'phone' => (string) $userData['Nomor WA (pribadi):'],
-                        'phone_wali' => (string) $userData['kontak WA orang tua atau wali:'],
-                        'kelas' => (string) $userData['Kelas (Contoh: RPL 1 C):'],
-                        'asal_sekolah' => (string) $userData['Asal sekolah:'],
-                        'alamat' => (string) $userData['Alamat(lengkap):'],
-                        'angkatan' => (string) $userData['angkatan'],
-                        'semester' => (string) $userData['semester'],
-                    ]);
-                }
+            $existingUser = User::where('nim', (string) $userData['nim'])
+                ->when(isset($userData['email']) && !empty($userData['email']), function ($query) use ($userData) {
+                    $query->orWhere('email', (string) $userData['email']);
+                })
+                ->first();
+
+            if (!$existingUser) {
+                User::create([
+                    'nim'        => (string) $userData['nim'],
+                    'email'      => !empty($userData['email']) 
+                        ? $userData['email'] 
+                        : 'default_' . $userData['nim'] . '@formadiksi.com',
+                    'name'       => (string) $userData['nama'],
+                    'password'   => bcrypt('FORMADIKSI' . (string) $userData['nim']),
+                    'prodi'      => (string) $userData['prodi'],
+                    'hobi'       => (string) $userData['hobi'],
+                    'bakat'      => (string) $userData['bakat'],
+                    'gender'     => (string) $userData['gender'],
+                    'phone'      => (string) $userData['phone'],
+                    'phone_wali' => (string) $userData['phone_wali'],
+                    'kelas'      => (string) $userData['kelas'],
+                    'asal_sekolah'=> (string) $userData['asal_sekolah'],
+                    'alamat'     => (string) $userData['alamat'],
+                    'angkatan'   => (string) $userData['angkatan'],
+                    'semester'   => (string) $userData['semester'],
+                    'foto'       => (string) $userData['foto'],
+                    'email_alt'  => (string) $userData['email_alt'],
+                ]);
             }
-        } catch (\Exception $e) {
-            Log::error('Error saat memasukkan data: ' . $e->getMessage());
         }
-        return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
+    } catch (\Exception $e) {
+        Log::error('Error saat memasukkan data: ' . $e->getMessage());
     }
+    return redirect()->route('users.index')->with('success', 'Data berhasil diimport.');
+}
+
 
 
 public function exportUsers() 
