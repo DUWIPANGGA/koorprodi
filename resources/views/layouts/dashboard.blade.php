@@ -23,7 +23,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Space+Grotesk:wght@700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper.js -->
@@ -36,13 +36,78 @@
 
     <!-- Trix Editor -->
     <link href="https://unpkg.com/trix@2.0.8/dist/trix.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#c1c6d5",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aac7ff",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed": "#ffdbcf",
+                        "primary-container": "#0066cc",
+                        "secondary": "#a63500",
+                        "on-primary-container": "#dfe8ff",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3e",
+                        "primary-fixed": "#d7e3ff",
+                        "on-tertiary-container": "#ebe8e7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#515050",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "inverse-primary": "#aac7ff",
+                        "tertiary-container": "#696868",
+                        "on-secondary-fixed": "#390c00",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#414753",
+                        "on-error": "#ffffff",
+                        "primary": "#004e9f",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#822700",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d04400",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727784",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#dadada",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-primary-fixed-variant": "#00458e",
+                        "error": "#ba1a1a"
+                    },
+                    fontFamily: {
+                        "body-md": ["Work Sans"],
+                        "headline-xxl": ["Montserrat"],
+                        "label-bold": ["Space Grotesk"],
+                        "headline-lg": ["Montserrat"],
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                    }
+                },
+            },
+        }
+    </script>
 
     @livewireStyles
 
     <style>
         :root {
-            --primary-color: #031927;
+            --primary-color: #004e9f;
             --secondary-color: #508AA8;
             --accent-color: #C8E0F4;
             --light-color: #F4F4F4;
@@ -52,7 +117,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Work Sans', sans-serif;
             background-color: var(--light-color);
             color: var(--dark-color);
             min-height: 100vh;
@@ -62,6 +127,23 @@
         .dashboard-container {
             display: flex;
             min-height: 100vh;
+        }
+
+        .hard-shadow {
+            box-shadow: 4px 4px 0px 0px #1a1c1c;
+        }
+
+        .grainy-overlay {
+            position: relative;
+        }
+        .grainy-overlay::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+            opacity: 0.04;
+            pointer-events: none;
+            mix-blend-mode: multiply;
         }
 
         /* Sidebar Styling */
@@ -75,21 +157,20 @@
 
         .sidebar-header {
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #1a1c1c;
         }
 
         .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--primary-color);
+            color: #1a1c1c;
             text-decoration: none;
-            font-weight: 600;
         }
 
         .sidebar-brand img {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             object-fit: contain;
         }
 
@@ -122,7 +203,6 @@
         /* Main Content Area */
         .main-content {
             flex: 1;
-            /* padding: 1.5rem; */
             overflow-x: hidden;
         }
 
@@ -133,7 +213,7 @@
             left: 1rem;
             z-index: 1100;
             display: none;
-            background-color: var(--primary-color);
+            background-color: #004e9f;
             color: white;
             border: none;
             width: 40px;
@@ -242,16 +322,15 @@
 
 <body>
 
-    <div class="dashboard-container overflow-hidden h-[100vh]">
+    <div class="dashboard-container overflow-hidden h-[100vh] grainy-overlay">
         <!-- Sidebar Toggle Button (Mobile) -->
         <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-bars"></i>
         </button>
         
         <!-- Sidebar -->
-        <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="h-full flex flex-col bg-white shadow-md">
+            <div class="h-full flex flex-col bg-white shadow-md border-r-2 border-on-surface">
                 <!-- Brand/Header Section -->
                 
                 

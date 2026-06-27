@@ -30,8 +30,13 @@
                         @method('PUT')
                     @endif
                     
-                    <div class="p-4 border-b border-gray-200 bg-gray-50">
+                    <div class="p-4 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
                         <h3 class="text-lg font-medium text-gray-900">Validasi IPK</h3>
+                        @if($rekap->validated == 1)
+                        <span class="badge bg-success">Sudah Di Validasi</span>
+                        @else
+                        <span class="badge bg-warning text-dark">Belum Di Validasi</span>
+                        @endif
                     </div>
                     
                     <div class="p-6 space-y-6">
@@ -101,7 +106,19 @@
                         </div>
                     </div>
 
-                    <div class="px-6 py-4 bg-gray-50 text-right">
+                    <div class="px-6 py-4 bg-gray-50 text-right flex gap-2 justify-end">
+                        @if($rekap->validated == 0)
+                        <form action="{{ route('rekap.tolak', $rekap->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                                Tolak
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </form>
+                        @endif
                         <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             {{ $rekap->id ? 'Validasi IPK' : 'Simpan' }}
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

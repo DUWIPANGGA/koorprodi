@@ -12,28 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         
-        if (!Schema::hasTable('pengurus')) {
-        Schema::create('pengurus', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('periode_id')->constrained()->onDelete('cascade');
-            $table->string('nama');
-            $table->string('jabatan');
-            $table->string('divisi');
-            $table->string('foto')->nullable();
-            $table->integer('urutan')->default(0);
-            $table->timestamps();
-        });
-    }
-            if (!Schema::hasTable('periodes')) {
+        if (!Schema::hasTable('periodes')) {
+            Schema::create('periodes', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama');
+                $table->string('tahun');
+                $table->boolean('aktif')->default(false);
+                $table->timestamps();
+            });
+        }
 
-        Schema::create('periodes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama'); // Contoh: "Formadiksi 10", "Kepengurusan 2023-2024"
-            $table->string('tahun'); // Contoh: "2023-2024"
-            $table->boolean('aktif')->default(false); // Hanya satu yang aktif
-            $table->timestamps();
-        });
-    }
+        if (!Schema::hasTable('pengurus')) {
+            Schema::create('pengurus', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('periode_id')->constrained()->onDelete('cascade');
+                $table->string('nama');
+                $table->string('jabatan');
+                $table->string('divisi');
+                $table->string('foto')->nullable();
+                $table->integer('urutan')->default(0);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

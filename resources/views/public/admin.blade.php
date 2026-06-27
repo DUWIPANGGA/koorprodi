@@ -187,11 +187,11 @@
           <div class="modal-body">
             <p>Pilih status pelaporan IPK:</p>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="status" id="buka" value="0">
+              <input class="form-check-input" type="radio" name="status" id="buka" value="1">
               <label class="form-check-label" for="buka">Buka</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="status" id="tutup" value="1">
+              <input class="form-check-input" type="radio" name="status" id="tutup" value="0">
               <label class="form-check-label" for="tutup">Tutup</label>
             </div>
           </div>

@@ -59,6 +59,15 @@
                                 <a class="btn btn-primary btn-sm" href="{{ route('Rekap.edit', $rekap->id) }} "> <i
                                         class="fas fa-eye"></i></a>
 
+                                @if($rekap->validated == 0)
+                                <form action="{{ route('rekap.tolak', $rekap->id) }}" method="POST"
+                                    style="display: inline-block;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="btn btn-warning btn-sm" type="submit">Tolak</button>
+                                </form>
+                                @endif
+
                                 @if (Auth::user()->role == 'super_admin')
                                     <form action="{{ route('Rekap.destroy', $rekap->id) }}" method="POST"
                                         style="display: inline-block;">
@@ -72,7 +81,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="7" class="text-center">Tidak ada data rekap.</td>
+                        <td colspan="8" class="text-center">Tidak ada data rekap.</td>
                     </tr>
                 @endif
             </tbody>

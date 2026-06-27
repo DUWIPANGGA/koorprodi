@@ -1,32 +1,31 @@
 <?php
 
-use App\Mail\TestMail;
-use App\Http\Controllers\IPK;
+use App\Http\Controllers\AcaraController;
+use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\Article;
+use App\Http\Controllers\aspirasiController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BroadcastController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DomisiliController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\IPK;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\mahasiswa;
+use App\Http\Controllers\OrganisasiController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\RedirectLinkController;
+use App\Http\Controllers\SktmController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserOrganisasiController;
+use App\Mail\TestMail;
+use App\Models\article as ModelsArticle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PkmController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\SktmController;
-use App\Http\Controllers\UserController;
-use App\Models\article as ModelsArticle;
-use App\Http\Controllers\AcaraController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PeriodeController;
-use App\Http\Controllers\aspirasiController;
-use App\Http\Controllers\DomisiliController;
-use App\Http\Controllers\PengurusController;
-use App\Http\Controllers\BroadcastController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\OrganisasiController;
-use App\Http\Controllers\Admin\RekapController;
-use App\Http\Controllers\RedirectLinkController;
-use App\Http\Controllers\UserOrganisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,23 +35,31 @@ use App\Http\Controllers\UserOrganisasiController;
 
 Route::get('/', function () {
     $recommendedArticles = ModelsArticle::latest()->take(8)->get();
-    return view('index', compact('recommendedArticles'));
+
+    return view('landing', compact('recommendedArticles'));
+});
+
+Route::get('/landing', function () {
+    $recommendedArticles = ModelsArticle::latest()->take(8)->get();
+
+    return view('landing', compact('recommendedArticles'));
 });
 
 Route::get('/try', function () {
     return view('Tentang');
 });
 Route::get('/kirim-email', function () {
-    Mail::to('khoirunnisaalvi4@gmail.com')->send(new TestMail());
+    Mail::to('khoirunnisaalvi4@gmail.com')->send(new TestMail);
+
     return 'Email sudah dikirim!';
 });
-
 
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', function () {
     Auth::logout();
+
     return redirect('/login');
 })->name('logout');
 
@@ -61,8 +68,6 @@ Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name
     ->middleware(['auth', 'admin']);
 Route::post('/registrasi', [AuthController::class, 'store']);
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -70,19 +75,20 @@ Route::post('/registrasi', [AuthController::class, 'store']);
 */
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('organisasi', OrganisasiController::class);
-            Route::get('/user-organisasi', [UserOrganisasiController::class, 'index'])->name('user-organisasi.index');
+    Route::get('/user-organisasi', [UserOrganisasiController::class, 'index'])->name('user-organisasi.index');
 
     // Dashboard
     Route::get('/dashboard/admin', [UserController::class, 'index'])->name('admin.dashboard');
 
     // User Management
     Route::get('/user-organisasi/export', [UserOrganisasiController::class, 'export'])->name('user-organisasi.export');
-    Route::get('/data-mahasiswa', [Mahasiswa::class, 'index'])->name('mahasiswa.index');
+    Route::get('/data-mahasiswa', [mahasiswa::class, 'index'])->name('mahasiswa.index');
     Route::get('import-data', [UserController::class, 'import']);
     Route::post('import-csv', [UserController::class, 'importCSV'])->name('import.csv');
     Route::get('/domisili/export-csv', [DomisiliController::class, 'exportCSV'])->name('domisili.export.csv');    // Rekap Management
     Route::get('/admin-rekap', [IPK::class, 'index'])->name('rekap.index');
     Route::put('/admin-rekap-validated/{id}', [IPK::class, 'validasi'])->name('rekap.validasi');
+    Route::put('/admin-rekap-tolak/{id}', [IPK::class, 'tolak'])->name('rekap.tolak');
     Route::get('/export-rekap', [IPK::class, 'export'])->name('export.KHS');
     Route::resource('Rekap', IPK::class)->except(['store']);
     Route::resource('pengaduan', PengaduanController::class);
@@ -91,17 +97,17 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/domisili', [DomisiliController::class, 'adminIndex'])->name('admin.domisili.index');
     Route::put('/domisili/{domisili}/approve', [DomisiliController::class, 'approve'])->name('admin.domisili.approve');
     Route::put('/domisili/{domisili}/reject', [DomisiliController::class, 'reject'])->name('admin.domisili.reject');
-    
+
     Route::get('/sktm', [SktmController::class, 'adminIndex'])->name('admin.sktm.index');
     Route::put('/sktm/{sktm}/approve', [SktmController::class, 'approve'])->name('admin.sktm.approve');
     Route::put('/sktm/{sktm}/reject', [SktmController::class, 'reject'])->name('admin.sktm.reject');
-    
+
     // Rekap IPK Routes
     Route::get('/rekap-ipk', [RekapController::class, 'rekapIpk'])->name('admin.rekap.ipk');
     Route::post('/update-semester', [RekapController::class, 'updateSemesterMassal'])->name('admin.update.semester');
     Route::get('/export-rekap-ipk', [RekapController::class, 'exportRekapIpk'])->name('admin.export.ipk');
     Route::get('/users-export', [UserController::class, 'exportUsers'])->name('users.export');
-    
+
     // Event Routes
     Route::post('/event-rekap', [EventController::class, 'rekapEvent'])->name('rekap.event');
     Route::resource('users', UserController::class);
@@ -128,7 +134,7 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::get('/admin/aspirasi/export', [aspirasiController::class, 'exportExcel'])->name('aspirasi.export');
     Route::resource('periode', PeriodeController::class)->except(['show', 'edit', 'update']);
     Route::post('periode/{periode}/set-aktif', [PeriodeController::class, 'setAktif'])->name('periode.set-aktif');
-    
+
     // Pengurus Routes dengan parameter periode
     Route::get('pengurus', [PengurusController::class, 'index'])->name('pengurus.index');
     Route::get('pengurus/create', [PengurusController::class, 'create'])->name('pengurus.create');
@@ -136,12 +142,11 @@ Route::middleware(['auth', 'kominfo'])->group(function () {
     Route::resource('pengurus', PengurusController::class)->except(['index', 'create', 'store']);
     Route::get('/simple-broadcast', [BroadcastController::class, 'showForm'])->name('simple.broadcast.form');
     Route::post('/simple-broadcast', [BroadcastController::class, 'sendBroadcast'])->name('simple.broadcast.send');
-    
+
     // Simple Manual Chat Routes
     Route::get('/simple-chat', [ChatController::class, 'showForm'])->name('simple.chat.form');
     Route::post('/simple-chat', [ChatController::class, 'sendMessage'])->name('simple.chat.send');
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -156,7 +161,7 @@ Route::resource('acara', AcaraController::class);
 */
 Route::middleware('auth')->group(function () {
     // Profile Routes
-    Route::get('/profile', [Mahasiswa::class, 'show'])->name('profile.show');
+    Route::get('/profile', [mahasiswa::class, 'show'])->name('profile.show');
     Route::get('/edit-profile/{id}', [UserController::class, 'edit'])->name('profile.edit');
     Route::get('/user-edit/{id}', [UserController::class, 'user'])->name('user.edit');
     Route::put('/user-edit/{id}', [UserController::class, 'update'])->name('profile.update');
@@ -166,6 +171,8 @@ Route::middleware('auth')->group(function () {
 
     // Rekap Routes
     Route::get('/rekap', [IPK::class, 'main'])->name('rekap');
+    Route::get('/rekap/edit/{id}', [IPK::class, 'userEdit'])->name('user.Rekap.edit');
+    Route::put('/rekap/edit/{id}', [IPK::class, 'userUpdate'])->name('user.Rekap.update');
     Route::resource('Rekap', IPK::class)->only(['store'])->names([
         'store' => 'user.Rekap.store',
     ]);
@@ -193,11 +200,11 @@ Route::middleware('auth')->group(function () {
     Route::get('{user_id}/organisasi', [UserOrganisasiController::class, 'show'])->name('user-organisasi.show');
 
     Route::post('{user_id}/organisasi', [UserOrganisasiController::class, 'store'])
-    ->name('user-organisasi.store');
+        ->name('user-organisasi.store');
 
-   Route::get('/user-organisasi/{user_id}/{semester}/edit', [UserOrganisasiController::class, 'edit'])->name('user-organisasi.edit');
-Route::put('/user-organisasi/{user}', [UserOrganisasiController::class, 'update'])
-    ->name('user-organisasi.update');
+    Route::get('/user-organisasi/{user_id}/{semester}/edit', [UserOrganisasiController::class, 'edit'])->name('user-organisasi.edit');
+    Route::put('/user-organisasi/{user}', [UserOrganisasiController::class, 'update'])
+        ->name('user-organisasi.update');
 });
 /*
 |--------------------------------------------------------------------------
@@ -205,8 +212,8 @@ Route::put('/user-organisasi/{user}', [UserOrganisasiController::class, 'update'
 |--------------------------------------------------------------------------
 */
 // Public View
-Route::get('struktur-kepengurusan', [PengurusController::class, 'show'])->name('pengurus.public');
-Route::get('struktur-kepengurusan/{periode}', [PengurusController::class, 'publicViewDetail'])->name('pengurus.public.detail');
+Route::get('/struktur-kepengurusan', [PengurusController::class, 'show'])->name('pengurus.public');
+Route::get('/struktur-kepengurusan/{periode}', [PengurusController::class, 'show'])->name('pengurus.public.detail');
 
 Route::get('/rumahaspirasi', [aspirasiController::class, 'udahkirim'])->name('rumahaspirasi');
 Route::post('/', [aspirasiController::class, 'kirim'])->name('rumahaspirasi.kirim');
@@ -217,7 +224,7 @@ Route::resource('rumah-aspirasi', aspirasiController::class)->only(['create', 's
 Route::get('/{shortUrl}', [RedirectLinkController::class, 'redirect'])
     ->where('shortUrl', '[A-Za-z0-9\-_]+')
     ->name('redirect');
-    // Route untuk testing error pages
+// Route untuk testing error pages
 Route::get('/error/404', function () {
     abort(404);
 });

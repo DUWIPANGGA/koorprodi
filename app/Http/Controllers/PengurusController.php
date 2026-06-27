@@ -37,7 +37,7 @@ public function show($id = null)
     $periode = $id ? Periode::findOrFail($id) : Periode::first();
     
     if (!$periode) {
-        return redirect()->route('login')->with('error', 'Tidak ada periode kepengurusan yang aktif');
+        return redirect()->back()->with('error', 'Tidak ada periode kepengurusan yang aktif');
     }
 
     // Get all pengurus for grouping by divisi

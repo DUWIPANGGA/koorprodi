@@ -496,10 +496,10 @@
                             </div>
                         </div>
                         <div class="flex justify-between space-x-4">
-                            <button type="submit" name="status" value="0" class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                            <button type="submit" name="status" value="1" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                                 Buka Pelaporan
                             </button>
-                            <button type="submit" name="status" value="1" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                            <button type="submit" name="status" value="0" class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                                 Tutup Pelaporan
                             </button>
                         </div>

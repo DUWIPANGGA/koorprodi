@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(error_reporting() & ~E_DEPRECATED);
+
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));

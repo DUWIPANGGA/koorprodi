@@ -1,185 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="id">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@yield('title') - FORMADIKSI</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('mascot.png') }}">
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Space+Grotesk:wght@700&family=Work+Sans:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#c1c6d5",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aac7ff",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed": "#ffdbcf",
+                        "primary-container": "#0066cc",
+                        "secondary": "#a63500",
+                        "on-primary-container": "#dfe8ff",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3e",
+                        "primary-fixed": "#d7e3ff",
+                        "on-surface-variant": "#414753",
+                        "on-error": "#ffffff",
+                        "primary": "#004e9f",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#822700",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d04400",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727784",
+                        "surface-dim": "#dadada",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-low": "#f3f3f3",
+                        "error": "#ba1a1a"
+                    },
+                    fontFamily: {
+                        "body-md": ["Work Sans"],
+                        "headline-xxl": ["Montserrat"],
+                        "label-bold": ["Space Grotesk"],
+                        "headline-lg": ["Montserrat"],
+                        "display-textured": ["Montserrat"],
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xxl": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                    }
+                },
+            },
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            position: relative;
+        .hard-shadow {
+            box-shadow: 6px 6px 0px 0px #1a1c1c;
         }
-
-        #stars-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
+        .hard-shadow-sm {
+            box-shadow: 4px 4px 0px 0px #1a1c1c;
         }
-
-        .star {
+        .btn-press:active {
+            transform: translate(3px, 3px);
+            box-shadow: none !important;
+        }
+        .grainy-overlay::after {
+            content: "";
             position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: float linear infinite;
-            opacity: 0;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+            opacity: 0.06;
+            pointer-events: none;
+            mix-blend-mode: multiply;
         }
-
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        .brush-stroke {
+            background: #d04400;
+            clip-path: polygon(2% 15%, 95% 4%, 100% 45%, 98% 90%, 5% 98%, 0% 50%);
+            padding: 0.75rem 3rem;
+            display: inline-block;
         }
-
-        @keyframes pulse-float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        @keyframes bounce-char {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
-@keyframes bounce-char {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-.char {
-    display: inline-block;
-    animation: bounce-char 1.5s infinite ease-in-out;
-}
-
-        .error-container {
-            background: rgba(243, 244, 246, 0.9); /* gray-100 */
-            backdrop-filter: blur(6px);
+        .char {
+            display: inline-block;
+            animation: bounce-char 1.5s infinite ease-in-out;
         }
-
-        .error-code {
-            font-size: 9rem;
-            line-height: 1;
-            background: linear-gradient(135deg, #4B5563, #111827); /* gray-600 to gray-900 */
-            -webkit-background-clip: text;
-            background-clip: text;
-            /* color: transparent; */
-            text-shadow: 0 2px 12px rgba(75, 85, 99, 0.2);
-            animation: pulse-float 2.5s ease-in-out infinite;
-        }
-
-        @media (max-width: 768px) {
-            .error-code {
-                font-size: 5.5rem;
-            }
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #4B5563, #1F2937);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(55, 65, 81, 0.3);
-        }
-
-        .btn-outline {
-            border: 2px solid #4B5563;
-            color: #4B5563;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline:hover {
-            background: #4B5563;
-            color: white;
-        }
-
         .logo {
             width: 100px;
             margin: 0 auto 1.5rem auto;
             transition: transform 0.4s ease;
         }
-
         .logo:hover {
             transform: rotate(10deg) scale(1.05);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <div id="stars-container"></div>
+<body class="bg-background text-on-background grainy-overlay selection:bg-primary-container selection:text-on-primary-container font-body-md min-h-screen flex items-center justify-center p-6 relative">
 
-    <div class="min-h-screen flex items-center justify-center p-6">
-        <div class="error-container max-w-2xl w-full rounded-xl shadow-xl overflow-hidden p-8">
-            <div class="text-center">
-                <img src="{{ asset('formadiksi.png') }}" alt="Logo FORMADIKSI" class="logo">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+        <div class="font-headline-xxl text-[80px] text-on-surface italic whitespace-nowrap mt-20"
+            style="animation: marqueeScroll 30s linear infinite;">
+            <span>ERROR · ERROR · ERROR · ERROR · ERROR · ERROR · </span>
+            <span>ERROR · ERROR · ERROR · ERROR · ERROR · ERROR · </span>
+        </div>
+    </div>
 
-                <div class="error-code font-extrabold mb-6 text-gray-600">
-    @foreach(str_split(trim($__env->yieldContent('code'))) as $i => $char)
-        <span class="char" style="animation-delay: {{ $i * 0.15 }}s">{{ $char }}</span>
-    @endforeach
-</div>
+    <div class="max-w-lg w-full relative z-10">
+        <div class="bg-surface-container-lowest border-2 border-on-surface p-8 md:p-10 hard-shadow text-center">
+            <img src="{{ asset('formadiksi.png') }}" alt="Logo FORMADIKSI" class="logo">
 
+            <div class="brush-stroke mb-6 mx-auto">
+                <h2 class="font-display-textured text-4xl text-on-secondary uppercase tracking-tighter leading-none">
+                    @yield('code')
+                </h2>
+            </div>
 
-                <h1 class="text-3xl font-bold text-gray-800 mb-3">
-                    @yield('title')
-                </h1>
-                <p class="text-gray-600 text-lg mb-8">
-                    @yield('message')
-                </p>
+            <h1 class="font-label-bold text-xl uppercase tracking-wider text-on-surface mb-3">
+                @yield('title')
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                @yield('message')
+            </p>
 
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="{{ route('dashboard') }}" class="btn-primary px-6 py-3 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-home mr-2"></i> Kembali ke Beranda
-                    </a>
-                    @if(Route::has('login') && !auth()->check())
-                    <a href="{{ route('login') }}" class="btn-outline px-6 py-3 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-sign-in-alt mr-2"></i> Login
-                    </a>
-                    @endif
-                </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="{{ url('/') }}"
+                    class="bg-primary text-on-primary font-label-bold py-3 px-8 hard-shadow-sm border-2 border-on-surface hover:bg-secondary-container hover:text-on-secondary transition-all uppercase tracking-wide btn-press text-sm flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-base">home</span>
+                    Kembali ke Beranda
+                </a>
+                @if(Route::has('login') && !auth()->check())
+                <a href="{{ route('login') }}"
+                    class="bg-surface-container-high text-on-surface font-label-bold py-3 px-8 hard-shadow-sm border-2 border-on-surface hover:bg-primary hover:text-on-primary transition-all uppercase tracking-wide btn-press text-sm flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-base">login</span>
+                    Login
+                </a>
+                @endif
             </div>
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const starsContainer = document.getElementById('stars-container');
-            const starCount = 80;
-            const starColors = ['#ffffff', '#d1d5db', '#e5e7eb', '#9ca3af', '#6b7280'];
-
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-
-                const size = Math.random() * 2 + 4;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-
-                star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
-
-                const duration = Math.random() * 90 + 50;
-                star.style.animationDuration = `${duration}s`;
-                star.style.animationDelay = `${Math.random() * 20}s`;
-
-                starsContainer.appendChild(star);
-            }
-        });
-    </script>
+    <style>
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
 </body>
 </html>

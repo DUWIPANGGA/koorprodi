@@ -20,7 +20,6 @@ class IPK extends Controller
 
     public function main()
     {
-        $rekaps = Rekap::where('validated', 0)->get();
         $ipks = Rekap::where('user_id', Auth::user()->id)->get();
         return view('ipk.main', compact('ipks'));
     }
@@ -137,6 +136,65 @@ class IPK extends Controller
         Rekap::find($id)->update($request->all());
         return redirect()->route('ipk.index')->with('success', 'Data berhasil diupdate');
     }
+
+    /**
+     * Show form for user to edit their own pending rekap.
+     */
+    public function userEdit($id)
+    {
+        $rekap = Rekap::where('id', $id)->where('user_id', Auth::id())->where('validated', 0)->firstOrFail();
+        return view('ipk.user-edit', compact('rekap'));
+    }
+
+    /**
+     * Update user's own pending rekap.
+     */
+    public function userUpdate(Request $request, $id)
+    {
+        $rekap = Rekap::where('id', $id)->where('user_id', Auth::id())->where('validated', 0)->firstOrFail();
+        $user = Auth::user();
+
+        $request->validate([
+            'IPK' => 'required|numeric|min:0|max:4',
+            'kesulitan' => 'required',
+        ]);
+
+        $updateData = [
+            'IPK' => $request->IPK,
+            'kesulitan' => $request->kesulitan,
+        ];
+
+        if ($request->hasFile('dokumen')) {
+            $request->validate(['dokumen' => 'mimes:pdf']);
+            $documentName = $user->nim . '-IPK-semester-' . $rekap->semester . '.' . $request->dokumen->extension();
+            $path = storage_path('app/public/angkatan-' . $user->angkatan . '/semester-' . $rekap->semester);
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+            if ($request->dokumen->storeAs('angkatan-' . $user->angkatan . '/semester-' . $rekap->semester, $documentName, 'public')) {
+                $updateData['dokumen'] = 'storage/angkatan-' . $user->angkatan . '/semester-' . $rekap->semester . '/' . $documentName;
+            }
+        }
+
+        $rekap->update($updateData);
+        $user->update(['pelaporan_ipk' => 1]);
+
+        return redirect()->route('dashboard')->with('success', 'Data rekap berhasil diperbarui.');
+    }
+
+    /**
+     * Admin rejects a rekap — allows user to re-edit.
+     */
+    public function tolak($id)
+    {
+        $rekap = Rekap::findOrFail($id);
+        $user = User::find($rekap->user_id);
+        if ($user) {
+            $user->update(['pelaporan_ipk' => 0]);
+        }
+        return redirect()->route('Rekap.index')->with('success', 'Rekap ditolak, mahasiswa dapat mengedit ulang.');
+    }
+
     public function validasi(Request $request, $id)
     {
         $request->validate([
